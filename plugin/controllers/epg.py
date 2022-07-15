@@ -52,6 +52,7 @@ def debug(msg):
 
 
 #TODO: move to utilities
+#TODO: fuzzywuzzy
 def getCustomTimeFormats(timestamp):
 	return {
 		'timestamp': timestamp,
@@ -67,6 +68,7 @@ def getFuzzyHoursMinutes(timestamp=0):
 	timeStruct = gmtime(timestamp)
 	hours = timeStruct[3]
 	mins = timeStruct[4]
+
 	if hours > 1 and mins > 1:
 		template = "%-Hhrs %-Mmins"
 	elif hours > 1 and mins == 1:
@@ -89,6 +91,7 @@ def getFuzzyHoursMinutes(timestamp=0):
 	return formatted
 
 
+#TODO: move to utilities
 def convertGenre(val):
 	if val is not None and len(val) > 0:
 		val = val[0]
@@ -107,38 +110,6 @@ class Epg():
 	def __init__(self):
 		self._instance = eEPGCache.getInstance()
 
-# openatv_enigma2/lib/dvb/epgcache.cpp
-#
-# // here we get a python tuple
-# // the first entry in the tuple is a python string to specify the format of the returned tuples (in a list)
-# //   I = Event Id
-# //   B = Event Begin Time
-# //   D = Event Duration
-# //   T = Event Title
-# //   S = Event Short Description
-# //   P = Event Parental Rating
-# //   W = Event Content Description
-# //   E = Event Extended Description
-# //   R = Service Reference
-# //   N = Service Name
-# //   n = Short Service Name
-# //  the second tuple entry is the MAX matches value
-# //  the third tuple entry is the type of query
-# //     0 = search for similar broadcastings (SIMILAR_BROADCASTINGS_SEARCH)
-# //     1 = search events with exactly title name (EXACT_TITLE_SEARCH)
-# //     2 = search events with text in title name (PARTIAL_TITLE_SEARCH)
-# //     3 = search events starting with title name (START_TITLE_SEARCH)
-# //     4 = search events ending with title name (END_TITLE_SEARCH)
-# //     5 = search events with text in description (PARTIAL_DESCRIPTION_SEARCH)
-# //  when type is 0 (SIMILAR_BROADCASTINGS_SEARCH)
-# //   the fourth is the servicereference string
-# //   the fifth is the eventid
-# //  when type > 0 (*_TITLE_SEARCH)
-# //   the fourth is the search text
-# //   the fifth is
-# //     0 = case sensitive (CASE_CHECK)
-# //     1 = case insensitive (NO_CASE_CHECK)
-# //     2 = regex search (REGEX_CHECK)
 
 	def search(self, queryString, searchFullDescription=False):
 		debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
@@ -294,39 +265,6 @@ class Epg():
 		debug(epgEvents)
 		return epgEvents
 
-# openatv_enigma2/lib/dvb/epgcache.cpp
-#
-# // here we get a python list
-# // the first entry in the list is a python string to specify the format of the returned tuples (in a list)
-# //   0 = PyLong(0)
-# //   I = Event Id
-# //   B = Event Begin Time
-# //   D = Event Duration
-# //   T = Event Title
-# //   S = Event Short Description
-# //   E = Event Extended Description
-# //   P = Event Parental Rating
-# //   W = Event Content Description ('W'hat)
-# //   C = Current Time
-# //   R = Service Reference
-# //   N = Service Name
-# //   n = Short Service Name
-# //   X = Return a minimum of one tuple per service in the result list... even when no event was found.
-# //       The returned tuple is filled with all available infos... non avail is filled as None
-# //       The position and existence of 'X' in the format string has no influence on the result tuple... its completely ignored..
-# //   M = see X just 10 items are returned
-# // then for each service follows a tuple
-# //   first tuple entry is the servicereference (as string... use the ref.toString() function)
-# //   the second is the type of query
-# //     2 = event_id
-# //    -1 = event before given start_time
-# //     0 = event intersects given start_time
-# //    +1 = event after given start_time
-# //   the third
-# //      when type is eventid it is the event_id
-# //      when type is time then it is the start_time ( -1 for now_time )
-# //   the fourth is the end_time .. ( optional .. for query all events in time range)
-
 
 	def getChannelEvents(self, sRef, startTime, endTime=None):
 		debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
@@ -452,24 +390,6 @@ class Epg():
 		return self.getMultiChannelNowNextEvents(sRefs, ['IBDCTSERNWX'])
 
 
-# /**
-#  * @brief Look up an event in the EPG database by service reference and time.
-#  * The service reference is specified in @p service.
-#  * The lookup time is in @p t.
-#  * The @p direction specifies whether to return the event matching @p t, its
-#  * predecessor or successor.
-#  *
-#  * @param service as an eServiceReference.
-#  * @param t the lookup time. If t == -1, look up the current time.
-#  * @param result the matched event, if one is found.
-#  * @param direction The event offset from the match.
-#  * @p direction > 0 return the earliest event that starts after t.
-#  * @p direction == 0 return the event that spans t. If t is spanned by a gap in the EPG, return None.
-#  * @p direction < 0 return the event immediately before the event that spans t.  * If t is spanned by a gap in the EPG, return the event immediately before the gap.
-#  * @return 0 for successful match and valid data in @p result,
-#  * -1 for unsuccessful.
-#  * In a call from Python, a return of -1 corresponds to a return value of None.
-#  */
 	def getCurrentEvent(self, sRef):
 		debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef))
 		if not sRef:
@@ -533,25 +453,6 @@ class Epg():
 		# epgEvent.getPdcPil()
 
 
-# /**
-#  * @brief Look up an event in the EPG database by service reference and time.
-#  * The service reference is specified in @p service.
-#  * The lookup time is in @p t.
-#  * @p direction specifies whether to return the event matching @p t,
-#  * its predecessor, or its successor.
-#  *
-#  * @param service as an eServiceReference.
-#  * @param t the lookup time. If t == -1, look up the current time.
-#  * @param result the matched event, if one is found.
-#  * @param direction the event offset from the match.
-#  * @p direction > 0 return the earliest event that starts after t.
-#  * @p direction == 0 return the event that spans t. If t is spanned by a gap in the EPG, return None.
-#  * @p direction < 0 return the event immediately before the event that spans t.
-#  * If t is spanned by a gap in the EPG, return the event immediately before the gap.
-#  * @return 0 for successful match and valid data in @p result,
-#  * -1 for unsuccessful.
-#  * In a call from Python, a return of -1 corresponds to a return value of None.
-#  */
 	def getEventByTime(self, sRef, eventTime, direction=NOW_EVENT):
 		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
 		if not sRef or not eventTime:
