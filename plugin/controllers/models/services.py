@@ -473,13 +473,14 @@ def getChannels(idbouquet, stype):
 	channels = services and services.getContent("SN", True)
 
 	epgNowNextEvents = epg.getMultiChannelNowNextEvents([item[0] for item in channels])
-	# 'IBDCTSERNX'
 	index = -2
 
 	for channel in channels:
 		index = index + 2 # each channel has a `now` and a `next` event entry
-		chan = {}
-		chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
+		chan = {
+			'ref': quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
+		}
+
 		if chan['ref'].split(":")[1] == '320':  # Hide hidden number markers
 			continue
 		chan['name'] = filterName(channel[1])
@@ -502,32 +503,36 @@ def getChannels(idbouquet, stype):
 				chan['protection'] = getProtection(channel[0])
 			else:
 				chan['protection'] = "0"
-			nowevent = [epgNowNextEvents[index]]
-			if len(nowevent) > 0 and nowevent[0][0] is not None:
-				chan['now_title'] = filterName(nowevent[0][4])
-				chan['now_begin'] = strftime("%H:%M", (localtime(nowevent[0][1])))
-				chan['now_end'] = strftime("%H:%M", (localtime(nowevent[0][1] + nowevent[0][2])))
-				chan['now_left'] = int(((nowevent[0][1] + nowevent[0][2]) - nowevent[0][3]) / 60)
-				chan['progress'] = int(((nowevent[0][3] - nowevent[0][1]) * 100 / nowevent[0][2]))
-				chan['now_ev_id'] = nowevent[0][0]
+
+			nowevent = [epgNowNextEvents[index]][0]
+
+			if nowevent['eventId']:
+				chan['now_title'] = filterName(nowevent['title'])
+				chan['now_begin'] = nowevent['dateTime']['startTime']
+				chan['now_end'] = nowevent['dateTime']['endTime']
+				chan['now_left'] = nowevent['dateTime']['remainingMinutes']
+				chan['progress'] = nowevent['dateTime']['progress']
+				chan['now_ev_id'] = nowevent['eventId']
 				chan['now_idp'] = "nowd" + str(idp)
-				chan['now_shortdesc'] = nowevent[0][5].strip()
-				chan['now_extdesc'] = nowevent[0][6].strip()
-				nextevent = [epgNowNextEvents[index + 1]]
+				chan['now_shortdesc'] = nowevent['shortDescription']
+				chan['now_extdesc'] = nowevent['longDescription']
+				nextevent = [epgNowNextEvents[index + 1]][0]
+
 # Some fields have been seen to be missing from the next event...
-				if len(nextevent) > 0 and nextevent[0][0] is not None:
-					if nextevent[0][1] is None:
-						nextevent[0][1] = time()
-					if nextevent[0][2] is None:
-						nextevent[0][2] = 0
-					chan['next_title'] = filterName(nextevent[0][4])
-					chan['next_begin'] = strftime("%H:%M", (localtime(nextevent[0][1])))
-					chan['next_end'] = strftime("%H:%M", (localtime(nextevent[0][1] + nextevent[0][2])))
-					chan['next_duration'] = int(nextevent[0][2] / 60)
-					chan['next_ev_id'] = nextevent[0][0]
+				if nextevent['eventId']:
+					if nextevent['dateTime']['startTime'] is None:
+						nextevent['dateTime']['startTime'] = time()
+
+					if nextevent['dateTime']['durationMinutes'] is None:
+						nextevent['dateTime']['durationMinutes'] = 0
+					chan['next_title'] = nextevent['title']
+					chan['next_begin'] = nextevent['dateTime']['startTime']
+					chan['next_end'] = nextevent['dateTime']['endTime']
+					chan['next_duration'] = nextevent['dateTime']['durationMinutes']
+					chan['next_ev_id'] = nextevent['eventId']
 					chan['next_idp'] = "nextd" + str(idp)
-					chan['next_shortdesc'] = nextevent[0][5].strip()
-					chan['next_extdesc'] = nextevent[0][6].strip()
+					chan['next_shortdesc'] = nextevent['shortDescription']
+					chan['next_extdesc'] = nextevent['longDescription']
 				else:   # Have to fudge one in, as rest of OWI code expects it...
 					# TODO: investigate use of X to stuff an empty entry
 					chan['next_title'] = "<<absent>>"
@@ -538,6 +543,7 @@ def getChannels(idbouquet, stype):
 					chan['next_idp'] = chan['now_idp']
 					chan['next_shortdesc'] = ""
 				idp += 1
+
 		if int(channel[0].split(":")[1]) != 832:
 			ret.append(chan)
 	return {"channels": ret}
@@ -550,7 +556,7 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 	CalcPos = False
 	serviceHandler = eServiceCenter.getInstance()
 
-	if sRef == "":
+	if not sRef:
 		sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
 		CalcPos = True
 	elif ' "bouquets.radio" ' in sRef:
@@ -700,7 +706,8 @@ def getSubServices(session):
 		})
 		subservices = service.subServices()
 		if subservices and subservices.getNumberOfSubservices() > 0:
-			print(subservices.getNumberOfSubservices())
+			# print(subservices.getNumberOfSubservices())
+
 			for i in list(range(subservices.getNumberOfSubservices())):
 				sub = subservices.getSubservice(i)
 				services.append({
@@ -725,15 +732,14 @@ def getEventDesc(ref, idev, encode=True):
 	return {"description": description}
 
 
-def getTimerEventStatus(event, eventLookupTable, timers=None):
-	# Check if an event has an associated timer. Unfortunately
+def getTimerEventStatus(epgEvent, sRef, timers=None):
+	# Check if an epgEvent has an associated timer. Unfortunately
 	# we cannot simply check against timer.eit, because a timer
 	# does not necessarily have one belonging to an epg event id.
 
 	#catch ValueError
-	startTime = event[eventLookupTable.index('B')]
-	endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120  # TODO: find out what this 120 means
-	serviceref = event[eventLookupTable.index('R')]
+	startTime = epgEvent.getBeginTime()
+	endTime = epgEvent.getEndTime() - 120  # TODO: find out what this 120 means
 	timerlist = {}
 	if not timers:
 		timers = NavigationInstance.instance.RecordTimer.timer_list
@@ -741,8 +747,8 @@ def getTimerEventStatus(event, eventLookupTable, timers=None):
 		if str(timer.service_ref) not in timerlist:
 			timerlist[str(timer.service_ref)] = []
 		timerlist[str(timer.service_ref)].append(timer)
-	if serviceref in timerlist:
-		for timer in timerlist[serviceref]:
+	if sRef in timerlist:
+		for timer in timerlist[sRef]:
 			timerDetails = {}
 			if timer.begin <= startTime and timer.end >= endTime:
 				if timer.disabled:
@@ -765,27 +771,28 @@ def getTimerEventStatus(event, eventLookupTable, timers=None):
 	return None
 
 
-def getEvent(ref, idev, encode=True):
+def getEvent(sRef, eventId, encode=True):
 	epg = Epg()
-	event = epg.getEvent(ref, idev)
-	eventLookupTable = 'IBDTSENRW' #TODO: do this betterly (eventFields)
+	epgEvent = epg.getEvent(sRef, eventId)
 
 	info = {}
-	if event:
-		info['id'] = event[0]
-		info['begin_str'] = strftime("%H:%M", (localtime(event[1])))
-		info['begin'] = event[1]
-		info['end'] = strftime("%H:%M", (localtime(event[1] + event[2])))
-		info['duration'] = event[2]
-		info['title'] = filterName(event[3], encode)
-		info['shortdesc'] = convertDesc(event[4], encode)
-		info['longdesc'] = convertDesc(event[5], encode)
-		info['channel'] = filterName(event[6], encode)
-		info['sref'] = event[7]
-		info['genre'], info['genreid'] = convertGenre(event[8])
-		info['picon'] = getPicon(event[7])
-		info['timer'] = getTimerEventStatus(event, eventLookupTable, None)
-		info['link'] = getIPTVLink(event[7])
+
+	if epgEvent:
+		info['id'] = epgEvent.getEventId()
+		info['begin_str'] = strftime("%H:%M", (localtime(epgEvent.getBeginTime())))
+		info['begin'] = epgEvent.getBeginTime()
+		info['end'] = strftime("%H:%M", (localtime(epgEvent.getEndTime())))
+		info['duration'] = epgEvent.getDuration()
+		info['title'] = filterName(epgEvent.getEventName(), encode)
+		info['shortdesc'] = convertDesc(epgEvent.getShortDescription(), encode)
+		info['longdesc'] = convertDesc(epgEvent.getExtendedDescription(), encode)
+		info['channel'] = filterName(epgEvent.getServiceName(), encode)
+		info['sref'] = epgEvent.getServiceReference()
+		info['genre'] = epgEvent.getGenre()
+		info['genreId'] = epgEvent.getGenreId()
+		info['picon'] = getPicon(sRef)
+		info['timer'] = getTimerEventStatus(epgEvent, sRef, None)
+		info['link'] = getIPTVLink(sRef)
 		return {'event': info}
 	else:
 		return None
@@ -806,36 +813,36 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 
 		picon = getPicon(_ref)
 		epg = Epg()
-		events = epg.getChannelEvents(_ref, begintime, endtime)
+		epgEvents = epg.getChannelEvents(_ref, begintime, endtime)
 
-		if events is not None:
-			for event in events:
-				ev = {}
-				ev['picon'] = picon
-				ev['id'] = event[0]
-				if event[1]:
-					ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime(_("%d.%m.%Y"), (localtime(event[1]))))
-					ev['begin'] = strftime("%H:%M", (localtime(event[1])))
-					ev['begin_timestamp'] = event[1]
-					ev['duration'] = int(event[2] / 60)
-					ev['duration_sec'] = event[2]
-					ev['end'] = strftime("%H:%M", (localtime(event[1] + event[2])))
-					ev['title'] = filterName(event[3], encode)
-					ev['shortdesc'] = convertDesc(event[4], encode)
-					ev['longdesc'] = convertDesc(event[5], encode)
-					ev['sref'] = ref
-					ev['sname'] = filterName(event[6], encode)
-					ev['tleft'] = int(((event[1] + event[2]) - event[7]) / 60)
-					if ev['duration_sec'] == 0:
-						ev['progress'] = 0
-					else:
-						ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) * 4)
-					ev['now_timestamp'] = event[7]
-					ev['genre'], ev['genreid'] = convertGenre(event[8])
+		if epgEvents is not None:
+			for epgEvent in epgEvents:
+				eventId = epgEvent['eventId']
+				ev = {
+					'id': eventId,
+					'sref': ref,
+					'picon': picon
+				}
+
+				if eventId:
+					ev['date'] = epgEvent['dateTime']['startDate']
+					ev['begin'] = epgEvent['dateTime']['startTime']
+					ev['begin_timestamp'] = epgEvent['dateTime']['start']
+					ev['duration'] = epgEvent['dateTime']['durationMinutes']
+					ev['duration_sec'] = epgEvent['dateTime']['duration']
+					ev['end'] = epgEvent['dateTime']['endTime']
+					ev['title'] = filterName(epgEvent['title'], encode)
+					ev['shortdesc'] = convertDesc(epgEvent['shortDescription'], encode)
+					ev['longdesc'] = convertDesc(epgEvent['longDescription'], encode)
+					ev['sname'] = filterName(epgEvent['service']['name'], encode)
+					ev['tleft'] = epgEvent['dateTime']['remainingMinutes']
+					ev['progress'] = epgEvent['dateTime']['progress']
+					ev['now_timestamp'] = 0
+					ev['genre'] = epgEvent['genre']
+					ev['genreid'] = epgEvent['genreId']
 					ret.append(ev)
 				else:
 					use_empty_ev = True
-					ev['sref'] = ref
 	else:
 		use_empty_ev = True
 		ev['sref'] = ""
@@ -871,21 +878,23 @@ def getBouquetEpg(ref, begintime=-1, endtime=-1, encode=False):
 
 	sRefs = services.getContent('S')
 	epg = Epg()
-	events = epg.getBouquetEvents(sRefs, begintime, endtime)
+	epgEvents = epg.getBouquetEvents(sRefs, begintime, endtime)
 
-	if events is not None:
-		for event in events:
-			ev = {}
-			ev['id'] = event[0]
-			ev['begin_timestamp'] = event[1]
-			ev['duration_sec'] = event[2]
-			ev['title'] = filterName(event[4], encode)
-			ev['shortdesc'] = convertDesc(event[5], encode)
-			ev['longdesc'] = convertDesc(event[6], encode)
-			ev['sref'] = event[7]
-			ev['sname'] = filterName(event[8], encode)
-			ev['now_timestamp'] = event[3]
-			ev['genre'], ev['genreid'] = convertGenre(event[9])
+	if epgEvents is not None:
+		for epgEvent in epgEvents:
+			ev = {
+				'id': epgEvent['eventId'],
+				'begin_timestamp': epgEvent['dateTime']['start'],
+				'duration_sec': epgEvent['dateTime']['duration'],
+				'title': filterName(epgEvent['title'], encode),
+				'shortdesc': convertDesc(epgEvent['shortDescription'], encode),
+				'longdesc': convertDesc(epgEvent['longDescription'], encode),
+				'sref': epgEvent['serviceReference'],
+				'sname': filterName(epgEvent['serviceName'], encode),
+				'now_timestamp': epgEvent['dateTime']['current'],
+				'genre': epgEvent['genre'],
+				'genreid': epgEvent['genreId']
+			}
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -900,101 +909,112 @@ def getMultiChannelNowNextEpg(sList, encode=False):
 		sList = sList.split(",")
 
 	epg = Epg()
-	events = epg.getMultiChannelNowNextEvents(sList)
+	epgEvents = epg.getMultiChannelNowNextEvents(sList)
 
-	if events is not None:
-		for event in events:
+	if epgEvents is not None:
+		for epgEvent in epgEvents:
 			ev = {}
-			ev['id'] = event[0]
-			ev['begin_timestamp'] = event[1]
-			ev['duration_sec'] = event[2]
-			ev['title'] = filterName(event[4], encode)
-			ev['shortdesc'] = convertDesc(event[5], encode)
-			ev['longdesc'] = convertDesc(event[6], encode)
+			ev['id'] = epgEvent[0]
+			ev['begin_timestamp'] = epgEvent[1]
+			ev['duration_sec'] = epgEvent[2]
+			ev['title'] = filterName(epgEvent[4], encode)
+			ev['shortdesc'] = convertDesc(epgEvent[5], encode)
+			ev['longdesc'] = convertDesc(epgEvent[6], encode)
 			# if event[7] is not None:
 			#  achannels = GetWithAlternative(event[7], False)
 			#   if achannels:
 			#    ev['asrefs'] = achannels
-			ev['sref'] = event[7]
-			ev['sname'] = filterName(event[8], encode)
-			ev['now_timestamp'] = event[3]
+			ev['sref'] = epgEvent[7]
+			ev['sname'] = filterName(epgEvent[8], encode)
+			ev['now_timestamp'] = epgEvent[3]
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
 
 
-def getBouquetNowNextEpg(ref, servicetype, encode=False):
-	ref = unquote(ref)
+def getBouquetNowNextEpg(sRef, nowOrNext, encode=False):
+	sRef = unquote(sRef)
 	ret = []
-	services = eServiceCenter.getInstance().list(eServiceReference(ref))
+	services = eServiceCenter.getInstance().list(eServiceReference(sRef))
+
 	if not services:
 		return {"events": ret, "result": False}
 
 	sRefs = services.getContent('S')
 	epg = Epg()
 
-	if servicetype == Epg.NOW:
-		events = epg.getBouquetNowEvents(sRefs)
-	elif servicetype == Epg.NEXT:
-		events = epg.getBouquetNextEvents(sRefs)
+	if nowOrNext == Epg.NOW:
+		epgEvents = epg.getBouquetNowEvents(sRefs)
+	elif nowOrNext == Epg.NEXT:
+		epgEvents = epg.getBouquetNextEvents(sRefs)
 	else:
-		events = epg.getBouquetNowNextEvents(sRefs)
+		epgEvents = epg.getBouquetNowNextEvents(sRefs)
 
-	if events is not None:
-		for event in events:
-			ev = {}
-			ev['id'] = event[0]
-			ev['begin_timestamp'] = event[1]
-			ev['duration_sec'] = event[2]
-			ev['title'] = filterName(event[4], encode)
-			ev['shortdesc'] = convertDesc(event[5], encode)
-			ev['longdesc'] = convertDesc(event[6], encode)
-			if event[7] is not None:
-				achannels = GetWithAlternative(event[7], False)
+	if epgEvents is not None:
+		for epgEvent in epgEvents:
+			serviceReference = epgEvent['serviceReference']
+			ev = {
+				'id': epgEvent['eventId'],
+				'begin_timestamp': epgEvent['dateTime']['start'],
+				'duration_sec': epgEvent['dateTime']['duration'],
+				'title': filterName(epgEvent['title'], encode),
+				'shortdesc': convertDesc(epgEvent['shortDescription'], encode),
+				'longdesc': convertDesc(epgEvent['longDescription'], encode),
+				'sref': serviceReference,
+				'sname': filterName(epgEvent['serviceName'], encode),
+				'now_timestamp': epgEvent['dateTime']['current'],
+				'genre': epgEvent['genre'],
+				'genreid': epgEvent['genreId']
+			}
+
+			if serviceReference:
+				achannels = GetWithAlternative(serviceReference, False)
+
 				if achannels:
 					ev['asrefs'] = achannels
-			ev['sref'] = event[7]
-			ev['sname'] = filterName(event[8], encode)
-			ev['now_timestamp'] = event[3]
-			ev['genre'], ev['genreid'] = convertGenre(event[9])
+
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
 
 
-def getNowNextEpg(ref, servicetype, encode=False):
-	ref = unquote(ref)
+def getNowNextEpg(sRef, nowOrNext, encode=False):
+	sRef = unquote(sRef)
 	ret = []
 	epg = Epg()
 
-	if servicetype == Epg.NOW:
-		events = epg.getChannelNowEvent(ref)
+	if nowOrNext == Epg.NOW:
+		epgEvents = epg.getChannelNowEvent(sRef)
 	else:
-		events = epg.getChannelNextEvent(ref)
+		epgEvents = epg.getChannelNextEvent(sRef)
 
-	if events is not None:
-		for event in events:
-			ev = {}
-			ev['id'] = event[0]
-			if event[1]:
-				ev['begin_timestamp'] = event[1]
-				ev['duration_sec'] = event[2]
-				ev['title'] = filterName(event[4], encode)
-				ev['shortdesc'] = convertDesc(event[5], encode)
-				ev['longdesc'] = convertDesc(event[6], encode)
-				ev['sref'] = event[7]
-				ev['sname'] = filterName(event[8], encode)
-				ev['now_timestamp'] = event[3]
-				ev['remaining'] = (event[1] + event[2]) - event[3]
-				ev['genre'], ev['genreid'] = convertGenre(event[9])
+	if epgEvents is not None:
+		for epgEvent in epgEvents:
+			eventId = epgEvent['eventId']
+			serviceReference = epgEvent['serviceReference']
+			sName = filterName(epgEvent['serviceName'], encode)
+			ev = {
+				'id': eventId,
+				'sref': serviceReference,
+				'sname': sName
+			}
+
+			if eventId:
+				ev['begin_timestamp'] = epgEvent['dateTime']['start']
+				ev['duration_sec'] = epgEvent['dateTime']['duration']
+				ev['title'] = filterName(epgEvent['title'], encode)
+				ev['shortdesc'] = convertDesc(epgEvent['shortDescription'], encode)
+				ev['longdesc'] = convertDesc(epgEvent['longDescription'], encode)
+				ev['now_timestamp'] = epgEvent['dateTime']['current']
+				ev['remaining'] = epgEvent['dateTime']['remaining']
+				ev['genre'] = epgEvent['genre']
+				ev['genreid'] = epgEvent['genreId']
 			else:
 				ev['begin_timestamp'] = 0
 				ev['duration_sec'] = 0
 				ev['title'] = "N/A"
 				ev['shortdesc'] = ""
 				ev['longdesc'] = ""
-				ev['sref'] = event[7]
-				ev['sname'] = filterName(event[8])
 				ev['now_timestamp'] = 0
 				ev['remaining'] = 0
 				ev['genre'] = ""
@@ -1009,9 +1029,9 @@ def getNowNextEpg(ref, servicetype, encode=False):
 def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=False):
 	ret = []
 	epg = Epg()
-	events = epg.search(sstr, fulldesc)
+	epgEvents = epg.search(sstr, fulldesc)
 
-	if events is not None:
+	if epgEvents is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
 		# events.sort(key = lambda x: x[1]) # sort by date
@@ -1024,33 +1044,34 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 				else:
 					bsref[service['servicereference']] = True
 
-		for event in events:
-			if bouquetsonly and not event[7] in bsref:
+		for epgEvent in epgEvents:
+			if bouquetsonly and not epgEvent[7] in bsref:
 				continue
 			ev = {}
-			ev['id'] = event[0]
-			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime(_("%d.%m.%Y"), (localtime(event[1]))))
-			ev['begin_timestamp'] = event[1]
-			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
-			ev['duration_sec'] = event[2]
-			ev['duration'] = int(event[2] / 60)
-			ev['end'] = strftime("%H:%M", (localtime(event[1] + event[2])))
-			ev['title'] = filterName(event[3], encode)
-			ev['shortdesc'] = convertDesc(event[4], encode)
-			ev['longdesc'] = convertDesc(event[5], encode)
-			ev['sref'] = event[7]
-			ev['sname'] = filterName(event[6], encode)
-			ev['picon'] = getPicon(event[7])
+			ev['id'] = epgEvent[0]
+			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(epgEvent[1]))))], strftime(_("%d.%m.%Y"), (localtime(epgEvent[1]))))
+			ev['begin_timestamp'] = epgEvent[1]
+			ev['begin'] = strftime("%H:%M", (localtime(epgEvent[1])))
+			ev['duration_sec'] = epgEvent[2]
+			ev['duration'] = int(epgEvent[2] / 60)
+			ev['end'] = strftime("%H:%M", (localtime(epgEvent[1] + epgEvent[2])))
+			ev['title'] = filterName(epgEvent[3], encode)
+			ev['shortdesc'] = convertDesc(epgEvent[4], encode)
+			ev['longdesc'] = convertDesc(epgEvent[5], encode)
+			ev['sref'] = epgEvent[7]
+			ev['sname'] = filterName(epgEvent[6], encode)
+			ev['picon'] = getPicon(epgEvent[7])
 			ev['now_timestamp'] = None
-			ev['genre'], ev['genreid'] = convertGenre(event[8])
+			ev['genre'], ev['genreid'] = convertGenre(epgEvent[8])
+
 			if endtime:
 				# don't show events if begin after endtime
-				if event[1] <= endtime:
+				if epgEvent[1] <= endtime:
 					ret.append(ev)
 			else:
 				ret.append(ev)
 
-			psref = parse_servicereference(event[7])
+			psref = parse_servicereference(epgEvent[7])
 			ev['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
 			nsi = psref.get('ns')
 			ns = NS_LOOKUP.get(nsi, "DVB-S")
@@ -1062,34 +1083,35 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 	return {"events": ret, "result": True}
 
 
-def getSearchSimilarEpg(ref, eventid, encode=False):
-	ref = unquote(ref)
+def getSearchSimilarEpg(sRef, eventId, encode=False):
+	sRef = unquote(sRef)
 	ret = []
 	ev = {}
 	epg = Epg()
-	events = epg.findSimilarEvents(ref, eventid)
+	epgEvents = epg.findSimilarEvents(sRef, eventId)
 
-	if events is not None:
+	if epgEvents is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
 		# events.sort(key = lambda x: x[1]) # sort by date
-		for event in events:
+
+		for epgEvent in epgEvents:
 			ev = {}
 			ev['id'] = event[0]
-			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime(_("%d.%m.%Y"), (localtime(event[1]))))
-			ev['begin_timestamp'] = event[1]
-			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
-			ev['duration_sec'] = event[2]
-			ev['duration'] = int(event[2] / 60)
-			ev['end'] = strftime("%H:%M", (localtime(event[1] + event[2])))
-			ev['title'] = filterName(event[3], encode)
-			ev['shortdesc'] = convertDesc(event[4], encode)
-			ev['longdesc'] = convertDesc(event[5], encode)
-			ev['sref'] = event[7]
-			ev['sname'] = filterName(event[6], encode)
-			ev['picon'] = getPicon(event[7])
+			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(epgEvent[1]))))], strftime(_("%d.%m.%Y"), (localtime(epgEvent[1]))))
+			ev['begin_timestamp'] = epgEvent[1]
+			ev['begin'] = strftime("%H:%M", (localtime(epgEvent[1])))
+			ev['duration_sec'] = epgEvent[2]
+			ev['duration'] = int(epgEvent[2] / 60)
+			ev['end'] = strftime("%H:%M", (localtime(epgEvent[1] + epgEvent[2])))
+			ev['title'] = filterName(epgEvent[3], encode)
+			ev['shortdesc'] = convertDesc(epgEvent[4], encode)
+			ev['longdesc'] = convertDesc(epgEvent[5], encode)
+			ev['sref'] = epgEvent[7]
+			ev['sname'] = filterName(epgEvent[6], encode)
+			ev['picon'] = getPicon(epgEvent[7])
 			ev['now_timestamp'] = None
-			ev['genre'], ev['genreid'] = convertGenre(event[8])
+			ev['genre'], ev['genreid'] = convertGenre(epgEvent[8])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -1130,11 +1152,11 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 
 	sRefs = services.getContent('S')
 	epg = Epg()
-	events = epg.getMultiChannelEvents(sRefs, begintime, endtime)
+	epgEvents = epg.getMultiChannelEvents(sRefs, begintime, endtime)
 	offset = None
 	picons = {}
 
-	if events is not None:
+	if epgEvents is not None:
 		if begintime == -1:
 			# If no start time is requested, use current time as start time and extend
 			# show all events until 6:00 next day
@@ -1160,9 +1182,8 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 					timerlist[str(timer.service_ref)] = []
 				timerlist[str(timer.service_ref)].append(timer)
 
-		eventLookupTable = 'IBTSRND' #TODO: do this betterly (eventFields)
-		for event in events:
-			sref = event[4]
+		for epgEvent in epgEvents:
+			sref = epgEvent['service']['reference']
 			# Cut description
 			f = sref.rfind("::")
 			if f != -1:
@@ -1177,39 +1198,44 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			timer = None
 			if sref in timerlist and len(timerlist[sref]) > 0:
 				for i, first in enumerate(timerlist[sref]):
-					if first.begin <= event[1] and event[1]+event[6]-120 <= first.end:
+					if first.begin <= epgEvent['dateTime']['start'] and epgEvent['dateTime']['end'] - 120 <= first.end:
 						timer = getTimerDetails(first)
 						timerlist[sref] = timerlist[sref][i:]
 						break
 
-			ev = {}
-			ev['id'] = event[0]
-			ev['begin_timestamp'] = event[1]
-			ev['title'] = event[2]
-			ev['shortdesc'] = convertDesc(event[3])
-			ev['ref'] = event[4]
-			ev['timer'] = timer
+			ev = {
+				'id': epgEvent['eventId'],
+				'begin_timestamp': event['dateTime']['start'],
+				'title': epgEvent['title'],
+				'shortdesc': convertDesc(epgEvent['description']),
+				'ref': epgEvent['service']['reference'],
+				'timer': timer
+			}
+
 			if timer:
 				ev['timerStatus'] = timer['basicStatus']
 			else:
 				ev['timerStatus'] = ""
 
 			if Mode == 2:
-				ev['duration'] = event[6]
+				ev['duration'] = epgEvent['dateTime']['duration']
 
-			channel = filterName(event[5])
+			channel = filterName(epgEvent['service']['name'])
+
 			if channel not in ret:
 				if Mode == 1:
 					ret[channel] = [[], [], [], [], [], [], [], [], [], [], [], []]
 				else:
 					ret[channel] = [[]]
-				picons[channel] = getPicon(event[4])
+
+				picons[channel] = getPicon(epgEvent['service']['reference'])
 
 			if Mode == 1:
-				slot = int((event[1] - offset) / 7200)
+				slot = int((epgEvent['dateTime']['start'] - offset) / 7200)
+
 				if slot < 0:
 					slot = 0
-				if slot < 12 and event[1] < lastevent:
+				if slot < 12 and epgEvent['dateTime']['start'] < lastevent:
 					ret[channel][slot].append(ev)
 			else:
 				ret[channel][0].append(ev)
