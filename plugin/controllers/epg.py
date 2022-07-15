@@ -51,15 +51,43 @@ def debug(msg):
 		print(msg)
 
 
-def getHoursMinutesFormatted(timestamp=0):
+#TODO: move to utilities
+def getCustomTimeFormats(timestamp):
+	return {
+		'timestamp': timestamp,
+		'date': strftime(config.usage.date.displayday.value, (localtime(timestamp))),
+		'time': strftime(config.usage.time.short.value, (localtime(timestamp))),
+		'dateTime': strftime('%c', (localtime(timestamp))),
+		'fuzzy': 'fuzzyTimestamp'
+	}
+
+
+#TODO: move to utilities
+def getFuzzyHoursMinutes(timestamp=0):
 	timeStruct = gmtime(timestamp)
-	textParts = []
-	if timeStruct[3]:
-		textParts.append("%-Hh")
-	if timeStruct[4]:
-		textParts.append("%-Mm")
-	formatted = strftime(" ".join(textParts), timeStruct)  # if remaining is not None else None
+	hours = timeStruct[3]
+	mins = timeStruct[4]
+	if hours > 1 and mins > 1:
+		template = "%-Hhrs %-Mmins"
+	elif hours > 1 and mins == 1:
+		template = "%-Hhrs %-Mmin"
+	elif hours > 1:
+		template = "%-H hours"
+	elif hours == 1 and mins > 1:
+		template = "%-Hhr %-Mmins"
+	elif hours == 1 and mins == 1:
+		template = "%-Hhr %-Mmin"
+	elif hours == 1:
+		template = "%-H hour"
+	elif mins > 1:
+		template = "%-M mins"
+	elif mins == 1:
+		template = "%-M minute"
+	else:
+		template = ""
+	formatted = strftime(template, timeStruct)  # if remaining is not None else None
 	return formatted
+
 
 def convertGenre(val):
 	if val is not None and len(val) > 0:
@@ -163,73 +191,84 @@ class Epg():
 		eventData = {}
 		dateAndTime = {}
 		service = {}
-		startTimestamp = 0
+		startTimestamp = None
+		currentTimestamp = None
 		duration = 0
-		currentTimestamp = 0
-		longDescription = ""
-		shortDescription = ""
+		shortDescription = None
+		longDescription = None
 
 
 		# TODO: skip processing if there isn't a valid event (id is None)
 
-		for index, arg in enumerate(args):
+		for index, argValue in enumerate(args):
 			key = eventFields[index]
 
 			if key == 'I':
-				eventData['eventId'] = arg
+				eventData['eventId'] = argValue
 			elif key == 'B':
-				startTimestamp = arg
-				dateAndTime['start'] = arg
-				dateAndTime['startDate'] = strftime(config.usage.date.displayday.value, (localtime(arg))) if arg is not None else None
-				dateAndTime['startTime'] = strftime(config.usage.time.short.value, (localtime(arg))) if arg is not None else None
-				dateAndTime['startDateTime'] = strftime('%c', (localtime(arg))) if arg is not None else None
-				dateAndTime['startFuzzy'] = "" if arg is not None else None
+				startTimestamp = argValue
+				if startTimestamp is not None:
+					startTimeFormats = getCustomTimeFormats(startTimestamp)
+					dateAndTime['start'] = startTimeFormats['timestamp']
+					dateAndTime['startDate'] = startTimeFormats['date']
+					dateAndTime['startTime'] = startTimeFormats['time']
+					dateAndTime['startDateTime'] = startTimeFormats['dateTime']
+					dateAndTime['startFuzzy'] = startTimeFormats['fuzzy']
+				else:
+					dateAndTime['start'] = None
+					dateAndTime['startDate'] = None
+					dateAndTime['startTime'] = None
+					dateAndTime['startDateTime'] = None
+					dateAndTime['startFuzzy'] = None
 			elif key == 'D':
-				duration = arg or 0
+				duration = argValue or 0
 				dateAndTime['duration'] = duration
 				dateAndTime['durationMinutes'] = int(duration / 60)
-				dateAndTime['durationFormatted'] = getHoursMinutesFormatted(duration)
+				dateAndTime['durationFuzzy'] = getFuzzyHoursMinutes(duration)
 			elif key == 'T':
-				eventData['title'] = arg
+				eventData['title'] = (argValue or '').strip()
 			elif key == 'S':
-				shortDescription = arg.strip() if arg is not None else None
-				eventData['shortDescription'] = shortDescription
+				if argValue is not None:
+					shortDescription = argValue.strip()
+					eventData['shortDescription'] = shortDescription
 			elif key == 'E':
-				longDescription = arg.strip() if arg is not None else None
-				eventData['longDescription'] = longDescription
+				if argValue is not None:
+					longDescription = argValue.strip()
+					eventData['longDescription'] = longDescription
 			elif key == 'P':
-				eventData['parentalRating'] = arg
+				eventData['parentalRating'] = argValue
 			elif key == 'W':
-				eventData['genre'], eventData['genreId'] = convertGenre(arg)
+				eventData['genre'], eventData['genreId'] = convertGenre(argValue)
 			elif key == 'C':
-				currentTimestamp = arg
+				currentTimestamp = argValue
 				dateAndTime['current'] = currentTimestamp
 			elif key == 'R':
-				service['sRef'] = arg
+				service['sRef'] = argValue
 			elif key == 'n':
-				service['nameShort'] = arg
+				service['nameShort'] = argValue
 			elif key == 'N':
-				service['name'] = arg
+				service['name'] = argValue
 			elif key == 'X':
 				#ignored
 				pass
 			elif key == 'M':
-				eventData['maxResults'] = arg
+				eventData['maxResults'] = argValue
 			else:
-				eventData[key] = arg
+				eventData[key] = argValue
 
 		if startTimestamp and duration:
-			endTimestamp = dateAndTime['start'] + duration
-			dateAndTime['end'] = endTimestamp
-			dateAndTime['endDate'] = strftime('%x', (localtime(endTimestamp)))
-			dateAndTime['endTime'] = strftime(config.usage.time.short.value, (localtime(endTimestamp))) if endTimestamp is not None else None
-			dateAndTime['endDateTime'] = strftime('%c', (localtime(endTimestamp)))
-			dateAndTime['endFuzzy'] = ""
+			endTimestamp = startTimestamp + duration
+			endTimeFormats = getCustomTimeFormats(startTimestamp)
+			dateAndTime['end'] = endTimeFormats['timestamp']
+			dateAndTime['endDate'] = endTimeFormats['date']
+			dateAndTime['endTime'] = endTimeFormats['time']
+			dateAndTime['endDateTime'] = endTimeFormats['dateTime']
+			dateAndTime['endFuzzy'] = endTimeFormats['fuzzy']
 			if currentTimestamp:
 				remaining = endTimestamp - currentTimestamp if currentTimestamp > startTimestamp else duration
 				dateAndTime['remaining'] = remaining
 				dateAndTime['remainingMinutes'] = int(remaining / 60)
-				dateAndTime['remainingFormatted'] = getHoursMinutesFormatted(remaining)
+				dateAndTime['remainingFormatted'] = getFuzzyHoursMinutes(remaining)
 				progressPercent = int(((currentTimestamp - startTimestamp) / duration) * 100)
 				progressPercent = progressPercent if progressPercent >= 0 else 0
 				dateAndTime['progress'] = progressPercent
