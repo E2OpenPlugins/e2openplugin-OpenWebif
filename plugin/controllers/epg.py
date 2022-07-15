@@ -46,7 +46,7 @@ NEXT_EVENT = +1
 TIME_NOW = -1
 
 
-def debug(msg):
+def _debug(msg):
 	if DEBUG_ENABLED:
 		print(msg)
 
@@ -102,6 +102,49 @@ def convertGenre(val):
 	return "", 0
 
 
+def _gcnne(self, sRef, nowOrNext):
+	if not sRef:
+		_debug("A required parameter 'sRef' is missing!")
+		# return None
+	else:
+		sRef = str(sRef)
+
+	epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
+	evtupl = (
+		epgEvent.getEventId(),
+		epgEvent.getBeginTime(),
+		epgEvent.getDuration(),
+		localtime(None),
+		epgEvent.getEventName(),
+		epgEvent.getShortDescription(),
+		epgEvent.getExtendedDescription(),
+		sRef,
+		ServiceReference(sRef).getServiceName(),
+		epgEvent.getGenreDataList()
+	)
+
+	_debug(evtupl)
+	return evtupl
+
+
+def _gbnne(self, bqRef, nowOrNext):
+	if not bqRef:
+		_debug("A required parameter 'bqRef' is missing!")
+		# return None
+
+	criteria = ['IBDCTSERNWX']
+	sRefs = bqRef
+
+	for sRef in sRefs:
+		sRef = str(sRef)
+		criteria.append((sRef, nowOrNext, TIME_NOW))
+
+	epgEvents = self._queryEPG(criteria)
+
+	_debug(epgEvents)
+	return epgEvents
+
+
 class Epg():
 	NOW = 10
 	NEXT = 11
@@ -111,13 +154,17 @@ class Epg():
 		self._instance = eEPGCache.getInstance()
 
 
-	def search(self, queryString, searchFullDescription=False):
-		debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
-		if not queryString:
-			debug("A required parameter 'queryString' is missing!")
+	def getEncoding(self):
+		return config.OpenWebif.epg_encoding.value
 
-		queryType = eEPGCache.PARTIAL_TITLE_SEARCH
-		epgEncoding = config.OpenWebif.epg_encoding.value
+
+	#TODO: make search type fully user-selectable
+	def search(self, queryString, searchFullDescription=False):
+		_debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
+		if not queryString:
+			_debug("A required parameter 'queryString' is missing!")
+
+		epgEncoding = self.getEncoding()
 
 		if epgEncoding.lower() != 'utf-8':
 			try:
@@ -125,23 +172,26 @@ class Epg():
 			except UnicodeEncodeError:
 				pass
 
+		queryType = eEPGCache.PARTIAL_TITLE_SEARCH
+
 		if searchFullDescription:
 			if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 				queryType = eEPGCache.FULL_DESCRIPTION_SEARCH
 			elif hasattr(eEPGCache, 'PARTIAL_DESCRIPTION_SEARCH'):
 				queryType = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
 
-		criteria = ('IBDTSENRW', MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
+		eventFields = 'IBDTSENRW'
+		criteria = (eventFields, MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
 		epgEvents = self._instance.search(criteria)
 
-		debug(epgEvents)
+		_debug(epgEvents)
 		return epgEvents
 
 
 	def findSimilarEvents(self, sRef, eventId):
-		debug("[[[   findSimilarEvents(%s, %s)   ]]]" % (sRef, eventId))
+		_debug("[[[   findSimilarEvents(%s, %s)   ]]]" % (sRef, eventId))
 		if not sRef or not eventId:
-			debug("A required parameter 'sRef' or eventId is missing!")
+			_debug("A required parameter 'sRef' or eventId is missing!")
 			# return None
 		else:
 			sRef = str(sRef)
@@ -151,13 +201,13 @@ class Epg():
 		criteria = (eventFields, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
 		epgEvents = self._instance.search(criteria)
 
-		debug(epgEvents)
+		_debug(epgEvents)
 		return epgEvents
 
 
 	def _transformEventData(self, eventFields, *args):
-		debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
-		# debug(*args)
+		_debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
+		# _debug(*args)
 
 		eventData = {}
 		dateAndTime = {}
@@ -262,14 +312,14 @@ class Epg():
 
 		epgEvents = self._instance.lookupEvent(criteria, _callEventTransform)
 
-		debug(epgEvents)
+		_debug(epgEvents)
 		return epgEvents
 
 
 	def getChannelEvents(self, sRef, startTime, endTime=None):
-		debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
+		_debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
 		if not sRef:
-			debug("A required parameter 'sRef' is missing!")
+			_debug("A required parameter 'sRef' is missing!")
 			# return None
 		else:
 			sRef = str(sRef)
@@ -278,49 +328,24 @@ class Epg():
 		criteria.append((sRef, NOW_EVENT, startTime, endTime))
 		epgEvents = self._queryEPG(criteria)
 
-		debug(epgEvents)
+		_debug(epgEvents)
 		return epgEvents
 
 
-	def _gcnne(self, sRef, nowOrNext):
-		if not sRef:
-			debug("A required parameter 'sRef' is missing!")
-			# return None
-		else:
-			sRef = str(sRef)
-
-		epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
-		evtupl = (
-			epgEvent.getEventId(),
-			epgEvent.getBeginTime(),
-			epgEvent.getDuration(),
-			localtime(None),
-			epgEvent.getEventName(),
-			epgEvent.getShortDescription(),
-			epgEvent.getExtendedDescription(),
-			sRef,
-			ServiceReference(sRef).getServiceName(),
-			epgEvent.getGenreDataList()
-		)
-
-		debug(evtupl)
-		return evtupl
-
-
 	def getChannelNowEvent(self, sRef):
-		debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
-		return self._gcnne(sRef, NOW_EVENT)
+		_debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
+		return _gcnne(sRef, NOW_EVENT)
 
 
 	def getChannelNextEvent(self, sRef):
-		debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
-		return self._gcnne(sRef, NEXT_EVENT)
+		_debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
+		return _gcnne(sRef, NEXT_EVENT)
 
 
 	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, criteria=['IBTSRND']):
-		debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
+		_debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
-			debug("A required parameter [sRefs] is missing!")
+			_debug("A required parameter [sRefs] is missing!")
 			# return None
 
 		for sRef in sRefs:
@@ -329,14 +354,14 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		debug(epgEvents)
+		_debug(epgEvents)
 		return epgEvents
 
 
 	def getMultiChannelNowNextEvents(self, sRefs, criteria=['IBDCTSERNX']):
-		debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
+		_debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
-			debug("A required parameter [sRefs] is missing!")
+			_debug("A required parameter [sRefs] is missing!")
 			# return None
 
 		for sRef in sRefs:
@@ -346,54 +371,36 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		debug(epgEvents)
+		_debug(epgEvents)
 		return epgEvents
 
 
 	def getBouquetEvents(self, sRefs, startTime, endTime=None):
-		debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
+		_debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		#TODO: accept only a bq ref and get list of srefs here
 		return self.getMultiChannelEvents(sRefs, startTime, endTime, ['IBDCTSERNWX'])
 
 
-	def _gbnne(self, bqRef, nowOrNext):
-		if not bqRef:
-			debug("A required parameter 'bqRef' is missing!")
-			# return None
-
-		criteria = ['IBDCTSERNWX']
-		sRefs = bqRef
-
-		for sRef in sRefs:
-			sRef = str(sRef)
-			criteria.append((sRef, nowOrNext, TIME_NOW))
-
-		epgEvents = self._queryEPG(criteria)
-
-		debug(epgEvents)
-		return epgEvents
-
-
 	def getBouquetNowEvents(self, bqRef):
-		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
-		return self._gbnne(sRefs, NOW_EVENT)
+		_debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
+		return _gbnne(sRefs, NOW_EVENT)
 
 
 	def getBouquetNextEvents(self, bqRef):
-		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
-		return self._gbnne(sRefs, NEXT_EVENT)
+		_debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
+		return _gbnne(sRefs, NEXT_EVENT)
 
 
 	def getBouquetNowNextEvents(self, sRefs):
-		debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
+		_debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
 		#TODO: accept only a bq ref and get list of srefs here
 		return self.getMultiChannelNowNextEvents(sRefs, ['IBDCTSERNWX'])
 
 
 	def getCurrentEvent(self, sRef):
-		debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef))
+		_debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef))
 		if not sRef:
-			debug("A required parameter 'sRef' is missing!")
+			_debug("A required parameter 'sRef' is missing!")
 			# return None
 		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
@@ -416,14 +423,14 @@ class Epg():
 		#   # missing Short Service Name    [n]
 		# )
 
-		debug(epgEvent)
+		_debug(epgEvent)
 		return epgEvent
 
 
 	def getEventById(self, sRef, eventId):
-		debug("[[[   getEventById(%s, %s)   ]]]" % (sRef, eventId))
+		_debug("[[[   getEventById(%s, %s)   ]]]" % (sRef, eventId))
 		if not sRef or not eventId:
-			debug("A required parameter 'sRef' or eventId is missing!")
+			_debug("A required parameter 'sRef' or eventId is missing!")
 			# return None
 		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
@@ -431,8 +438,8 @@ class Epg():
 		eventId = int(eventId)
 		epgEvent = self._instance.lookupEventId(sRef, eventId)
 
-		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
-		debug(epgEvent and epgEvent.getEventName() or None)
+		# _debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
+		_debug(epgEvent and epgEvent.getEventName() or None)
 		return epgEvent
 
 		# epgEvent.getEventId(),
@@ -454,9 +461,9 @@ class Epg():
 
 
 	def getEventByTime(self, sRef, eventTime, direction=NOW_EVENT):
-		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
+		_debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
 		if not sRef or not eventTime:
-			debug("A required parameter 'sRef' or eventTime is missing!")
+			_debug("A required parameter 'sRef' or eventTime is missing!")
 			# return None
 		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
@@ -464,14 +471,14 @@ class Epg():
 		epgEvent = self._instance.lookupEventTime(sRef, eventTime, direction)
 
 		# Object of type eServiceEvent is not JSON serializable
-		debug(epgEvent)
+		_debug(epgEvent)
 		return epgEvent
 
 
 	def getEvent(self, sRef, eventId):
-		debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
+		_debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
 		if not sRef or not eventId:
-			debug("A required parameter 'sRef' or eventId is missing!")
+			_debug("A required parameter 'sRef' or eventId is missing!")
 			# return None
 		else:
 			sRef = str(sRef)
@@ -481,7 +488,7 @@ class Epg():
 
 		if epgEvent:
 			print(epgEvent)
-			genreData = epgEvent.getGenreDataList()
+			genreData = epgEvent.getGenreDataList() #TODO: debug index out of range
 			def getEndTime(): return epgEvent.getBeginTime() + epgEvent.getDuration()
 			def getServiceReference(): return sRef
 			def getServiceName(): return ServiceReference(sRef).getServiceName()
@@ -493,14 +500,14 @@ class Epg():
 			epgEvent.getGenre = getGenre
 			epgEvent.getGenreId = getGenreId
 
-		debug(epgEvent)
+		_debug(epgEvent)
 		return epgEvent
 
 
 	def getEventDescription(self, sRef, eventId):
-		debug("[[[   getEventDescription(%s, %s)   ]]]" % (sRef, eventId))
+		_debug("[[[   getEventDescription(%s, %s)   ]]]" % (sRef, eventId))
 		if not sRef or not eventId:
-			debug("A required parameter 'sRef' or eventId is missing!")
+			_debug("A required parameter 'sRef' or eventId is missing!")
 			return None
 		else:
 			sRef = str(sRef)
@@ -512,7 +519,7 @@ class Epg():
 		if epgEvent:
 			description = epgEvent.getExtendedDescription() or epgEvent.getShortDescription() or ""
 
-		debug(description)
+		_debug(description)
 		return description
 
 
