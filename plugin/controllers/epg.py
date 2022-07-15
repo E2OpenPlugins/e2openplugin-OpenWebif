@@ -158,7 +158,7 @@ class Epg():
 
 	def _transformEventData(self, eventFields, *args):
 		debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
-		debug(*args)
+		# debug(*args)
 
 		eventData = {}
 		dateAndTime = {}
@@ -513,9 +513,9 @@ class Epg():
 #  * -1 for unsuccessful.
 #  * In a call from Python, a return of -1 corresponds to a return value of None.
 #  */
-	def getEventByTime(self, sRef, eventTime, direction):
+	def getEventByTime(self, sRef, eventTime, direction=NOW_EVENT):
 		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
-		if not sRef or not eventId:
+		if not sRef or not eventTime:
 			debug("A required parameter 'sRef' or eventTime is missing!")
 			# return None
 		elif not isinstance(sRef, eServiceReference):
@@ -540,12 +540,13 @@ class Epg():
 		epgEvent = self.getEventById(sRef, eventId)
 
 		if epgEvent:
+			print(epgEvent)
 			genreData = epgEvent.getGenreDataList()
 			def getEndTime(): return epgEvent.getBeginTime() + epgEvent.getDuration()
 			def getServiceReference(): return sRef
 			def getServiceName(): return ServiceReference(sRef).getServiceName()
-			def getGenre(): return genreData[0]
-			def getGenreId(): return genreData[1]
+			def getGenre(): return "genreData[0]"
+			def getGenreId(): return "genreData[1]"
 			epgEvent.getEndTime = getEndTime
 			epgEvent.getServiceReference = getServiceReference
 			epgEvent.getServiceName = getServiceName
