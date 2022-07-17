@@ -21,8 +21,9 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from time import localtime, strftime, gmtime
-import json
+from time import time, localtime, gmtime, strftime
+from datetime import datetime
+from json import dumps
 
 from enigma import eEPGCache, eServiceReference
 from ServiceReference import ServiceReference
@@ -45,21 +46,75 @@ NOW_EVENT = 0
 NEXT_EVENT = +1
 TIME_NOW = -1
 
+#TODO: load configgy stuff once
+
 
 def _debug(msg):
 	if DEBUG_ENABLED:
 		print(msg)
 
 
+# #Tests (GMT+01:00 DST)
+# timeNow = 1657925970   #              Fri, July 15, 2022 11:59:30 PM GMT+01:00 DST
+# timestamp = 1657666800 #prev 00:00:00 Wed, July 13, 2022 12:00:00 AM GMT+01:00 DST
+# timestamp = 1657753199 #prev 23:59:59 Wed, July 13, 2022 11:59:59 PM GMT+01:00 DST
+# timestamp = 1657753200 #yest 00:00:00 Thu, July 14, 2022 12:00:00 AM GMT+01:00 DST
+# timestamp = 1657839599 #yest 23:59:59 Thu, July 14, 2022 11:59:59 PM GMT+01:00 DST
+# timestamp = 1657839600 #today00:00:00 Fri, July 15, 2022 12:00:00 AM GMT+01:00 DST
+# timestamp = 1657925999 #today23:59:59 Fri, July 15, 2022 11:59:59 PM GMT+01:00 DST
+# timestamp = 1657926000 #tomo 00:00:00 Sat, July 16, 2022 12:00:00 AM GMT+01:00 DST
+# timestamp = 1658012399 #tomo 23:59:59 Sat, July 16, 2022 11:59:59 PM GMT+01:00 DST
+# timestamp = 1658012400 #next 00:00:00 Sun, July 17, 2022 12:00:00 AM GMT+01:00 DST
+# timestamp = 1658098799 #next 23:59:59 Sun, July 17, 2022 11:59:59 PM GMT+01:00 DST
+#
+# #Tests (GMT+02:00 DST)
+# timeNow = 1657922370   #              Fri, July 15, 2022 11:59:30 PM GMT+02:00 DST
+# timestamp = 1657663200 #prev 00:00:00 Wed, July 13, 2022 12:00:00 AM GMT+02:00 DST
+# timestamp = 1657749599 #prev 23:59:59 Wed, July 13, 2022 11:59:59 PM GMT+02:00 DST
+# timestamp = 1657749600 #yest 00:00:00 Thu, July 14, 2022 12:00:00 AM GMT+02:00 DST
+# timestamp = 1657835999 #yest 23:59:59 Thu, July 14, 2022 11:59:59 PM GMT+02:00 DST
+# timestamp = 1657836000 #today00:00:00 Fri, July 15, 2022 12:00:00 AM GMT+02:00 DST
+# timestamp = 1657922399 #today23:59:59 Fri, July 15, 2022 11:59:59 PM GMT+02:00 DST
+# timestamp = 1657922400 #tomo 00:00:00 Sat, July 16, 2022 12:00:00 AM GMT+02:00 DST
+# timestamp = 1658008799 #tomo 23:59:59 Sat, July 16, 2022 11:59:59 PM GMT+02:00 DST
+# timestamp = 1658008800 #next 00:00:00 Sun, July 17, 2022 12:00:00 AM GMT+02:00 DST
+# timestamp = 1658095199 #next 23:59:59 Sun, July 17, 2022 11:59:59 PM GMT+02:00 DST
+
+
+TEXT_YESTERDAY = 'Yesterday %R'
+TEXT_TODAY = 'Today %R'
+TEXT_TOMORROW = 'Tomorrow %R'
 #TODO: move to utilities
-#TODO: fuzzywuzzy
+def getNaturalDayTime(timestamp, defaultFormat):
+	timeNow = 1657925970  # Fri, July 15, 2022 11:59:30 PM GMT+01:00 DST
+	timeNow = int(time())
+	timeDiff = timestamp - timeNow
+	deltaDays = timedelta(seconds=timeDiff).days
+	if deltaDays >= -2 and deltaDays <= 2:
+		dayDiff = localtime(timestamp)[2] - localtime(timeNow)[2]
+		print('dayDiff: ' + str(dayDiff))
+		if dayDiff == -1:
+			text = strftime(TEXT_YESTERDAY, (localtime(timestamp)))
+		elif dayDiff == 0:
+			text = strftime(TEXT_TODAY, (localtime(timestamp)))
+		elif dayDiff == 1:
+			text = strftime(TEXT_TOMORROW, (localtime(timestamp)))
+		else:
+			text = strftime(defaultFormat, (localtime(timestamp)))
+	else:
+		text = strftime(defaultFormat, (localtime(timestamp)))
+	return text
+
+
+#TODO: move to utilities
 def getCustomTimeFormats(timestamp):
 	return {
 		'timestamp': timestamp,
 		'date': strftime(config.usage.date.displayday.value, (localtime(timestamp))),
 		'time': strftime(config.usage.time.short.value, (localtime(timestamp))),
 		'dateTime': strftime('%c', (localtime(timestamp))),
-		'fuzzy': 'fuzzyTimestamp'
+		'natural': getNaturalDayTime(timestamp, '%c'),
+		'iso': datetime.fromtimestamp(timestamp).isoformat() if not None else ''
 	}
 
 
@@ -114,7 +169,7 @@ def _gcnne(self, sRef, nowOrNext):
 		epgEvent.getEventId(),
 		epgEvent.getBeginTime(),
 		epgEvent.getDuration(),
-		localtime(None),
+		localtime(), #int(time())
 		epgEvent.getEventName(),
 		epgEvent.getShortDescription(),
 		epgEvent.getExtendedDescription(),
@@ -299,7 +354,7 @@ class Epg():
 		eventData['service'] = service
 		eventData['description'] = longDescription or shortDescription
 
-		print(json.dumps(eventData, indent=2))
+		print(dumps(eventData, indent=2))
 		# return args
 		return eventData
 
@@ -438,7 +493,7 @@ class Epg():
 		eventId = int(eventId)
 		epgEvent = self._instance.lookupEventId(sRef, eventId)
 
-		# _debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
+		# _debug(dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
 		_debug(epgEvent and epgEvent.getEventName() or None)
 		return epgEvent
 
