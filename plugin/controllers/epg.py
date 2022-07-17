@@ -86,7 +86,6 @@ TEXT_TODAY = 'Today %R'
 TEXT_TOMORROW = 'Tomorrow %R'
 #TODO: move to utilities
 def getNaturalDayTime(timestamp, defaultFormat):
-	timeNow = 1657925970  # Fri, July 15, 2022 11:59:30 PM GMT+01:00 DST
 	timeNow = int(time())
 	timeDiff = timestamp - timeNow
 	deltaDays = timedelta(seconds=timeDiff).days
