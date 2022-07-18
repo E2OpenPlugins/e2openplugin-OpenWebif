@@ -592,7 +592,7 @@ def getStreamServiceAndEvent(ref):
 	if servicereference:
 		sname = removeBad(servicereference.getServiceName())
 	epg = Epg()
-	event = epg.getCurrrentEvent(ref)
+	event = epg.getCurrentEvent(ref)
 	if event:
 		eventname = event.getEventName()
 	return sname, eventname
