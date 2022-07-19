@@ -156,49 +156,6 @@ def convertGenre(val):
 	return "", 0
 
 
-def _gcnne(self, sRef, nowOrNext):
-	if not sRef:
-		_debug("A required parameter 'sRef' is missing!")
-		# return None
-	else:
-		sRef = str(sRef)
-
-	epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
-	evtupl = (
-		epgEvent.getEventId(),
-		epgEvent.getBeginTime(),
-		epgEvent.getDuration(),
-		localtime(), #int(time())
-		epgEvent.getEventName(),
-		epgEvent.getShortDescription(),
-		epgEvent.getExtendedDescription(),
-		sRef,
-		ServiceReference(sRef).getServiceName(),
-		epgEvent.getGenreDataList()
-	)
-
-	_debug(evtupl)
-	return evtupl
-
-
-def _gbnne(self, bqRef, nowOrNext):
-	if not bqRef:
-		_debug("A required parameter 'bqRef' is missing!")
-		# return None
-
-	criteria = ['IBDCTSERNWX']
-	sRefs = bqRef
-
-	for sRef in sRefs:
-		sRef = str(sRef)
-		criteria.append((sRef, nowOrNext, TIME_NOW))
-
-	epgEvents = self._queryEPG(criteria)
-
-	_debug(epgEvents)
-	return epgEvents
-
-
 class Epg():
 	NOW = 10
 	NEXT = 11
@@ -370,6 +327,49 @@ class Epg():
 		return epgEvents
 
 
+	def _getChannelNowOrNext(self, sRef, nowOrNext):
+		if not sRef:
+			_debug("A required parameter 'sRef' is missing!")
+			# return None
+		else:
+			sRef = str(sRef)
+
+		epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
+		evtupl = (
+			epgEvent.getEventId(),
+			epgEvent.getBeginTime(),
+			epgEvent.getDuration(),
+			localtime(), #int(time())
+			epgEvent.getEventName(),
+			epgEvent.getShortDescription(),
+			epgEvent.getExtendedDescription(),
+			sRef,
+			ServiceReference(sRef).getServiceName(),
+			epgEvent.getGenreDataList()
+		)
+
+		_debug(evtupl)
+		return evtupl
+
+
+	def _getBouquetNowOrNext(self, bqRef, nowOrNext):
+		if not bqRef:
+			_debug("A required parameter 'bqRef' is missing!")
+			# return None
+
+		criteria = ['IBDCTSERNWX']
+		sRefs = bqRef
+
+		for sRef in sRefs:
+			sRef = str(sRef)
+			criteria.append((sRef, nowOrNext, TIME_NOW))
+
+		epgEvents = self._queryEPG(criteria)
+
+		_debug(epgEvents)
+		return epgEvents
+
+
 	def getChannelEvents(self, sRef, startTime, endTime=None):
 		_debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
 		if not sRef:
@@ -388,12 +388,12 @@ class Epg():
 
 	def getChannelNowEvent(self, sRef):
 		_debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
-		return _gcnne(sRef, NOW_EVENT)
+		return _getChannelNowOrNext(sRef, NOW_EVENT)
 
 
 	def getChannelNextEvent(self, sRef):
 		_debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
-		return _gcnne(sRef, NEXT_EVENT)
+		return _getChannelNowOrNext(sRef, NEXT_EVENT)
 
 
 	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, criteria=['IBTSRND']):
@@ -437,12 +437,12 @@ class Epg():
 
 	def getBouquetNowEvents(self, bqRef):
 		_debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
-		return _gbnne(sRefs, NOW_EVENT)
+		return _getBouquetNowOrNext(sRefs, NOW_EVENT)
 
 
 	def getBouquetNextEvents(self, bqRef):
 		_debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
-		return _gbnne(sRefs, NEXT_EVENT)
+		return _getBouquetNowOrNext(sRefs, NEXT_EVENT)
 
 
 	def getBouquetNowNextEvents(self, sRefs):
