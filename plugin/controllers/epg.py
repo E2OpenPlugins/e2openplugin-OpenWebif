@@ -46,6 +46,12 @@ NOW_EVENT = 0
 NEXT_EVENT = +1
 TIME_NOW = -1
 
+SEARCH_FIELDS = 'IBDTSENRW'
+BOUQUET_FIELDS = 'IBDCTSERNWX'
+SINGLE_CHANNEL_FIELDS = 'IBDTSENCW'
+MULTI_CHANNEL_FIELDS = 'IBTSRND'
+MULTI_NOWNEXT_FIELDS = 'IBDCTSERNX'
+
 #TODO: load configgy stuff once
 
 
@@ -191,7 +197,7 @@ class Epg():
 			elif hasattr(eEPGCache, 'PARTIAL_DESCRIPTION_SEARCH'):
 				queryType = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
 
-		eventFields = 'IBDTSENRW'
+		eventFields = SEARCH_FIELDS
 		criteria = (eventFields, MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
 		epgEvents = self._instance.search(criteria)
 
@@ -208,7 +214,7 @@ class Epg():
 			sRef = str(sRef)
 			eventId = int(eventId)
 
-		eventFields = 'IBDTSENRW'
+		eventFields = SEARCH_FIELDS
 		criteria = (eventFields, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
 		epgEvents = self._instance.search(criteria)
 
@@ -359,7 +365,7 @@ class Epg():
 			_debug("A required parameter 'bqRef' is missing!")
 			# return None
 
-		fields = 'IBDCTSERNWX'
+		fields = BOUQUET_FIELDS
 		criteria = []
 		sRefs = bqRef
 
@@ -381,7 +387,7 @@ class Epg():
 		else:
 			sRef = str(sRef)
 
-		fields = 'IBDTSENCW'
+		fields = SINGLE_CHANNEL_FIELDS
 		criteria = []
 		criteria.append((sRef, NOW_EVENT, startTime, endTime))
 		epgEvents = self._queryEPG(fields, criteria)
@@ -400,7 +406,7 @@ class Epg():
 		return _getChannelNowOrNext(sRef, NEXT_EVENT)
 
 
-	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields='IBTSRND'):
+	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields=MULTI_CHANNEL_FIELDS):
 		_debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
@@ -418,7 +424,7 @@ class Epg():
 		return epgEvents
 
 
-	def getMultiChannelNowNextEvents(self, sRefs, fields='IBDCTSERNX'):
+	def getMultiChannelNowNextEvents(self, sRefs, fields=MULTI_NOWNEXT_FIELDS):
 		_debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
@@ -440,7 +446,7 @@ class Epg():
 	def getBouquetEvents(self, sRefs, startTime, endTime=None):
 		_debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		#TODO: accept only a bq ref and get list of srefs here
-		return self.getMultiChannelEvents(sRefs, startTime, endTime, 'IBDCTSERNWX')
+		return self.getMultiChannelEvents(sRefs, startTime, endTime, BOUQUET_FIELDS)
 
 
 	def getBouquetNowEvents(self, bqRef):
@@ -456,7 +462,7 @@ class Epg():
 	def getBouquetNowNextEvents(self, sRefs):
 		_debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
 		#TODO: accept only a bq ref and get list of srefs here
-		return self.getMultiChannelNowNextEvents(sRefs, 'IBDCTSERNWX')
+		return self.getMultiChannelNowNextEvents(sRefs, BOUQUET_FIELDS)
 
 
 	def getCurrentEvent(self, sRef):
