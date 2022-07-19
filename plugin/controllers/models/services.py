@@ -869,16 +869,11 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 	return {"events": ret, "result": True}
 
 
-def getBouquetEpg(ref, begintime=-1, endtime=-1, encode=False):
-	ref = unquote(ref)
-	ret = []
-	services = eServiceCenter.getInstance().list(eServiceReference(ref))
-	if not services:
-		return {"events": ret, "result": False}
-
-	sRefs = services.getContent('S')
+def getBouquetEpg(bqRef, begintime=-1, endtime=-1, encode=False):
+	bqRef = unquote(bqRef)
 	epg = Epg()
-	epgEvents = epg.getBouquetEvents(sRefs, begintime, endtime)
+	epgEvents = epg.getBouquetEvents(bqRef, begintime, endtime)
+	ret = []
 
 	if epgEvents is not None:
 		for epgEvent in epgEvents:
@@ -932,23 +927,17 @@ def getMultiChannelNowNextEpg(sList, encode=False):
 	return {"events": ret, "result": True}
 
 
-def getBouquetNowNextEpg(sRef, nowOrNext, encode=False):
-	sRef = unquote(sRef)
-	ret = []
-	services = eServiceCenter.getInstance().list(eServiceReference(sRef))
-
-	if not services:
-		return {"events": ret, "result": False}
-
-	sRefs = services.getContent('S')
+def getBouquetNowNextEpg(bqRef, nowOrNext, encode=False):
+	bqRef = unquote(bqRef)
 	epg = Epg()
+	ret = []
 
 	if nowOrNext == Epg.NOW:
-		epgEvents = epg.getBouquetNowEvents(sRefs)
+		epgEvents = epg.getBouquetNowEvents(bqRef)
 	elif nowOrNext == Epg.NEXT:
-		epgEvents = epg.getBouquetNextEvents(sRefs)
+		epgEvents = epg.getBouquetNextEvents(bqRef)
 	else:
-		epgEvents = epg.getBouquetNowNextEvents(sRefs)
+		epgEvents = epg.getBouquetNowNextEvents(bqRef)
 
 	if epgEvents is not None:
 		for epgEvent in epgEvents:

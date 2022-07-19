@@ -25,7 +25,7 @@ from time import time, localtime, gmtime, strftime
 from datetime import datetime
 from json import dumps
 
-from enigma import eEPGCache, eServiceReference
+from enigma import eEPGCache, eServiceCenter, eServiceReference
 from ServiceReference import ServiceReference
 from Components.config import config
 from .defaults import DEBUG_ENABLED
@@ -150,6 +150,11 @@ def getFuzzyHoursMinutes(timestamp=0):
 	formatted = strftime(template, timeStruct)  # if remaining is not None else None
 	return formatted
 
+
+def getBouquetServices(bqRef, fields='SN'):
+	bqServices = eServiceCenter.getInstance().list(eServiceReference(bqRef))
+
+	return bqServices.getContent(fields)
 
 #TODO: move to utilities
 def convertGenre(val):
@@ -365,9 +370,9 @@ class Epg():
 			_debug("A required parameter 'bqRef' is missing!")
 			# return None
 
+		sRefs = getBouquetServices(bqRef, 'S')
 		fields = BOUQUET_FIELDS
 		criteria = []
-		sRefs = bqRef
 
 		for sRef in sRefs:
 			sRef = str(sRef)
@@ -443,25 +448,29 @@ class Epg():
 		return epgEvents
 
 
-	def getBouquetEvents(self, sRefs, startTime, endTime=None):
-		_debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
-		#TODO: accept only a bq ref and get list of srefs here
+	def getBouquetEvents(self, bqRef, startTime, endTime=None):
+		_debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (bqRef, startTime, endTime))
+		sRefs = getBouquetServices(bqRef, 'S')
+
 		return self.getMultiChannelEvents(sRefs, startTime, endTime, BOUQUET_FIELDS)
 
 
 	def getBouquetNowEvents(self, bqRef):
 		_debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
-		return _getBouquetNowOrNext(sRefs, NOW_EVENT)
+
+		return _getBouquetNowOrNext(bqRef, NOW_EVENT)
 
 
 	def getBouquetNextEvents(self, bqRef):
 		_debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
-		return _getBouquetNowOrNext(sRefs, NEXT_EVENT)
+
+		return _getBouquetNowOrNext(bqRef, NEXT_EVENT)
 
 
-	def getBouquetNowNextEvents(self, sRefs):
-		_debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
-		#TODO: accept only a bq ref and get list of srefs here
+	def getBouquetNowNextEvents(self, bqRef):
+		_debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (bqRef))
+		sRefs = getBouquetServices(bqRef, 'S')
+
 		return self.getMultiChannelNowNextEvents(sRefs, BOUQUET_FIELDS)
 
 
