@@ -315,11 +315,13 @@ class Epg():
 		return eventData
 
 
-	def _queryEPG(self, criteria):
-		eventFields = criteria[0]
+	def _queryEPG(self, fields='', criteria=[]):
+		if not fields or not criteria:
+			_debug("A required parameter 'fields' or [criteria] is missing!")
+			# return None
 
 		def _callEventTransform(*args):
-			return self._transformEventData(eventFields, *args)
+			return self._transformEventData(fields, *args)
 
 		epgEvents = self._instance.lookupEvent(criteria, _callEventTransform)
 
@@ -357,14 +359,15 @@ class Epg():
 			_debug("A required parameter 'bqRef' is missing!")
 			# return None
 
-		criteria = ['IBDCTSERNWX']
+		fields = 'IBDCTSERNWX'
+		criteria = []
 		sRefs = bqRef
 
 		for sRef in sRefs:
 			sRef = str(sRef)
 			criteria.append((sRef, nowOrNext, TIME_NOW))
 
-		epgEvents = self._queryEPG(criteria)
+		epgEvents = self._queryEPG(fields, criteria)
 
 		_debug(epgEvents)
 		return epgEvents
@@ -378,9 +381,10 @@ class Epg():
 		else:
 			sRef = str(sRef)
 
-		criteria = ['IBDTSENCW']
+		fields = 'IBDTSENCW'
+		criteria = []
 		criteria.append((sRef, NOW_EVENT, startTime, endTime))
-		epgEvents = self._queryEPG(criteria)
+		epgEvents = self._queryEPG(fields, criteria)
 
 		_debug(epgEvents)
 		return epgEvents
@@ -396,34 +400,38 @@ class Epg():
 		return _getChannelNowOrNext(sRef, NEXT_EVENT)
 
 
-	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, criteria=['IBTSRND']):
+	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields='IBTSRND'):
 		_debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
 			# return None
 
+		criteria = []
+
 		for sRef in sRefs:
 			sRef = str(sRef)
 			criteria.append((sRef, NOW_EVENT, startTime, endTime))
 
-		epgEvents = self._queryEPG(criteria)
+		epgEvents = self._queryEPG(fields, criteria)
 
 		_debug(epgEvents)
 		return epgEvents
 
 
-	def getMultiChannelNowNextEvents(self, sRefs, criteria=['IBDCTSERNX']):
+	def getMultiChannelNowNextEvents(self, sRefs, fields='IBDCTSERNX'):
 		_debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
 			# return None
+
+		criteria = []
 
 		for sRef in sRefs:
 			sRef = str(sRef)
 			criteria.append((sRef, NOW_EVENT, TIME_NOW))
 			criteria.append((sRef, NEXT_EVENT, TIME_NOW))
 
-		epgEvents = self._queryEPG(criteria)
+		epgEvents = self._queryEPG(fields, criteria)
 
 		_debug(epgEvents)
 		return epgEvents
@@ -432,7 +440,7 @@ class Epg():
 	def getBouquetEvents(self, sRefs, startTime, endTime=None):
 		_debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		#TODO: accept only a bq ref and get list of srefs here
-		return self.getMultiChannelEvents(sRefs, startTime, endTime, ['IBDCTSERNWX'])
+		return self.getMultiChannelEvents(sRefs, startTime, endTime, 'IBDCTSERNWX')
 
 
 	def getBouquetNowEvents(self, bqRef):
@@ -448,7 +456,7 @@ class Epg():
 	def getBouquetNowNextEvents(self, sRefs):
 		_debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
 		#TODO: accept only a bq ref and get list of srefs here
-		return self.getMultiChannelNowNextEvents(sRefs, ['IBDCTSERNWX'])
+		return self.getMultiChannelNowNextEvents(sRefs, 'IBDCTSERNWX')
 
 
 	def getCurrentEvent(self, sRef):
