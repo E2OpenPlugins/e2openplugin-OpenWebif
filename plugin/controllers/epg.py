@@ -22,7 +22,7 @@
 ##########################################################################
 
 from time import time, localtime, gmtime, strftime
-from datetime import datetime
+from datetime import datetime, timedelta
 from json import dumps
 
 from enigma import eEPGCache, eServiceCenter, eServiceReference
@@ -46,15 +46,18 @@ NOW_EVENT = 0
 NEXT_EVENT = +1
 TIME_NOW = -1
 
-SEARCH_FIELDS = 'IBDTSENRW'
-BOUQUET_FIELDS = 'IBDCTSERNWX'
-SINGLE_CHANNEL_FIELDS = 'IBDTSENCW'
-MULTI_CHANNEL_FIELDS = 'IBTSRND'
-MULTI_NOWNEXT_FIELDS = 'IBDCTSERNX'
+# SEARCH_FIELDS = 'IBDTSENRW'
+# BOUQUET_FIELDS = 'IBDCTSERNWX'
+# SINGLE_CHANNEL_FIELDS = 'IBDTSENCW'
+# MULTI_CHANNEL_FIELDS = 'IBTSRND'
+# MULTI_NOWNEXT_FIELDS = 'IBDCTSERNX'
 
+TEXT_YESTERDAY = 'Yesterday, %R'
+TEXT_TODAY = 'Today, %R'
+TEXT_TOMORROW = 'Tomorrow, %R'
 #TODO: load configgy stuff once
 
-
+DEBUG_ENABLED = True
 def _debug(msg):
 	if DEBUG_ENABLED:
 		print(msg)
@@ -86,18 +89,13 @@ def _debug(msg):
 # timestamp = 1658008800 #next 00:00:00 Sun, July 17, 2022 12:00:00 AM GMT+02:00 DST
 # timestamp = 1658095199 #next 23:59:59 Sun, July 17, 2022 11:59:59 PM GMT+02:00 DST
 
-
-TEXT_YESTERDAY = 'Yesterday %R'
-TEXT_TODAY = 'Today %R'
-TEXT_TOMORROW = 'Tomorrow %R'
 #TODO: move to utilities
-def getNaturalDayTime(timestamp, defaultFormat):
+def getFuzzyDayTime(timestamp, defaultFormat):
 	timeNow = int(time())
 	timeDiff = timestamp - timeNow
 	deltaDays = timedelta(seconds=timeDiff).days
 	if deltaDays >= -2 and deltaDays <= 2:
 		dayDiff = localtime(timestamp)[2] - localtime(timeNow)[2]
-		print('dayDiff: ' + str(dayDiff))
 		if dayDiff == -1:
 			text = strftime(TEXT_YESTERDAY, (localtime(timestamp)))
 		elif dayDiff == 0:
@@ -118,7 +116,7 @@ def getCustomTimeFormats(timestamp):
 		'date': strftime(config.usage.date.displayday.value, (localtime(timestamp))),
 		'time': strftime(config.usage.time.short.value, (localtime(timestamp))),
 		'dateTime': strftime('%c', (localtime(timestamp))),
-		'natural': getNaturalDayTime(timestamp, '%c'),
+		'fuzzy': getFuzzyDayTime(timestamp, '%c'),
 		'iso': datetime.fromtimestamp(timestamp).isoformat() if not None else ''
 	}
 
@@ -179,7 +177,10 @@ class Epg():
 	def getEncoding(self):
 		return config.OpenWebif.epg_encoding.value
 
-
+	# .. note::
+	#
+	# 	One may use
+	# 	:py:func:`controllers.events.EventsController.search`
 	#TODO: make search type fully user-selectable
 	def search(self, queryString, searchFullDescription=False):
 		_debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
@@ -202,7 +203,7 @@ class Epg():
 			elif hasattr(eEPGCache, 'PARTIAL_DESCRIPTION_SEARCH'):
 				queryType = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
 
-		eventFields = SEARCH_FIELDS
+		eventFields = 'IBDTSENRW'
 		criteria = (eventFields, MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
 		epgEvents = self._instance.search(criteria)
 
@@ -219,7 +220,7 @@ class Epg():
 			sRef = str(sRef)
 			eventId = int(eventId)
 
-		eventFields = SEARCH_FIELDS
+		eventFields = 'IBDTSENRW'
 		criteria = (eventFields, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
 		epgEvents = self._instance.search(criteria)
 
@@ -242,80 +243,89 @@ class Epg():
 
 
 		# TODO: skip processing if there isn't a valid event (id is None)
+		# TODO: skip 1:7:1: (sub-bouquets)
 
 		for index, argValue in enumerate(args):
-			key = eventFields[index]
+			try:
+				key = eventFields[index]
 
-			if key == 'I':
-				eventData['eventId'] = argValue
-			elif key == 'B':
-				startTimestamp = argValue
-				if startTimestamp is not None:
-					startTimeFormats = getCustomTimeFormats(startTimestamp)
-					dateAndTime['start'] = startTimeFormats['timestamp']
-					dateAndTime['startDate'] = startTimeFormats['date']
-					dateAndTime['startTime'] = startTimeFormats['time']
-					dateAndTime['startDateTime'] = startTimeFormats['dateTime']
-					dateAndTime['startFuzzy'] = startTimeFormats['fuzzy']
+				if key == 'I':
+					eventData['eventId'] = argValue
+				elif key == 'B':
+					startTimestamp = argValue
+					if startTimestamp is not None:
+						startTimeFormats = getCustomTimeFormats(startTimestamp)
+						dateAndTime['start'] = startTimeFormats['timestamp']
+						dateAndTime['startDate'] = startTimeFormats['date']
+						dateAndTime['startTime'] = startTimeFormats['time']
+						dateAndTime['startDateTime'] = startTimeFormats['dateTime']
+						dateAndTime['startFuzzy'] = startTimeFormats['fuzzy']
+					else:
+						dateAndTime['start'] = None
+						dateAndTime['startDate'] = None
+						dateAndTime['startTime'] = None
+						dateAndTime['startDateTime'] = None
+						dateAndTime['startFuzzy'] = None
+				elif key == 'D':
+					duration = argValue or 0
+					dateAndTime['duration'] = duration
+					dateAndTime['durationMinutes'] = int(duration / 60)
+					dateAndTime['durationFuzzy'] = getFuzzyHoursMinutes(duration)
+				elif key == 'T':
+					eventData['title'] = (argValue or '').strip()
+				elif key == 'S':
+					if argValue is not None:
+						shortDescription = argValue.strip()
+						eventData['shortDescription'] = shortDescription
+				elif key == 'E':
+					if argValue is not None:
+						longDescription = argValue.strip()
+						eventData['longDescription'] = longDescription
+				elif key == 'P':
+					eventData['parentalRating'] = argValue
+				elif key == 'W':
+					eventData['genre'], eventData['genreId'] = convertGenre(argValue)
+				elif key == 'C':
+					currentTimestamp = argValue
+					dateAndTime['current'] = currentTimestamp
+				elif key == 'R':
+					service['sRef'] = argValue
+				elif key == 'n':
+					service['nameShort'] = argValue
+				elif key == 'N':
+					service['name'] = argValue
+				elif key == 'X':
+					pass
+				elif key == 'M':
+					eventData['maxResults'] = argValue
 				else:
-					dateAndTime['start'] = None
-					dateAndTime['startDate'] = None
-					dateAndTime['startTime'] = None
-					dateAndTime['startDateTime'] = None
-					dateAndTime['startFuzzy'] = None
-			elif key == 'D':
-				duration = argValue or 0
-				dateAndTime['duration'] = duration
-				dateAndTime['durationMinutes'] = int(duration / 60)
-				dateAndTime['durationFuzzy'] = getFuzzyHoursMinutes(duration)
-			elif key == 'T':
-				eventData['title'] = (argValue or '').strip()
-			elif key == 'S':
-				if argValue is not None:
-					shortDescription = argValue.strip()
-					eventData['shortDescription'] = shortDescription
-			elif key == 'E':
-				if argValue is not None:
-					longDescription = argValue.strip()
-					eventData['longDescription'] = longDescription
-			elif key == 'P':
-				eventData['parentalRating'] = argValue
-			elif key == 'W':
-				eventData['genre'], eventData['genreId'] = convertGenre(argValue)
-			elif key == 'C':
-				currentTimestamp = argValue
-				dateAndTime['current'] = currentTimestamp
-			elif key == 'R':
-				service['sRef'] = argValue
-			elif key == 'n':
-				service['nameShort'] = argValue
-			elif key == 'N':
-				service['name'] = argValue
-			elif key == 'X':
-				#ignored
-				pass
-			elif key == 'M':
-				eventData['maxResults'] = argValue
-			else:
-				eventData[key] = argValue
+					eventData[key] = argValue
+			except Exception as error:
+				print(error)
 
 		if startTimestamp and duration:
 			endTimestamp = startTimestamp + duration
-			endTimeFormats = getCustomTimeFormats(startTimestamp)
-			dateAndTime['end'] = endTimeFormats['timestamp']
-			dateAndTime['endDate'] = endTimeFormats['date']
-			dateAndTime['endTime'] = endTimeFormats['time']
-			dateAndTime['endDateTime'] = endTimeFormats['dateTime']
-			dateAndTime['endFuzzy'] = endTimeFormats['fuzzy']
+			try:
+				endTimeFormats = getCustomTimeFormats(endTimestamp)
+				dateAndTime['end'] = endTimeFormats['timestamp']
+				dateAndTime['endDate'] = endTimeFormats['date']
+				dateAndTime['endTime'] = endTimeFormats['time']
+				dateAndTime['endDateTime'] = endTimeFormats['dateTime']
+				dateAndTime['endFuzzy'] = endTimeFormats['fuzzy']
+			except Exception as error:
+				print(error)
 			if currentTimestamp:
 				remaining = endTimestamp - currentTimestamp if currentTimestamp > startTimestamp else duration
-				dateAndTime['remaining'] = remaining
-				dateAndTime['remainingMinutes'] = int(remaining / 60)
-				dateAndTime['remainingFormatted'] = getFuzzyHoursMinutes(remaining)
-				progressPercent = int(((currentTimestamp - startTimestamp) / duration) * 100)
-				progressPercent = progressPercent if progressPercent >= 0 else 0
-				dateAndTime['progress'] = progressPercent
-				dateAndTime['progressFormatted'] = '{0}%'.format(progressPercent)
+				try:
+					dateAndTime['remaining'] = remaining
+					dateAndTime['remainingMinutes'] = int(remaining / 60)
+					dateAndTime['remainingFormatted'] = getFuzzyHoursMinutes(remaining)
+					progressPercent = int(((currentTimestamp - startTimestamp) / duration) * 100)
+					progressPercent = progressPercent if progressPercent >= 0 else 0
+					dateAndTime['progress'] = progressPercent
+					dateAndTime['progressFormatted'] = '{0}%'.format(progressPercent)
+				except Exception as error:
+					print(error)
 
 		eventData['dateTime'] = dateAndTime
 		eventData['service'] = service
@@ -331,10 +341,15 @@ class Epg():
 			_debug("A required parameter 'fields' or [criteria] is missing!")
 			# return None
 
+		criteria.insert(0, fields)
+
 		def _callEventTransform(*args):
 			return self._transformEventData(fields, *args)
 
 		epgEvents = self._instance.lookupEvent(criteria, _callEventTransform)
+
+		# for evt in epgEvents:
+		# 	_callEventTransform
 
 		_debug(epgEvents)
 		return epgEvents
@@ -348,21 +363,28 @@ class Epg():
 			sRef = str(sRef)
 
 		epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
-		evtupl = (
-			epgEvent.getEventId(),
-			epgEvent.getBeginTime(),
-			epgEvent.getDuration(),
-			localtime(), #int(time())
-			epgEvent.getEventName(),
-			epgEvent.getShortDescription(),
-			epgEvent.getExtendedDescription(),
-			sRef,
-			ServiceReference(sRef).getServiceName(),
-			epgEvent.getGenreDataList()
-		)
 
-		_debug(evtupl)
-		return evtupl
+		eventData = {
+			'eventId': epgEvent.getEventId(),
+			'dateTime': {
+				'start': epgEvent.getBeginTime(),
+				'duration': epgEvent.getDuration(),
+				'current': int(time()),
+				'remaining': 0,
+			},
+			'title': epgEvent.getEventName(),
+			'shortDescription': epgEvent.getShortDescription(),
+			'longDescription': epgEvent.getExtendedDescription(),
+			'service': {
+				'sRef': sRef,
+				'name': ServiceReference(sRef).getServiceName(),
+			},
+			'genre': convertGenre(epgEvent.getGenreDataList())[0],
+			'genreId': convertGenre(epgEvent.getGenreDataList())[1]
+		}
+
+		_debug(eventData)
+		return eventData
 
 
 	def _getBouquetNowOrNext(self, bqRef, nowOrNext):
@@ -371,7 +393,7 @@ class Epg():
 			# return None
 
 		sRefs = getBouquetServices(bqRef, 'S')
-		fields = BOUQUET_FIELDS
+		fields = 'IBDCTSERNWX'
 		criteria = []
 
 		for sRef in sRefs:
@@ -392,7 +414,7 @@ class Epg():
 		else:
 			sRef = str(sRef)
 
-		fields = SINGLE_CHANNEL_FIELDS
+		fields = 'IBDTSENCW'
 		criteria = []
 		criteria.append((sRef, NOW_EVENT, startTime, endTime))
 		epgEvents = self._queryEPG(fields, criteria)
@@ -403,15 +425,15 @@ class Epg():
 
 	def getChannelNowEvent(self, sRef):
 		_debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
-		return _getChannelNowOrNext(sRef, NOW_EVENT)
+		return self._getChannelNowOrNext(sRef, NOW_EVENT)
 
 
 	def getChannelNextEvent(self, sRef):
 		_debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
-		return _getChannelNowOrNext(sRef, NEXT_EVENT)
+		return self._getChannelNowOrNext(sRef, NEXT_EVENT)
 
 
-	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields=MULTI_CHANNEL_FIELDS):
+	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields='IBTSRND'):
 		_debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
@@ -429,7 +451,7 @@ class Epg():
 		return epgEvents
 
 
-	def getMultiChannelNowNextEvents(self, sRefs, fields=MULTI_NOWNEXT_FIELDS):
+	def getMultiChannelNowNextEvents(self, sRefs, fields='TBDCIESX'):
 		_debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
@@ -452,26 +474,26 @@ class Epg():
 		_debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (bqRef, startTime, endTime))
 		sRefs = getBouquetServices(bqRef, 'S')
 
-		return self.getMultiChannelEvents(sRefs, startTime, endTime, BOUQUET_FIELDS)
+		return self.getMultiChannelEvents(sRefs, startTime, endTime, 'IBDCTSERNW')
 
 
 	def getBouquetNowEvents(self, bqRef):
 		_debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
 
-		return _getBouquetNowOrNext(bqRef, NOW_EVENT)
+		return self._getBouquetNowOrNext(bqRef, NOW_EVENT)
 
 
 	def getBouquetNextEvents(self, bqRef):
 		_debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
 
-		return _getBouquetNowOrNext(bqRef, NEXT_EVENT)
+		return self._getBouquetNowOrNext(bqRef, NEXT_EVENT)
 
 
 	def getBouquetNowNextEvents(self, bqRef):
 		_debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (bqRef))
 		sRefs = getBouquetServices(bqRef, 'S')
 
-		return self.getMultiChannelNowNextEvents(sRefs, BOUQUET_FIELDS)
+		return self.getMultiChannelNowNextEvents(sRefs, 'IBDCTSERNWX')
 
 
 	def getCurrentEvent(self, sRef):

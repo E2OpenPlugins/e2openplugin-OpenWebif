@@ -471,7 +471,6 @@ def getChannels(idbouquet, stype):
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference(idbouquet))
 	channels = services and services.getContent("SN", True)
-
 	epgNowNextEvents = epg.getMultiChannelNowNextEvents([item[0] for item in channels])
 	index = -2
 
@@ -884,8 +883,8 @@ def getBouquetEpg(bqRef, begintime=-1, endtime=-1, encode=False):
 				'title': filterName(epgEvent['title'], encode),
 				'shortdesc': convertDesc(epgEvent['shortDescription'], encode),
 				'longdesc': convertDesc(epgEvent['longDescription'], encode),
-				'sref': epgEvent['serviceReference'],
-				'sname': filterName(epgEvent['serviceName'], encode),
+				'sref': epgEvent['service']['sRef'],
+				'sname': filterName(epgEvent['service']['name'], encode),
 				'now_timestamp': epgEvent['dateTime']['current'],
 				'genre': epgEvent['genre'],
 				'genreid': epgEvent['genreId']
@@ -941,7 +940,8 @@ def getBouquetNowNextEpg(bqRef, nowOrNext, encode=False):
 
 	if epgEvents is not None:
 		for epgEvent in epgEvents:
-			serviceReference = epgEvent['serviceReference']
+			serviceReference = epgEvent['service']['sRef']
+			serviceName = filterName(epgEvent['service']['name'], encode)
 			ev = {
 				'id': epgEvent['eventId'],
 				'begin_timestamp': epgEvent['dateTime']['start'],
@@ -950,7 +950,7 @@ def getBouquetNowNextEpg(bqRef, nowOrNext, encode=False):
 				'shortdesc': convertDesc(epgEvent['shortDescription'], encode),
 				'longdesc': convertDesc(epgEvent['longDescription'], encode),
 				'sref': serviceReference,
-				'sname': filterName(epgEvent['serviceName'], encode),
+				'sname': filterName(serviceName, encode),
 				'now_timestamp': epgEvent['dateTime']['current'],
 				'genre': epgEvent['genre'],
 				'genreid': epgEvent['genreId']
@@ -973,43 +973,42 @@ def getNowNextEpg(sRef, nowOrNext, encode=False):
 	epg = Epg()
 
 	if nowOrNext == Epg.NOW:
-		epgEvents = epg.getChannelNowEvent(sRef)
+		epgEvent = epg.getChannelNowEvent(sRef)
 	else:
-		epgEvents = epg.getChannelNextEvent(sRef)
+		epgEvent = epg.getChannelNextEvent(sRef)
 
-	if epgEvents is not None:
-		for epgEvent in epgEvents:
-			eventId = epgEvent['eventId']
-			serviceReference = epgEvent['serviceReference']
-			sName = filterName(epgEvent['serviceName'], encode)
-			ev = {
-				'id': eventId,
-				'sref': serviceReference,
-				'sname': sName
-			}
+	if epgEvent is not None:
+		eventId = epgEvent['eventId']
+		serviceReference = epgEvent['service']['sRef']
+		sName = filterName(epgEvent['service']['name'], encode)
+		ev = {
+			'id': eventId,
+			'sref': serviceReference,
+			'sname': sName
+		}
 
-			if eventId:
-				ev['begin_timestamp'] = epgEvent['dateTime']['start']
-				ev['duration_sec'] = epgEvent['dateTime']['duration']
-				ev['title'] = filterName(epgEvent['title'], encode)
-				ev['shortdesc'] = convertDesc(epgEvent['shortDescription'], encode)
-				ev['longdesc'] = convertDesc(epgEvent['longDescription'], encode)
-				ev['now_timestamp'] = epgEvent['dateTime']['current']
-				ev['remaining'] = epgEvent['dateTime']['remaining']
-				ev['genre'] = epgEvent['genre']
-				ev['genreid'] = epgEvent['genreId']
-			else:
-				ev['begin_timestamp'] = 0
-				ev['duration_sec'] = 0
-				ev['title'] = "N/A"
-				ev['shortdesc'] = ""
-				ev['longdesc'] = ""
-				ev['now_timestamp'] = 0
-				ev['remaining'] = 0
-				ev['genre'] = ""
-				ev['genreid'] = 0
+		if eventId:
+			ev['begin_timestamp'] = epgEvent['dateTime']['start']
+			ev['duration_sec'] = epgEvent['dateTime']['duration']
+			ev['title'] = filterName(epgEvent['title'], encode)
+			ev['shortdesc'] = convertDesc(epgEvent['shortDescription'], encode)
+			ev['longdesc'] = convertDesc(epgEvent['longDescription'], encode)
+			ev['now_timestamp'] = epgEvent['dateTime']['current']
+			ev['remaining'] = epgEvent['dateTime']['remaining']
+			ev['genre'] = epgEvent['genre']
+			ev['genreid'] = epgEvent['genreId']
+		else:
+			ev['begin_timestamp'] = 0
+			ev['duration_sec'] = 0
+			ev['title'] = "N/A"
+			ev['shortdesc'] = ""
+			ev['longdesc'] = ""
+			ev['now_timestamp'] = 0
+			ev['remaining'] = 0
+			ev['genre'] = ""
+			ev['genreid'] = 0
 
-			ret.append(ev)
+		ret.append(ev)
 
 	return {"events": ret, "result": True}
 
