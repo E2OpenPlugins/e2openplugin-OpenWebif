@@ -44,11 +44,11 @@ git add *
 git commit -m "PEP8 double aggressive E22, E224, E241, E242 and E27"
 
 echo ""
-echo "PEP8 double aggressive E225 ~ E228 and E231"
-autopep8 . -a -a -j 0 --recursive --select=E225,E226,E227,E228,E231 --in-place
+echo "PEP8 double aggressive E225 ~ E228, E231, E261 and E262"
+autopep8 . -a -a -j 0 --recursive --select=E225,E226,E227,E228,E231,E261,E262 --in-place
 git add -u
 git add *
-git commit -m "PEP8 double aggressive E225 ~ E228 and E231"
+git commit -m "PEP8 double aggressive E225 ~ E228, E231, E261 and E262"
 
 echo ""
 echo "PEP8 double aggressive E301 ~ E306"
