@@ -14,10 +14,10 @@ from Plugins.Extensions.OpenWebif.controllers.i18n import _
 lastreply = None
 
 MessageMapping = {
-	0 : MessageBox.TYPE_YESNO,
-	1 : MessageBox.TYPE_INFO,
-	2 : MessageBox.TYPE_WARNING,
-	3 : MessageBox.TYPE_ERROR
+	0: MessageBox.TYPE_YESNO,
+	1: MessageBox.TYPE_INFO,
+	2: MessageBox.TYPE_WARNING,
+	3: MessageBox.TYPE_ERROR
 }
 
 

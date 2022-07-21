@@ -30,7 +30,7 @@ from .defaults import DEBUG_ENABLED
 
 CASE_SENSITIVE_QUERY = 0
 CASE_INSENSITIVE_QUERY = 1
-REGEX_QUERY =2
+REGEX_QUERY = 2
 MAX_RESULTS = 128
 MATCH_EVENT_ID = 2
 MATCH_EVENT_BEFORE_GIVEN_START_TIME = -1
@@ -38,9 +38,11 @@ MATCH_EVENT_INTERSECTING_GIVEN_START_TIME = 0
 MATCH_EVENT_AFTER_GIVEN_START_TIME = +1
 TIME_NOW = -1
 
+
 def debug(msg):
 	if DEBUG_ENABLED:
 		print(msg)
+
 
 class Epg():
 	NOW = 10
@@ -82,6 +84,7 @@ class Epg():
 # //     1 = case insensitive (NO_CASE_CHECK)
 # //     2 = regex search (REGEX_CHECK)
 
+
 	def search(self, queryString, searchFullDescription):
 		debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
 		queryType = eEPGCache.PARTIAL_TITLE_SEARCH
@@ -102,9 +105,8 @@ class Epg():
 		criteria = ('IBDTSENRW', MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
 		epgEvents = self._instance.search(criteria)
 
-		debug(json.dumps(epgEvents, indent = 2))
+		debug(json.dumps(epgEvents, indent=2))
 		return epgEvents
-
 
 	def findSimilarEvents(self, sRef, eventId):
 		debug("[[[   findSimilarEvents(%s, %s)   ]]]" % (sRef, eventId))
@@ -114,9 +116,8 @@ class Epg():
 		criteria = (eventFields, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
 		epgEvents = self._instance.search(criteria)
 
-		debug(json.dumps(epgEvents, indent = 2))
+		debug(json.dumps(epgEvents, indent=2))
 		return epgEvents
-
 
 	def _transformEventData(self, eventFields, *args):
 		eventData = {
@@ -178,7 +179,6 @@ class Epg():
 		# debug(json.dumps(eventData, indent=2))
 		return args
 
-
 	def _queryEPG(self, criteria):
 		eventFields = criteria[0]
 
@@ -222,6 +222,7 @@ class Epg():
 # //   the fourth is the end_time .. ( optional .. for query all events in time range)
 
 	#TODO: investigate using `get event by id`
+
 	def getEvent(self, sRef, eventId):
 		debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
 		eventId = int(eventId)
@@ -236,7 +237,6 @@ class Epg():
 		# debug(epgEvent)
 		return epgEvent
 
-
 	def getChannelEvents(self, sRef, startTime, endTime):
 		debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
 		# sRef is not expected to be an instance of eServiceReference
@@ -247,8 +247,8 @@ class Epg():
 		debug(epgEvents)
 		return epgEvents
 
-
 	#TODO: investigate using `get event by time`
+
 	def getChannelNowEvent(self, sRef):
 		debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
 		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW)]
@@ -258,8 +258,8 @@ class Epg():
 		debug(epgEvent)
 		return epgEvent
 
-
 	#TODO: investigate using `get event by time`
+
 	def getChannelNextEvent(self, sRef):
 		debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
 		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW)]
@@ -268,7 +268,6 @@ class Epg():
 		# debug(json.dumps(epgEvent, indent = 2))
 		debug(epgEvent)
 		return epgEvent
-
 
 	def getMultiChannelEvents(self, sRefs, startTime, endTime=None):
 		debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
@@ -285,10 +284,9 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		debug(json.dumps(epgEvents, indent = 2))
+		debug(json.dumps(epgEvents, indent=2))
 		debug(epgEvents)
 		return epgEvents
-
 
 	def getMultiChannelNowNextEvents(self, sRefs=[]):
 		debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
@@ -304,7 +302,6 @@ class Epg():
 		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
-
 
 	def getBouquetEvents(self, sRefs, startTime, endTime=-1):
 		debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
@@ -324,8 +321,8 @@ class Epg():
 		debug(epgEvents)
 		return epgEvents
 
-
 	#TODO: investigate using `get event by time`
+
 	def getBouquetNowEvents(self, sRefs):
 		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (sRefs))
 		criteria = ['IBDCTSERNWX']
@@ -340,8 +337,8 @@ class Epg():
 		debug(epgEvents)
 		return epgEvents
 
-
 	#TODO: investigate using `get event by time`
+
 	def getBouquetNextEvents(self, sRefs):
 		debug("[[[   getBouquetNextEvents(%s)   ]]]" % (sRefs))
 		criteria = ['IBDCTSERNWX']
@@ -355,7 +352,6 @@ class Epg():
 		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
-
 
 	def getBouquetNowNextEvents(self, sRefs):
 		debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
@@ -372,8 +368,8 @@ class Epg():
 		debug(epgEvents)
 		return epgEvents
 
-
 	# TODO: get event by id instead
+
 	def getEventDescription(self, sRef, eventId):
 		debug("[[[   getEventDescription(%s, %s, %s)   ]]]" % (sRef, 'MATCH_EVENT_ID', eventId))
 		sRef = str(sRef)
@@ -406,6 +402,7 @@ class Epg():
 #  * -1 for unsuccessful.
 #  * In a call from Python, a return of -1 corresponds to a return value of None.
 #  */
+
 	def getCurrentEvent(self, sRef):
 		debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef))
 		if not isinstance(sRef, eServiceReference):
@@ -433,7 +430,6 @@ class Epg():
 		debug(epgEvent)
 		return epgEvent
 
-
 	def getEventById(self, sRef, eventId):
 		debug("[[[   getEventById(%s, %s)   ]]]" % (sRef, eventId))
 		if not isinstance(sRef, eServiceReference):
@@ -446,7 +442,6 @@ class Epg():
 		debug(epgEvent)
 		return epgEvent
 
-
 	def getEventByTime(self, sRef, eventTime):
 		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
 		if not isinstance(sRef, eServiceReference):
@@ -457,13 +452,13 @@ class Epg():
 		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
 		debug(epgEvent)
 		return epgEvent
-	
 
 	# /web/loadepg
+
 	def load(self):
 		self._instance.load()
 
-
 	# /web/saveepg
+
 	def save(self):
 		self._instance.save()

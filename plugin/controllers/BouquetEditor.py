@@ -324,7 +324,7 @@ class BouquetEditor(Source):
 					fd.write("#NAME %s\n" % sName)
 			except (IOError, OSError) as err:
 				print("Error %d: Unable to create file '%s'!  (%s)" % (err.errno, filename, err.strerror))
-		
+
 		bouquetRef = eServiceReference(sBouquetRef)
 		mutableBouquetList = self.getMutableList(bouquetRef)
 		if mutableBouquetList is not None:

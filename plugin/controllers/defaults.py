@@ -15,6 +15,7 @@ try:
 except ImportError:
 	# fallback for old images
 	from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+
 	def isPluginInstalled(p, plugin="plugin"):
 		for ext in ['', 'c', 'o']:
 			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/%s/%s.py%s" % (p, plugin, ext))):
@@ -22,8 +23,10 @@ except ImportError:
 			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/%s/%s.py%s" % (p, plugin, ext))):
 				return True
 
+
 def _isPluginInstalled(p, plugin="plugin"):
 	return isPluginInstalled(p, plugin)
+
 
 OPENWEBIFVER = "OWIF 1.5.2"
 
@@ -46,6 +49,7 @@ MOBILEDEVICE = False
 DEBUG_ENABLED = False
 
 #: get transcoding feature
+
 
 def setDebugEnabled(enabled):
 	global DEBUG_ENABLED
@@ -224,12 +228,14 @@ def getATSearchtypes():
 	except ImportError:
 		return {}
 
+
 def getTextInputSupport():
 	try:
 		from enigma import setPrevAsciiCode
 		return True
 	except ImportError:
 		return False
+
 
 def getDefaultRcu():
 	remotetype = "standard"

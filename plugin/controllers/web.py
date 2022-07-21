@@ -933,7 +933,7 @@ class WebController(BaseController):
 			_title = getUrlArg(request, "title")
 			_cuts = getUrlArg(request, "cuts")
 			_desc = getUrlArg(request, "desc")
-			return getMovieInfo(_sRef, _addtag, _deltag, _title, _cuts, _desc ,True)
+			return getMovieInfo(_sRef, _addtag, _deltag, _title, _cuts, _desc, True)
 		else:
 			return getMovieInfo()
 

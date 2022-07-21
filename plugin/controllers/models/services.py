@@ -571,7 +571,6 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 			for sitem in slist:
 				allproviders[sitem[0]] = provider[1]
 
-
 	bqservices = serviceHandler.list(eServiceReference(sRef))
 	slist = bqservices and bqservices.getContent("CN" if removeNameFromsref else "SN", True)
 
@@ -622,7 +621,7 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 	timeelapsed = datetime.now() - starttime
 	return {
 		"result": True,
-		"processingtime" : "{}".format(timeelapsed),
+		"processingtime": "{}".format(timeelapsed),
 		"pos": pos,
 		"services": services
 	}
@@ -650,7 +649,7 @@ def getAllServices(type, noiptv=False, nolastscanned=False, removeNameFromsref=F
 
 	return {
 		"result": True,
-		"processingtime" : "{}".format(timeelapsed),
+		"processingtime": "{}".format(timeelapsed),
 		"services": services
 	}
 
@@ -1177,7 +1176,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			# Cut description
 			f = sref.rfind("::")
 			if f != -1:
-				sref = sref[:f+1]
+				sref = sref[:f + 1]
 			# If we can expect that events and timerlist are sorted by begin time,
 			# we should be able to always pick the first timer from the timers list
 			# and check if it belongs to the currently processed event.
@@ -1188,7 +1187,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			timer = None
 			if sref in timerlist and len(timerlist[sref]) > 0:
 				for i, first in enumerate(timerlist[sref]):
-					if first.begin <= event[1] and event[1]+event[6]-120 <= first.end:
+					if first.begin <= event[1] and event[1] + event[6] - 120 <= first.end:
 						timer = getTimerDetails(first)
 						timerlist[sref] = timerlist[sref][i:]
 						break

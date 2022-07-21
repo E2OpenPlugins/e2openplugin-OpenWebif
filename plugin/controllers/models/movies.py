@@ -133,7 +133,7 @@ def getMovieList(rargs=None, locations=None):
 	if not directory:
 		directory = MOVIE_LIST_ROOT_FALLBACK
 	elif directory.startswith("/hdd/movie/"):
-		directory = directory.replace("/hdd/movie/","/media/hdd/movie/")
+		directory = directory.replace("/hdd/movie/", "/media/hdd/movie/")
 
 	if directory[-1] != "/":
 		directory += "/"
