@@ -258,7 +258,7 @@ def main_menu(menuid, **kwargs):
 
 def Plugins(**kwargs):
 	p = PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession)
-	p.weight = 100 #webif should start as last plugin
+	p.weight = 100  # webif should start as last plugin
 	result = [
 		p,
 		PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),

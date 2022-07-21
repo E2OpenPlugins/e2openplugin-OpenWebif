@@ -1552,7 +1552,7 @@ class WebController(BaseController):
 		sRefs = getUrlArg(request, "sRefs").split(",")
 		ret = getMultiChannelNowNextEpg(sRefs, self.isJson)
 
-		return str(ret) #fixed Jun'22 (seems to have been broken for quite a while)
+		return str(ret)  # fixed Jun'22 (seems to have been broken for quite a while)
 
 	# http://mutant51.local/web/epgsearch?search=test
 	def P_epgsearch(self, request):

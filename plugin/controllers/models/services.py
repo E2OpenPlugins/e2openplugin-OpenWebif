@@ -477,7 +477,7 @@ def getChannels(idbouquet, stype):
 	index = -2
 
 	for channel in channels:
-		index = index + 2 # each channel has a `now` and a `next` event entry
+		index = index + 2  # each channel has a `now` and a `next` event entry
 		chan = {}
 		chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 		if chan['ref'].split(":")[1] == '320':  # Hide hidden number markers
@@ -583,12 +583,12 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 			sfulllist = serviceslist and serviceslist.getContent("C", True)
 			for sref in sfulllist:
 				flags = int(sref.split(":")[1])
-				hs = flags & 512 #eServiceReference.isInvisible
-				sp = flags & 256 #eServiceReference.isNumberedMarker
+				hs = flags & 512  # eServiceReference.isInvisible
+				sp = flags & 256  # eServiceReference.isNumberedMarker
 				#sp = (sref[:7] == '1:832:D') or (sref[:7] == '1:832:1') or (sref[:6] == '1:320:')
 				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
 					oPos = oPos + 1
-					if not sp and flags & 64: #eServiceReference.isMarker:
+					if not sp and flags & 64:  # eServiceReference.isMarker:
 						oPos = oPos - 1
 		showiptv = True
 		if noiptv:
@@ -596,7 +596,7 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 				showiptv = False
 
 		flags = int(sitem[0].split(":")[1])
-		sp = flags & 256 #(sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
+		sp = flags & 256  # (sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
 		if sp or (not (flags & 512) and not (flags & 64)):
 			pos = pos + 1
 		if showiptv and (not flags & 512 or showHidden):
@@ -720,7 +720,7 @@ def getEventDesc(ref, idev, encode=True):
 	epg = Epg()
 	description = epg.getEventDescription(ref, idev)
 	# 'ESX'
-	description = description and convertDesc(description, encode) or "No description available" #TODO: translate #TODO: move to epy.py?
+	description = description and convertDesc(description, encode) or "No description available"  # TODO: translate #TODO: move to epy.py?
 
 	return {"description": description}
 
@@ -769,7 +769,7 @@ def getEvent(ref, idev, encode=True):
 	epg = Epg()
 	event = epg.getEvent(ref, idev)
 	# 'IBDTSENRW'
-	eventLookupTable = 'IBDTSENRW' #TODO: do this betterly (eventFields)
+	eventLookupTable = 'IBDTSENRW'  # TODO: do this betterly (eventFields)
 
 	info = {}
 	if event:
@@ -1170,7 +1170,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 					timerlist[str(timer.service_ref)] = []
 				timerlist[str(timer.service_ref)].append(timer)
 
-		eventLookupTable = 'IBTSRND' #TODO: do this betterly (eventFields)
+		eventLookupTable = 'IBTSRND'  # TODO: do this betterly (eventFields)
 		for event in events:
 			sref = event[4]
 			# Cut description

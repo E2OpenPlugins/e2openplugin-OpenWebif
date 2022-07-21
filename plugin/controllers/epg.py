@@ -309,7 +309,7 @@ class Epg():
 		if endTime > 100000:
 			endTime = -1
 
-		criteria = ['IBDCTSERNWX'] # remove X
+		criteria = ['IBDCTSERNWX']  # remove X
 
 		for sRef in sRefs:
 			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
