@@ -36,26 +36,29 @@ except ImportError:
 	def getGenreStringLong(*args): return ""
 
 
-CASE_SENSITIVE_QUERY = 0
+CASE_SENSITIVE_QUERY   = 0
 CASE_INSENSITIVE_QUERY = 1
-REGEX_QUERY =2
-MAX_RESULTS = 128
-MATCH_EVENT_ID = 2
-PREVIOUS_EVENT = -1
-NOW_EVENT = 0
-NEXT_EVENT = +1
-TIME_NOW = -1
+REGEX_QUERY            = 2
+MAX_RESULTS            = 128
+MATCH_EVENT_ID         = 2
+PREVIOUS_EVENT         = -1
+NOW_EVENT              = 0
+NEXT_EVENT             = +1
+TIME_NOW               = -1
 
-# SEARCH_FIELDS = 'IBDTSENRW'
-# BOUQUET_FIELDS = 'IBDCTSERNWX'
-# SINGLE_CHANNEL_FIELDS = 'IBDTSENCW'
-# MULTI_CHANNEL_FIELDS = 'IBTSRND'
-# MULTI_NOWNEXT_FIELDS = 'IBDCTSERNX'
+BOUQUET_NOWNEXT_FIELDS = 'IBDCTSERNWX' # getBouquetNowNextEvents, _getBouquetNowOrNext
+BOUQUET_FIELDS         = 'IBDCTSERNW'  # getBouquetEvents
+MULTI_CHANNEL_FIELDS   = 'IBTSRND'     # getMultiChannelEvents
+MULTI_NOWNEXT_FIELDS   = 'TBDCIESX'    # getMultiChannelNowNextEvents
+SINGLE_CHANNEL_FIELDS  = 'IBDTSENCW'   # getChannelEvents;
+SEARCH_FIELDS          = 'IBDTSENRW'   # search, findSimilarEvents
 
-TEXT_YESTERDAY = 'Yesterday, %R'
-TEXT_TODAY = 'Today, %R'
-TEXT_TOMORROW = 'Tomorrow, %R'
+TEXT_YESTERDAY         = 'Yesterday, %R'
+TEXT_TODAY             = 'Today, %R'
+TEXT_TOMORROW          = 'Tomorrow, %R'
+
 #TODO: load configgy stuff once
+
 
 DEBUG_ENABLED = True
 def _debug(msg):
@@ -203,8 +206,7 @@ class Epg():
 			elif hasattr(eEPGCache, 'PARTIAL_DESCRIPTION_SEARCH'):
 				queryType = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
 
-		eventFields = 'IBDTSENRW'
-		criteria = (eventFields, MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
+		criteria = (SEARCH_FIELDS, MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
 		epgEvents = self._instance.search(criteria)
 
 		_debug(epgEvents)
@@ -220,8 +222,7 @@ class Epg():
 			sRef = str(sRef)
 			eventId = int(eventId)
 
-		eventFields = 'IBDTSENRW'
-		criteria = (eventFields, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
+		criteria = (SEARCH_FIELDS, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
 		epgEvents = self._instance.search(criteria)
 
 		_debug(epgEvents)
@@ -393,14 +394,13 @@ class Epg():
 			# return None
 
 		sRefs = getBouquetServices(bqRef, 'S')
-		fields = 'IBDCTSERNWX'
 		criteria = []
 
 		for sRef in sRefs:
 			sRef = str(sRef)
 			criteria.append((sRef, nowOrNext, TIME_NOW))
 
-		epgEvents = self._queryEPG(fields, criteria)
+		epgEvents = self._queryEPG(BOUQUET_NOWNEXT_FIELDS, criteria)
 
 		_debug(epgEvents)
 		return epgEvents
@@ -414,10 +414,9 @@ class Epg():
 		else:
 			sRef = str(sRef)
 
-		fields = 'IBDTSENCW'
 		criteria = []
 		criteria.append((sRef, NOW_EVENT, startTime, endTime))
-		epgEvents = self._queryEPG(fields, criteria)
+		epgEvents = self._queryEPG(SINGLE_CHANNEL_FIELDS, criteria)
 
 		_debug(epgEvents)
 		return epgEvents
@@ -433,7 +432,7 @@ class Epg():
 		return self._getChannelNowOrNext(sRef, NEXT_EVENT)
 
 
-	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields='IBTSRND'):
+	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields=MULTI_CHANNEL_FIELDS):
 		_debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
@@ -451,7 +450,7 @@ class Epg():
 		return epgEvents
 
 
-	def getMultiChannelNowNextEvents(self, sRefs, fields='TBDCIESX'):
+	def getMultiChannelNowNextEvents(self, sRefs, fields=MULTI_NOWNEXT_FIELDS):
 		_debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
@@ -474,7 +473,7 @@ class Epg():
 		_debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (bqRef, startTime, endTime))
 		sRefs = getBouquetServices(bqRef, 'S')
 
-		return self.getMultiChannelEvents(sRefs, startTime, endTime, 'IBDCTSERNW')
+		return self.getMultiChannelEvents(sRefs, startTime, endTime, BOUQUET_FIELDS)
 
 
 	def getBouquetNowEvents(self, bqRef):
@@ -493,7 +492,7 @@ class Epg():
 		_debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (bqRef))
 		sRefs = getBouquetServices(bqRef, 'S')
 
-		return self.getMultiChannelNowNextEvents(sRefs, 'IBDCTSERNWX')
+		return self.getMultiChannelNowNextEvents(sRefs, BOUQUET_NOWNEXT_FIELDS)
 
 
 	def getCurrentEvent(self, sRef):
