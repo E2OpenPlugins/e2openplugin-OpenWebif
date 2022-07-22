@@ -1,13 +1,14 @@
 # Signed-off-by: Dario Croci <spaeleus@croci.org>
 #
 # Dario Croci <spaeleus@croci.org>, 2021, 2022.
+# Massimo Pissarello <mapi68@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-10 09:36+0000\n"
-"PO-Revision-Date: 2022-05-22 13:13+0000\n"
-"Last-Translator: Dario Croci <spaeleus@croci.org>\n"
+"PO-Revision-Date: 2022-07-21 23:11+0000\n"
+"Last-Translator: Massimo Pissarello <mapi68@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/"
 "e2openplugin-openwebif/e2openplugin-openwebif/it/>\n"
 "Language: it\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -63,7 +64,7 @@ msgid "%s free / %s total"
 msgstr "%s liberi / %s totale"
 
 msgid "(Press 'shift' and click to 'hold')"
-msgstr "Pressione prolungata (maiuscola + click)"
+msgstr "Pressione prolungata: maiuscolo + click "
 
 msgid "(in minutes)"
 msgstr "(in minuti)"
@@ -81,59 +82,59 @@ msgid "About"
 msgstr "Informazioni"
 
 msgid "Add"
-msgstr "Aggiungere"
+msgstr "Aggiungi"
 
 msgid "Add  AutoTimer  to tags"
-msgstr "Aggiungere Autotimer alle etichette"
+msgstr "Aggiungi timer automatico alle etichette"
 
 msgid "Add AutoTimer name to tags"
-msgstr "Aggiungere nome AutoTimer alle etichette"
+msgstr "Aggiungi nome timer automatico alle etichette"
 
 msgid "Add Bouquet"
-msgstr "Aggiungere bouquet"
+msgstr "Aggiungi bouquet"
 
 msgid "Add IPTV/URL"
-msgstr "Aggiungere IPTV/URL"
+msgstr "Aggiungi IPTV/URL"
 
 msgid "Add Marker"
-msgstr "Aggiungere un contrassegno"
+msgstr "Aggiungi marcatore"
 
 msgid "Add Spacer"
-msgstr "Aggiungere un distanziatore"
+msgstr "Aggiungi distanziatore"
 
 msgid "Add a timer"
-msgstr "Aggiungere un timer"
+msgstr "Aggiungi un timer"
 
 msgid "Add a zap timer"
-msgstr "Aggiungere un timer di zap"
+msgstr "Aggiungi un timer di zapping"
 
 msgid "Add an AutoTimer"
-msgstr "Aggiungere un AutoTimer"
+msgstr "Aggiungi un timer automatico"
 
 msgid "Add channel(s) as alternate"
-msgstr "Aggiungere canale(i) come alternativo(i)"
+msgstr "Aggiungi canale(i) come alternativo(i)"
 
 msgid "Add filters"
-msgstr "Aggiungere filtri"
+msgstr "Aggiungi i filtri"
 
 msgid "Add selection to bouquet"
-msgstr "Aggiungere la selezione al bouquet"
+msgstr "Aggiungi selezione al bouquet"
 
 msgid "Add service name to stream information"
-msgstr "Aggiungere nome canale alle informazioni della trasmissione"
+msgstr "Aggiungi il nome del servizio alle informazioni sullo streaming"
 
 msgid "Add similar on conflict"
-msgstr "Aggiungere simile su conflitto"
+msgstr "Aggiungi simili sul conflitto"
 
 msgid "Add tags to recordings"
-msgstr "Aggiungere etichette alle registrazioni"
+msgstr "Aggiungi etichette alle registrazioni"
 
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr "Aggiunto %s al canale alternativo %s."
+msgstr "Aggiunto %s al servizio alternativo %s."
 
 msgid "Adjust recording time to real event time"
-msgstr "Sincronizzare l'ora della registrazione con l'ora reale dell'evento"
+msgstr "Regola il tempo di registrazione con il tempo reale dell'evento"
 
 msgid "After event"
 msgstr "Dopo l'evento"
@@ -154,13 +155,13 @@ msgstr ""
 "così come pubblicato dalla Free Software Foundation."
 
 msgid "All alternative services deleted."
-msgstr "Rimossi tutti i canali alternativi."
+msgstr "Tutti i servizi alternativi sono stati cancellati."
 
 msgid "Allow IPK Upload"
-msgstr "Consentire il caricamento di file IPK"
+msgstr "Consenti caricamento IPK"
 
 msgid "Allow duplicates"
-msgstr "Consentire duplicati"
+msgstr "Consenti duplicati"
 
 #, python-format
 msgid "Alternative %s created failed."
@@ -170,10 +171,10 @@ msgid "Always"
 msgstr "Sempre"
 
 msgid "Answer is NO!"
-msgstr "La risposta è NO."
+msgstr "La risposta è NO!"
 
 msgid "Answer is YES!"
-msgstr "La risposta è SÌ."
+msgstr "La risposta è SÌ!"
 
 msgid "Any"
 msgstr "Qualsiasi"
@@ -182,40 +183,40 @@ msgid "Any day"
 msgstr "Ogni giorno"
 
 msgid "Any service/recording"
-msgstr "Qualsiasi canale/registrazione"
+msgstr "Qualsiasi servizio o registrazione"
 
 msgid "April"
 msgstr "Aprile"
 
 msgid "Are you sure you want to delete the selected bouquet?"
-msgstr "Rimuovere il bouquet selezionato?"
+msgstr "Sei sicuro di voler eliminare il bouquet selezionato?"
 
 msgid "Are you sure you want to delete the selected item(s)?"
-msgstr "Rimuovere le voci selezionate?"
+msgstr "Sei sicuro di voler eliminare gli elementi selezionati?"
 
 msgid "Are you sure you want to delete this AutoTimer?"
-msgstr "Rimuovere questo AutoTimer?"
+msgstr "Sei sicuro di voler eliminare questo timer automatico?"
 
 msgid "Are you sure you want to delete this recording?"
-msgstr "Rimuovere la registrazione?"
+msgstr "Sei sicuro di voler eliminare questa registrazione?"
 
 msgid "Are you sure you want to delete this timer?"
-msgstr "Rimuovere il timer?"
+msgstr "Sei sicuro di voler eliminare questo timer?"
 
 msgid "Are you sure you want to rename this recording?"
-msgstr "Rinominare la registrazione?"
+msgstr "Sei sicuro di voler rinominare questa registrazione?"
 
 msgid "Are you sure you want to restore from file?"
-msgstr "Ripristinare da file?"
+msgstr "Sei sicuro di voler ripristinare dal file?"
 
 msgid "Are you sure you want to start recording instantly?"
-msgstr "Avviare immediatamente la registrazione?"
+msgstr "Sei sicuro di voler iniziare a registrare immediatamente?"
 
 msgid "Ask, default No"
-msgstr "Chiedere, predefinito No"
+msgstr "Chiedi, predefinito No"
 
 msgid "Ask, default Yes"
-msgstr "Chiedere, predefinito Sì"
+msgstr "Chiedi, predefinito Sì"
 
 msgid "Audio Encoding"
 msgstr "Codifica audio"
@@ -233,22 +234,22 @@ msgid "Authors"
 msgstr "Autori"
 
 msgid "Auto"
-msgstr "Automatica"
+msgstr "Automatico"
 
 msgid "AutoPoll"
 msgstr "Controllo automatico (nuovi eventi)"
 
 msgid "AutoTimer Edit"
-msgstr "Modificare Autotimer"
+msgstr "Modifica timer automatico"
 
 msgid "AutoTimer Settings"
-msgstr "Impostazioni Autotimer"
+msgstr "Impostazioni timer automatico"
 
 msgid "AutoTimers"
-msgstr "Elenco Autotimer"
+msgstr "Timer automatici"
 
 msgid "Autotimer Preview"
-msgstr "Anteprima Autotimer"
+msgstr "Anteprima timer automatico"
 
 msgid "BER"
 msgstr "BER"
@@ -279,11 +280,11 @@ msgstr "Segnalibri"
 
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr "Bouquet %s già esistente."
+msgstr "Bouquet %s esiste già."
 
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr "Impossibile spostare il bouquet %s."
+msgstr "Bouquet %s non può essere spostato."
 
 #, python-format
 msgid "Bouquet %s created."
@@ -291,15 +292,15 @@ msgstr "Bouquet %s creato."
 
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr "Bouquet %s rimosso."
+msgstr "Bouquet %s cancellato."
 
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr "Bouquet %s bloccato."
+msgstr "Bouquet %s è bloccato."
 
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr "Bouquet %s sbloccato."
+msgstr "Bouquet %s è sbloccato."
 
 #, python-format
 msgid "Bouquet %s moved."
@@ -307,16 +308,14 @@ msgstr "Bouquet %s spostato."
 
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
-"Rimozione Bouquet %s non riuscita, reference canale o lista variabile non "
-"valida."
+msgstr "Bouquet %s non rimosso, referenza servizio o elenco non valido."
 
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr "Rimozione bouquet %s fallita."
+msgstr "Bouquet %s non rimosso."
 
 msgid "Bouquet Editor"
-msgstr "Editor dei bouquet"
+msgstr "Editor bouquet"
 
 msgid "Bouquet name"
 msgstr "Nome del bouquet"
@@ -325,13 +324,13 @@ msgid "Bouquet renamed successfully."
 msgstr "Bouquet rinominato con successo."
 
 msgid "Bouquet-settings were restored successfully"
-msgstr "Impostazioni bouquet ripristinate con successo"
+msgstr "Le impostazioni del bouquet sono state ripristinate correttamente"
 
 msgid "BouquetEditor"
 msgstr "Editor bouquet"
 
 msgid "Bouquetlist is not editable!"
-msgstr "Lista bouquet non modificabile."
+msgstr "L'elenco dei bouquet non è modificabile!"
 
 msgid "Bouquets"
 msgstr "Bouquet"
@@ -370,7 +369,7 @@ msgid "Capacity"
 msgstr "Capacità"
 
 msgid "Capture screenshot"
-msgstr "Catturare screenshot"
+msgstr "Cattura screenshot"
 
 msgid "Channel"
 msgstr "Canale"
@@ -385,10 +384,10 @@ msgid "Chipset"
 msgstr "Chipset"
 
 msgid "Cleanup Timers"
-msgstr "Ripulire timer"
+msgstr "Pulisci timer"
 
 msgid "Close"
-msgstr "Chiudere"
+msgstr "Chiudi"
 
 msgid "Common Settings"
 msgstr "Impostazioni generali"
@@ -398,7 +397,7 @@ msgstr "Impostazioni"
 
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
-msgstr "Rilevati conflitti nei timer. %s"
+msgstr "Rilevati timer in conflitto! %s"
 
 msgid "Contributors"
 msgstr "Collaboratori"
@@ -408,14 +407,15 @@ msgstr "Controllo"
 
 #, python-format
 msgid "Could not add timer '%s'!"
-msgstr "Impossibile aggiungere il timer '%s'."
+msgstr "Impossibile aggiungere il timer '%s'!"
 
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Impossibile trovare timer '%s' con questi orari di inizio fine."
+msgstr ""
+"Impossibile trovare il timer '%s' con l'ora di inizio e di fine specificata!"
 
 msgid "Create bouquet from selection"
-msgstr "Creare un bouquet dalla selezione"
+msgstr "Crea bouquet dalla selezione"
 
 msgid "Current"
 msgstr "Corrente"
@@ -427,10 +427,10 @@ msgid "Currently recording"
 msgstr "Attualmente in registrazione"
 
 msgid "Custom box name"
-msgstr "Personalizzare il nome del ricevitore"
+msgstr "Personalizza il nome del ricevitore"
 
 msgid "Custom offset"
-msgstr "Margine personalizzato"
+msgstr "Compensazione personalizzata"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -445,13 +445,13 @@ msgid "Date (oldest)"
 msgstr "Data (più vecchia)"
 
 msgid "Debug - Display Tracebacks in browser"
-msgstr "Debug - Mostrare i traceback nel browser"
+msgstr "Debug - Visualizza i traceback nel browser"
 
 msgid "December"
 msgstr "Dicembre"
 
 msgid "Deep Standby"
-msgstr "Deep Standby"
+msgstr "Spegni"
 
 msgid "Default"
 msgstr "Predefinito"
@@ -460,30 +460,30 @@ msgid "Delay Standby"
 msgstr "Ritardo standby"
 
 msgid "Delete"
-msgstr "Rimuovere"
+msgstr "Rimuovo"
 
 msgid "Delete Bookmark"
-msgstr "Rimuovere il segnalibro"
+msgstr "Elimina segnalibro"
 
 msgid "Delete Bouquet"
-msgstr "Rimuovere il bouquet"
+msgstr "Elimina bouquet"
 
 msgid "Delete Recording"
-msgstr "Rimuovere la registrazione"
+msgstr "Elimina registrazione"
 
 msgid "Delete Timer"
-msgstr "Rimuovere il timer"
+msgstr "Elimina timer"
 
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
 msgstr ""
-"Rimozione fallita, non esiste un Cestino registrazioni.\n"
-"Disabilitare il Cestino registrazioni nelle impostazioni per rimuovere "
-"questo elemento."
+"Eliminazione non riuscita, perché non c'è il cestino dei film!\n"
+"Disabilita il cestino dei film nella configurazione per eliminare questo "
+"elemento"
 
 msgid "Deleted"
-msgstr "Rimosso"
+msgstr "Eliminato"
 
 msgid "Description"
 msgstr "Descrizione"
@@ -495,19 +495,19 @@ msgid "Disable"
 msgstr "Disabilitare"
 
 msgid "Disable Timer"
-msgstr "Disabilitare il timer"
+msgstr "Disattiva timer"
 
 msgid "Disable remote access for user root"
-msgstr "Disabilitare l'accesso remoto per l'utente root"
+msgstr "Disabilita l'accesso remoto per l'utente root"
 
 msgid "Disabled on conflict"
-msgstr "Disabilitato se in conflitto"
+msgstr "Disabilitato in caso di conflitto"
 
 msgid "Display Mode"
 msgstr "Modalità di visualizzazione"
 
 msgid "Display duration (s)"
-msgstr "Mostrare la durata (s)"
+msgstr "Visualizza durata (s)"
 
 msgid "Distro"
 msgstr "Distribuzione"
@@ -516,7 +516,7 @@ msgid "Dolby"
 msgstr "Dolby"
 
 msgid "Don't create timer when movie exists in database"
-msgstr "Non creare un timer se il filmato è già presente nel database"
+msgstr "Non creare timer quando il film esiste già nel database"
 
 msgid "Done"
 msgstr "Fatto"
@@ -543,56 +543,57 @@ msgid "EPG encoding"
 msgstr "Codifica EPG"
 
 msgid "EPGRefresh"
-msgstr "EPGRefresh"
+msgstr "Aggiornamento EPG"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
-"ERRORE: impossibile impostare uno SleepTimer se il dispositivo è in standby"
+"ERRORE: impossibile impostare timer di spegnimento mentre il dispositivo è "
+"in standby"
 
 msgid "Edit"
-msgstr "Modificare"
+msgstr "Modifica"
 
 msgid "Edit Recording"
-msgstr "Rimuovere la registrazione"
+msgstr "Modifica registrazione"
 
 msgid "Edit Timer"
-msgstr "Modificare il timer"
+msgstr "Modifica timer"
 
 msgid "Editor"
 msgstr "Editor"
 
 msgid "Enable"
-msgstr "Abilitare"
+msgstr "Abilita"
 
 msgid "Enable Authentication for streaming"
-msgstr "Abilitare l'autenticazione per lo streaming"
+msgstr "Abilita l'autenticazione per lo streaming"
 
 msgid "Enable HTTP Authentication"
-msgstr "Abilitare l'autenticazione HTTP"
+msgstr "Abilita autenticazione HTTP"
 
 msgid "Enable HTTPS"
-msgstr "Abilitare il protocollo HTTPS"
+msgstr "Abilita HTTPS"
 
 msgid "Enable HTTPS Authentication"
-msgstr "Abilitare l'autenticazione HTTPS"
+msgstr "Abilita l'autenticazione HTTPS"
 
 msgid "Enable Messages"
-msgstr "Abilitare messaggi"
+msgstr "Abilita messaggi"
 
 msgid "Enable Parental Control"
-msgstr "Abilitare il controllo parentale"
+msgstr "Abilita il controllo genitori"
 
 msgid "Enable Timer"
-msgstr "Abilitare i timer"
+msgstr "Abilita timer"
 
 msgid "Enable access from VPNs"
-msgstr "Abilitare l'accesso da VPN"
+msgstr "Abilita l'accesso dalle VPN"
 
 msgid "Enable filtering"
-msgstr "Abilitare i filtri"
+msgstr "Abilita filtro"
 
 msgid "Enable/Disable Screenshot on key press or"
-msgstr "Abilitare/Disabilitare screenshot alla pressione tasto o"
+msgstr "Abilita o disabilita screenshot alla pressione di un tasto oppure"
 
 msgid "Enabled"
 msgstr "Abilitato"
@@ -610,53 +611,53 @@ msgid "End of timespan"
 msgstr "Fine dell'arco di tempo"
 
 msgid "Enter a name for the new bouquet"
-msgstr "Inserire un nome per il nuovo bouquet"
+msgstr "Inserisci un nome per il nuovo bouquet"
 
 msgid "Enter a name for the new marker"
-msgstr "Inserire un nome per il nuovo contrassegno"
+msgstr "Inserisci un nome per il nuovo marcatore"
 
 msgid "Enter a name for this AutoTimer"
-msgstr "Inserire un nome per questo AutoTimer"
+msgstr "Immetti un nome per questo timer automatico"
 
 msgid "Enter path"
-msgstr "Inserire il percorso"
+msgstr "Inserisci il percorso"
 
 msgid "Enter text"
-msgstr "Inserire il testo"
+msgstr "Inserisci testo"
 
 msgid "Enter the text to find in the EPG"
-msgstr "Inserire il testo da cercare nell'EPG"
+msgstr "Inserisci il testo da trovare nell'EPG"
 
 msgid "Error"
 msgstr "Errore"
 
 msgid "Error parsing vps.xml"
-msgstr "Errore in analisi di vps.xml"
+msgstr "Errore durante l'analisi di vps.xml"
 
 msgid "Error upload File"
-msgstr "Errore nel caricamento file"
+msgstr "Errore durante il caricamento del file"
 
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr "Errore nella preparazione del file di backup: %s non esiste."
+msgstr "Errore durante la preparazione del file di backup, %s non esiste."
 
 msgid "Error while preparing backup file."
-msgstr "Errore nella preparazione del file di backup."
+msgstr "Errore durante la preparazione del file di backup."
 
 msgid "Error writing File"
-msgstr "Errore in scrittura del file"
+msgstr "Errore durante la scrittura del file"
 
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr "Errore: %s non esiste, ripristino impossibile..."
+msgstr "Errore, %s non esiste, il ripristino non è possibile..."
 
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr "Errore: %s non è stato creato con WebBouquetEditor..."
+msgstr "Errore, %s non è stato creato con WebBouquetEditor..."
 
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr "Errore di sistema: il bouquet %s non può essere rimosso."
+msgstr "Errore: Impossibile eliminare bouquet %s, OSError."
 
 msgid "Event not found"
 msgstr "Evento non trovato"
@@ -668,22 +669,22 @@ msgid "Every"
 msgstr "Ogni"
 
 msgid "Exclude when"
-msgstr "Escludere se"
+msgstr "Escludi quando"
 
 msgid "Execute \"After event\" during timespan"
-msgstr "Eseguire \"Azione a fine evento\" durante il l'arco di tempo"
+msgstr "Esegui \"Dopo l'evento\" durante l'intervallo di tempo"
 
 msgid "Export"
-msgstr "Esportare"
+msgstr "Esporta"
 
 msgid "Extras"
 msgstr "Extra"
 
 msgid "Fake Recording"
-msgstr "Registrazione fittizia"
+msgstr "Registrazione falsa"
 
 msgid "Fastscan"
-msgstr "Scansione rapida"
+msgstr "Scansione veloce"
 
 msgid "February"
 msgstr "Febbraio"
@@ -719,7 +720,7 @@ msgid "Front processor version"
 msgstr "Versione Frontprocessor"
 
 msgid "Full remote"
-msgstr "L'intero telecomando"
+msgstr "Telecomando completo"
 
 msgid "GB"
 msgstr "GB"
@@ -733,11 +734,11 @@ msgstr "Gateway"
 msgid "Get mutable list for new created alternative failed!"
 msgstr ""
 "Impossibile ottenere l'elenco delle variabili per l'alternativa appena "
-"creata."
+"creata!"
 
 msgid "Get mutable list for new created bouquet failed!"
 msgstr ""
-"Impossibile ottenere l'elenco delle variabili per il bouquet appena creato."
+"Impossibile ottenere l'elenco delle variabili per il bouquet appena creato!"
 
 msgid "HH:MM"
 msgstr "HH:MM"
@@ -755,13 +756,13 @@ msgid "Hardware"
 msgstr "Hardware"
 
 msgid "Hide full remote"
-msgstr "Nascondere l'intero telecomando"
+msgstr "Nascondi telecomando completo"
 
 msgid "High Resolution"
 msgstr "Alta risoluzione"
 
 msgid "Hold to drag"
-msgstr "Tenere premuto per trascinare"
+msgstr "Tieni premuto per trascinare"
 
 msgid "Hour"
 msgstr "Ora"
@@ -782,46 +783,46 @@ msgid "IPv6 address(es)"
 msgstr "Indirizzo IPv6"
 
 msgid "Import"
-msgstr "Importare"
+msgstr "Importa"
 
 msgid "Include description"
-msgstr "Includere la descrizione"
+msgstr "Includi descrizione"
 
 msgid "Include extended description"
-msgstr "Includere la descrizione estesa"
+msgstr "Includi descrizione estesa"
 
 msgid "Include short description"
-msgstr "Includere la descrizione breve"
+msgstr "Includi breve descrizione"
 
 msgid "Include when"
-msgstr "Includere se"
+msgstr "Includi quando"
 
 msgid "Infinite Instant recording started"
-msgstr "Avviata registrazione istantanea illimitata"
+msgstr "Registrazione istantanea infinita avviata"
 
 msgid "Info"
-msgstr "Informazioni"
+msgstr "Info"
 
 msgid "Information"
-msgstr "Informazione"
+msgstr "Informazioni"
 
 msgid "Inherit AutoTimer"
-msgstr "Ereditare Autotimer"
+msgstr "Eredita timer automatico"
 
 msgid "Install Package"
-msgstr "Installare pacchetto"
+msgstr "Installa pacchetto"
 
 msgid "Installed"
 msgstr "Installati"
 
 msgid "Instant Record"
-msgstr "Registrazione immediata"
+msgstr "Registrazione istantanea"
 
 msgid "Instant record for current Event started"
-msgstr "Registrazione immediata avviata"
+msgstr "Registrazione istantanea per l'evento corrente avviata"
 
 msgid "Internal error!"
-msgstr "Errore interno."
+msgstr "Errore interno!"
 
 msgid "Internal flash memory"
 msgstr "Memoria flash interna"
@@ -849,7 +850,7 @@ msgid "June"
 msgstr "Giugno"
 
 msgid "Just play"
-msgstr "Riprodurre"
+msgstr "Solo riproduzione"
 
 msgid "Kernel"
 msgstr "Kernel"
@@ -867,10 +868,10 @@ msgid "License"
 msgstr "Licenza"
 
 msgid "Link speed"
-msgstr "Velocità connessione"
+msgstr "Velocità di collegamento"
 
 msgid "List of Timers has been cleaned"
-msgstr "Elenco dei timer ripulito"
+msgstr "L'elenco dei timer è stato svuotato"
 
 msgid "Loading..."
 msgstr "Caricamento..."
@@ -912,19 +913,19 @@ msgid "May"
 msgstr "Maggio"
 
 msgid "Message sent successfully!"
-msgstr "Messaggio inviato con successo."
+msgstr "Messaggio inviato con successo!"
 
 msgid "Method"
 msgstr "Metodo"
 
 msgid "Minimal EPG list"
-msgstr "Elenco EPG minimale"
+msgstr "Elenco EPG minimo"
 
 msgid "Minimal movie list"
-msgstr "Elenco registrazioni minimale"
+msgstr "Elenco film minimo"
 
 msgid "Minimal timer list"
-msgstr "Elenco timer minimale"
+msgstr "Elenco timer minimo"
 
 msgid "Minute"
 msgstr "Minuto"
@@ -958,7 +959,7 @@ msgid "More details"
 msgstr "Più dettagli"
 
 msgid "Mount point"
-msgstr "Punto di mount"
+msgstr "Punto di montaggio"
 
 msgid "Movie database for EPG"
 msgstr "Database filmati per EPG"
@@ -967,19 +968,19 @@ msgid "Movie search"
 msgstr "Ricerca registrazioni"
 
 msgid "Movielist"
-msgstr "Elenco registrazioni"
+msgstr "Lista dei film"
 
 msgid "Movies"
 msgstr "Registrazioni"
 
 msgid "Multi-Bouquet is not enabled!"
-msgstr "Multi Bouquet non abilitato."
+msgstr "Bouquet multipli non abilitati!"
 
 msgid "MultiEPG"
-msgstr "MultiEPG"
+msgstr "EPG multiplo"
 
 msgid "Mute/Unmute"
-msgstr "Disattivare/Riattivare audio"
+msgstr "Muto o riattiva audio"
 
 msgid "NCam Webinterface"
 msgstr "Interfaccia NCam"
@@ -1018,52 +1019,52 @@ msgid "No"
 msgstr "No"
 
 msgid "No EPG data available."
-msgstr "Nessuna dato EPG disponibile."
+msgstr "Nessun dato EPG disponibile."
 
 msgid "No Parent Control Setup Pin given!"
-msgstr "PIN Controllo Parentale non impostato."
+msgstr "Nessun pin di configurazione del controllo genitori fornito!"
 
 msgid "No answer in time"
-msgstr "Nessuna risposta tempestiva"
+msgstr "Nessuna risposta in tempo"
 
 msgid "No bouquet given!"
-msgstr "Bouquet non specificato."
+msgstr "Nessun bouquet specificato!"
 
 msgid "No bouquet name given!"
-msgstr "Nome di bouquet non specificato."
+msgstr "Nessun nome di bouquet specificato!"
 
 msgid "No current service given!"
-msgstr "Canale corrente non specificato."
+msgstr "Nessun servizio attuale specificato!"
 
 msgid "No event found! Not recording!"
-msgstr "Nessun evento trovato. Registrazione non avviata."
+msgstr "Nessun evento trovato! Non si registra!"
 
 msgid "No marker-name given!"
-msgstr "Nome di contrassegno non specificato."
+msgstr "Nessun nome marcatore specificato!"
 
 msgid "No matches were found in the EPG"
-msgstr "Nessuna corrispondenza trovata nell'EPG"
+msgstr "Nessuna corrispondenza è stata trovata nell'EPG"
 
 msgid "No matching Timer found"
-msgstr "Timer corrispondente non trovato"
+msgstr "Nessun timer corrispondente trovato"
 
 msgid "No network connection"
 msgstr "Nessuna connessione di rete"
 
 msgid "No new servicename given!"
-msgstr "Nuovo nome canale non specificato."
+msgstr "Nessun nuovo nome di servizio fornito!"
 
 msgid "No position given!"
-msgstr "Posizione non specificata."
+msgstr "Non è stata specificata alcuna posizione!"
 
 msgid "No provider given!"
-msgstr "Provider non specificato."
+msgstr "Nessun provider specificato!"
 
 msgid "No service given!"
-msgstr "Canale non specificato."
+msgstr "Nessun servizio specificato!"
 
 msgid "No, cancel"
-msgstr "No, annullare"
+msgstr "No, annulla"
 
 msgid "None"
 msgstr "Nessuno"
@@ -1075,10 +1076,10 @@ msgid "Nothing playing."
 msgstr "Nessuna riproduzione."
 
 msgid "Notify if Conflict"
-msgstr "Notificare se in conflitto"
+msgstr "Notifica se in conflitto"
 
 msgid "Notify if Similar"
-msgstr "Notificare se simile"
+msgstr "Notifica se simile"
 
 msgid "November"
 msgstr "Novembre"
@@ -1087,7 +1088,7 @@ msgid "Now"
 msgstr "Adesso"
 
 msgid "Now/Next Columns"
-msgstr "Colonne In onda/Successivo"
+msgstr "Colonne adesso/dopo"
 
 msgid "Number of recordings remaining"
 msgstr "Numero di registrazioni rimanenti"
@@ -1114,10 +1115,10 @@ msgid "On"
 msgstr "On"
 
 msgid "On any service"
-msgstr "Su qualsiasi canale"
+msgstr "Su qualsiasi servizio"
 
 msgid "On same service"
-msgstr "Sullo stesso canale"
+msgstr "Sullo stesso servizio"
 
 msgid "Only match between dates"
 msgstr "Corrispondenza solo tra le date"
@@ -1135,7 +1136,7 @@ msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Interfaccia Web Open Source per ricevitori Linux"
 
 msgid "Open in new window"
-msgstr "Aprire in una nuova finestra"
+msgstr "Apri in una nuova finestra"
 
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebInterface abilitata"
@@ -1144,10 +1145,10 @@ msgid "OpenWebif Browser Settings"
 msgstr "Impostazioni browser OpenWebif"
 
 msgid "OpenWebif Configuration"
-msgstr "Impostazioni OpenWebif"
+msgstr "Configurazione di OpenWebif"
 
 msgid "OpenWebif Settings"
-msgstr "OpenWebif"
+msgstr "Impostazioni interfaccia web"
 
 msgid "OpenWebif url:"
 msgstr "Indirizzo OpenWebif:"
@@ -1156,7 +1157,7 @@ msgid "Orbital Position"
 msgstr "Posizione orbitale"
 
 msgid "Override found with alternative service"
-msgstr "Rilevata sovrapposizione con un canale alternativo"
+msgstr "Rilevata sovrapposizione con un servizio alternativo"
 
 msgid "PCR PID"
 msgstr "PID PCR"
@@ -1168,13 +1169,13 @@ msgid "Packages"
 msgstr "Pacchetti"
 
 msgid "Parent Control Setup Pin is wrong!"
-msgstr "PIN Controllo Parentale errato."
+msgstr "Il pin di configurazione del controllo genitori è sbagliato!"
 
 msgid "Parent Control is not activated."
 msgstr "Controllo Parentale non attivato."
 
 msgid "Parse AutoTimer"
-msgstr "Analizzare Autotimer"
+msgstr "Analizza timer automatico"
 
 msgid "PiP"
 msgstr "PiP"
@@ -1189,22 +1190,22 @@ msgid "Plain"
 msgstr "Semplice"
 
 msgid "Playback"
-msgstr "Riprodurre"
+msgstr "Riproduzione"
 
 msgid "Playback IPTV Streams in browser"
-msgstr "Riprodurre stream IPTV nel browser"
+msgstr "Riproduzione di flussi IPTV nel browser"
 
 msgid "Playlist"
 msgstr "Playlist"
 
 msgid "Playlist format"
-msgstr "Formato playlist"
+msgstr "playlist"
 
 msgid "Power Control"
 msgstr "Power Control"
 
 msgid "PowerTimer feature not available"
-msgstr "Funzione PowerTimer non disponibile"
+msgstr "Funzione timer di avvio non disponibile"
 
 msgid "Preview"
 msgstr "Anteprima"
@@ -1228,10 +1229,10 @@ msgid "Radio"
 msgstr "Radio"
 
 msgid "Reboot Box"
-msgstr "Riavviare il ricevitore"
+msgstr "Riavvio completo"
 
 msgid "Record a maximum of # times"
-msgstr "Registrare fino a un massimo di # volte"
+msgstr "Registra un massimo di # volte"
 
 msgid "Recording"
 msgstr "Registrazione"
@@ -1240,61 +1241,61 @@ msgid "Recording Type"
 msgstr "Tipo registrazione"
 
 msgid "Refresh"
-msgstr "Aggiornare"
+msgstr "Aggiorna"
 
 msgid "Refresh Timer"
-msgstr "Aggiornare timer"
+msgstr "Aggiorna timer"
 
 msgid "Refresh automatically every"
-msgstr "Aggiornare automaticamente ogni"
+msgstr "Aggiorna automaticamente ogni"
 
 msgid "Refresh now"
-msgstr "Aggiornare adesso"
+msgstr "Aggiorna adesso"
 
 msgid "Reload"
-msgstr "Ricaricare"
+msgstr "Ricarica"
 
 msgid "Remote"
 msgstr "Telecomando"
 
 msgid "Remove Package"
-msgstr "Rimuovere pacchetto"
+msgstr "Rimuovi pacchetto"
 
 msgid "Remove filter"
-msgstr "Rimuovere il filtro"
+msgstr "Rimuovi filtro"
 
 msgid "Rename"
-msgstr "Rinominare"
+msgstr "Rinomina"
 
 msgid "Rename Bouquet"
-msgstr "Rinominare bouquet"
+msgstr "Rinomina bouquet"
 
 msgid "Rename Recording"
-msgstr "Rinominare registrazione"
+msgstr "Rinomina registrazione"
 
 msgid "Repeated"
-msgstr "Ripetitivo"
+msgstr "Ripetuto"
 
 msgid "Require client cert for HTTPS"
-msgstr "Richiedere il certificato client per HTTPS"
+msgstr "Richiedi certificato client per HTTPS"
 
 msgid "Require description to be unique"
-msgstr "Richiedere descrizione univoca"
+msgstr "Richiedi che la descrizione sia unica"
 
 msgid "Reset"
-msgstr "Azzerare"
+msgstr "Ripristina"
 
 msgid "Reset count"
-msgstr "Azzerare il conteggio"
+msgstr "Reimposta il conteggio"
 
 msgid "Restart GUI"
-msgstr "Riavviare la GUI"
+msgstr "Riavvio grafica"
 
 msgid "Restrict to bouquets"
-msgstr "Limitare ai bouquet"
+msgstr "Limita ai bouquet"
 
 msgid "Restrict to channels"
-msgstr "Limitare ai canali"
+msgstr "Limita ai canali"
 
 msgid "Root"
 msgstr "Root"
@@ -1321,199 +1322,199 @@ msgid "Satellites"
 msgstr "Satelliti"
 
 msgid "Satfinder"
-msgstr "Satfinder"
+msgstr "Misuratore segnale"
 
 msgid "Saturday"
 msgstr "Sabato"
 
 msgid "Save"
-msgstr "Salvare"
+msgstr "Salva"
 
 msgid "Screenshot"
 msgstr "Screenshot"
 
 msgid "Search"
-msgstr "Cercare"
+msgstr "Cerca"
 
 msgid "Search CSFD"
-msgstr "Cercare CSFD"
+msgstr "Cerca CSFD"
 
 msgid "Search EPG"
-msgstr "Cercare nell'EPG"
+msgstr "Cerca EPG"
 
 msgid "Search IMDb"
-msgstr "Cercare IMDb"
+msgstr "Cerca IMDb"
 
 msgid "Search KinoPoisk"
-msgstr "Cercare KinoPoisk"
+msgstr "Cerca KinoPoisk"
 
 msgid "Search TV Guide UK"
-msgstr "Cercare la guida TV del Regno Unito"
+msgstr "Cerca Guida TV del Regno Unito"
 
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr "Ricercare per nome, sd/hd/uhd o provider"
+msgstr "Cerca per nome, sd/hd/uhd o provider"
 
 msgid "Search strictness"
-msgstr "Rigore nella ricerca"
+msgstr "Rigorosità di ricerca"
 
 msgid "Search type"
-msgstr "Tipo ricerca"
+msgstr "Tipo di ricerca"
 
 msgid "Select IPK file for upload"
-msgstr "Selezionare il file IPK da caricare"
+msgstr "Seleziona il file IPK per il caricamento"
 
 msgid "Select..."
-msgstr "Selezionare..."
+msgstr "Seleziona..."
 
 msgid "Send"
-msgstr "Inviare"
+msgstr "Invia"
 
 msgid "Send Message"
-msgstr "Inviare messaggio"
+msgstr "Invia messaggio"
 
 msgid "Send a Message"
-msgstr "Inviare un messaggio"
+msgstr "Invia un messaggio"
 
 msgid "September"
 msgstr "Settembre"
 
 msgid "Service"
-msgstr "Canale"
+msgstr "Servizio"
 
 #, python-format
 msgid "Service %s added."
-msgstr "Canale %s aggiunto."
+msgstr "Servizio %s aggiunto."
 
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr "Il canale %s è già presente nel bouquet %s."
+msgstr "Il servizio %s esiste già nel bouquet %s."
 
 #, python-format
 msgid "Service %s can not be removed."
-msgstr "Il canale %s non può essere rimosso."
+msgstr "Il servizio %s non può essere rimosso."
 
 #, python-format
 msgid "Service %s is locked."
-msgstr "Il canale %s è bloccato."
+msgstr "Il servizio %s è bloccato."
 
 #, python-format
 msgid "Service %s is unlocked."
-msgstr "Il canale %s è sbloccato."
+msgstr "Il servizio %s è sbloccato."
 
 #, python-format
 msgid "Service %s moved."
-msgstr "Canale %s spostato."
+msgstr "Servizio %s spostato."
 
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr "Canale %s rimosso dal bouquet %s."
+msgstr "Servizio %s rimosso dal bouquet %s."
 
 #, python-format
 msgid "Service %s removed."
-msgstr "Canale %s rimosso."
+msgstr "Servizio %s rimosso."
 
 msgid "Service ID (SID)"
-msgstr "ID Canale (SID)"
+msgstr "ID servizio (SID)"
 
 msgid "Service can not be moved."
-msgstr "Il canale non può essere spostato."
+msgstr "Il servizio non può essere spostato."
 
 msgid "Service can not be renamed."
-msgstr "Il canale non può essere rinominato."
+msgstr "Il servizio non può essere rinominato."
 
 msgid "Service is not an alternative."
-msgstr "Il canale non è un'alternativa."
+msgstr "Il servizio non è un'alternativa."
 
 msgid "Service renamed successfully."
-msgstr "Canale rinominato con successo."
+msgstr "Servizio rinominato correttamente."
 
 msgid "Services"
-msgstr "Canali"
+msgstr "Servizi"
 
 msgid "Serving stream"
 msgstr "Stream di supporto"
 
 msgid "Set maximum duration"
-msgstr "Impostare durata massima"
+msgstr "Imposta la durata massima"
 
 msgid "Settings"
 msgstr "Impostazioni"
 
 msgid "Show EPG for"
-msgstr "Mostrare EPG per"
+msgstr "Mostra EPG per"
 
 msgid "Show Full OpenWebif"
-msgstr "Mostrare OpenWebif completa"
+msgstr "Mostra OpenWebif completo"
 
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr "Mostrare i canali IPTV nella selezione (es. Autotimer)"
+msgstr "Mostra canali IPTV nella selezione"
 
 msgid "Show all packages"
-msgstr "Mostrare tutti i pacchetti"
+msgstr "Mostra tutti i pacchetti"
 
 msgid "Show box name in header"
-msgstr "Mostrare il nome del ricevitore nell'intestazione"
+msgstr "Mostra il nome della casella nell'intestazione"
 
 msgid "Show details"
-msgstr "Mostrare dettagli"
+msgstr "Mostra i dettagli"
 
 msgid "Show full remote"
-msgstr "Mostrare l'intero telecomando"
+msgstr "Mostra telecomando completo"
 
 msgid "Show in Extensions menu"
-msgstr "Mostrare nel menu Estensioni"
+msgstr "Mostra nel menu Estensioni"
 
 msgid "Show picon background"
-msgstr "Mostrare lo sfondo dei picon"
+msgstr "Mostra lo sfondo del picon"
 
 msgid "Show picons"
-msgstr "Mostrare i picon"
+msgstr "Mostra picon"
 
 msgid "Show picons in channel list"
-msgstr "Mostrare i Picon in elenco canali"
+msgstr "Mostra picon nell'elenco dei canali"
 
 msgid "Show service type in channel list"
-msgstr "Mostrare il tipo di canale in elenco canali"
+msgstr "Mostra il tipo di servizio nell'elenco dei canali"
 
 msgid "Shutdown"
 msgstr "Spegnimento"
 
 msgid "Signal Power (AGC)"
-msgstr "Potenza segnale (AGC)"
+msgstr "Potenza del segnale (AGC)"
 
 msgid "Signal Quality (SNR DB)"
-msgstr "Qualità segnale (SNR DB)"
+msgstr "Qualità del segnale (DB SNR)"
 
 msgid "Signal Quality (SNR)"
-msgstr "Qualità segnale (SNR)"
+msgstr "Qualità del segnale (SNR)"
 
 msgid "Simulate"
-msgstr "Simulare"
+msgstr "Simulazione"
 
 msgid "Site and sources"
-msgstr "Sito e sorgenti"
+msgstr "Sito e fonti"
 
 msgid "Skins"
 msgstr "Skin"
 
 msgid "SleepTimer error"
-msgstr "Errore SleepTimer"
+msgstr "Errore del timer di spegnimento"
 
 msgid "Sleeptimer has been disabled"
-msgstr "Sleeptimer è stato disabilitato"
+msgstr "Il timer di spegnimento è stato disabilitato"
 
 msgid "Sleeptimer is disabled"
-msgstr "Sleeptimer è disabilitato"
+msgstr "Il timer di spegnimento è disabilitato"
 
 msgid "Sleeptimer is enabled"
-msgstr "Sleeptimer è abilitato"
+msgstr "Il timer di spegnimento è abilitato"
 
 #, python-format
 msgid "Sleeptimer set to %d minutes"
-msgstr "Sleeptimer impostato a %d minuti"
+msgstr "Il timer di spegnimento è impostato a %d minuti"
 
 msgid "Small remote layout"
-msgstr ""
+msgstr "Piccolo layout remoto"
 
 msgid "Software"
 msgstr "Software"
@@ -1534,13 +1535,13 @@ msgid "Start"
 msgstr "Inizio"
 
 msgid "Start Instant Record"
-msgstr "Avviare immediatamente la registrazione"
+msgstr "Avvia registrazione istantanea"
 
 msgid "Start time is after end time"
-msgstr "L’ora di inizio è successiva all'ora di fine"
+msgstr "L'ora di inizio è successiva all'ora di fine"
 
 msgid "Start typing..."
-msgstr "Iniziare a digitare..."
+msgstr "Inizia a digitare..."
 
 msgid "State"
 msgstr "Stato"
@@ -1567,7 +1568,7 @@ msgid "Subnet mask"
 msgstr "Maschera di rete"
 
 msgid "Subservices"
-msgstr "Sottocanali"
+msgstr "Sotto servizi"
 
 msgid "Sun"
 msgstr "Dom"
@@ -1633,11 +1634,11 @@ msgstr "Il timer '%s' è stato %s con successo"
 
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
-msgstr "Il timer '%s' è stato rimosso con successo"
+msgstr "Il timer '%s' è stato cancellato con successo"
 
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Il timer '%s' è registrato. Non disabilitato."
+msgstr "Il timer '%s' è ora registrato! Non disabilitato!"
 
 msgid "Theme"
 msgstr "Tema"
@@ -1646,7 +1647,7 @@ msgid "Theme mode"
 msgstr "Modalità tema"
 
 msgid "This service can not be added."
-msgstr "Questo canale non può essere aggiunto."
+msgstr "Questo servizio non può essere aggiunto."
 
 msgid "Thu"
 msgstr "Gio"
@@ -1672,40 +1673,40 @@ msgstr "Timer '%s' aggiunto"
 
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr "Timer '%s' già esistente."
+msgstr "Il timer '%s' esiste già!"
 
 #, python-format
 msgid "Timer '%s' changed"
-msgstr "Timer '%s' modificato"
+msgstr "Il timer '%s' è cambiato"
 
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr "Timer '%s' non abilitato per conflitto"
+msgstr "Il timer '%s' non è abilitato a causa di un conflitto"
 
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
-msgstr "Timer '%s' non salvato per conflitto"
+msgstr "Il timer '%s' non è stato salvato a causa di un conflitto"
 
 msgid "Timer Added"
 msgstr "Timer aggiunto"
 
 msgid "Timer Conflict"
-msgstr "Conflitto timer"
+msgstr "Conflitto tra timer"
 
 msgid "Timer added"
 msgstr "Timer aggiunto"
 
 msgid "Timer conflict detected! Not recording!"
-msgstr "Rilevato conflitto nel timer: registrazione non avviata."
+msgstr "Rilevato conflitto di timer! Impossibile registrare!"
 
 msgid "Timer type"
 msgstr "Tipo di timer"
 
 msgid "TimerList has been saved"
-msgstr "Elenco dei timer salvato"
+msgstr "La lista dei timer è stata salvata"
 
 msgid "Timerlist"
-msgstr "Elenco timer"
+msgstr "Lista dei timer"
 
 msgid "Timers"
 msgstr "Timer"
@@ -1720,7 +1721,7 @@ msgid "Today"
 msgstr "Oggi"
 
 msgid "Toggle Standby"
-msgstr "Commutare standby"
+msgstr "Standby"
 
 msgid "Transcode"
 msgstr "Transcodifica"
@@ -1729,7 +1730,7 @@ msgid "Translation to Spanish"
 msgstr "Traduzione in spagnolo"
 
 msgid "Try guessing"
-msgstr "Tentare di indovinare"
+msgstr "Prova a indovinare"
 
 msgid "Tu"
 msgstr "Ma"
@@ -1767,49 +1768,49 @@ msgid "Upcoming Events"
 msgstr "Prossimi eventi"
 
 msgid "Update"
-msgstr "Aggiornare"
+msgstr "Aggiornamento"
 
 msgid "Update Package"
-msgstr "Aggiornare pacchetto"
+msgstr "Aggiornamento pacchetto"
 
 msgid "Update from feed"
-msgstr "Aggiornare da feed"
+msgstr "Aggiornamento dai feed"
 
 msgid "Upgrade all packages"
-msgstr "Aggiornare tutti i pacchetti"
+msgstr "Aggiorna tutti i pacchetti"
 
 msgid "Upload File Error"
-msgstr "Errore di caricamento file"
+msgstr "Errore di caricamento del file"
 
 msgid "Upload package"
-msgstr "Caricare pacchetto"
+msgstr "Carica pacchetto"
 
 msgid "Uploaded Files"
 msgstr "File caricati"
 
 msgid "Use Channelname for screenshots"
-msgstr "Utilizzare il nome canale negli screenshot"
+msgstr "Usa nome canale per screenshot"
 
 msgid "Use a custom location"
-msgstr "Usare una posizione personalizzata"
+msgstr "Usa posizione personalizzata"
 
 msgid "Use as PiP if possible"
-msgstr "Utilizzare come PiP se possibile"
+msgstr "Usa come PiP se possibile"
 
 msgid "Use classic interface"
-msgstr "Utilizzare l'interfaccia classica"
+msgstr "Usa interfaccia classica"
 
 msgid "Use custom Color"
-msgstr "Utilizzare un colore personalizzato"
+msgstr "Usa colore personalizzato"
 
 msgid "Use custom box name"
-msgstr "Usare un nome ricevitore personalizzato"
+msgstr "Usa nome personalizzato per il ricevitore"
 
 msgid "Use modern design"
-msgstr "Utilizzare il design moderno"
+msgstr "Usa design moderno"
 
 msgid "Use modern interface"
-msgstr "Usare l'interfaccia moderna"
+msgstr "Usa interfaccia moderna"
 
 msgid "VPS"
 msgstr "VPS"
@@ -1854,7 +1855,7 @@ msgid "Wakeup"
 msgstr "Riattivare"
 
 msgid "Warning"
-msgstr "Warning"
+msgstr "Avvertimento"
 
 msgid "We"
 msgstr "Me"
@@ -1875,20 +1876,20 @@ msgid "Weekly (Sunday)"
 msgstr "Settimanale (domenica)"
 
 msgid "Widescreen"
-msgstr "Widescreen"
+msgstr "A tutto schermo"
 
 msgid "Without auth only local access is allowed!"
-msgstr "Senza autorizzazione è consentito solo l'accesso locale."
+msgstr "Senza autorizzazione è consentito solo l'accesso locale!"
 
 msgid "Wizard"
-msgstr "Wizard"
+msgstr "Procedura guidata"
 
 msgid "Would you like to save your changes?"
-msgstr "Salvare le modifiche?"
+msgstr "Vuoi salvare le modifiche?"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Formato del parametro errato: 'set=%s'. utilizzare (set=set15) "
+msgstr "Formato parametro errato 'set=%s'. Usa set=set15"
 
 msgid "YYYY-MM-DD"
 msgstr "AAAA-MM-GG"
@@ -1897,7 +1898,7 @@ msgid "Yes"
 msgstr "Sì"
 
 msgid "Yes/No"
-msgstr "Sì/No"
+msgstr "Sì o No"
 
 msgid "Yesterday"
 msgstr "Ieri"
@@ -1906,13 +1907,13 @@ msgid "Zap"
 msgstr "Zap"
 
 msgid "Zap & Record"
-msgstr "Zap & Registrare"
+msgstr "Zap e registra"
 
 msgid "Zap before streaming"
 msgstr "Zap prima dello streaming"
 
 msgid "Zap to"
-msgstr "Passare al canale"
+msgstr "Passa al canale"
 
 msgid "Zapped to"
 msgstr "Passato al canale"
@@ -1921,91 +1922,91 @@ msgid "any time"
 msgstr "ogni volta"
 
 msgid "auto"
-msgstr "Automatica"
+msgstr "automatico"
 
 msgid "box_ip"
 msgstr "box_ip"
 
 msgid "case-insensitive"
-msgstr "Non distinguere maiuscole/minuscole:"
+msgstr "senza distinzione tra maiuscole e minuscole"
 
 msgid "case-sensitive"
-msgstr "Distinguere Maiusc. - minusc."
+msgstr "sensibile alle maiuscole e alle minuscole"
 
 msgid "descramble and record ecm"
-msgstr "Decodificare e registrare ecm"
+msgstr "decodifica e registra ecm"
 
 msgid "description contains"
 msgstr "la descrizione contiene"
 
 msgid "description match"
-msgstr "corrispondenza descrizione"
+msgstr "corrispondenza della descrizione"
 
 msgid "disabled"
 msgstr "disabilitato"
 
 msgid "do nothing"
-msgstr "Non fare nulla"
+msgstr "non fare nulla"
 
 msgid "don't descramble, record ecm"
-msgstr "Non decodificare, registrare ecm"
+msgstr "non decodificare, registra ecm"
 
 msgid "error! Loading Page"
-msgstr "Errore nel caricamento della pagina"
+msgstr "errore! Caricamento pagina"
 
 msgid "exact title match"
-msgstr "Corrispondenza esatta titolo"
+msgstr "corrispondenza esatta del titolo"
 
 msgid "favourite desc match"
 msgstr "corrispondenza descrizione preferita"
 
 msgid "finished"
-msgstr "Completato"
+msgstr "finito"
 
 msgid "go to deep standby"
-msgstr "Deep standby"
+msgstr "spegni il ricevitore"
 
 msgid "go to standby"
-msgstr "Standby"
+msgstr "vai a standby"
 
 msgid "hour"
 msgstr "ora"
 
 msgid "kB"
-msgstr "KB"
+msgstr "kB"
 
 msgid "loading"
-msgstr "Caricamento"
+msgstr "caricamento"
 
 msgid "manual/disabled"
-msgstr "Manuale / disabilitato"
+msgstr "manuale o disabilitato"
 
 msgid "mins"
 msgstr "minuti"
 
 msgid "minute"
-msgstr "Minuto"
+msgstr "minuto"
 
 msgid "no description available"
-msgstr "Nessuna descrizione disponibile"
+msgstr "nessuna descrizione disponibile"
 
 msgid "none/IPv4-only network"
-msgstr "Nessuno / Solo rete IPv4"
+msgstr "nessuna o sola rete IPv4"
 
 msgid "normal"
-msgstr "Normale"
+msgstr "normale"
 
 msgid "on day"
 msgstr "il giorno"
 
 msgid "on weekday"
-msgstr "In un giorno feriale"
+msgstr "nei giorni feriali"
 
 msgid "one two three four unknown command"
-msgstr "Uno due tre quattro comando sconosciuto"
+msgstr "uno due tre quattro comando sconosciuto"
 
 msgid "partial title match"
-msgstr "Corrispondenza parziale titolo"
+msgstr "corrispondenza parziale titolo"
 
 msgid "r/o"
 msgstr "r/o"
@@ -2017,89 +2018,89 @@ msgid "Receiver"
 msgstr "Ricevitore"
 
 msgid "record"
-msgstr "Registrazione"
+msgstr "registrazione"
 
 msgid "regex match (experimental)"
-msgstr "Corrispondenza regex (sperimentale)"
+msgstr "corrispondenza regolare (sperimentale)"
 
 msgid "remove"
-msgstr "Rimuovere"
+msgstr "rimuovi"
 
 msgid "running"
-msgstr "In corso"
+msgstr "in esecuzione"
 
 msgid "seconds"
-msgstr "Secondi"
+msgstr "secondi"
 
 msgid "select bouquets"
-msgstr "Selezionare bouquet"
+msgstr "seleziona bouquet"
 
 msgid "select channels"
-msgstr "Selezionare canali"
+msgstr "seleziona canali"
 
 msgid "select tags"
-msgstr "Selezionare etichette"
+msgstr "seleziona etichette"
 
 msgid "short description contains"
 msgstr "la descrizione breve contiene"
 
 msgid "short description match"
-msgstr "Corrispondenza descrizione breve"
+msgstr "la descrizione breve corrisponde"
 
 msgid "standard"
-msgstr "Standard"
+msgstr "standard"
 
 msgid "static"
-msgstr "Statico"
+msgstr "statico"
 
 msgid "this service is protected by a parental control pin"
-msgstr "Canale protetto da PIN di controllo parentale"
+msgstr "questo servizio è protetto da un pin di controllo parentale"
 
 msgid "title contains"
-msgstr "Nel titolo"
+msgstr "titolo contiene"
 
 msgid "title ends with"
-msgstr "Il titolo finisce con"
+msgstr "titolo finisce con"
 
 msgid "title or description match"
-msgstr "Corrispondenza titolo o descrizione"
+msgstr "titolo o descrizione corrispondenti"
 
 msgid "title or short description match"
-msgstr "Corrispondenza titolo o descrizione breve"
+msgstr "titolo o descrizione breve corrispondenti"
 
 msgid "title starts with"
-msgstr "Il titolo inizia con"
+msgstr "titolo inizia con"
 
 msgid "transcoded"
-msgstr "Transcodificato"
+msgstr "transcodificato"
 
 #, python-format
 msgid "type %s is not a number"
-msgstr "Il tipo %s non è un numero"
+msgstr "tipo %s non è un numero"
 
 msgid "unknown"
-msgstr "Sconosciuto"
+msgstr "sconosciuto"
 
 msgid "using"
 msgstr "utilizzando"
 
 msgid "via"
-msgstr "tramite"
+msgstr "attraverso"
 
 msgid "waiting"
-msgstr "In attesa"
+msgstr "in attesa"
 
 msgid "weekday"
-msgstr "Giorni feriali"
+msgstr "giorno feriale"
 
 msgid "weekend"
-msgstr "weekend"
+msgstr "fine settimana"
 
 msgid "wrong filetype"
-msgstr "Tipo di file errato"
+msgstr "tipo di file sbagliato"
 
 msgid "zap"
-msgstr "Zap"
+msgstr "zap"
 
 #~ msgid "Audio"
 #~ msgstr "Audio"
