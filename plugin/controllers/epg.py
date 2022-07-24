@@ -96,8 +96,9 @@ def _debug(msg):
 def getFuzzyDayTime(timestamp, defaultFormat):
 	timeNow = int(time())
 	timeDiff = timestamp - timeNow
-	deltaDays = timedelta(seconds=timeDiff).days
-	if deltaDays >= -2 and deltaDays <= 2:
+	deltaDays = timedelta(seconds = timeDiff).days
+
+	if -2 <= deltaDays <= 2:
 		dayDiff = localtime(timestamp)[2] - localtime(timeNow)[2]
 		if dayDiff == -1:
 			text = strftime(TEXT_YESTERDAY, (localtime(timestamp)))
@@ -125,7 +126,7 @@ def getCustomTimeFormats(timestamp):
 
 
 #TODO: move to utilities
-def getFuzzyHoursMinutes(timestamp=0):
+def getFuzzyHoursMinutes(timestamp = 0):
 	timeStruct = gmtime(timestamp)
 	hours = timeStruct[3]
 	mins = timeStruct[4]
@@ -152,7 +153,7 @@ def getFuzzyHoursMinutes(timestamp=0):
 	return formatted
 
 
-def getBouquetServices(bqRef, fields='SN'):
+def getBouquetServices(bqRef, fields = 'SN'):
 	bqServices = eServiceCenter.getInstance().list(eServiceReference(bqRef))
 
 	return bqServices.getContent(fields)
@@ -176,16 +177,13 @@ class Epg():
 	def __init__(self):
 		self._instance = eEPGCache.getInstance()
 
-
-	def getEncoding(self):
+	@staticmethod
+	def getEncoding():
 		return config.OpenWebif.epg_encoding.value
 
-	# .. note::
-	#
-	# 	One may use
-	# 	:py:func:`controllers.events.EventsController.search`
+
 	#TODO: make search type fully user-selectable
-	def search(self, queryString, searchFullDescription=False):
+	def search(self, queryString, searchFullDescription = False):
 		_debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
 		if not queryString:
 			_debug("A required parameter 'queryString' is missing!")
@@ -207,7 +205,10 @@ class Epg():
 				queryType = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
 
 		criteria = (SEARCH_FIELDS, MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
+		processStartTime = datetime.now()
 		epgEvents = self._instance.search(criteria)
+		processDuration = datetime.now() - processStartTime
+		_debug("process took {} seconds".format(processDuration))
 
 		_debug(epgEvents)
 		return epgEvents
@@ -229,13 +230,16 @@ class Epg():
 		return epgEvents
 
 
-	def _transformEventData(self, eventFields, *args):
+	@staticmethod
+	def _transformEventData(eventFields, *args):
 		_debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
 		# _debug(*args)
 
 		eventData = {}
 		service = {}
+		startTimestamp = None
 		currentTimestamp = None
+		duration = None
 		shortDescription = None
 		longDescription = None
 
@@ -318,12 +322,12 @@ class Epg():
 		eventData['service'] = service
 		eventData['description'] = longDescription or shortDescription
 
-		print(dumps(eventData, indent=2))
+		print(dumps(eventData, indent = 2))
 		# return args
 		return eventData
 
 
-	def _queryEPG(self, fields='', criteria=[]):
+	def _queryEPG(self, fields = '', criteria = []):
 		if not fields or not criteria:
 			_debug("A required parameter 'fields' or [criteria] is missing!")
 			# return None
@@ -333,7 +337,10 @@ class Epg():
 		def _callEventTransform(*args):
 			return self._transformEventData(fields, *args)
 
+		processStartTime = datetime.now()
 		epgEvents = self._instance.lookupEvent(criteria, _callEventTransform)
+		processDuration = datetime.now() - processStartTime
+		_debug("process took {} seconds".format(processDuration))
 
 		# for evt in epgEvents:
 		# 	_callEventTransform
@@ -397,7 +404,7 @@ class Epg():
 		return epgEvents
 
 
-	def getChannelEvents(self, sRef, startTime, endTime=None):
+	def getChannelEvents(self, sRef, startTime, endTime = None):
 		_debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
 		if not sRef:
 			_debug("A required parameter 'sRef' is missing!")
@@ -405,8 +412,7 @@ class Epg():
 		else:
 			sRef = str(sRef)
 
-		criteria = []
-		criteria.append((sRef, NOW_EVENT, startTime, endTime))
+		criteria = [(sRef, NOW_EVENT, startTime, endTime)]
 		epgEvents = self._queryEPG(SINGLE_CHANNEL_FIELDS, criteria)
 
 		_debug(epgEvents)
@@ -423,7 +429,7 @@ class Epg():
 		return self._getChannelNowOrNext(sRef, NEXT_EVENT)
 
 
-	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields=MULTI_CHANNEL_FIELDS):
+	def getMultiChannelEvents(self, sRefs, startTime, endTime = None, fields = MULTI_CHANNEL_FIELDS):
 		_debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
@@ -441,7 +447,7 @@ class Epg():
 		return epgEvents
 
 
-	def getMultiChannelNowNextEvents(self, sRefs, fields=MULTI_NOWNEXT_FIELDS):
+	def getMultiChannelNowNextEvents(self, sRefs, fields = MULTI_NOWNEXT_FIELDS):
 		_debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
 			_debug("A required parameter [sRefs] is missing!")
@@ -460,7 +466,7 @@ class Epg():
 		return epgEvents
 
 
-	def getBouquetEvents(self, bqRef, startTime, endTime=None):
+	def getBouquetEvents(self, bqRef, startTime, endTime = None):
 		_debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (bqRef, startTime, endTime))
 		sRefs = getBouquetServices(bqRef, 'S')
 
@@ -549,7 +555,7 @@ class Epg():
 		# epgEvent.getPdcPil()
 
 
-	def getEventByTime(self, sRef, eventTime, direction=NOW_EVENT):
+	def getEventByTime(self, sRef, eventTime, direction = NOW_EVENT):
 		_debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
 		if not sRef or not eventTime:
 			_debug("A required parameter 'sRef' or eventTime is missing!")
