@@ -10,6 +10,7 @@ cd sourcefiles
 npm install
 npm install path-exists
 npm install semver
+npm update
 npm ci --prefix modern
 npm run build-css
 npm run build-classic-css

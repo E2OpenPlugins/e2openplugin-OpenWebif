@@ -533,7 +533,7 @@ def getInfo(session=None, need_fullinfo=False):
 						fedata = feinfo and hasattr(feinfo, "getFrontendData") and feinfo.getFrontendData()
 						tuner_num = fedata and "tuner_number" in fedata and fedata.get("tuner_number")
 						if tuner_num is not None:
-							if tuner_num in serviceNames: # this tuner is recording more than one timer
+							if tuner_num in serviceNames:  # this tuner is recording more than one timer
 								serviceNames[tuner_num] += ", " + removeBad(timer.service_ref.getServiceName())
 							else:
 								serviceNames[tuner_num] = removeBad(timer.service_ref.getServiceName())
@@ -633,7 +633,7 @@ def GetStreamInfo():
 					"name": servicename,
 					"eventname": eventname,
 					"ip": stream.clientIP,
-					"type": "S" # TODO : Transcoding
+					"type": "S"  # TODO : Transcoding
 				})
 
 	return streams

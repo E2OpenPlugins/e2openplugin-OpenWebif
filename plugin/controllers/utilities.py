@@ -325,11 +325,11 @@ def getEventInfoProvider(moviedb):
 	extEventInfoProviders = {
 		'kinopoisk': {
 			'id': 'kinopoisk',
-			'name': 'KinoPoisk', # КиноПоиск
+			'name': 'KinoPoisk',  # КиноПоиск
 			'url': 'https://www.kinopoisk.ru/index.php?kp_query='
 		},
 		'csfd': {
-			'name': 'CSfd', # Česko-Slovenská filmová databáze
+			'name': 'CSfd',  # Česko-Slovenská filmová databáze
 			'url': 'https://www.csfd.cz/hledat/?q='
 		},
 		'tvguideuk': {

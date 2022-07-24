@@ -9,9 +9,9 @@
     "commander": "^7.2.0",
     "glob-uglifyjs": "^2.0.0",
     "mkdirp": "^1.0.4",
-    "node-sass": "^7.0.0",
+    "node-sass": "^7.0.1",
     "prettier": "^2.3.1",
-    "sass": "^1.35.1"
+    "sass": "^1.53.0"
   },
   "resolutions": {
     "node-forge": "~0.10.0",

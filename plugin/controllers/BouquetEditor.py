@@ -12,7 +12,7 @@ from __future__ import print_function
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from enigma import eServiceReference, eServiceCenter, eDVBDB
 from Components.Sources.Source import Source
-from Screens.ChannelSelection import MODE_TV  #,service_types_tv, MODE_RADIO
+from Screens.ChannelSelection import MODE_TV  # ,service_types_tv, MODE_RADIO
 from Components.config import config
 from os import remove, path, popen
 from Screens.InfoBar import InfoBar
@@ -324,7 +324,7 @@ class BouquetEditor(Source):
 					fd.write("#NAME %s\n" % sName)
 			except (IOError, OSError) as err:
 				print("Error %d: Unable to create file '%s'!  (%s)" % (err.errno, filename, err.strerror))
-		
+
 		bouquetRef = eServiceReference(sBouquetRef)
 		mutableBouquetList = self.getMutableList(bouquetRef)
 		if mutableBouquetList is not None:

@@ -37,11 +37,15 @@ jobs:
 
       - name: Build python 3.9
         run: |
+          sudo apt-get -q update
+          sudo apt-get install -y nodejs npm dos2unix
           pip3 install Cheetah3
           pip3 install six
+          pip3 install autopep8
           python -m compileall -l . -r 10 -q
           cheetah compile -R plugin
           python testsuite/evil_eval.py
+          ./CI/build.sh
 
       - uses: actions/checkout@v2
         with:
@@ -64,7 +68,6 @@ jobs:
           python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
           cheetah compile -R plugin
           python testsuite/evil_eval.py
-          ./CI/build.sh
           ./CI/create_ipk.sh
           ./CI/create_ipk.sh vti
           ./CI/create_ipk.sh deb

@@ -28,8 +28,10 @@ from twisted.web import resource
 from Components.config import config
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
+
 def createResult(result, resulttext):
 	return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>%s</e2state><e2statetext>%s</e2statetext></e2simplexmlresult>' % (b"true" if result else b"false", resulttext)
+
 
 class WOLSetupController(resource.Resource):
 

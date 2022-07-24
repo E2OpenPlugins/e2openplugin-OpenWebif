@@ -475,11 +475,9 @@ def getChannels(idbouquet, stype):
 	index = -2
 
 	for channel in channels:
-		index = index + 2 # each channel has a `now` and a `next` event entry
-		chan = {
-			'ref': quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
-		}
-
+		index = index + 2  # each channel has a `now` and a `next` event entry
+		chan = {}
+		chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 		if chan['ref'].split(":")[1] == '320':  # Hide hidden number markers
 			continue
 		chan['name'] = filterName(channel[1])
@@ -576,7 +574,6 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 			for sitem in slist:
 				allproviders[sitem[0]] = provider[1]
 
-
 	bqservices = serviceHandler.list(eServiceReference(sRef))
 	slist = bqservices and bqservices.getContent("CN" if removeNameFromsref else "SN", True)
 
@@ -589,12 +586,12 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 			sfulllist = serviceslist and serviceslist.getContent("C", True)
 			for sref in sfulllist:
 				flags = int(sref.split(":")[1])
-				hs = flags & 512 #eServiceReference.isInvisible
-				sp = flags & 256 #eServiceReference.isNumberedMarker
+				hs = flags & 512  # eServiceReference.isInvisible
+				sp = flags & 256  # eServiceReference.isNumberedMarker
 				#sp = (sref[:7] == '1:832:D') or (sref[:7] == '1:832:1') or (sref[:6] == '1:320:')
 				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
 					oPos = oPos + 1
-					if not sp and flags & 64: #eServiceReference.isMarker:
+					if not sp and flags & 64:  # eServiceReference.isMarker:
 						oPos = oPos - 1
 		showiptv = True
 		if noiptv:
@@ -602,7 +599,7 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 				showiptv = False
 
 		flags = int(sitem[0].split(":")[1])
-		sp = flags & 256 #(sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
+		sp = flags & 256  # (sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
 		if sp or (not (flags & 512) and not (flags & 64)):
 			pos = pos + 1
 		if showiptv and (not flags & 512 or showHidden):
@@ -627,7 +624,7 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 	timeelapsed = datetime.now() - starttime
 	return {
 		"result": True,
-		"processingtime" : "{}".format(timeelapsed),
+		"processingtime": "{}".format(timeelapsed),
 		"pos": pos,
 		"services": services
 	}
@@ -655,7 +652,7 @@ def getAllServices(type, noiptv=False, nolastscanned=False, removeNameFromsref=F
 
 	return {
 		"result": True,
-		"processingtime" : "{}".format(timeelapsed),
+		"processingtime": "{}".format(timeelapsed),
 		"services": services
 	}
 
@@ -726,7 +723,8 @@ def getEventDesc(ref, idev, encode=True):
 	ref = unquote(ref)
 	epg = Epg()
 	description = epg.getEventDescription(ref, idev)
-	description = description and convertDesc(description, encode) or "No description available" #TODO: translate #TODO: move to epy.py?
+	# 'ESX'
+	description = description and convertDesc(description, encode) or "No description available"  # TODO: translate #TODO: move to epy.py?
 
 	return {"description": description}
 
@@ -772,7 +770,9 @@ def getTimerEventStatus(epgEvent, sRef, timers=None):
 
 def getEvent(sRef, eventId, encode=True):
 	epg = Epg()
-	epgEvent = epg.getEvent(sRef, eventId)
+	event = epg.getEvent(ref, idev)
+	# 'IBDTSENRW'
+	eventLookupTable = 'IBDTSENRW'  # TODO: do this betterly (eventFields)
 
 	info = {}
 
@@ -1170,12 +1170,13 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 					timerlist[str(timer.service_ref)] = []
 				timerlist[str(timer.service_ref)].append(timer)
 
-		for epgEvent in epgEvents:
-			sref = epgEvent['service']['reference']
+		eventLookupTable = 'IBTSRND'  # TODO: do this betterly (eventFields)
+		for event in events:
+			sref = event[4]
 			# Cut description
 			f = sref.rfind("::")
 			if f != -1:
-				sref = sref[:f+1]
+				sref = sref[:f + 1]
 			# If we can expect that events and timerlist are sorted by begin time,
 			# we should be able to always pick the first timer from the timers list
 			# and check if it belongs to the currently processed event.
@@ -1186,7 +1187,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			timer = None
 			if sref in timerlist and len(timerlist[sref]) > 0:
 				for i, first in enumerate(timerlist[sref]):
-					if first.begin <= epgEvent['dateTime']['start'] and epgEvent['dateTime']['end'] - 120 <= first.end:
+					if first.begin <= event[1] and event[1] + event[6] - 120 <= first.end:
 						timer = getTimerDetails(first)
 						timerlist[sref] = timerlist[sref][i:]
 						break

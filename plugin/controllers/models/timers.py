@@ -187,7 +187,6 @@ def getTimers(session):
 		if hasattr(timer, "ice_timer_id"):
 			ice_timer_id = timer.ice_timer_id or -1
 
-
 		# switch back to old way.
 		#fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
 		#fuzzyEnd = ""
