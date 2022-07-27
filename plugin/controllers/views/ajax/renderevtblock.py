@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from time import localtime, strftime
 from six.moves.urllib.parse import quote
