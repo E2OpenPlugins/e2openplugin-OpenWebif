@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 ##########################################################################
@@ -1522,7 +1523,7 @@ class WebController(BaseController):
 			return res
 		bqRef = getUrlArg(request, "bRef")
 
-		return getBouquetNowNextEpg(bqRef, Epg.NOW, self.isJson)
+		return getBouquetNowNextEpg(bqRef, EPG.NOW, self.isJson)
 
 	# http://enigma2/api/epgnext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
 	# http://enigma2/web/epgnext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
@@ -1534,7 +1535,7 @@ class WebController(BaseController):
 
 		# from Components.Sources.EventInfo import EventInfo
 		# print(EventInfo(self.session.nav, EventInfo.NEXT).getEvent().getBeginTime())
-		return getBouquetNowNextEpg(bqRef, Epg.NEXT, self.isJson)
+		return getBouquetNowNextEpg(bqRef, EPG.NEXT, self.isJson)
 
 	# http://enigma2/api/epgnownext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
 	# http://enigma2/web/epgnownext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
@@ -1544,7 +1545,7 @@ class WebController(BaseController):
 		if res:
 			return res
 		bqRef = getUrlArg(request, "bRef")
-		ret = getBouquetNowNextEpg(bqRef, Epg.NOW_NEXT, self.isJson)
+		ret = getBouquetNowNextEpg(bqRef, EPG.NOW_NEXT, self.isJson)
 		info = getCurrentService(self.session)
 		ret["info"] = info
 		return ret
@@ -1653,7 +1654,7 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(getUrlArg(request, "sRef"), Epg.NOW, self.isJson)
+		return getNowNextEpg(getUrlArg(request, "sRef"), EPG.NOW, self.isJson)
 
 	# http://enigma2/api/epgservicenext?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
 	# http://enigma2/web/epgservicenext?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
@@ -1661,7 +1662,7 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(getUrlArg(request, "sRef"), Epg.NEXT, self.isJson)
+		return getNowNextEpg(getUrlArg(request, "sRef"), EPG.NEXT, self.isJson)
 
 	# http://enigma2/api/epgsimilar?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A&eventid=32645
 	# http://enigma2/web/epgsimilar?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A&eventid=32645
@@ -1716,7 +1717,7 @@ class WebController(BaseController):
 
 		"""
 		info = getCurrentService(self.session)
-		now = getNowNextEpg(info["ref"], Epg.NOW, self.isJson)
+		now = getNowNextEpg(info["ref"], EPG.NOW, self.isJson)
 		if len(now["events"]) > 0:
 			now = now["events"][0]
 			now["provider"] = info["provider"]
@@ -1736,7 +1737,7 @@ class WebController(BaseController):
 				"genre": "",
 				"genreid": 0
 			}
-		next = getNowNextEpg(info["ref"], Epg.NEXT, self.isJson)
+		next = getNowNextEpg(info["ref"], EPG.NEXT, self.isJson)
 		if len(next["events"]) > 0:
 			next = next["events"][0]
 			next["provider"] = info["provider"]

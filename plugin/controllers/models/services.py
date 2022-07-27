@@ -931,9 +931,9 @@ def getBouquetNowNextEpg(bqRef, nowOrNext, encode=False):
 	epg = EPG()
 	ret = []
 
-	if nowOrNext == Epg.NOW:
+	if nowOrNext == EPG.NOW:
 		epgEvents = epg.getBouquetNowEvents(bqRef)
-	elif nowOrNext == Epg.NEXT:
+	elif nowOrNext == EPG.NEXT:
 		epgEvents = epg.getBouquetNextEvents(bqRef)
 	else:
 		epgEvents = epg.getBouquetNowNextEvents(bqRef)
@@ -977,7 +977,7 @@ def getNowNextEpg(sRef, nowOrNext, encode=False):
 	ret = []
 	epg = EPG()
 
-	if nowOrNext == Epg.NOW:
+	if nowOrNext == EPG.NOW:
 		epgEvent = epg.getChannelNowEvent(sRef)
 	else:
 		epgEvent = epg.getChannelNextEvent(sRef)
