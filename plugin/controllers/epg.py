@@ -151,7 +151,7 @@ class EPG():
 
 		logger.debug(tp.getTimeTaken())
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -170,7 +170,7 @@ class EPG():
 
 		logger.debug(tp.getTimeTaken())
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -199,7 +199,7 @@ class EPG():
 
 		logger.debug(tp.getTimeTaken())
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -232,7 +232,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._queryEPG(BOUQUET_NOWNEXT_FIELDS, criteria)
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -249,7 +249,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._queryEPG(SINGLE_CHANNEL_FIELDS, criteria)
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -278,7 +278,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._queryEPG(fields, criteria)
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -298,7 +298,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._queryEPG(fields, criteria)
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
