@@ -42,7 +42,7 @@ from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternat
 from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP, PY3
 from Plugins.Extensions.OpenWebif.controllers.i18n import _, tstrings
 from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH
-from Plugins.Extensions.OpenWebif.controllers.epg import Epg
+from Plugins.Extensions.OpenWebif.controllers.epg import EPG
 
 try:
 	from Components.Converter.genre import getGenreStringLong
@@ -467,7 +467,7 @@ def getChannels(idbouquet, stype):
 	if idbouquet == "ALL":
 		idbouquet = '%s ORDER BY name' % (s_type)
 
-	epg = Epg()
+	epg = EPG()
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference(idbouquet))
 	channels = services and services.getContent("SN", True)
@@ -724,7 +724,7 @@ def getSubServices(session):
 
 def getEventDesc(ref, idev, encode=True):
 	ref = unquote(ref)
-	epg = Epg()
+	epg = EPG()
 	description = epg.getEventDescription(ref, idev)
 	# 'ESX'
 	description = description and convertDesc(description, encode) or "No description available"  # TODO: translate #TODO: move to epy.py?
@@ -772,7 +772,7 @@ def getTimerEventStatus(epgEvent, sRef, timers=None):
 
 
 def getEvent(sRef, eventId, encode=True):
-	epg = Epg()
+	epg = EPG()
 	epgEvent = epg.getEvent(sRef, eventId)
 
 	info = {}
@@ -812,7 +812,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 			_ref = ref
 
 		picon = getPicon(_ref)
-		epg = Epg()
+		epg = EPG()
 		epgEvents = epg.getChannelEvents(_ref, begintime, endtime)
 
 		if epgEvents is not None:
@@ -871,7 +871,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 
 def getBouquetEpg(bqRef, begintime=-1, endtime=-1, encode=False):
 	bqRef = unquote(bqRef)
-	epg = Epg()
+	epg = EPG()
 	epgEvents = epg.getBouquetEvents(bqRef, begintime, endtime)
 	ret = []
 
@@ -903,7 +903,7 @@ def getMultiChannelNowNextEpg(sList, encode=False):
 	if not isinstance(sList, list):
 		sList = sList.split(",")
 
-	epg = Epg()
+	epg = EPG()
 	epgEvents = epg.getMultiChannelNowNextEvents(sList)
 
 	if epgEvents is not None:
@@ -929,7 +929,7 @@ def getMultiChannelNowNextEpg(sList, encode=False):
 
 def getBouquetNowNextEpg(bqRef, nowOrNext, encode=False):
 	bqRef = unquote(bqRef)
-	epg = Epg()
+	epg = EPG()
 	ret = []
 
 	if nowOrNext == Epg.NOW:
@@ -976,7 +976,7 @@ def getBouquetNowNextEpg(bqRef, nowOrNext, encode=False):
 def getNowNextEpg(sRef, nowOrNext, encode=False):
 	sRef = unquote(sRef)
 	ret = []
-	epg = Epg()
+	epg = EPG()
 
 	if nowOrNext == Epg.NOW:
 		epgEvent = epg.getChannelNowEvent(sRef)
@@ -1022,7 +1022,7 @@ def getNowNextEpg(sRef, nowOrNext, encode=False):
 # TODO: add sort options
 def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=False):
 	ret = []
-	epg = Epg()
+	epg = EPG()
 	epgEvents = epg.search(sstr, fulldesc)
 
 	if epgEvents is not None:
@@ -1081,7 +1081,7 @@ def getSearchSimilarEpg(sRef, eventId, encode=False):
 	sRef = unquote(sRef)
 	ret = []
 	ev = {}
-	epg = Epg()
+	epg = EPG()
 	epgEvents = epg.findSimilarEvents(sRef, eventId)
 
 	if epgEvents is not None:
@@ -1145,7 +1145,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		return {"events": ret, "result": False, "slot": None}
 
 	sRefs = services.getContent('S')
-	epg = Epg()
+	epg = EPG()
 	epgEvents = epg.getMultiChannelEvents(sRefs, begintime, endtime)
 	offset = None
 	picons = {}

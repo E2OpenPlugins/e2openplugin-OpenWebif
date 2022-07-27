@@ -107,7 +107,7 @@ class TimedProcess:
 		return self.timeTaken
 
 
-class Epg():
+class EPG():
 	NOW = 10
 	NEXT = 11
 	NOW_NEXT = 21

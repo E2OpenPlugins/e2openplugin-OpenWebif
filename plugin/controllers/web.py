@@ -47,7 +47,7 @@ from .base import BaseController
 from .stream import StreamController
 from .utilities import getUrlArg
 from .defaults import PICON_PATH
-from .epg import Epg
+from .epg import EPG
 
 
 def whoami(request):
@@ -1077,7 +1077,7 @@ class WebController(BaseController):
 		else:
 			# TODO : move this code to timers.py
 			queryTime = int(request.args[b"begin"][0]) + (int(request.args[b"end"][0]) - int(request.args[b"begin"][0])) // 2
-			epg = Epg()
+			epg = EPG()
 			event = epg.getEventByTime(sRef, queryTime)
 			eventid = event and event.getEventId()
 			if eventid is not None:
@@ -2213,7 +2213,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		Epg().save()
+		EPG().save()
 
 		return {
 			"result": True,
@@ -2233,7 +2233,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		Epg().load()
+		EPG().load()
 
 		return {
 			"result": True,
