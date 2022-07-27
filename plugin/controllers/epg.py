@@ -60,8 +60,6 @@ TEXT_YESTERDAY         = 'Yesterday, %R'
 TEXT_TODAY             = 'Today, %R'
 TEXT_TOMORROW          = 'Tomorrow, %R'
 
-#TODO: load configgy stuff once
-
 
 logging.basicConfig(level=logging.DEBUG, stream=logging.StreamHandler(), format='%(levelname)s: %(funcName)s(): %(message)s')
 # logger = logging.getLogger(__name__) # Plugins.Extensions.OpenWebif.controllers.epg:
@@ -159,7 +157,9 @@ def getFuzzyHoursMinutes(timestamp = 0):
 		template = "%-M minute"
 	else:
 		template = ""
+
 	formatted = strftime(template, timeStruct)  # if remaining is not None else None
+
 	return formatted
 
 
@@ -168,17 +168,25 @@ def getBouquetServices(bqRef, fields = 'SN'):
 
 	return bqServices.getContent(fields)
 
+
 # TODO: move to utilities
 # TODO: fixme
 def convertGenre(val):
-	print(val)
-	# if val is not None and len(val) > 0:
-	# 	val = val[0]
-	# 	if len(val) > 1:
-	# 		if val[0] > 0:
-	# 			genreId = val[0] * 16 + val[1]
-	# 			return str(getGenreStringLong(val[0], val[1])).strip(), genreId
-	return "", 0
+	logger.debug("[[[   convertGenre(%s)   ]]]" % (val))
+	value = "", 0
+	try:
+		if val is not None and len(val) > 0:
+			val = val[0]
+			if len(val) > 1:
+				if val[0] > 0:
+					genreId = val[0] * 16 + val[1]
+					return str(getGenreStringLong(val[0], val[1])).strip(), genreId
+	except Exception as exc:
+		logging.error(exc)
+
+	logger.debug(value)
+	return value
+
 
 def getServiceDetails(sRef):
 	try:
@@ -198,6 +206,24 @@ def getServiceDetails(sRef):
 		}
 
 	return value
+
+
+# TODO: move to utilities
+class TimedProcess:
+	def __init__(self):
+		self.timeTaken = 0
+		pass
+
+	def __enter__(self):
+		self.tick = datetime.now()
+		return self
+
+	def __exit__(self, exc_type, exc_value, exc_tb):
+		self.timeTaken = datetime.now() - self.tick
+		logger.debug('Process took {}'.format(self.timeTaken))
+
+	def getTimeTaken(self):
+		return self.timeTaken
 
 
 class EPGEvent():
@@ -313,8 +339,9 @@ class EPGEvent():
 					logger.warning(error)
 
 
-	def toJSON(self):
-		return dumps(self.__dict__)
+	def toJSON(self, **kwargs):
+		# dict keys that are not of a basic type (str, int, float, bool, None) will raise a TypeError.
+		return dumps(self.__dict__, **kwargs)
 
 
 class Epg():
@@ -330,7 +357,7 @@ class Epg():
 		return config.OpenWebif.epg_encoding.value
 
 
-	#TODO: make search type fully user-selectable
+	# TODO: make search type fully customisable
 	def search(self, queryString, searchFullDescription = False):
 		logger.debug("search[[[   (%s, %s)   ]]]" % (queryString, searchFullDescription))
 		if not queryString:
@@ -353,12 +380,12 @@ class Epg():
 				queryType = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
 
 		criteria = (SEARCH_FIELDS, MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
-		processStartTime = datetime.now()
-		epgEvents = self._instance.search(criteria)
-		processDuration = datetime.now() - processStartTime
-		logger.debug("{} process took {} seconds".format(processStartTime, processDuration))
+		with TimedProcess() as tp:
+			epgEvents = self._instance.search(criteria)
 
-		logger.debug(epgEvents)
+		logger.debug(tp.getTimeTaken())
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -372,15 +399,18 @@ class Epg():
 			eventId = int(eventId)
 
 		criteria = (SEARCH_FIELDS, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
-		epgEvents = self._instance.search(criteria)
+		with TimedProcess() as tp:
+			epgEvents = self._instance.search(criteria)
 
-		logger.debug(epgEvents)
+		logger.debug(tp.getTimeTaken())
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
 		return epgEvents
 
 
 	@staticmethod
 	def _transformEventData(eventFields, data):
-		logger.debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
+		# logger.debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
 		# logger.debug(data)
 
 		# TODO: skip processing if there isn't a valid event (id is None)
@@ -397,14 +427,13 @@ class Epg():
 			# return None
 
 		criteria.insert(0, fields)
-
-		processStartTime = datetime.now()
 		epgEvents = self._instance.lookupEvent(criteria)
-		epgEvents = [self._transformEventData(fields, evt) for evt in epgEvents]
-		processDuration = datetime.now() - processStartTime
-		logger.debug("process took {}".format(processDuration))
+		with TimedProcess() as tp:
+			epgEvents = [self._transformEventData(fields, evt) for evt in epgEvents]
 
-		logger.debug(epgEvents)
+		logger.debug(tp.getTimeTaken())
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -415,9 +444,10 @@ class Epg():
 		else:
 			sRef = str(sRef)
 
-		epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
+		with TimedProcess() as tp:
+			epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
 
-		logger.debug(epgEvent)
+		logger.debug(epgEvent.toJSON(indent = 2))
 		return epgEvent
 
 
@@ -433,9 +463,10 @@ class Epg():
 			sRef = str(sRef)
 			criteria.append((sRef, nowOrNext, TIME_NOW))
 
-		epgEvents = self._queryEPG(BOUQUET_NOWNEXT_FIELDS, criteria)
+		with TimedProcess() as tp:
+			epgEvents = self._queryEPG(BOUQUET_NOWNEXT_FIELDS, criteria)
 
-		logger.debug(epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -448,9 +479,11 @@ class Epg():
 			sRef = str(sRef)
 
 		criteria = [(sRef, NOW_EVENT, startTime, endTime)]
-		epgEvents = self._queryEPG(SINGLE_CHANNEL_FIELDS, criteria)
 
-		logger.debug(epgEvents)
+		with TimedProcess() as tp:
+			epgEvents = self._queryEPG(SINGLE_CHANNEL_FIELDS, criteria)
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -476,9 +509,10 @@ class Epg():
 			sRef = str(sRef)
 			criteria.append((sRef, NOW_EVENT, startTime, endTime))
 
-		epgEvents = self._queryEPG(fields, criteria)
+		with TimedProcess() as tp:
+			epgEvents = self._queryEPG(fields, criteria)
 
-		logger.debug(epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -495,9 +529,10 @@ class Epg():
 			criteria.append((sRef, NOW_EVENT, TIME_NOW))
 			criteria.append((sRef, NEXT_EVENT, TIME_NOW))
 
-		epgEvents = self._queryEPG(fields, criteria)
+		with TimedProcess() as tp:
+			epgEvents = self._queryEPG(fields, criteria)
 
-		logger.debug(epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -535,10 +570,12 @@ class Epg():
 		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
 
-		epgEvent = self._instance.lookupEventTime(sRef, TIME_NOW, 0)
+		with TimedProcess() as tp:
+			epgEvent = self._instance.lookupEventTime(sRef, TIME_NOW, 0)
+
 		epgEvent = EPGEvent(epgEvent)
 
-		logger.debug(epgEvent.toJSON())
+		logger.debug(epgEvent.toJSON(indent = 2))
 		return epgEvent
 
 
@@ -551,11 +588,14 @@ class Epg():
 			sRef = eServiceReference(sRef)
 
 		eventId = int(eventId)
-		epgEvent = self._instance.lookupEventId(sRef, eventId)
+
+		with TimedProcess() as tp:
+			epgEvent = self._instance.lookupEventId(sRef, eventId)
+
 		epgEvent = EPGEvent(epgEvent)
 		epgEvent.service = getServiceDetails(sRef)
 
-		logger.debug(epgEvent.toJSON())
+		logger.debug(epgEvent.toJSON(indent = 2))
 		return epgEvent
 
 		# ServiceReference(sRef).getServiceName(),
@@ -575,11 +615,13 @@ class Epg():
 		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
 
-		epgEvent = self._instance.lookupEventTime(sRef, eventTime, direction)
+		with TimedProcess() as tp:
+			epgEvent = self._instance.lookupEventTime(sRef, eventTime, direction)
+
 		epgEvent = EPGEvent(epgEvent)
 		epgEvent.service = getServiceDetails(sRef)
 
-		logger.debug(epgEvent.toJSON())
+		logger.debug(epgEvent.toJSON(indent = 2))
 		return epgEvent
 
 
@@ -589,7 +631,7 @@ class Epg():
 		epgEvent = self.getEventById(sRef, eventId)
 		# epgEvent = EPGEvent(epgEvent) # already transformed by `getEventById()`
 
-		logger.debug(epgEvent.toJSON())
+		logger.debug(epgEvent.toJSON(indent = 2))
 		return epgEvent
 
 
