@@ -27,7 +27,7 @@ from time import time, localtime, gmtime, strftime
 from datetime import datetime, timedelta
 from json import dumps
 
-from enigma import eEPGCache, eServiceCenter, eServiceReference
+from enigma import eEPGCache, eServiceCenter, eServiceEvent, eServiceReference
 from ServiceReference import ServiceReference
 from Components.config import config
 from .defaults import DEBUG_ENABLED
@@ -73,7 +73,7 @@ else:
 	logger.disabled = True
 
 
-#TODO: load configgy stuff once
+# TODO: load configgy stuff once
 
 
 # #Tests (GMT+01:00 DST)
@@ -102,7 +102,7 @@ else:
 # timestamp = 1658008800 #next 00:00:00 Sun, July 17, 2022 12:00:00 AM GMT+02:00 DST
 # timestamp = 1658095199 #next 23:59:59 Sun, July 17, 2022 11:59:59 PM GMT+02:00 DST
 
-#TODO: move to utilities
+# TODO: move to utilities
 def getFuzzyDayTime(timestamp, defaultFormat):
 	timeNow = int(time())
 	timeDiff = timestamp - timeNow
@@ -123,7 +123,7 @@ def getFuzzyDayTime(timestamp, defaultFormat):
 	return text
 
 
-#TODO: move to utilities
+# TODO: move to utilities
 def getCustomTimeFormats(timestamp):
 	return {
 		'timestamp': timestamp,
@@ -135,7 +135,7 @@ def getCustomTimeFormats(timestamp):
 	}
 
 
-#TODO: move to utilities
+# TODO: move to utilities
 def getFuzzyHoursMinutes(timestamp = 0):
 	timeStruct = gmtime(timestamp)
 	hours = timeStruct[3]
@@ -168,15 +168,153 @@ def getBouquetServices(bqRef, fields = 'SN'):
 
 	return bqServices.getContent(fields)
 
-#TODO: move to utilities
+# TODO: move to utilities
+# TODO: fixme
 def convertGenre(val):
-	if val is not None and len(val) > 0:
-		val = val[0]
-		if len(val) > 1:
-			if val[0] > 0:
-				genreId = val[0] * 16 + val[1]
-				return str(getGenreStringLong(val[0], val[1])).strip(), genreId
+	print(val)
+	# if val is not None and len(val) > 0:
+	# 	val = val[0]
+	# 	if len(val) > 1:
+	# 		if val[0] > 0:
+	# 			genreId = val[0] * 16 + val[1]
+	# 			return str(getGenreStringLong(val[0], val[1])).strip(), genreId
 	return "", 0
+
+def getServiceDetails(sRef):
+	try:
+		sRefStr = str(ServiceReference(sRef))
+	except:
+		sRefStr = sRef
+
+	value = None
+
+	if sRef:
+		value = {
+			'sRef': sRefStr,
+			'name': ServiceReference(sRef).getServiceName(),
+			# 'path': ServiceReference(sRef).getPath(),
+			# 'sType': ServiceReference(sRef).getType(),
+			# 'flags': ServiceReference(sRef).getFlags(),
+		}
+
+	return value
+
+
+class EPGEvent():
+	def __init__(self, evt):
+		eventId = None
+		startTimestamp = None
+		durationSeconds = None
+		title = None
+		shortDescription = None
+		longDescription = None
+		parentalRatingData = None
+		genreData = None
+		currentTimestamp = None
+		service = {}
+
+		if isinstance(evt, eServiceEvent):
+			eventId = evt.getEventId()
+			startTimestamp = evt.getBeginTime()
+			durationSeconds = evt.getDuration()
+			currentTimestamp = int(time())
+			title = evt.getEventName()
+			shortDescription = evt.getShortDescription()
+			longDescription = evt.getExtendedDescription()
+			parentalRatingData = evt.getParentalData()
+			genreData = evt.getGenreData()
+
+		elif isinstance(evt, tuple):
+			eventFields = evt[0]
+			eventData = evt[1]
+
+			for index, value in enumerate(eventData):
+				try:
+					key = eventFields[index]
+					if key == 'I':
+						eventId = value
+					elif key == 'B':
+						startTimestamp = value
+					elif key == 'D':
+						durationSeconds = value
+					elif key == 'T':
+						title = value
+					elif key == 'S':
+						shortDescription = value
+					elif key == 'E':
+						longDescription = value
+					elif key == 'P':
+						parentalRatingData = value
+					elif key == 'W':
+						genreData = value
+					elif key == 'C':
+						currentTimestamp = value
+					elif key == 'R':
+						service['sRef'] = value
+					elif key == 'n':
+						service['shortName'] = value
+					elif key == 'N':
+						service['name'] = value
+					elif key == 'X':
+						pass
+					elif key == 'M':
+						self.maxResults = value
+					# else:
+					# 	eventData[key] = value
+
+				except Exception as error:
+					logger.warning(error)
+
+		self.eventId = eventId
+		self.title = (title or '').strip()
+		self.shortDescription = (shortDescription or '').strip()
+		self.longDescription = (longDescription or '').strip()
+		self.description = (longDescription or shortDescription or '').strip()
+		self.parentalRating = parentalRatingData
+		self.genre, self.genreId = convertGenre(genreData)
+
+		if len(service) > 0:
+			self.service = service
+
+		if startTimestamp is not None:
+			self.start = getCustomTimeFormats(startTimestamp)
+
+		if durationSeconds is not None:
+			self.duration = {
+				'seconds': durationSeconds,
+				'minutes': int(durationSeconds / 60),
+				'fuzzy': getFuzzyHoursMinutes(durationSeconds),
+			}
+
+		if currentTimestamp is not None:
+			self.currentTimestamp = currentTimestamp
+
+		if startTimestamp and durationSeconds is not None:
+			endTimestamp = startTimestamp + durationSeconds
+			try:
+				self.end = getCustomTimeFormats(endTimestamp)
+			except Exception as error:
+				logger.warning(error)
+			if currentTimestamp:
+				remaining = endTimestamp - currentTimestamp if currentTimestamp > startTimestamp else durationSeconds
+				try:
+					progressPercent = int(((currentTimestamp - startTimestamp) / durationSeconds) * 100)
+					progressPercent = progressPercent if progressPercent >= 0 else 0
+					self.progress = {
+						'number': progressPercent,
+						'text': '{0}%'.format(progressPercent),
+					}
+					self.remaining = {
+						'seconds': remaining,
+						'minutes': int(remaining / 60),
+						'text': getFuzzyHoursMinutes(remaining),
+					}
+				except Exception as error:
+					logger.warning(error)
+
+
+	def toJSON(self):
+		return dumps(self.__dict__)
 
 
 class Epg():
@@ -241,100 +379,16 @@ class Epg():
 
 
 	@staticmethod
-	def _transformEventData(eventFields, *args):
+	def _transformEventData(eventFields, data):
 		logger.debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
-		# logger.debug(*args)
-
-		eventData = {}
-		service = {}
-		startTimestamp = None
-		currentTimestamp = None
-		duration = None
-		shortDescription = None
-		longDescription = None
-
+		# logger.debug(data)
 
 		# TODO: skip processing if there isn't a valid event (id is None)
 		# TODO: skip 1:7:1: (sub-bouquets)
+		# TODO: remove 'currentStart' (currently still needed?)
+		# TODO: auto add currentTimestamp if progress or remaining fields are requested
 
-		for index, argValue in enumerate(args):
-			try:
-				key = eventFields[index]
-
-				if key == 'I':
-					eventData['eventId'] = argValue
-				elif key == 'B':
-					startTimestamp = argValue
-					if startTimestamp is not None:
-						eventData['start'] = getCustomTimeFormats(startTimestamp)
-				elif key == 'D':
-					duration = argValue or 0
-					eventData['duration'] = {
-						'seconds': duration,
-						'minutes': int(duration / 60),
-						'fuzzy': getFuzzyHoursMinutes(duration),
-					}
-				elif key == 'T':
-					eventData['title'] = (argValue or '').strip()
-				elif key == 'S':
-					if argValue is not None:
-						shortDescription = argValue.strip()
-						eventData['shortDescription'] = shortDescription
-				elif key == 'E':
-					if argValue is not None:
-						longDescription = argValue.strip()
-						eventData['longDescription'] = longDescription
-				elif key == 'P':
-					eventData['parentalRating'] = argValue
-				elif key == 'W':
-					eventData['genre'], eventData['genreId'] = convertGenre(argValue)
-				elif key == 'C':
-					currentTimestamp = argValue
-					eventData['currentTimestamp'] = currentTimestamp
-				elif key == 'R':
-					service['sRef'] = argValue
-				elif key == 'n':
-					service['nameShort'] = argValue
-				elif key == 'N':
-					service['name'] = argValue
-				elif key == 'X':
-					pass
-				elif key == 'M':
-					eventData['maxResults'] = argValue
-				else:
-					eventData[key] = argValue
-			except Exception as error:
-				print(error)
-
-		if startTimestamp and duration:
-			endTimestamp = startTimestamp + duration
-			try:
-				eventData['end'] = getCustomTimeFormats(endTimestamp)
-			except Exception as error:
-				print(error)
-			if currentTimestamp:
-				remaining = endTimestamp - currentTimestamp if currentTimestamp > startTimestamp else duration
-				try:
-					progressPercent = int(((currentTimestamp - startTimestamp) / duration) * 100)
-					progressPercent = progressPercent if progressPercent >= 0 else 0
-					eventData['progress'] = {
-						'number': progressPercent,
-						'text': '{0}%'.format(progressPercent),
-					}
-					eventData['remaining'] = {
-						'seconds': remaining,
-						'minutes': int(remaining / 60),
-						'text': getFuzzyHoursMinutes(remaining),
-					}
-				except Exception as error:
-					print(error)
-
-		eventData['service'] = service
-		eventData['description'] = longDescription or shortDescription
-
-		logger.debug(dumps(eventData, indent = 2))
-		# return args
-		return eventData
+		return EPGEvent((eventFields, data))
 
 
 	def _queryEPG(self, fields = '', criteria = []):
@@ -344,16 +398,11 @@ class Epg():
 
 		criteria.insert(0, fields)
 
-		def _callEventTransform(*args):
-			return self._transformEventData(fields, *args)
-
 		processStartTime = datetime.now()
-		epgEvents = self._instance.lookupEvent(criteria, _callEventTransform)
+		epgEvents = self._instance.lookupEvent(criteria)
+		epgEvents = [self._transformEventData(fields, evt) for evt in epgEvents]
 		processDuration = datetime.now() - processStartTime
 		logger.debug("process took {}".format(processDuration))
-
-		# for evt in epgEvents:
-		# 	_callEventTransform
 
 		logger.debug(epgEvents)
 		return epgEvents
@@ -367,33 +416,9 @@ class Epg():
 			sRef = str(sRef)
 
 		epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
-		genreData = convertGenre(epgEvent.getGenreDataList())
 
-		eventData = {
-			'eventId': epgEvent.getEventId(),
-			'start': {
-				'timestamp': epgEvent.getBeginTime(),
-			},
-			'currentTimestamp': int(time()),
-			'duration': {
-				'seconds': epgEvent.getDuration(),
-			},
-			'remaining': {
-				'minutes': 0, # TODO: fix hardcoded value
-			},
-			'title': epgEvent.getEventName(),
-			'shortDescription': epgEvent.getShortDescription(),
-			'longDescription': epgEvent.getExtendedDescription(),
-			'service': {
-				'sRef': sRef,
-				'name': ServiceReference(sRef).getServiceName(),
-			},
-			'genre': genreData[0],
-			'genreId': genreData[1]
-		}
-
-		logger.debug(eventData)
-		return eventData
+		logger.debug(epgEvent)
+		return epgEvent
 
 
 	def _getBouquetNowOrNext(self, bqRef, nowOrNext):
@@ -511,29 +536,14 @@ class Epg():
 			sRef = eServiceReference(sRef)
 
 		epgEvent = self._instance.lookupEventTime(sRef, TIME_NOW, 0)
+		epgEvent = EPGEvent(epgEvent)
 
-		# from Components.Sources.EventInfo import EventInfo
-		# evt = (EventInfo(self.session.nav, EventInfo.NOW).getEvent())
-		# epgEvent = (
-		# 	evt.getEventName(),           # [T]
-		# 	evt.getEventID(),             # [I]
-		# 	evt.getBeginTime(),           # [B]
-		# 	evt.getDuration(),            # [D]
-		# 	evt.getShortDescription(),    # [S]
-		# 	evt.getExtendedDescription(), # [E]
-		# 	evt.getParentalData(),        # [P]
-		# 	evt.getGenreData()            # [W]
-		#   # missing Service Reference     [R]
-		#   # missing Service Name          [N]
-		#   # missing Short Service Name    [n]
-		# )
-
-		logger.debug(epgEvent)
+		logger.debug(epgEvent.toJSON())
 		return epgEvent
 
 
 	def getEventById(self, sRef, eventId):
-		logger.debug("[[[   getEventById(%s, %s)   ]]]" % (sRef, eventId))
+		logger.debug("[[[   getEventById(%s, %s)   ]]]" % (str(sRef), eventId))
 		if not sRef or not eventId:
 			logger.error("A required parameter 'sRef' or eventId is missing!")
 			# return None
@@ -542,22 +552,14 @@ class Epg():
 
 		eventId = int(eventId)
 		epgEvent = self._instance.lookupEventId(sRef, eventId)
+		epgEvent = EPGEvent(epgEvent)
+		epgEvent.service = getServiceDetails(sRef)
 
-		# logger.debug(dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
-		logger.debug(epgEvent and epgEvent.getEventName() or None)
+		logger.debug(epgEvent.toJSON())
 		return epgEvent
 
-		# epgEvent.getEventId(),
-		# epgEvent.getBeginTime(),
-		# epgEvent.getDuration(),
-		# epgEvent.getEventName(),
-		# epgEvent.getShortDescription(),
-		# epgEvent.getExtendedDescription(),
 		# ServiceReference(sRef).getServiceName(),
 		# sRef,
-		# epgEvent.getGenreDataList(), #TODO: genre stuff needs to be reworked
-
-		# epgEvent.getParentalData(),
 		# epgEvent.getSeriesCrid(),
 		# epgEvent.getEpisodeCrid(),
 		# epgEvent.getRunningStatus(),
@@ -574,38 +576,20 @@ class Epg():
 			sRef = eServiceReference(sRef)
 
 		epgEvent = self._instance.lookupEventTime(sRef, eventTime, direction)
+		epgEvent = EPGEvent(epgEvent)
+		epgEvent.service = getServiceDetails(sRef)
 
-		# Object of type eServiceEvent is not JSON serializable
-		logger.debug(epgEvent)
+		logger.debug(epgEvent.toJSON())
 		return epgEvent
 
 
 	def getEvent(self, sRef, eventId):
 		logger.debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
-		if not sRef or not eventId:
-			logger.error("A required parameter 'sRef' or eventId is missing!")
-			# return None
-		else:
-			sRef = str(sRef)
-			eventId = int(eventId)
 
 		epgEvent = self.getEventById(sRef, eventId)
+		# epgEvent = EPGEvent(epgEvent) # already transformed by `getEventById()`
 
-		if epgEvent:
-			logger.debug(epgEvent)
-			genreData = epgEvent.getGenreDataList() #TODO: debug index out of range
-			def getEndTime(): return epgEvent.getBeginTime() + epgEvent.getDuration()
-			def getServiceReference(): return sRef
-			def getServiceName(): return ServiceReference(sRef).getServiceName()
-			def getGenre(): return "genreData[0]"
-			def getGenreId(): return "genreData[1]"
-			epgEvent.getEndTime = getEndTime
-			epgEvent.getServiceReference = getServiceReference
-			epgEvent.getServiceName = getServiceName
-			epgEvent.getGenre = getGenre
-			epgEvent.getGenreId = getGenreId
-
-		logger.debug(epgEvent)
+		logger.debug(epgEvent.toJSON())
 		return epgEvent
 
 
@@ -622,7 +606,7 @@ class Epg():
 		epgEvent = self.getEventById(sRef, eventId)
 
 		if epgEvent:
-			description = epgEvent.getExtendedDescription() or epgEvent.getShortDescription() or ""
+			description = epgEvent.description
 
 		logger.debug(description)
 		return description
