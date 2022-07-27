@@ -29,7 +29,8 @@ from json import dumps
 from enigma import eServiceCenter, eServiceEvent, eServiceReference
 from ServiceReference import ServiceReference
 from Components.config import config
-from .defaults import DEBUG_ENABLED
+
+from Plugins.Extensions.OpenWebif.controllers.defaults import DEBUG_ENABLED
 
 
 try:

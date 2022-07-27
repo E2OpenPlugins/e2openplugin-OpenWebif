@@ -28,8 +28,9 @@ from json import dumps
 from enigma import eEPGCache, eServiceCenter, eServiceReference
 from ServiceReference import ServiceReference
 from Components.config import config
-from .defaults import DEBUG_ENABLED
-from .epgevent import EPGEvent
+
+from Plugins.Extensions.OpenWebif.controllers.defaults import DEBUG_ENABLED
+from Plugins.Extensions.OpenWebif.controllers.epgevent import EPGEvent
 
 
 CASE_SENSITIVE_QUERY   = 0
