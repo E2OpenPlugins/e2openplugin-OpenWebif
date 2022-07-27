@@ -151,7 +151,7 @@ class EPG():
 
 		logger.debug(tp.getTimeTaken())
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		# logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents) #AttributeError: 'tuple' object has no attribute 'toJSON'
 		return epgEvents
 
 
