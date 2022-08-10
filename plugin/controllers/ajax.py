@@ -242,7 +242,7 @@ class AjaxController(BaseController):
 		epgmode = getUrlArg(request, "epgmode", "tv")
 		if epgmode not in ["tv", "radio"]:
 			epgmode = "tv"
-		return{"epgmode": epgmode}
+		return {"epgmode": epgmode}
 
 	def P_config(self, request):
 		section = getUrlArg(request, "section", "usage")
