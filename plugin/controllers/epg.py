@@ -56,7 +56,6 @@ logging.basicConfig(level=logging.DEBUG, stream=logging.StreamHandler(), format=
 logger = logging.getLogger('[OpenWebif] [EPG]')
 
 
-DEBUG_ENABLED = True
 if DEBUG_ENABLED:
 	logger.setLevel(logging.DEBUG)
 else:
@@ -96,7 +95,6 @@ def getServiceDetails(sRef):
 class TimedProcess:
 	def __init__(self):
 		self.timeTaken = 0
-		pass
 
 	def __enter__(self):
 		self.tick = datetime.now()
@@ -106,8 +104,8 @@ class TimedProcess:
 		self.timeTaken = datetime.now() - self.tick
 		logger.debug('Process took {}'.format(self.timeTaken))
 
-	def getTimeTaken(self):
-		return self.timeTaken
+	# def getTimeTaken(self):
+	# 	return self.timeTaken
 
 
 class EPG():
@@ -149,7 +147,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._instance.search(criteria)
 
-		logger.debug(tp.getTimeTaken())
+		# logger.debug(tp.getTimeTaken())
 
 		# logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents) #AttributeError: 'tuple' object has no attribute 'toJSON'
 		return epgEvents
@@ -168,7 +166,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._instance.search(criteria)
 
-		logger.debug(tp.getTimeTaken())
+		# logger.debug(tp.getTimeTaken())
 
 		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
@@ -197,7 +195,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = [self._transformEventData(fields, evt) for evt in epgEvents]
 
-		logger.debug(tp.getTimeTaken())
+		# logger.debug(tp.getTimeTaken())
 
 		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents

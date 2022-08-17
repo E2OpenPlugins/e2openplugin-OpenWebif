@@ -49,7 +49,6 @@ logging.basicConfig(level=logging.DEBUG, stream=logging.StreamHandler(), format=
 logger = logging.getLogger('[OpenWebif] [EPG]')
 
 
-DEBUG_ENABLED = True
 if DEBUG_ENABLED:
 	logger.setLevel(logging.DEBUG)
 else:
