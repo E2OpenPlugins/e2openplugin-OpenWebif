@@ -1,0 +1,301 @@
+#filter WebSafe
+<!--
+#block bouquetOptions
+    <option value=''>Select a bouquet!</option>
+    <optgroup label='TV'>
+#for $entry in $data.tvBouquets.bouquets
+        <option value='$entry[0]'>$entry[1]</option>
+#end for
+    </optgroup>
+    <optgroup label='Radio'>
+#for $entry in $data.radioBouquets.bouquets
+        <option value='$entry[0]'>$entry[1]</option>
+#end for
+    </optgroup>
+#end block bouquetOptions
+
+
+#block channelOptions
+    <option value=''>Select a channel</option>
+    <optgroup label='TV'>
+#for $entry in $data.tvChannels.services
+        <optgroup label='&nbsp;&nbsp;&nbsp;$entry.servicename'>
+        #for $subentry in $entry.subservices
+            <option value='$subentry.servicereference'>&nbsp;&nbsp;$subentry.servicename</option>
+        #end for
+        </optgroup>
+#end for
+    </optgroup>
+    <optgroup label='Radio'>
+#for $entry in $data.radioChannels.services
+        <optgroup label='&nbsp;&nbsp;&nbsp;$entry.servicename'>
+        #for $subentry in $entry.subservices
+            <option value='$subentry.servicereference'>&nbsp;&nbsp;$subentry.servicename</option>
+        #end for
+        </optgroup>
+#end for
+    </optgroup>
+#end block bouquetOptions
+-->
+#end filter
+
+<script>
+    function convertTimes(theForm){
+        for (const fieldName of ['time', 'endTime']) {
+            try {
+                const field = theForm.elements['_' + fieldName];
+                if (field.value) {
+                    const el = document.createElement('input');
+                    el.type = 'hidden';
+                    el.name = fieldName;
+                    el.value = field.valueAsNumber / 1000;
+                    theForm.appendChild(el);
+                }
+            } catch(e) {}
+        }
+    }
+</script>
+
+/web/epgbouquet?bRef=#time=&endTime=
+<form action="/web/epgbouquet" method="GET" onsubmit="convertTimes(this);">
+    <select name="bRef" required>$bouquetOptions</select>
+    <label>time:</label>
+    <input type="datetime-local" name="_time">
+    <label>endTime:</label>
+    <input type="datetime-local" name="_endTime">
+    <input type="submit">
+</form>
+
+/api/epgbouquet?bRef=#time=&endTime=
+<form action="/api/epgbouquet" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <label>time:</label>
+    <input type="datetime-local" name="_time">
+    <label>endTime:</label>
+    <input type="datetime-local" name="_endTime">
+    <input type="submit">
+</form>
+
+/web/epgmulti?bRef=#time=&endTime=
+<form action="/web/epgmulti" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <label>time:</label>
+    <input type="datetime-local" name="_time">
+    <label>endTime:</label>
+    <input type="datetime-local" name="_endTime">
+    <input type="submit">
+</form>
+
+/api/epgmulti?bRef=#time=&endTime=
+<form action="/api/epgmulti" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <label>time:</label>
+    <input type="datetime-local" name="_time">
+    <label>endTime:</label>
+    <input type="datetime-local" name="_endTime">
+    <input type="submit">
+</form>
+
+/web/epgnow?bRef=
+<form action="/web/epgnow" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <input type="submit">
+</form>
+
+/api/epgnow?bRef=
+<form action="/api/epgnow" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <input type="submit">
+</form>
+
+/web/epgnext?bRef=
+<form action="/web/epgnext" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <input type="submit">
+</form>
+
+/api/epgnext?bRef=
+<form action="/api/epgnext" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <input type="submit">
+</form>
+
+/web/epgnownext?bRef=
+<form action="/web/epgnownext" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <input type="submit">
+</form>
+
+/api/epgnownext?bRef=
+<form action="/api/epgnownext" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef" required>$bouquetOptions</select>
+    <input type="submit">
+</form>
+
+http://mutant51.local/web/epgsearch?search=#endtime=&full=&eventid=&sRef=
+<form action="/web/epgsearch" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <input type="search" name="search" required>
+    <select name="sRef">$channelOptions</select>
+    <label>Event ID:</label>
+    <input type="number" name="eventid">
+    <label>endTime:</label>
+    <input type="datetime-local" name="_endTime">
+    <input type="checkbox" name="full">
+    <input type="submit">
+</form>
+
+http://mutant51.local/api/epgsearch?search=#endtime=&full=&eventid=&sRef=
+<form action="/api/epgsearch" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <input type="search" name="search" required>
+    <select name="sRef">$channelOptions</select>
+    <label>Event ID:</label>
+    <input type="number" name="eventid">
+    <label>endTime:</label>
+    <input type="datetime-local" name="_endTime">
+    <input type="checkbox" name="full">
+    <input type="submit">
+</form>
+
+/web/epgsearchrss?search=
+<form action="/web/epgsearchrss" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <input type="search" name="search" required>
+    <input type="submit">
+</form>
+
+/api/epgsearchrss?search=
+<form action="/api/epgsearchrss" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <input type="search" name="search" required>
+    <input type="submit">
+</form>
+
+/web/epgservice?sRef=#time=&endTime=
+<form action="/web/epgservice" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sRef" required>$channelOptions</select>
+    <label>time:</label>
+    <input type="datetime-local" name="_time">
+    <label>endTime:</label>
+    <input type="datetime-local" name="_endTime">
+    <input type="submit">
+</form>
+
+/api/epgservice?sRef=#time=&endTime=
+<form action="/api/epgservice" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sRef" required>$channelOptions</select>
+    <label>time:</label>
+    <input type="datetime-local" name="_time">
+    <label>endTime:</label>
+    <input type="datetime-local" name="_endTime">
+    <input type="submit">
+</form>
+
+/web/epgservicenow?sRef=
+<form action="/web/epgservicenow" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sRef" required>$channelOptions</select>
+    <input type="submit">
+</form>
+
+/api/epgservicenow?sRef=
+<form action="/api/epgservicenow" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sRef" required>$channelOptions</select>
+    <input type="submit">
+</form>
+
+/web/epgservicenext?sRef=
+<form action="/web/epgservicenext" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sRef" required>$channelOptions</select>
+    <input type="submit">
+</form>
+
+/api/epgservicenext?sRef=
+<form action="/api/epgservicenext" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sRef" required>$channelOptions</select>
+    <input type="submit">
+</form>
+
+/web/epgsimilar?eventid=&sRef=
+<form action="/web/epgsimilar" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sRef" required>$channelOptions</select>
+    <label>eventid:</label>
+    <input type="number" name="eventid">
+    <input type="submit">
+</form>
+
+/api/epgsimilar?eventid=&sRef=
+<form action="/api/epgsimilar" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sRef" required>$channelOptions</select>
+    <label>eventid:</label>
+    <input type="number" name="eventid">
+    <input type="submit">
+</form>
+
+/web/event?idev=&sref=
+<form action="/web/event" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sref" required>$channelOptions</select>
+    <label>idev:</label>
+    <input type="number" name="idev">
+    <input type="submit">
+</form>
+
+/api/event?idev=&sref=
+<form action="/api/event" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sref" required>$channelOptions</select>
+    <label>idev:</label>
+    <input type="number" name="idev">
+    <input type="submit">
+</form>
+
+/web/getcurrent
+<form action="/web/getcurrent" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <input type="submit">
+</form>
+
+/api/getcurrent
+<form action="/api/getcurrent" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <input type="submit">
+</form>
+
+
+/ajax/epgdialog?bouquetsonly=&sstr=test#sref=&full=
+<form action="/ajax/epgdialog" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <input type="search" name="sstr" required>
+    <select name="sref">$channelOptions</select>
+    <label>full:</label>
+    <input type="checkbox" name="full">
+    <label>bouquetsonly:</label>
+    <input type="checkbox" name="bouquetsonly">
+    <input type="submit">
+</form>
+
+/ajax/event?idev=&sref=
+<form action="/ajax/event" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sref" required>$channelOptions</select>
+    <label>Event ID:</label>
+    <input type="number" name="idev">
+    <input type="submit">
+</form>
+
+/ajax/eventdescription?idev=&sref=
+<form action="/ajax/eventdescription" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="sref" required>$channelOptions</select>
+    <label>Event ID:</label>
+    <input type="number" name="idev">
+    <input type="submit">
+</form>
+
+/ajax/channels?stype=tv&id=
+<form action="/ajax/channels" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="stype">
+        <option>tv</option>
+        <option>radio</option>
+    </select>
+    <label>ID:</label>
+    <input type="text" name="id">
+    <input type="submit">
+</form>
+
+http://mutant51.local/ajax/multiepg#epgmode=&bref=&week=&day=
+<form action="/ajax/multiepg" method="GET" onsubmit="convertTimes(this);" target="epgplayground">
+    <select name="bRef">$bouquetOptions</select>
+    [epgmode] [week] [day]
+    <input type="submit">
+</form>

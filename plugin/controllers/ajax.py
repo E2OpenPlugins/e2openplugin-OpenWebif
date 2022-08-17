@@ -25,7 +25,7 @@ from Components.config import config
 from time import mktime, localtime
 import os
 
-from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
+from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getAllServices, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList, getMovieInfo
 from Plugins.Extensions.OpenWebif.controllers.models.timers import getTimers
@@ -403,3 +403,15 @@ class AjaxController(BaseController):
 			else:
 				resulttext = mi["resulttext"]
 		return {"title": title, "description": description, "sref": sref, "result": result, "tags": tags, "resulttext": resulttext}
+
+	def P_epgplayground(self, request):
+		TV = 'tv'
+		RADIO = 'radio'
+
+		ret = {
+			'tvBouquets': getBouquets(TV),
+			'tvChannels': getAllServices(TV),
+			'radioBouquets': getBouquets(RADIO),
+			'radioChannels': getAllServices(RADIO),
+		}
+		return {'data': ret}
