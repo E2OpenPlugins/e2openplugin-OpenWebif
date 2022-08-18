@@ -105,15 +105,28 @@ def getFuzzyDayTime(timestamp, defaultFormat):
 	return text
 
 
-# TODO: move to utilities
-def getCustomTimeFormats(timestamp):
+def getDisplayday():
+	try:
+		return config.usage.date.displayday.value
+	except KeyError:
+		return "%a %-d+%b_"
+
+
+def getTimeShort():
+	try:
+		return config.usage.time.short.value
+	except KeyError:
+		return "%R"
+
+
+def getCustomTimeFormats(timestamp):  # TODO: move to utilities
 	return {
 		'timestamp': timestamp,
-		'date': strftime(config.usage.date.displayday.value, (localtime(timestamp))),
-		'time': strftime(config.usage.time.short.value, (localtime(timestamp))),
+		'date': strftime(getDisplayday(), (localtime(timestamp))),
+		'time': strftime(getTimeShort(), (localtime(timestamp))),
 		'dateTime': strftime('%c', (localtime(timestamp))),
 		'fuzzy': getFuzzyDayTime(timestamp, '%c'),
-		'iso': datetime.fromtimestamp(timestamp).isoformat() if not None else ''
+		'iso': datetime.fromtimestamp(timestamp).isoformat() if timestamp is not None else ''
 	}
 
 
