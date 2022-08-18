@@ -65,7 +65,7 @@ else:
 # TODO: load configgy stuff once
 
 
-def getBouquetServices(bqRef, fields = 'SN'):
+def getBouquetServices(bqRef, fields='SN'):
 	bqServices = eServiceCenter.getInstance().list(eServiceReference(bqRef))
 
 	return bqServices.getContent(fields)
@@ -122,7 +122,7 @@ class EPG():
 
 
 	# TODO: make search type fully customisable
-	def search(self, queryString, searchFullDescription = False):
+	def search(self, queryString, searchFullDescription=False):
 		logger.debug("search[[[   (%s, %s)   ]]]" % (queryString, searchFullDescription))
 		if not queryString:
 			logger.error("A required parameter 'queryString' is missing!")
@@ -168,7 +168,7 @@ class EPG():
 
 		# logger.debug(tp.getTimeTaken())
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -185,7 +185,7 @@ class EPG():
 		return EPGEvent((eventFields, data))
 
 
-	def _queryEPG(self, fields = '', criteria = []):
+	def _queryEPG(self, fields='', criteria=[]):
 		if not fields or not criteria:
 			logger.error("A required parameter 'fields' or [criteria] is missing!")
 			# return None
@@ -197,7 +197,7 @@ class EPG():
 
 		# logger.debug(tp.getTimeTaken())
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -211,7 +211,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
 
-		logger.debug(epgEvent.toJSON(indent = 2))
+		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
 
 
@@ -230,11 +230,11 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._queryEPG(BOUQUET_NOWNEXT_FIELDS, criteria)
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
-	def getChannelEvents(self, sRef, startTime, endTime = None):
+	def getChannelEvents(self, sRef, startTime, endTime=None):
 		logger.debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
 		if not sRef:
 			logger.error("A required parameter 'sRef' is missing!")
@@ -247,7 +247,7 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._queryEPG(SINGLE_CHANNEL_FIELDS, criteria)
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
@@ -261,7 +261,7 @@ class EPG():
 		return self._getChannelNowOrNext(sRef, NEXT_EVENT)
 
 
-	def getMultiChannelEvents(self, sRefs, startTime, endTime = None, fields = MULTI_CHANNEL_FIELDS):
+	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields=MULTI_CHANNEL_FIELDS):
 		logger.debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
 			logger.error("A required parameter [sRefs] is missing!")
@@ -276,11 +276,11 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._queryEPG(fields, criteria)
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
-	def getMultiChannelNowNextEvents(self, sRefs, fields = MULTI_NOWNEXT_FIELDS):
+	def getMultiChannelNowNextEvents(self, sRefs, fields=MULTI_NOWNEXT_FIELDS):
 		logger.debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
 			logger.error("A required parameter [sRefs] is missing!")
@@ -296,11 +296,11 @@ class EPG():
 		with TimedProcess() as tp:
 			epgEvents = self._queryEPG(fields, criteria)
 
-		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
-	def getBouquetEvents(self, bqRef, startTime, endTime = None):
+	def getBouquetEvents(self, bqRef, startTime, endTime=None):
 		logger.debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (bqRef, startTime, endTime))
 		sRefs = getBouquetServices(bqRef, 'S')
 
@@ -339,7 +339,7 @@ class EPG():
 
 		epgEvent = EPGEvent(epgEvent)
 
-		logger.debug(epgEvent.toJSON(indent = 2))
+		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
 
 
@@ -359,7 +359,7 @@ class EPG():
 		epgEvent = EPGEvent(epgEvent)
 		epgEvent.service = getServiceDetails(sRef)
 
-		logger.debug(epgEvent.toJSON(indent = 2))
+		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
 
 		# ServiceReference(sRef).getServiceName(),
@@ -371,7 +371,7 @@ class EPG():
 		# epgEvent.getPdcPil()
 
 
-	def getEventByTime(self, sRef, eventTime, direction = NOW_EVENT):
+	def getEventByTime(self, sRef, eventTime, direction=NOW_EVENT):
 		logger.debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
 		if not sRef or not eventTime:
 			logger.error("A required parameter 'sRef' or eventTime is missing!")
@@ -385,7 +385,7 @@ class EPG():
 		epgEvent = EPGEvent(epgEvent)
 		epgEvent.service = getServiceDetails(sRef)
 
-		logger.debug(epgEvent.toJSON(indent = 2))
+		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
 
 
@@ -395,7 +395,7 @@ class EPG():
 		epgEvent = self.getEventById(sRef, eventId)
 		# epgEvent = EPGEvent(epgEvent) # already transformed by `getEventById()`
 
-		logger.debug(epgEvent.toJSON(indent = 2))
+		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
 
 

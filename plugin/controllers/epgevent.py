@@ -88,7 +88,7 @@ else:
 def getFuzzyDayTime(timestamp, defaultFormat):
 	timeNow = int(time())
 	timeDiff = timestamp - timeNow
-	deltaDays = timedelta(seconds = timeDiff).days
+	deltaDays = timedelta(seconds=timeDiff).days
 
 	if -2 <= deltaDays <= 2:
 		dayDiff = localtime(timestamp)[2] - localtime(timeNow)[2]
@@ -118,7 +118,7 @@ def getCustomTimeFormats(timestamp):
 
 
 # TODO: move to utilities
-def getFuzzyHoursMinutes(timestamp = 0):
+def getFuzzyHoursMinutes(timestamp=0):
 	timeStruct = gmtime(timestamp)
 	hours = timeStruct[3]
 	mins = timeStruct[4]
