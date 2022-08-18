@@ -43,7 +43,7 @@ NOW_EVENT = 0
 NEXT_EVENT = +1
 TIME_NOW = -1
 
-BOUQUET_NOWNEXT_FIELDS = 'IBDCTSERNWX' # getBouquetNowNextEvents, _getBouquetNowOrNext
+BOUQUET_NOWNEXT_FIELDS = 'IBDCTSERNWX'  # getBouquetNowNextEvents, _getBouquetNowOrNext
 BOUQUET_FIELDS = 'IBDCTSERNW'  # getBouquetEvents
 MULTI_CHANNEL_FIELDS = 'IBTSRND'     # getMultiChannelEvents
 MULTI_NOWNEXT_FIELDS = 'TBDCIESX'    # getMultiChannelNowNextEvents
