@@ -1079,7 +1079,7 @@ class WebController(BaseController):
 			queryTime = int(request.args[b"begin"][0]) + (int(request.args[b"end"][0]) - int(request.args[b"begin"][0])) // 2
 			epg = EPG()
 			event = epg.getEventByTime(sRef, queryTime)
-			eventid = event and event.getEventId()
+			eventid = event and event.eventId
 			if eventid is not None:
 				eit = int(eventid)
 
