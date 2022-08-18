@@ -37,7 +37,7 @@ from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
 from Plugins.Extensions.OpenWebif.controllers.epg import EPG
 
 
-def adjustStartEndTimes(event, description=True):
+def adjustStartEndTimes(event):
 	begin = event.start['timestamp']
 	end = event.end['timestamp']
 	begin -= config.recording.margin_before.value * 60
