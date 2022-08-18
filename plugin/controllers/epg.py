@@ -120,8 +120,8 @@ class EPG():
 	def getEncoding():
 		return config.OpenWebif.epg_encoding.value
 
-
 	# TODO: make search type fully customisable
+
 	def search(self, queryString, searchFullDescription=False):
 		logger.debug("search[[[   (%s, %s)   ]]]" % (queryString, searchFullDescription))
 		if not queryString:
@@ -152,7 +152,6 @@ class EPG():
 		# logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents) #AttributeError: 'tuple' object has no attribute 'toJSON'
 		return epgEvents
 
-
 	def findSimilarEvents(self, sRef, eventId):
 		logger.debug("[[[   findSimilarEvents(%s, %s)   ]]]" % (sRef, eventId))
 		if not sRef or not eventId:
@@ -171,7 +170,6 @@ class EPG():
 		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
-
 	@staticmethod
 	def _transformEventData(eventFields, data):
 		# logger.debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
@@ -183,7 +181,6 @@ class EPG():
 		# TODO: auto add currentTimestamp if progress or remaining fields are requested
 
 		return EPGEvent((eventFields, data))
-
 
 	def _queryEPG(self, fields='', criteria=[]):
 		if not fields or not criteria:
@@ -200,7 +197,6 @@ class EPG():
 		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
-
 	def _getChannelNowOrNext(self, sRef, nowOrNext):
 		if not sRef:
 			logger.error("A required parameter 'sRef' is missing!")
@@ -213,7 +209,6 @@ class EPG():
 
 		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
-
 
 	def _getBouquetNowOrNext(self, bqRef, nowOrNext):
 		if not bqRef:
@@ -233,7 +228,6 @@ class EPG():
 		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
-
 	def getChannelEvents(self, sRef, startTime, endTime=None):
 		logger.debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
 		if not sRef:
@@ -250,16 +244,13 @@ class EPG():
 		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
-
 	def getChannelNowEvent(self, sRef):
 		logger.debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
 		return self._getChannelNowOrNext(sRef, NOW_EVENT)
 
-
 	def getChannelNextEvent(self, sRef):
 		logger.debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
 		return self._getChannelNowOrNext(sRef, NEXT_EVENT)
-
 
 	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields=MULTI_CHANNEL_FIELDS):
 		logger.debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
@@ -278,7 +269,6 @@ class EPG():
 
 		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
-
 
 	def getMultiChannelNowNextEvents(self, sRefs, fields=MULTI_NOWNEXT_FIELDS):
 		logger.debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
@@ -299,32 +289,27 @@ class EPG():
 		logger.debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
-
 	def getBouquetEvents(self, bqRef, startTime, endTime=None):
 		logger.debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (bqRef, startTime, endTime))
 		sRefs = getBouquetServices(bqRef, 'S')
 
 		return self.getMultiChannelEvents(sRefs, startTime, endTime, BOUQUET_FIELDS)
 
-
 	def getBouquetNowEvents(self, bqRef):
 		logger.debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
 
 		return self._getBouquetNowOrNext(bqRef, NOW_EVENT)
-
 
 	def getBouquetNextEvents(self, bqRef):
 		logger.debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
 
 		return self._getBouquetNowOrNext(bqRef, NEXT_EVENT)
 
-
 	def getBouquetNowNextEvents(self, bqRef):
 		logger.debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (bqRef))
 		sRefs = getBouquetServices(bqRef, 'S')
 
 		return self.getMultiChannelNowNextEvents(sRefs, BOUQUET_NOWNEXT_FIELDS)
-
 
 	def getCurrentEvent(self, sRef):
 		logger.debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef))
@@ -341,7 +326,6 @@ class EPG():
 
 		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
-
 
 	def getEventById(self, sRef, eventId):
 		logger.debug("[[[   getEventById(%s, %s)   ]]]" % (str(sRef), eventId))
@@ -370,7 +354,6 @@ class EPG():
 		# epgEvent.getExtraEventData(),
 		# epgEvent.getPdcPil()
 
-
 	def getEventByTime(self, sRef, eventTime, direction=NOW_EVENT):
 		logger.debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
 		if not sRef or not eventTime:
@@ -388,7 +371,6 @@ class EPG():
 		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
 
-
 	def getEvent(self, sRef, eventId):
 		logger.debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
 
@@ -397,7 +379,6 @@ class EPG():
 
 		logger.debug(epgEvent.toJSON(indent=2))
 		return epgEvent
-
 
 	def getEventDescription(self, sRef, eventId):
 		logger.debug("[[[   getEventDescription(%s, %s)   ]]]" % (sRef, eventId))
@@ -417,12 +398,12 @@ class EPG():
 		logger.debug(description)
 		return description
 
-
 	# /web/loadepg
+
 	def load(self):
 		self._instance.load()
 
-
 	# /web/saveepg
+
 	def save(self):
 		self._instance.save()

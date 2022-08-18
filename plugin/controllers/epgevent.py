@@ -278,7 +278,6 @@ class EPGEvent():
 				except Exception as error:
 					logger.warning(error)
 
-
 	def toJSON(self, **kwargs):
 		# dict keys that are not of a basic type (str, int, float, bool, None) will raise a TypeError.
 		return dumps(self.__dict__, **kwargs)

@@ -575,7 +575,6 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False
 			for sitem in slist:
 				allproviders[sitem[0]] = provider[1]
 
-
 	bqservices = serviceHandler.list(eServiceReference(sRef))
 	slist = bqservices and bqservices.getContent("CN" if removeNameFromsref else "SN", True)
 
