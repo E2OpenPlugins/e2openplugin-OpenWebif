@@ -39,9 +39,9 @@ except ImportError:
 	def getGenreStringLong(*args): return ""
 
 
-TEXT_YESTERDAY         = 'Yesterday, %R'
-TEXT_TODAY             = 'Today, %R'
-TEXT_TOMORROW          = 'Tomorrow, %R'
+TEXT_YESTERDAY = 'Yesterday, %R'
+TEXT_TODAY = 'Today, %R'
+TEXT_TOMORROW = 'Tomorrow, %R'
 
 
 logging.basicConfig(level=logging.DEBUG, stream=logging.StreamHandler(), format='%(levelname)s: %(funcName)s(): %(message)s')

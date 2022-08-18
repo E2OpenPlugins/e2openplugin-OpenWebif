@@ -33,22 +33,22 @@ from Plugins.Extensions.OpenWebif.controllers.defaults import DEBUG_ENABLED
 from Plugins.Extensions.OpenWebif.controllers.epgevent import EPGEvent
 
 
-CASE_SENSITIVE_QUERY   = 0
+CASE_SENSITIVE_QUERY = 0
 CASE_INSENSITIVE_QUERY = 1
-REGEX_QUERY            = 2
-MAX_RESULTS            = 128
-MATCH_EVENT_ID         = 2
-PREVIOUS_EVENT         = -1
-NOW_EVENT              = 0
-NEXT_EVENT             = +1
-TIME_NOW               = -1
+REGEX_QUERY = 2
+MAX_RESULTS = 128
+MATCH_EVENT_ID = 2
+PREVIOUS_EVENT = -1
+NOW_EVENT = 0
+NEXT_EVENT = +1
+TIME_NOW = -1
 
 BOUQUET_NOWNEXT_FIELDS = 'IBDCTSERNWX' # getBouquetNowNextEvents, _getBouquetNowOrNext
-BOUQUET_FIELDS         = 'IBDCTSERNW'  # getBouquetEvents
-MULTI_CHANNEL_FIELDS   = 'IBTSRND'     # getMultiChannelEvents
-MULTI_NOWNEXT_FIELDS   = 'TBDCIESX'    # getMultiChannelNowNextEvents
-SINGLE_CHANNEL_FIELDS  = 'IBDTSENCW'   # getChannelEvents;
-SEARCH_FIELDS          = 'IBDTSENRW'   # search, findSimilarEvents
+BOUQUET_FIELDS = 'IBDCTSERNW'  # getBouquetEvents
+MULTI_CHANNEL_FIELDS = 'IBTSRND'     # getMultiChannelEvents
+MULTI_NOWNEXT_FIELDS = 'TBDCIESX'    # getMultiChannelNowNextEvents
+SINGLE_CHANNEL_FIELDS = 'IBDTSENCW'   # getChannelEvents;
+SEARCH_FIELDS = 'IBDTSENRW'   # search, findSimilarEvents
 
 
 logging.basicConfig(level=logging.DEBUG, stream=logging.StreamHandler(), format='%(levelname)s: %(funcName)s(): %(message)s')
