@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 ##########################################################################
@@ -46,7 +47,7 @@ from .base import BaseController
 from .stream import StreamController
 from .utilities import getUrlArg
 from .defaults import PICON_PATH
-from .epg import Epg
+from .epg import EPG
 
 
 def whoami(request):
@@ -1076,7 +1077,7 @@ class WebController(BaseController):
 		else:
 			# TODO : move this code to timers.py
 			queryTime = int(request.args[b"begin"][0]) + (int(request.args[b"end"][0]) - int(request.args[b"begin"][0])) // 2
-			epg = Epg()
+			epg = EPG()
 			event = epg.getEventByTime(sRef, queryTime)
 			eventid = event and event.getEventId()
 			if eventid is not None:
@@ -1428,7 +1429,9 @@ class WebController(BaseController):
 			"firstpublic": firstpublic
 		}
 
-	# http://mutant51.local/web/epgbouquet?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20%22userbouquet.favourites.tv%22%20ORDER%20BY%20bouquet
+	# http://enigma2/api/epgbouquet?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20%22userbouquet.favourites.tv%22%20ORDER%20BY%20bouquet
+	# http://enigma2/web/epgbouquet?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20%22userbouquet.favourites.tv%22%20ORDER%20BY%20bouquet
+	# TODO: this is _woefully_ inefficient
 	def P_epgbouquet(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
@@ -1451,7 +1454,8 @@ class WebController(BaseController):
 
 		return getBouquetEpg(getUrlArg(request, "bRef"), begintime, endtime, self.isJson)
 
-	# http://mutant51.local/web/epgmulti?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
+	# http://enigma2/api/epgmulti?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
+	# http://enigma2/web/epgmulti?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
 	# TODO: check if originally dupe of `P_epgbouquet`
 	def P_epgmulti(self, request):
 		"""
@@ -1511,16 +1515,18 @@ class WebController(BaseController):
 		ret["offset"] = getUtcOffset()
 		return ret
 
-	# http://mutant51.local/web/epgnow?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
+	# http://enigma2/api/epgnow?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
+	# http://enigma2/web/epgnow?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
 	def P_epgnow(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
 		bqRef = getUrlArg(request, "bRef")
 
-		return getBouquetNowNextEpg(bqRef, Epg.NOW, self.isJson)
+		return getBouquetNowNextEpg(bqRef, EPG.NOW, self.isJson)
 
-	# http://mutant51.local/web/epgnext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
+	# http://enigma2/api/epgnext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
+	# http://enigma2/web/epgnext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
 	def P_epgnext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
@@ -1529,16 +1535,17 @@ class WebController(BaseController):
 
 		# from Components.Sources.EventInfo import EventInfo
 		# print(EventInfo(self.session.nav, EventInfo.NEXT).getEvent().getBeginTime())
-		return getBouquetNowNextEpg(bqRef, Epg.NEXT, self.isJson)
+		return getBouquetNowNextEpg(bqRef, EPG.NEXT, self.isJson)
 
-	# http://mutant51.local/web/epgnownext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
+	# http://enigma2/api/epgnownext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
+	# http://enigma2/web/epgnownext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
 	# TODO: fix missing now or next
 	def P_epgnownext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
 		bqRef = getUrlArg(request, "bRef")
-		ret = getBouquetNowNextEpg(bqRef, Epg.NOW_NEXT, self.isJson)
+		ret = getBouquetNowNextEpg(bqRef, EPG.NOW_NEXT, self.isJson)
 		info = getCurrentService(self.session)
 		ret["info"] = info
 		return ret
@@ -1553,7 +1560,8 @@ class WebController(BaseController):
 
 		return str(ret)  # fixed Jun'22 (seems to have been broken for quite a while)
 
-	# http://mutant51.local/web/epgsearch?search=test
+	# http://enigma2/api/epgsearch?search=test
+	# http://enigma2/web/epgsearch?search=test
 	def P_epgsearch(self, request):
 		"""
 		EPG event search and lookup handler.
@@ -1604,7 +1612,8 @@ class WebController(BaseController):
 				pass
 			return getEvent(sRef, item_id, self.isJson)
 
-	# http://mutant51.local/web/epgsearchrss?search=test
+	# http://enigma2/api/epgsearchrss?search=test
+	# http://enigma2/web/epgsearchrss?search=test
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
 		if res:
@@ -1617,7 +1626,8 @@ class WebController(BaseController):
 		ret["description"] = "%d result for '%s'" % (len(ret["events"]), search)
 		return ret
 
-	# http://mutant51.local/web/epgservice?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
+	# http://enigma2/api/epgservice?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
+	# http://enigma2/web/epgservice?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
 	def P_epgservice(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
@@ -1638,21 +1648,24 @@ class WebController(BaseController):
 				pass
 		return getChannelEpg(getUrlArg(request, "sRef"), begintime, endtime, self.isJson)
 
-	# http://mutant51.local/web/epgservicenow?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
+	# http://enigma2/api/epgservicenow?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
+	# http://enigma2/web/epgservicenow?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
 	def P_epgservicenow(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(getUrlArg(request, "sRef"), Epg.NOW, self.isJson)
+		return getNowNextEpg(getUrlArg(request, "sRef"), EPG.NOW, self.isJson)
 
-	# http://mutant51.local/web/epgservicenext?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
+	# http://enigma2/api/epgservicenext?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
+	# http://enigma2/web/epgservicenext?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
 	def P_epgservicenext(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(getUrlArg(request, "sRef"), Epg.NEXT, self.isJson)
+		return getNowNextEpg(getUrlArg(request, "sRef"), EPG.NEXT, self.isJson)
 
-	# http://mutant51.local/web/epgsimilar?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A&eventid=32645
+	# http://enigma2/api/epgsimilar?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A&eventid=32645
+	# http://enigma2/web/epgsimilar?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A&eventid=32645
 	def P_epgsimilar(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
 		if res:
@@ -1667,7 +1680,8 @@ class WebController(BaseController):
 			}
 		return getSearchSimilarEpg(getUrlArg(request, "sRef"), eventid, self.isJson)
 
-	# http://mutant51.local/web/event?idev=32695&sref=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
+	# http://enigma2/api/event?idev=32695&sref=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
+	# (/web/event returns a 404 in both `classic` and `modern` interfaces
 	def P_event(self, request):
 		sRef = getUrlArg(request, "sRef")
 		if sRef == None:
@@ -1683,7 +1697,8 @@ class WebController(BaseController):
 		else:
 			return None
 
-	# http://mutant51.local/web/getcurrent
+	# http://enigma2/api/getcurrent
+	# http://enigma2/web/getcurrent
 	def P_getcurrent(self, request):
 		"""
 		Request handler for the `getcurrent` endpoint.
@@ -1702,7 +1717,7 @@ class WebController(BaseController):
 
 		"""
 		info = getCurrentService(self.session)
-		now = getNowNextEpg(info["ref"], Epg.NOW, self.isJson)
+		now = getNowNextEpg(info["ref"], EPG.NOW, self.isJson)
 		if len(now["events"]) > 0:
 			now = now["events"][0]
 			now["provider"] = info["provider"]
@@ -1722,7 +1737,7 @@ class WebController(BaseController):
 				"genre": "",
 				"genreid": 0
 			}
-		next = getNowNextEpg(info["ref"], Epg.NEXT, self.isJson)
+		next = getNowNextEpg(info["ref"], EPG.NEXT, self.isJson)
 		if len(next["events"]) > 0:
 			next = next["events"][0]
 			next["provider"] = info["provider"]
@@ -2198,7 +2213,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		Epg().save()
+		EPG().save()
 
 		return {
 			"result": True,
@@ -2218,7 +2233,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		Epg().load()
+		EPG().load()
 
 		return {
 			"result": True,

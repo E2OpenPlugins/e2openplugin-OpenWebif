@@ -34,7 +34,7 @@ from six.moves.urllib.parse import unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative, getInfo
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
-from Plugins.Extensions.OpenWebif.controllers.epg import Epg
+from Plugins.Extensions.OpenWebif.controllers.epg import EPG
 
 
 def FuzzyTime(t, inPast=False):
@@ -69,7 +69,7 @@ def FuzzyTime(t, inPast=False):
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
-	epg = Epg()
+	epg = EPG()
 	timers = []
 	for timer in rt.timer_list + rt.processed_timers:
 		if hasattr(timer, "wakeup_t"):
@@ -344,7 +344,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 
 
 def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent, pipzap, allow_duplicate, autoadjust, recordingtype):
-	epg = Epg()
+	epg = EPG()
 	event = epg.getEventById(serviceref, eventid)
 	if event is None:
 		return {

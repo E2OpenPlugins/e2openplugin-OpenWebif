@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##########################################################################
-# OpenWebif: epg
+# OpenWebif: EPG
 ##########################################################################
 # Copyright (C) 2011 - 2022 E2OpenPlugins
 #
@@ -20,30 +20,95 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from time import localtime, strftime, gmtime
-import json
+import logging
 
-from enigma import eEPGCache, eServiceReference
+from datetime import datetime, timedelta
+from json import dumps
+
+from enigma import eEPGCache, eServiceCenter, eServiceReference
+from ServiceReference import ServiceReference
 from Components.config import config
-from .defaults import DEBUG_ENABLED
 
-CASE_SENSITIVE_QUERY = 0
+from Plugins.Extensions.OpenWebif.controllers.defaults import DEBUG_ENABLED
+from Plugins.Extensions.OpenWebif.controllers.epgevent import EPGEvent
+
+
+CASE_SENSITIVE_QUERY   = 0
 CASE_INSENSITIVE_QUERY = 1
-REGEX_QUERY = 2
-MAX_RESULTS = 128
-MATCH_EVENT_ID = 2
-MATCH_EVENT_BEFORE_GIVEN_START_TIME = -1
-MATCH_EVENT_INTERSECTING_GIVEN_START_TIME = 0
-MATCH_EVENT_AFTER_GIVEN_START_TIME = +1
-TIME_NOW = -1
+REGEX_QUERY            = 2
+MAX_RESULTS            = 128
+MATCH_EVENT_ID         = 2
+PREVIOUS_EVENT         = -1
+NOW_EVENT              = 0
+NEXT_EVENT             = +1
+TIME_NOW               = -1
+
+BOUQUET_NOWNEXT_FIELDS = 'IBDCTSERNWX' # getBouquetNowNextEvents, _getBouquetNowOrNext
+BOUQUET_FIELDS         = 'IBDCTSERNW'  # getBouquetEvents
+MULTI_CHANNEL_FIELDS   = 'IBTSRND'     # getMultiChannelEvents
+MULTI_NOWNEXT_FIELDS   = 'TBDCIESX'    # getMultiChannelNowNextEvents
+SINGLE_CHANNEL_FIELDS  = 'IBDTSENCW'   # getChannelEvents;
+SEARCH_FIELDS          = 'IBDTSENRW'   # search, findSimilarEvents
 
 
-def debug(msg):
-	if DEBUG_ENABLED:
-		print(msg)
+logging.basicConfig(level=logging.DEBUG, stream=logging.StreamHandler(), format='%(levelname)s: %(funcName)s(): %(message)s')
+# logger = logging.getLogger(__name__) # Plugins.Extensions.OpenWebif.controllers.epg:
+logger = logging.getLogger('[OpenWebif] [EPG]')
 
 
-class Epg():
+if DEBUG_ENABLED:
+	logger.setLevel(logging.DEBUG)
+else:
+	logger.disabled = True
+
+
+# TODO: load configgy stuff once
+
+
+def getBouquetServices(bqRef, fields = 'SN'):
+	bqServices = eServiceCenter.getInstance().list(eServiceReference(bqRef))
+
+	return bqServices.getContent(fields)
+
+
+def getServiceDetails(sRef):
+	try:
+		sRefStr = str(ServiceReference(sRef))
+	except:
+		sRefStr = sRef
+
+	value = None
+
+	if sRef:
+		value = {
+			'sRef': sRefStr,
+			'name': ServiceReference(sRef).getServiceName(),
+			# 'path': ServiceReference(sRef).getPath(),
+			# 'sType': ServiceReference(sRef).getType(),
+			# 'flags': ServiceReference(sRef).getFlags(),
+		}
+
+	return value
+
+
+# TODO: move to utilities
+class TimedProcess:
+	def __init__(self):
+		self.timeTaken = 0
+
+	def __enter__(self):
+		self.tick = datetime.now()
+		return self
+
+	def __exit__(self, exc_type, exc_value, exc_tb):
+		self.timeTaken = datetime.now() - self.tick
+		logger.debug('Process took {}'.format(self.timeTaken))
+
+	# def getTimeTaken(self):
+	# 	return self.timeTaken
+
+
+class EPG():
 	NOW = 10
 	NEXT = 11
 	NOW_NEXT = 21
@@ -51,43 +116,18 @@ class Epg():
 	def __init__(self):
 		self._instance = eEPGCache.getInstance()
 
-
-# // here we get a python tuple
-# // the first entry in the tuple is a python string to specify the format of the returned tuples (in a list)
-# //   I = Event Id
-# //   B = Event Begin Time
-# //   D = Event Duration
-# //   T = Event Title
-# //   S = Event Short Description
-# //   P = Event Parental Rating
-# //   W = Event Content Description
-# //   E = Event Extended Description
-# //   R = Service Reference
-# //   N = Service Name
-# //   n = Short Service Name
-# //  the second tuple entry is the MAX matches value
-# //  the third tuple entry is the type of query
-# //     0 = search for similar broadcastings (SIMILAR_BROADCASTINGS_SEARCH)
-# //     1 = search events with exactly title name (EXACT_TITLE_SEARCH)
-# //     2 = search events with text in title name (PARTIAL_TITLE_SEARCH)
-# //     3 = search events starting with title name (START_TITLE_SEARCH)
-# //     4 = search events ending with title name (END_TITLE_SEARCH)
-# //     5 = search events with text in description (PARTIAL_DESCRIPTION_SEARCH)
-# //  when type is 0 (SIMILAR_BROADCASTINGS_SEARCH)
-# //   the fourth is the servicereference string
-# //   the fifth is the eventid
-# //  when type > 0 (*_TITLE_SEARCH)
-# //   the fourth is the search text
-# //   the fifth is
-# //     0 = case sensitive (CASE_CHECK)
-# //     1 = case insensitive (NO_CASE_CHECK)
-# //     2 = regex search (REGEX_CHECK)
+	@staticmethod
+	def getEncoding():
+		return config.OpenWebif.epg_encoding.value
 
 
-	def search(self, queryString, searchFullDescription):
-		debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
-		queryType = eEPGCache.PARTIAL_TITLE_SEARCH
-		epgEncoding = config.OpenWebif.epg_encoding.value
+	# TODO: make search type fully customisable
+	def search(self, queryString, searchFullDescription = False):
+		logger.debug("search[[[   (%s, %s)   ]]]" % (queryString, searchFullDescription))
+		if not queryString:
+			logger.error("A required parameter 'queryString' is missing!")
+
+		epgEncoding = self.getEncoding()
 
 		if epgEncoding.lower() != 'utf-8':
 			try:
@@ -95,369 +135,294 @@ class Epg():
 			except UnicodeEncodeError:
 				pass
 
+		queryType = eEPGCache.PARTIAL_TITLE_SEARCH
+
 		if searchFullDescription:
 			if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 				queryType = eEPGCache.FULL_DESCRIPTION_SEARCH
 			elif hasattr(eEPGCache, 'PARTIAL_DESCRIPTION_SEARCH'):
 				queryType = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
 
-		criteria = ('IBDTSENRW', MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
-		epgEvents = self._instance.search(criteria)
+		criteria = (SEARCH_FIELDS, MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
+		with TimedProcess() as tp:
+			epgEvents = self._instance.search(criteria)
 
-		debug(json.dumps(epgEvents, indent=2))
+		# logger.debug(tp.getTimeTaken())
+
+		# logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents) #AttributeError: 'tuple' object has no attribute 'toJSON'
 		return epgEvents
+
 
 	def findSimilarEvents(self, sRef, eventId):
-		debug("[[[   findSimilarEvents(%s, %s)   ]]]" % (sRef, eventId))
-		eventId = int(eventId)
-		eventFields = 'IBDTSENRW'
-		# sRef is expected to be a string
-		criteria = (eventFields, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
-		epgEvents = self._instance.search(criteria)
+		logger.debug("[[[   findSimilarEvents(%s, %s)   ]]]" % (sRef, eventId))
+		if not sRef or not eventId:
+			logger.error("A required parameter 'sRef' or eventId is missing!")
+			# return None
+		else:
+			sRef = str(sRef)
+			eventId = int(eventId)
 
-		debug(json.dumps(epgEvents, indent=2))
-		return epgEvents
+		criteria = (SEARCH_FIELDS, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
+		with TimedProcess() as tp:
+			epgEvents = self._instance.search(criteria)
 
-	def _transformEventData(self, eventFields, *args):
-		eventData = {
-			"service": {}
-		}
-		dateAndTime = {}
-		currentTime = 0
+		# logger.debug(tp.getTimeTaken())
 
-		# for index, arg in enumerate(args):
-		# 	key = eventFields[index]
-		#
-		# 	if key == 'I':
-		# 		eventData['eventId'] = arg
-		# 	elif key == 'B':
-		# 		dateAndTime['start'] = arg
-		# 		dateAndTime['startDateTime'] = strftime('%c', (localtime(arg)))
-		# 		dateAndTime['startDate'] = strftime('%x', (localtime(arg)))
-		# 		dateAndTime['startTime'] = strftime('%X', (localtime(arg)))
-		# 	elif key == 'D':
-		# 		dateAndTime['duration'] = arg
-		# 		dateAndTime['durationFormatted'] = strftime("%-Hh %-Mm", gmtime(arg))
-		# 	elif key == 'T':
-		# 		eventData['title'] = arg
-		# 	elif key == 'S':
-		# 		eventData['shortDescription'] = arg
-		# 	elif key == 'E':
-		# 		eventData['extendedDescription'] = arg
-		# 	elif key == 'P':
-		# 		eventData['parentalRating'] = arg
-		# 	elif key == 'W':
-		# 		eventData['genre'] = arg
-		# 	elif key == 'C':
-		# 		currentTime = arg
-		# 	elif key == 'R':
-		# 		eventData['service']['reference'] = arg
-		# 	elif key == 'n':
-		# 		eventData['service']['shortName'] = arg
-		# 	elif key == 'N':
-		# 		eventData['service']['name'] = arg
-		# 	# elif key == 'X':
-		# 	# 	#ignored
-		# 	elif key == 'M':
-		# 		eventData['maxResults'] = arg
-		# 	else:
-		# 		eventData[key] = arg
-		#
-		# endTimeEpoch = int(dateAndTime['start'] + dateAndTime['duration'])
-		# remainingTime = int((endTimeEpoch - dateAndTime['current']) / 60)
-		# progressPercent = int(((currentTime - dateAndTime['start']) / dateAndTime['duration']) * 100)
-		# progressPercent = progressPercent if progressPercent >= 0 else 0
-		# dateAndTime['end'] = endTimeEpoch
-		# dateAndTime['endDateTime'] = strftime('%c', (localtime(endTimeEpoch)))
-		# dateAndTime['endDate'] = strftime('%x', (localtime(endTimeEpoch)))
-		# dateAndTime['endTime'] = strftime('%X', (localtime(endTimeEpoch)))
-		# dateAndTime['remaining'] = remainingTime
-		# dateAndTime['progressPercent'] = '{0}%'.format(progressPercent)
-		# eventData['dateTime'] = dateAndTime
-
-		# debug(json.dumps(eventData, indent=2))
-		return args
-
-	def _queryEPG(self, criteria):
-		eventFields = criteria[0]
-
-		def _callEventTransform(*args):
-			return self._transformEventData(eventFields, *args)
-
-		epgEvents = self._instance.lookupEvent(criteria, _callEventTransform)
-
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
 
-# // here we get a python list
-# // the first entry in the list is a python string to specify the format of the returned tuples (in a list)
-# //   0 = PyLong(0)
-# //   I = Event Id
-# //   B = Event Begin Time
-# //   D = Event Duration
-# //   T = Event Title
-# //   S = Event Short Description
-# //   E = Event Extended Description
-# //   P = Event Parental Rating
-# //   W = Event Content Description ('W'hat)
-# //   C = Current Time
-# //   R = Service Reference
-# //   N = Service Name
-# //   n = Short Service Name
-# //   X = Return a minimum of one tuple per service in the result list... even when no event was found.
-# //       The returned tuple is filled with all available infos... non avail is filled as None
-# //       The position and existence of 'X' in the format string has no influence on the result tuple... its completely ignored..
-# //   M = see X just 10 items are returned
-# // then for each service follows a tuple
-# //   first tuple entry is the servicereference (as string... use the ref.toString() function)
-# //   the second is the type of query
-# //     2 = event_id
-# //    -1 = event before given start_time
-# //     0 = event intersects given start_time
-# //    +1 = event after given start_time
-# //   the third
-# //      when type is eventid it is the event_id
-# //      when type is time then it is the start_time ( -1 for now_time )
-# //   the fourth is the end_time .. ( optional .. for query all events in time range)
+	@staticmethod
+	def _transformEventData(eventFields, data):
+		# logger.debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
+		# logger.debug(data)
 
-	#TODO: investigate using `get event by id`
+		# TODO: skip processing if there isn't a valid event (id is None)
+		# TODO: skip 1:7:1: (sub-bouquets)
+		# TODO: remove 'currentStart' (currently still needed?)
+		# TODO: auto add currentTimestamp if progress or remaining fields are requested
 
-	def getEvent(self, sRef, eventId):
-		debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
-		eventId = int(eventId)
-		# sRef is not expected to be an instance of eServiceReference
-		criteria = ['IBDTSENRW', (sRef, MATCH_EVENT_ID, eventId)]
-		epgEvent = self._queryEPG(criteria)
+		return EPGEvent((eventFields, data))
 
-		debug(epgEvent)
-		epgEvent = epgEvent[0] if len(epgEvent) > 0 else None
 
-		# debug(json.dumps(epgEvent, indent = 2))
-		# debug(epgEvent)
+	def _queryEPG(self, fields = '', criteria = []):
+		if not fields or not criteria:
+			logger.error("A required parameter 'fields' or [criteria] is missing!")
+			# return None
+
+		criteria.insert(0, fields)
+		epgEvents = self._instance.lookupEvent(criteria)
+		with TimedProcess() as tp:
+			epgEvents = [self._transformEventData(fields, evt) for evt in epgEvents]
+
+		# logger.debug(tp.getTimeTaken())
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		return epgEvents
+
+
+	def _getChannelNowOrNext(self, sRef, nowOrNext):
+		if not sRef:
+			logger.error("A required parameter 'sRef' is missing!")
+			# return None
+		else:
+			sRef = str(sRef)
+
+		with TimedProcess() as tp:
+			epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
+
+		logger.debug(epgEvent.toJSON(indent = 2))
 		return epgEvent
 
-	def getChannelEvents(self, sRef, startTime, endTime):
-		debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
-		# sRef is not expected to be an instance of eServiceReference
-		criteria = ['IBDTSENCW', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime)]
-		epgEvents = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvents, indent = 2))
-		debug(epgEvents)
+	def _getBouquetNowOrNext(self, bqRef, nowOrNext):
+		if not bqRef:
+			logger.error("A required parameter 'bqRef' is missing!")
+			# return None
+
+		sRefs = getBouquetServices(bqRef, 'S')
+		criteria = []
+
+		for sRef in sRefs:
+			sRef = str(sRef)
+			criteria.append((sRef, nowOrNext, TIME_NOW))
+
+		with TimedProcess() as tp:
+			epgEvents = self._queryEPG(BOUQUET_NOWNEXT_FIELDS, criteria)
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
-	#TODO: investigate using `get event by time`
+
+	def getChannelEvents(self, sRef, startTime, endTime = None):
+		logger.debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
+		if not sRef:
+			logger.error("A required parameter 'sRef' is missing!")
+			# return None
+		else:
+			sRef = str(sRef)
+
+		criteria = [(sRef, NOW_EVENT, startTime, endTime)]
+
+		with TimedProcess() as tp:
+			epgEvents = self._queryEPG(SINGLE_CHANNEL_FIELDS, criteria)
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		return epgEvents
+
 
 	def getChannelNowEvent(self, sRef):
-		debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
-		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW)]
-		epgEvent = self._queryEPG(criteria)
+		logger.debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
+		return self._getChannelNowOrNext(sRef, NOW_EVENT)
 
-		# debug(json.dumps(epgEvent, indent = 2))
-		debug(epgEvent)
-		return epgEvent
-
-	#TODO: investigate using `get event by time`
 
 	def getChannelNextEvent(self, sRef):
-		debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
-		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW)]
-		epgEvent = self._queryEPG(criteria)
+		logger.debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
+		return self._getChannelNowOrNext(sRef, NEXT_EVENT)
 
-		# debug(json.dumps(epgEvent, indent = 2))
-		debug(epgEvent)
+
+	def getMultiChannelEvents(self, sRefs, startTime, endTime = None, fields = MULTI_CHANNEL_FIELDS):
+		logger.debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
+		if not sRefs:
+			logger.error("A required parameter [sRefs] is missing!")
+			# return None
+
+		criteria = []
+
+		for sRef in sRefs:
+			sRef = str(sRef)
+			criteria.append((sRef, NOW_EVENT, startTime, endTime))
+
+		with TimedProcess() as tp:
+			epgEvents = self._queryEPG(fields, criteria)
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		return epgEvents
+
+
+	def getMultiChannelNowNextEvents(self, sRefs, fields = MULTI_NOWNEXT_FIELDS):
+		logger.debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
+		if not sRefs:
+			logger.error("A required parameter [sRefs] is missing!")
+			# return None
+
+		criteria = []
+
+		for sRef in sRefs:
+			sRef = str(sRef)
+			criteria.append((sRef, NOW_EVENT, TIME_NOW))
+			criteria.append((sRef, NEXT_EVENT, TIME_NOW))
+
+		with TimedProcess() as tp:
+			epgEvents = self._queryEPG(fields, criteria)
+
+		logger.debug(epgEvents[-1].toJSON(indent = 2) if epgEvents and len(epgEvents) else epgEvents)
+		return epgEvents
+
+
+	def getBouquetEvents(self, bqRef, startTime, endTime = None):
+		logger.debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (bqRef, startTime, endTime))
+		sRefs = getBouquetServices(bqRef, 'S')
+
+		return self.getMultiChannelEvents(sRefs, startTime, endTime, BOUQUET_FIELDS)
+
+
+	def getBouquetNowEvents(self, bqRef):
+		logger.debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
+
+		return self._getBouquetNowOrNext(bqRef, NOW_EVENT)
+
+
+	def getBouquetNextEvents(self, bqRef):
+		logger.debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
+
+		return self._getBouquetNowOrNext(bqRef, NEXT_EVENT)
+
+
+	def getBouquetNowNextEvents(self, bqRef):
+		logger.debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (bqRef))
+		sRefs = getBouquetServices(bqRef, 'S')
+
+		return self.getMultiChannelNowNextEvents(sRefs, BOUQUET_NOWNEXT_FIELDS)
+
+
+	def getCurrentEvent(self, sRef):
+		logger.debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef))
+		if not sRef:
+			logger.error("A required parameter 'sRef' is missing!")
+			# return None
+		elif not isinstance(sRef, eServiceReference):
+			sRef = eServiceReference(sRef)
+
+		with TimedProcess() as tp:
+			epgEvent = self._instance.lookupEventTime(sRef, TIME_NOW, 0)
+
+		epgEvent = EPGEvent(epgEvent)
+
+		logger.debug(epgEvent.toJSON(indent = 2))
 		return epgEvent
 
-	def getMultiChannelEvents(self, sRefs, startTime, endTime=None):
-		debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
-		criteria = ['IBTSRND']
 
-		# sRef is not expected to be an instance of eServiceReference
-		for sRef in sRefs:
-			# sub-bouquets will cause a `tuple index out of range` error
-			if not sRef.startswith('1:7:'):
-				if endTime:
-					criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
-				else:
-					criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime))
+	def getEventById(self, sRef, eventId):
+		logger.debug("[[[   getEventById(%s, %s)   ]]]" % (str(sRef), eventId))
+		if not sRef or not eventId:
+			logger.error("A required parameter 'sRef' or eventId is missing!")
+			# return None
+		elif not isinstance(sRef, eServiceReference):
+			sRef = eServiceReference(sRef)
 
-		epgEvents = self._queryEPG(criteria)
+		eventId = int(eventId)
 
-		debug(json.dumps(epgEvents, indent=2))
-		debug(epgEvents)
-		return epgEvents
+		with TimedProcess() as tp:
+			epgEvent = self._instance.lookupEventId(sRef, eventId)
 
-	def getMultiChannelNowNextEvents(self, sRefs=[]):
-		debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
-		criteria = ['IBDCTSERNX']
+		epgEvent = EPGEvent(epgEvent)
+		epgEvent.service = getServiceDetails(sRef)
 
-		# sRef is not expected to be an instance of eServiceReference
-		for sRef in sRefs:
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
-			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
+		logger.debug(epgEvent.toJSON(indent = 2))
+		return epgEvent
 
-		epgEvents = self._queryEPG(criteria)
+		# ServiceReference(sRef).getServiceName(),
+		# sRef,
+		# epgEvent.getSeriesCrid(),
+		# epgEvent.getEpisodeCrid(),
+		# epgEvent.getRunningStatus(),
+		# epgEvent.getExtraEventData(),
+		# epgEvent.getPdcPil()
 
-		# debug(json.dumps(epgEvents, indent = 2))
-		debug(epgEvents)
-		return epgEvents
 
-	def getBouquetEvents(self, sRefs, startTime, endTime=-1):
-		debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
-		# prevent crash #TODO: investigate if this is still needed (if so, use now + year or similar)
-		if endTime > 100000:
-			endTime = -1
+	def getEventByTime(self, sRef, eventTime, direction = NOW_EVENT):
+		logger.debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
+		if not sRef or not eventTime:
+			logger.error("A required parameter 'sRef' or eventTime is missing!")
+			# return None
+		elif not isinstance(sRef, eServiceReference):
+			sRef = eServiceReference(sRef)
 
-		criteria = ['IBDCTSERNWX']  # remove X
+		with TimedProcess() as tp:
+			epgEvent = self._instance.lookupEventTime(sRef, eventTime, direction)
 
-		for sRef in sRefs:
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
+		epgEvent = EPGEvent(epgEvent)
+		epgEvent.service = getServiceDetails(sRef)
 
-		# sRef is not expected to be an instance of eServiceReference
-		epgEvents = self._queryEPG(criteria)
+		logger.debug(epgEvent.toJSON(indent = 2))
+		return epgEvent
 
-		# debug(json.dumps(epgEvents, indent = 2))
-		debug(epgEvents)
-		return epgEvents
 
-	#TODO: investigate using `get event by time`
+	def getEvent(self, sRef, eventId):
+		logger.debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
 
-	def getBouquetNowEvents(self, sRefs):
-		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (sRefs))
-		criteria = ['IBDCTSERNWX']
+		epgEvent = self.getEventById(sRef, eventId)
+		# epgEvent = EPGEvent(epgEvent) # already transformed by `getEventById()`
 
-		for sRef in sRefs:
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
+		logger.debug(epgEvent.toJSON(indent = 2))
+		return epgEvent
 
-		# sRef is not expected to be an instance of eServiceReference
-		epgEvents = self._queryEPG(criteria)
-
-		# debug(json.dumps(epgEvents, indent = 2))
-		debug(epgEvents)
-		return epgEvents
-
-	#TODO: investigate using `get event by time`
-
-	def getBouquetNextEvents(self, sRefs):
-		debug("[[[   getBouquetNextEvents(%s)   ]]]" % (sRefs))
-		criteria = ['IBDCTSERNWX']
-
-		for sRef in sRefs:
-			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
-
-		# sRef is not expected to be an instance of eServiceReference
-		epgEvents = self._queryEPG(criteria)
-
-		# debug(json.dumps(epgEvents, indent = 2))
-		debug(epgEvents)
-		return epgEvents
-
-	def getBouquetNowNextEvents(self, sRefs):
-		debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
-		criteria = ['IBDCTSERNWX']
-
-		for sRef in sRefs:
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
-			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
-
-		# sRef is not expected to be an instance of eServiceReference
-		epgEvents = self._queryEPG(criteria)
-
-		# debug(json.dumps(epgEvents, indent = 2))
-		debug(epgEvents)
-		return epgEvents
-
-	# TODO: get event by id instead
 
 	def getEventDescription(self, sRef, eventId):
-		debug("[[[   getEventDescription(%s, %s, %s)   ]]]" % (sRef, 'MATCH_EVENT_ID', eventId))
-		sRef = str(sRef)
-		eventId = int(eventId)
-		criteria = ['ESX', (sRef, MATCH_EVENT_ID, eventId)]
-		description = ""
-		epgEvent = self._queryEPG(criteria)
+		logger.debug("[[[   getEventDescription(%s, %s)   ]]]" % (sRef, eventId))
+		if not sRef or not eventId:
+			logger.error("A required parameter 'sRef' or eventId is missing!")
+			return None
+		else:
+			sRef = str(sRef)
+			eventId = int(eventId)
 
-		if len(epgEvent) > 0:
+		description = None
+		epgEvent = self.getEventById(sRef, eventId)
 
-			description = epgEvent[0][0] or epgEvent[0][1] or ""
+		if epgEvent:
+			description = epgEvent.description
+
+		logger.debug(description)
 		return description
 
 
-# /**
-#  * @brief Look up an event in the EPG database by service reference and time.
-#  * The service reference is specified in @p service.
-#  * The lookup time is in @p t.
-#  * The @p direction specifies whether to return the event matching @p t, its
-#  * predecessor or successor.
-#  *
-#  * @param service as an eServiceReference.
-#  * @param t the lookup time. If t == -1, look up the current time.
-#  * @param result the matched event, if one is found.
-#  * @param direction The event offset from the match.
-#  * @p direction > 0 return the earliest event that starts after t.
-#  * @p direction == 0 return the event that spans t. If t is spanned by a gap in the EPG, return None.
-#  * @p direction < 0 return the event immediately before the event that spans t.  * If t is spanned by a gap in the EPG, return the event immediately before the gap.
-#  * @return 0 for successful match and valid data in @p result,
-#  * -1 for unsuccessful.
-#  * In a call from Python, a return of -1 corresponds to a return value of None.
-#  */
-
-	def getCurrentEvent(self, sRef):
-		debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef))
-		if not isinstance(sRef, eServiceReference):
-			sRef = eServiceReference(sRef)
-
-		epgEvent = self._instance.lookupEventTime(sRef, TIME_NOW, 0)
-
-		# from Components.Sources.EventInfo import EventInfo
-		# evt = (EventInfo(self.session.nav, EventInfo.NOW).getEvent())
-		# epgEvent = (
-		# 	evt.getEventName(),           # [T]
-		# 	evt.getEventID(),             # [I]
-		# 	evt.getBeginTime(),           # [B]
-		# 	evt.getDuration(),            # [D]
-		# 	evt.getShortDescription(),    # [S]
-		# 	evt.getExtendedDescription(), # [E]
-		# 	evt.getParentalData(),        # [P]
-		# 	evt.getGenreData()            # [W]
-		#   # missing Service Reference     [R]
-		#   # missing Service Name          [N]
-		#   # missing Short Service Name    [n]
-		# )
-
-		# debug(json.dumps(epgEvent, indent = 2))
-		debug(epgEvent)
-		return epgEvent
-
-	def getEventById(self, sRef, eventId):
-		debug("[[[   getEventById(%s, %s)   ]]]" % (sRef, eventId))
-		if not isinstance(sRef, eServiceReference):
-			sRef = eServiceReference(sRef)
-
-		eventId = int(eventId)
-		epgEvent = self._instance.lookupEventId(sRef, eventId)
-
-		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
-		debug(epgEvent)
-		return epgEvent
-
-	def getEventByTime(self, sRef, eventTime):
-		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
-		if not isinstance(sRef, eServiceReference):
-			sRef = eServiceReference(sRef)
-
-		epgEvent = self._instance.lookupEventTime(sRef, eventTime)
-
-		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
-		debug(epgEvent)
-		return epgEvent
-
 	# /web/loadepg
-
 	def load(self):
 		self._instance.load()
 
-	# /web/saveepg
 
+	# /web/saveepg
 	def save(self):
 		self._instance.save()
