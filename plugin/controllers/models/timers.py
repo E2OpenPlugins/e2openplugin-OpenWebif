@@ -37,6 +37,14 @@ from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
 from Plugins.Extensions.OpenWebif.controllers.epg import EPG
 
 
+def adjustStartEndTimes(event):
+	begin = event.start['timestamp']
+	end = event.end['timestamp']
+	begin -= config.recording.margin_before.value * 60
+	end += config.recording.margin_after.value * 60
+	return (begin, end)  # We should also report the margins!
+
+
 def FuzzyTime(t, inPast=False):
 	d = localtime(t)
 	nt = time()
@@ -352,7 +360,7 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 			"message": _("EventId not found")
 		}
 
-	(begin, end, name, description, eit) = parseEvent(event)
+	(begin, end) = adjustStartEndTimes(event)
 
 	if justplay:
 		begin += config.recording.margin_before.value * 60
@@ -363,8 +371,8 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		serviceref,
 		begin,
 		end,
-		name,
-		description,
+		event.title,
+		event.description.replace("\n", " "), # Enigma2's InputBox and VirtualKeyBoard don't (yet?) have multi-line capability
 		False,
 		justplay,
 		afterevent,
@@ -374,7 +382,7 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		recordingtype,
 		vpsinfo,
 		None,
-		eit,
+		event.eventId,
 		always_zap,
 		pipzap,
 		allow_duplicate,
