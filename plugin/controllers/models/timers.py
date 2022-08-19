@@ -372,7 +372,7 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		begin,
 		end,
 		event.title,
-		event.description.replace("\n", " "), # Enigma2's InputBox and VirtualKeyBoard don't (yet?) have multi-line capability
+		event.description,
 		False,
 		justplay,
 		afterevent,
