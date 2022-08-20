@@ -4,7 +4,10 @@ from __future__ import print_function
 import re
 import six
 import sys
-from Plugins.Extensions.OpenWebif.controllers.defaults import DEBUG_ENABLED
+try:  # this is only for the testsuite
+	from Plugins.Extensions.OpenWebif.controllers.defaults import DEBUG_ENABLED
+except Exception:
+	DEBUG_ENABLED = False
 
 PY3 = sys.version_info[0] == 3
 
