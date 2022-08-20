@@ -20,8 +20,6 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-import logging
-
 from time import time, localtime, gmtime, strftime
 from datetime import datetime, timedelta
 from json import dumps
@@ -30,8 +28,7 @@ from enigma import eServiceCenter, eServiceEvent, eServiceReference
 from ServiceReference import ServiceReference
 from Components.config import config
 
-from Plugins.Extensions.OpenWebif.controllers.defaults import DEBUG_ENABLED
-
+from Plugins.Extensions.OpenWebif.controllers.utilities import debug, error
 
 try:
 	from Components.Converter.genre import getGenreStringLong
@@ -42,17 +39,6 @@ except ImportError:
 TEXT_YESTERDAY = 'Yesterday, %R'
 TEXT_TODAY = 'Today, %R'
 TEXT_TOMORROW = 'Tomorrow, %R'
-
-
-logging.basicConfig(level=logging.DEBUG, stream=logging.StreamHandler(), format='%(levelname)s: %(funcName)s(): %(message)s')
-# logger = logging.getLogger(__name__) # Plugins.Extensions.OpenWebif.controllers.epg:
-logger = logging.getLogger('[OpenWebif] [EPG]')
-
-
-if DEBUG_ENABLED:
-	logger.setLevel(logging.DEBUG)
-else:
-	logger.disabled = True
 
 
 # TODO: load configgy stuff once
@@ -163,7 +149,7 @@ def getFuzzyHoursMinutes(timestamp=0):
 # TODO: move to utilities
 # TODO: fixme
 def convertGenre(val):
-	logger.debug("[[[   convertGenre(%s)   ]]]" % (val))
+	debug("[[[   convertGenre(%s)   ]]]" % (val), "EPGEvent")
 	value = "", 0
 	try:
 		if val is not None and len(val) > 0:
@@ -172,10 +158,10 @@ def convertGenre(val):
 				if val[0] > 0:
 					genreId = val[0] * 16 + val[1]
 					return str(getGenreStringLong(val[0], val[1])).strip(), genreId
-	except Exception as exc:
-		logging.error(exc)
+	except Exception as err:
+		error(err, "EPGEvent")
 
-	logger.debug(value)
+	debug(value, "EPGEvent")
 	return value
 
 
@@ -241,8 +227,8 @@ class EPGEvent():
 					# else:
 					# 	eventData[key] = value
 
-				except Exception as error:
-					logger.warning(error)
+				except Exception as err:
+					error(err, "EPGEvent")
 
 		self.eventId = eventId
 		self.title = (title or '').strip()
@@ -272,8 +258,8 @@ class EPGEvent():
 			endTimestamp = startTimestamp + durationSeconds
 			try:
 				self.end = getCustomTimeFormats(endTimestamp)
-			except Exception as error:
-				logger.warning(error)
+			except Exception as err:
+				error(err, "EPGEvent")
 			if currentTimestamp:
 				remaining = endTimestamp - currentTimestamp if currentTimestamp > startTimestamp else durationSeconds
 				try:
@@ -288,8 +274,8 @@ class EPGEvent():
 						'minutes': int(remaining / 60),
 						'text': getFuzzyHoursMinutes(remaining),
 					}
-				except Exception as error:
-					logger.warning(error)
+				except Exception as err:
+					error(err, "EPGEvent")
 
 	def toJSON(self, **kwargs):
 		# dict keys that are not of a basic type (str, int, float, bool, None) will raise a TypeError.

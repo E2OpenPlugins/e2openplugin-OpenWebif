@@ -4,6 +4,7 @@ from __future__ import print_function
 import re
 import six
 import sys
+from Plugins.Extensions.OpenWebif.controllers.defaults import DEBUG_ENABLED
 
 PY3 = sys.version_info[0] == 3
 
@@ -350,6 +351,21 @@ def getEventInfoProvider(moviedb):
 	except KeyError:
 		pass
 	return providerData
+
+
+def error(text, context=""):
+	if context:
+		print("[OpenWebif] [%s] Error: %s" % (context, text))
+	else:
+		print("[OpenWebif] Error: %s" % text)
+
+
+def debug(text, context=""):
+	if DEBUG_ENABLED:
+		if context:
+			print("[OpenWebif] [%s] %s" % (context, text))
+		else:
+			print("[OpenWebif] %s" % text)
 
 
 if __name__ == '__main__':
