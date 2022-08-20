@@ -29,7 +29,7 @@
 #for $channel in $channels
 	## TODO: normalise these in a utility function
 	#set $sRefQuoteEscaped = $channel.ref.replace("'", "\\'")
-	#set $channelName = $channel.name.replace("&#x27;", "\\'")
+	#set $channelName = $channel.name.replace("&#x27;", "\\'").replace("'", "\\'")
 	#set $isProtected = 'protection' in $channel and $channel.protection != "0"
 
 		<tr id="sref-$channel.ref.replace(':', '_')" class="channel-list__channel">
