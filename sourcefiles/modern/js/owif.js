@@ -90,6 +90,16 @@ class Utils {
 
 class STB { 
   constructor() {}
+
+  async instantRecord() {
+    let response = await fetch('/api/recordnow?infinite=true'); // falls back to `infinite` if there's no event found
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else {
+      const jsonResponse = await response.json();
+      return await jsonResponse;
+    }
+  }
 }
 
 class API { 
