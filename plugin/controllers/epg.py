@@ -150,8 +150,11 @@ class EPG():
 
 		criteria = (SEARCH_FIELDS, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
 		with TimedProcess() as tp:
-			epgEvents = self._instance.search(criteria) or []
-			epgEvents = [self._transformEventData(SEARCH_FIELDS, evt) for evt in epgEvents]
+			epgEvents = self._instance.search(criteria)
+			if epgEvents is None:
+				epgEvents = []
+			else:
+				epgEvents = [self._transformEventData(SEARCH_FIELDS, evt) for evt in epgEvents]
 
 		# debug(tp.getTimeTaken(), "EPG")
 
