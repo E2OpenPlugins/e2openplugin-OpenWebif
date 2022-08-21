@@ -796,7 +796,7 @@ def getEvent(sRef, eventId, encode=True):
 		return None
 
 
-def getChannelEpg(ref, begintime = -1, endtime = -1, encode = True, eventId = None):
+def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True, eventId=None):
 	ret = []
 	ev = {}
 	use_empty_ev = False
@@ -872,8 +872,8 @@ def getChannelEpg(ref, begintime = -1, endtime = -1, encode = True, eventId = No
 	return {"events": ret, "result": True}
 
 
-def getSimilarEpg(sRef, eventId):
-	return getChannelEpg(sRef, None, None, None, eventId)
+def getSimilarEpg(sRef, eventId, encode=False):
+	return getChannelEpg(sRef, None, None, encode, eventId)
 
 
 def getBouquetEpg(bqRef, begintime=-1, endtime=-1, encode=False):
@@ -1080,40 +1080,6 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 				ev['ns'] = getOrb(nsi >> 16 & 0xFFF)
 			else:
 				ev['ns'] = ns
-
-	return {"events": ret, "result": True}
-
-
-def getSearchSimilarEpg(sRef, eventId, encode=False):
-	sRef = unquote(sRef)
-	ret = []
-	ev = {}
-	epg = EPG()
-	epgEvents = epg.findSimilarEvents(sRef, eventId)
-
-	if epgEvents is not None:
-		# TODO : discuss #677
-		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
-		# events.sort(key = lambda x: x[1]) # sort by date
-
-		for epgEvent in epgEvents:
-			ev = {}
-			ev['id'] = epgEvent[0]
-			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(epgEvent[1]))))], strftime(_("%d.%m.%Y"), (localtime(epgEvent[1]))))
-			ev['begin_timestamp'] = epgEvent[1]
-			ev['begin'] = strftime("%H:%M", (localtime(epgEvent[1])))
-			ev['duration_sec'] = epgEvent[2]
-			ev['duration'] = int(epgEvent[2] / 60)
-			ev['end'] = strftime("%H:%M", (localtime(epgEvent[1] + epgEvent[2])))
-			ev['title'] = filterName(epgEvent[3], encode)
-			ev['shortdesc'] = convertDesc(epgEvent[4], encode)
-			ev['longdesc'] = convertDesc(epgEvent[5], encode)
-			ev['sref'] = epgEvent[7]
-			ev['sname'] = filterName(epgEvent[6], encode)
-			ev['picon'] = getPicon(epgEvent[7])
-			ev['now_timestamp'] = None
-			ev['genre'], ev['genreid'] = convertGenre(epgEvent[8])
-			ret.append(ev)
 
 	return {"events": ret, "result": True}
 
