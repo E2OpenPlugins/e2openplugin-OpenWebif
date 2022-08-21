@@ -151,10 +151,11 @@ class EPG():
 		criteria = (SEARCH_FIELDS, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
 		with TimedProcess() as tp:
 			epgEvents = self._instance.search(criteria)
+			epgEvents = [self._transformEventData(SEARCH_FIELDS, evt) for evt in epgEvents]
 
 		# debug(tp.getTimeTaken(), "EPG")
 
-		debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents, "EPG")
+		# debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents, "EPG")
 		return epgEvents
 
 	@staticmethod

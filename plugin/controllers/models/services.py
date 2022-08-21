@@ -796,7 +796,7 @@ def getEvent(sRef, eventId, encode=True):
 		return None
 
 
-def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
+def getChannelEpg(ref, begintime = -1, endtime = -1, encode = True, eventId = None):
 	ret = []
 	ev = {}
 	use_empty_ev = False
@@ -811,7 +811,11 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 
 		picon = getPicon(_ref)
 		epg = EPG()
-		epgEvents = epg.getChannelEvents(_ref, begintime, endtime)
+
+		if eventId is not None:
+			epgEvents = epg.findSimilarEvents(ref, eventId)
+		else:
+			epgEvents = epg.getChannelEvents(ref, begintime, endtime)
 
 		if epgEvents is not None:
 			for epgEvent in epgEvents:
@@ -833,11 +837,12 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 					ev['shortdesc'] = convertDesc(epgEvent.shortDescription, encode)
 					ev['longdesc'] = convertDesc(epgEvent.longDescription, encode)
 					ev['sname'] = filterName(epgEvent.service['name'], encode)
-					ev['tleft'] = epgEvent.remaining['minutes']
-					ev['progress'] = epgEvent.progress['number']
 					ev['now_timestamp'] = 0
 					ev['genre'] = epgEvent.genre
 					ev['genreid'] = epgEvent.genreId
+					if eventId is None:
+						ev['tleft'] = epgEvent.remaining['minutes']
+						ev['progress'] = epgEvent.progress['number']
 					ret.append(ev)
 				else:
 					use_empty_ev = True
@@ -865,6 +870,10 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 		ret.append(ev)
 
 	return {"events": ret, "result": True}
+
+
+def getSimilarEpg(sRef, eventId):
+	return getChannelEpg(sRef, None, None, None, eventId)
 
 
 def getBouquetEpg(bqRef, begintime=-1, endtime=-1, encode=False):
