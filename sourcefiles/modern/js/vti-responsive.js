@@ -162,6 +162,12 @@ function open_epg_dialog(sRef,Name) {
 	$.get(url, set_epg_modal_content);
 }
 
+function open_epg_similar_dialog(sRef, eventId) {
+	$("#epgmodalcontent").html(loadspinner);
+	var url = "ajax/epgdialog?sref=" + encodeURIComponent(sRef) + "&eventid=" + eventId;
+	$.get(url, set_epg_modal_content);
+}
+
 function load_channelsepg(url) {
 	$("#channel_epg_container").load(url);
 	return false;

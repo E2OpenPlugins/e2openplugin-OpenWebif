@@ -25,7 +25,7 @@ from Components.config import config
 from time import mktime, localtime
 import os
 
-from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getAllServices, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
+from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getAllServices, getSatellites, getProviders, getEventDesc, getSimilarEpg, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList, getMovieInfo
 from Plugins.Extensions.OpenWebif.controllers.models.timers import getTimers
@@ -130,11 +130,15 @@ class AjaxController(BaseController):
 		events = []
 		timers = []
 		sref = getUrlArg(request, "sref")
+		eventId = getUrlArg(request, "eventid")
 		sstr = getUrlArg(request, "sstr")
-		if sref != None:
-			ev = getChannelEpg(sref)
+		if sref is not None:
+			if eventId is not None:
+				ev = getSimilarEpg(sref, eventId)
+			else:
+				ev = getChannelEpg(sref)
 			events = ev["events"]
-		elif sstr != None:
+		elif sstr is not None:
 			fulldesc = False
 			if getUrlArg(request, "full") != None:
 				fulldesc = True

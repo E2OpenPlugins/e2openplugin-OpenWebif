@@ -132,10 +132,13 @@
 #end if
 
 #if $at
-		<button class="link--not-skinned" onclick='location.href="#/at/new?name=$title&match=$title&timespanFrom=$event.begin_str&timespanTo=$event.end&sref=$sref";' class="link--not-skinned" title="$tstrings['add_autotimer']" data-dismiss="modal">
+		<button onclick='location.href="#/at/new?name=$title&match=$title&timespanFrom=$event.begin_str&timespanTo=$event.end&sref=$sref";' class="link--not-skinned" title="$tstrings['add_autotimer']" data-dismiss="modal">
 			<i class="material-icons material-icons-centered">av_timer</i>
 		</button>
 #end if
+		<button type="button" onclick="open_epg_similar_dialog('$sRefQuoteEscaped', '$event.id');" class="link--not-skinned" title="$tstrings['find_similar_events']" data-toggle="modal" data-target="#EPGModal">
+			<i class="icon material-icons material-icons-centered">dynamic_feed</i>
+		</button>
 	</div>
 </div>
 </div>

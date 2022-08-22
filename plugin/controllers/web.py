@@ -28,7 +28,7 @@ from Components.config import config as comp_config
 from Screens.InfoBar import InfoBar
 
 from .models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
-from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getMultiChannelNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, getServiceRef, getPicon
+from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getMultiChannelNowNextEpg, getSearchEpg, getSimilarEpg, getChannelEpg, getNowNextEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, getServiceRef, getPicon
 from .models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from .models.audiotrack import getAudioTracks, setAudioTrack
 from .models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -1678,7 +1678,7 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'eventid' must be a number"
 			}
-		return getSearchSimilarEpg(getUrlArg(request, "sRef"), eventid, self.isJson)
+		return getSimilarEpg(getUrlArg(request, "sRef"), eventid, self.isJson)['events']
 
 	# http://enigma2/api/event?idev=32695&sref=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
 	# (/web/event returns a 404 in both `classic` and `modern` interfaces
