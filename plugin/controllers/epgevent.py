@@ -165,6 +165,19 @@ def convertGenre(val):
 	return value
 
 
+def convertRating(val):  # TODO convert rating
+	if val:
+		debug("[[[   convertRating(%s) ]]]" % (val), "EPGEvent")
+		try:
+			age = val.getRating()
+			country = val.getCountryCode().upper()
+			debug("[[[   convertRating(%s) age=%s country=%s  ]]]" % (val, age, country), "EPGEvent")
+		except Exception as err:
+			pass
+			#error(err, "EPGEvent")
+	return None
+
+
 class EPGEvent():
 	def __init__(self, evt):
 		eventId = None
@@ -235,7 +248,7 @@ class EPGEvent():
 		self.shortDescription = (shortDescription or '').strip()
 		self.longDescription = (longDescription or '').strip()
 		self.description = (longDescription or shortDescription or '').strip()
-		self.parentalRating = parentalRatingData
+		self.parentalRating = convertRating(parentalRatingData)
 		self.genre, self.genreId = convertGenre(genreData)
 
 		if len(service) > 0:
