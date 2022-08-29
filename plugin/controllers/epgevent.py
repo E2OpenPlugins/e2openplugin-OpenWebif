@@ -94,14 +94,14 @@ def getFuzzyDayTime(timestamp, defaultFormat):
 def getDisplayday():
 	try:
 		return config.usage.date.displayday.value
-	except KeyError:
+	except (AttributeError, KeyError):
 		return "%a %-d+%b_"
 
 
 def getTimeShort():
 	try:
 		return config.usage.time.short.value
-	except KeyError:
+	except (AttributeError, KeyError):
 		return "%R"
 
 
