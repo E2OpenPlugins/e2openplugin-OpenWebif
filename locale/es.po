@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-10 09:36+0000\n"
-"PO-Revision-Date: 2021-12-02 19:56+0000\n"
+"PO-Revision-Date: 2022-09-04 17:18+0200\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/e2openplugin-"
 "openwebif/e2openplugin-openwebif/es/>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
@@ -450,7 +450,7 @@ msgid "Date (oldest)"
 msgstr ""
 
 msgid "Debug - Display Tracebacks in browser"
-msgstr ""
+msgstr "Debug - Mostrar Tracebacks en el navegador"
 
 msgid "December"
 msgstr "Diciembre"
@@ -467,9 +467,8 @@ msgstr "Retrasar modo de espera"
 msgid "Delete"
 msgstr "Borrar"
 
-#, fuzzy
 msgid "Delete Bookmark"
-msgstr "Borrar Grabación"
+msgstr "Eliminar Favorito"
 
 msgid "Delete Bouquet"
 msgstr "Borrar Favorito"
@@ -484,20 +483,21 @@ msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
 msgstr ""
+"No se pudo eliminar porque no hay papelera de película.\n"
+"Deshabilite la papelera de películas en la configuración para eliminar este "
+"elemento"
 
-#, fuzzy
 msgid "Deleted"
-msgstr "Borrar"
+msgstr "Borrado"
 
 msgid "Description"
 msgstr "Descripción"
 
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
-#, fuzzy
 msgid "Disable"
-msgstr "Deshabilitar Grabación"
+msgstr "Deshabilitar"
 
 msgid "Disable Timer"
 msgstr "Deshabilitar Grabación"
@@ -521,7 +521,7 @@ msgid "Dolby"
 msgstr "Dolby"
 
 msgid "Don't create timer when movie exists in database"
-msgstr ""
+msgstr "No cree un temporizador cuando la película exista en la base de datos"
 
 msgid "Done"
 msgstr "Realizado"
@@ -548,20 +548,18 @@ msgid "EPG encoding"
 msgstr "Codificación EPG"
 
 msgid "EPGRefresh"
-msgstr ""
+msgstr "EPGRefresh"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
 "ERROR: No se puede configurar un temporizador de apagado si el dispositivo "
 "está en modo de espera"
 
-#, fuzzy
 msgid "Edit"
-msgstr "Editor"
+msgstr "Editar"
 
-#, fuzzy
 msgid "Edit Recording"
-msgstr "Borrar Película"
+msgstr "Editar grabación"
 
 msgid "Edit Timer"
 msgstr "Editar Grabación"
@@ -569,7 +567,6 @@ msgstr "Editar Grabación"
 msgid "Editor"
 msgstr "Editor"
 
-#, fuzzy
 msgid "Enable"
 msgstr "Habilitar"
 
@@ -601,7 +598,7 @@ msgid "Enable filtering"
 msgstr "Habilitar el Filtrado"
 
 msgid "Enable/Disable Screenshot on key press or"
-msgstr ""
+msgstr "Habilitar/deshabilitar la captura de pantalla al presionar una tecla o"
 
 msgid "Enabled"
 msgstr "Habilitar"
@@ -612,7 +609,6 @@ msgstr "Encriptado"
 msgid "End"
 msgstr "Fin"
 
-#, fuzzy
 msgid "End of \"After event\" timespan"
 msgstr "Fin del \"después del evento\" intervalo de tiempo"
 
@@ -625,9 +621,8 @@ msgstr "Intorduce el nuevo nombre para el favorito"
 msgid "Enter a name for the new marker"
 msgstr "Introduce el nuevo nombre para la marca"
 
-#, fuzzy
 msgid "Enter a name for this AutoTimer"
-msgstr "Introduce el nuevo nombre para la marca"
+msgstr "Ingrese un nombre para este AutoTimer"
 
 msgid "Enter path"
 msgstr ""
@@ -681,7 +676,6 @@ msgstr "Cada"
 msgid "Exclude when"
 msgstr "Excluir"
 
-#, fuzzy
 msgid "Execute \"After event\" during timespan"
 msgstr "Ejecutar \"después del evento\" durante intervalo de tiempo"
 
@@ -730,9 +724,8 @@ msgstr "No después de"
 msgid "Front processor version"
 msgstr "Versión Frontprocessor"
 
-#, fuzzy
 msgid "Full remote"
-msgstr "Ocultar Control Remoto Completo"
+msgstr "Control remoto completo"
 
 msgid "GB"
 msgstr ""
@@ -797,13 +790,11 @@ msgstr "Importar"
 msgid "Include description"
 msgstr "Incluir descripción"
 
-#, fuzzy
 msgid "Include extended description"
-msgstr "Incluir descripción"
+msgstr "Incluir descripción completa"
 
-#, fuzzy
 msgid "Include short description"
-msgstr "Incluir descripción"
+msgstr "Incluir descripción corta"
 
 msgid "Include when"
 msgstr "Incluir"
@@ -823,9 +814,8 @@ msgstr "Heredar Autotimer"
 msgid "Install Package"
 msgstr ""
 
-#, fuzzy
 msgid "Installed"
-msgstr "Grabación Instantanea"
+msgstr "Instalado"
 
 msgid "Instant Record"
 msgstr "Grabación Instantanea"
@@ -839,9 +829,9 @@ msgstr "Error interno!"
 msgid "Internal flash memory"
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgid "Interval (in %s)"
-msgstr "Intervalo (en h)"
+msgstr "Intervalo (in %s)"
 
 msgid "Interval (min.)"
 msgstr "Intervalo (min.)"
@@ -885,9 +875,8 @@ msgstr ""
 msgid "List of Timers has been cleaned"
 msgstr "La lista de temporizadores se ha limpiado"
 
-#, fuzzy
 msgid "Loading..."
-msgstr "cargando"
+msgstr "Cargando..."
 
 msgid "Location"
 msgstr "Localización"
@@ -1213,7 +1202,7 @@ msgid "Playback"
 msgstr "Reproducción"
 
 msgid "Playback IPTV Streams in browser"
-msgstr ""
+msgstr "Reproducción de Stream de IPTV en el navegador"
 
 msgid "Playlist"
 msgstr "Lista de Reproducción"
@@ -1582,13 +1571,11 @@ msgstr ""
 msgid "Stream"
 msgstr "Stream"
 
-#, fuzzy
 msgid "Stream Clients"
-msgstr "Stream"
+msgstr "Clientes en Stream"
 
-#, fuzzy
 msgid "Streaming port"
-msgstr "Stream"
+msgstr "Puerto de streaming"
 
 msgid "Su"
 msgstr "Do"
