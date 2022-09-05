@@ -188,19 +188,6 @@ class EPG():
 		debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
-	def _getChannelNowOrNext(self, sRef, nowOrNext):
-		if not sRef:
-			error("A required parameter 'sRef' is missing!", "EPG")
-			# return None
-		else:
-			sRef = str(sRef)
-
-		with TimedProcess() as tp:
-			epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
-
-		debug(epgEvent.toJSON(indent=2), "EPG")
-		return epgEvent
-
 	def _getBouquetNowOrNext(self, bqRef, nowOrNext):
 		if not bqRef:
 			debug("A required parameter 'bqRef' is missing!", "EPG")
@@ -236,12 +223,10 @@ class EPG():
 		return epgEvents
 
 	def getChannelNowEvent(self, sRef):
-		debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef), "EPG")
-		return self._getChannelNowOrNext(sRef, NOW_EVENT)
+		return self._instance.lookupEvent(['IBDCTSERNWX', (sRef, 0, -1)])
 
 	def getChannelNextEvent(self, sRef):
-		debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef), "EPG")
-		return self._getChannelNowOrNext(sRef, NEXT_EVENT)
+		return self._instance.lookupEvent(['IBDCTSERNWX', (sRef, 1, -1)])
 
 	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields=MULTI_CHANNEL_FIELDS):
 		debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime), "EPG")

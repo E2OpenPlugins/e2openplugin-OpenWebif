@@ -984,6 +984,48 @@ def getNowNextEpg(sRef, nowOrNext, encode=False):
 	sRef = unquote(sRef)
 	ret = []
 	epg = EPG()
+	if nowOrNext == EPG.NOW:
+		events = epg.getChannelNowEvent(sRef)
+	else:
+		events = epg.getChannelNextEvent(sRef)
+
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			if event[1]:
+				ev['begin_timestamp'] = event[1]
+				ev['duration_sec'] = event[2]
+				ev['title'] = filterName(event[4], encode)
+				ev['shortdesc'] = convertDesc(event[5], encode)
+				ev['longdesc'] = convertDesc(event[6], encode)
+				ev['sref'] = event[7]
+				ev['sname'] = filterName(event[8], encode)
+				ev['now_timestamp'] = event[3]
+				ev['remaining'] = (event[1] + event[2]) - event[3]
+				ev['genre'], ev['genreid'] = convertGenre(event[9])
+			else:
+				ev['begin_timestamp'] = 0
+				ev['duration_sec'] = 0
+				ev['title'] = "N/A"
+				ev['shortdesc'] = ""
+				ev['longdesc'] = ""
+				ev['sref'] = event[7]
+				ev['sname'] = filterName(event[8])
+				ev['now_timestamp'] = 0
+				ev['remaining'] = 0
+				ev['genre'] = ""
+				ev['genreid'] = 0
+
+			ret.append(ev)
+
+	return {"events": ret, "result": True}
+
+
+def _getNowNextEpg(sRef, nowOrNext, encode=False):
+	sRef = unquote(sRef)
+	ret = []
+	epg = EPG()
 
 	if nowOrNext == EPG.NOW:
 		epgEvent = epg.getChannelNowEvent(sRef)

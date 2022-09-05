@@ -1717,12 +1717,12 @@ class WebController(BaseController):
 
 		"""
 		info = getCurrentService(self.session)
-		now = getNowNextEpg(info["ref"], EPG.NOW, self.isJson)
-		if len(now["events"]) > 0:
-			now = now["events"][0]
-			now["provider"] = info["provider"]
+		eventnow = getNowNextEpg(info["ref"], EPG.NOW, self.isJson)
+		if len(eventnow["events"]) > 0:
+			eventnow = eventnow["events"][0]
+			eventnow["provider"] = info["provider"]
 		else:
-			now = {
+			eventnow = {
 				"id": 0,
 				"begin_timestamp": 0,
 				"duration_sec": 0,
@@ -1737,12 +1737,12 @@ class WebController(BaseController):
 				"genre": "",
 				"genreid": 0
 			}
-		next = getNowNextEpg(info["ref"], EPG.NEXT, self.isJson)
-		if len(next["events"]) > 0:
-			next = next["events"][0]
-			next["provider"] = info["provider"]
+		eventnext = getNowNextEpg(info["ref"], EPG.NEXT, self.isJson)
+		if len(eventnext["events"]) > 0:
+			eventnext = eventnext["events"][0]
+			eventnext["provider"] = info["provider"]
 		else:
-			next = {
+			eventnext = {
 				"id": 0,
 				"begin_timestamp": 0,
 				"duration_sec": 0,
@@ -1758,7 +1758,7 @@ class WebController(BaseController):
 				"genreid": 0
 			}
 		# replace EPG NOW with Movie info
-		mnow = now
+		mnow = eventnow
 		if mnow["sref"].startswith('1:0:0:0:0:0:0:0:0:0:/') or mnow["sref"].startswith('4097:0:0:0:0:0:0:0:0:0:/'):
 			try:
 				service = self.session.nav.getCurrentService()
@@ -1773,7 +1773,7 @@ class WebController(BaseController):
 					mnow["remaining"] = movie.getDuration()
 					mnow["id"] = movie.getEventId()
 			except Exception:  # nosec # noqa: E722
-				mnow = now
+				mnow = eventnow
 		elif mnow["sref"] == '':
 			serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
 			if serviceref is not None:
@@ -1793,7 +1793,7 @@ class WebController(BaseController):
 		return {
 			"info": info,
 			"now": mnow,
-			"next": next
+			"next": eventnext
 		}
 
 	def P_getpid(self, request):
