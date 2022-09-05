@@ -222,12 +222,6 @@ class EPG():
 		debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents, "EPG")
 		return epgEvents
 
-	def getChannelNowEvent(self, sRef):
-		return self._instance.lookupEvent(['IBDCTSERNWX', (sRef, 0, -1)])
-
-	def getChannelNextEvent(self, sRef):
-		return self._instance.lookupEvent(['IBDCTSERNWX', (sRef, 1, -1)])
-
 	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, fields=MULTI_CHANNEL_FIELDS):
 		debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime), "EPG")
 		if not sRefs:

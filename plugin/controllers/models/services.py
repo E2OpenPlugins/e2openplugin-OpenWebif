@@ -980,92 +980,50 @@ def getBouquetNowNextEpg(bqRef, nowOrNext, encode=False):
 	return {"events": ret, "result": True}
 
 
+def convertEvent(event, encode):
+	ev = {}
+	ev['id'] = event[0]
+	if event[1]:
+		ev['begin_timestamp'] = event[1]
+		ev['duration_sec'] = event[2]
+		ev['title'] = filterName(event[4], encode)
+		ev['shortdesc'] = convertDesc(event[5], encode)
+		ev['longdesc'] = convertDesc(event[6], encode)
+		ev['sref'] = event[7]
+		ev['sname'] = filterName(event[8], encode)
+		ev['now_timestamp'] = event[3]
+		ev['remaining'] = (event[1] + event[2]) - event[3]
+		ev['genre'], ev['genreid'] = convertGenre(event[9])
+	else:
+		ev['begin_timestamp'] = 0
+		ev['duration_sec'] = 0
+		ev['title'] = "N/A"
+		ev['shortdesc'] = ""
+		ev['longdesc'] = ""
+		ev['sref'] = event[7]
+		ev['sname'] = filterName(event[8])
+		ev['now_timestamp'] = 0
+		ev['remaining'] = 0
+		ev['genre'] = ""
+		ev['genreid'] = 0
+	return ev
+
+
+def convertEventEncoded(*event):
+	return convertEvent(event, True)
+
+
+def convertEventNonEncoded(*event):
+	return convertEvent(event, False)
+
+
 def getNowNextEpg(sRef, nowOrNext, encode=False):
 	sRef = unquote(sRef)
-	ret = []
 	epg = EPG()
-	if nowOrNext == EPG.NOW:
-		events = epg.getChannelNowEvent(sRef)
-	else:
-		events = epg.getChannelNextEvent(sRef)
-
-	if events is not None:
-		for event in events:
-			ev = {}
-			ev['id'] = event[0]
-			if event[1]:
-				ev['begin_timestamp'] = event[1]
-				ev['duration_sec'] = event[2]
-				ev['title'] = filterName(event[4], encode)
-				ev['shortdesc'] = convertDesc(event[5], encode)
-				ev['longdesc'] = convertDesc(event[6], encode)
-				ev['sref'] = event[7]
-				ev['sname'] = filterName(event[8], encode)
-				ev['now_timestamp'] = event[3]
-				ev['remaining'] = (event[1] + event[2]) - event[3]
-				ev['genre'], ev['genreid'] = convertGenre(event[9])
-			else:
-				ev['begin_timestamp'] = 0
-				ev['duration_sec'] = 0
-				ev['title'] = "N/A"
-				ev['shortdesc'] = ""
-				ev['longdesc'] = ""
-				ev['sref'] = event[7]
-				ev['sname'] = filterName(event[8])
-				ev['now_timestamp'] = 0
-				ev['remaining'] = 0
-				ev['genre'] = ""
-				ev['genreid'] = 0
-
-			ret.append(ev)
-
-	return {"events": ret, "result": True}
-
-
-def _getNowNextEpg(sRef, nowOrNext, encode=False):
-	sRef = unquote(sRef)
-	ret = []
-	epg = EPG()
-
-	if nowOrNext == EPG.NOW:
-		epgEvent = epg.getChannelNowEvent(sRef)
-	else:
-		epgEvent = epg.getChannelNextEvent(sRef)
-
-	if epgEvent is not None:
-		eventId = epgEvent.eventId
-		serviceReference = epgEvent.service['sRef']
-		sName = filterName(epgEvent.service['name'], encode)
-		ev = {
-			'id': eventId,
-			'sref': serviceReference,
-			'sname': sName
-		}
-
-		if eventId:
-			ev['begin_timestamp'] = epgEvent.start['timestamp']
-			ev['duration_sec'] = epgEvent.duration['seconds']
-			ev['title'] = filterName(epgEvent.title, encode)
-			ev['shortdesc'] = convertDesc(epgEvent.shortDescription, encode)
-			ev['longdesc'] = convertDesc(epgEvent.longDescription, encode)
-			ev['now_timestamp'] = epgEvent.currentTimestamp
-			ev['remaining'] = epgEvent.remaining['minutes']
-			ev['genre'] = epgEvent.genre
-			ev['genreid'] = epgEvent.genreId
-		else:
-			ev['begin_timestamp'] = 0
-			ev['duration_sec'] = 0
-			ev['title'] = "N/A"
-			ev['shortdesc'] = ""
-			ev['longdesc'] = ""
-			ev['now_timestamp'] = 0
-			ev['remaining'] = 0
-			ev['genre'] = ""
-			ev['genreid'] = 0
-
-		ret.append(ev)
-
-	return {"events": ret, "result": True}
+	convertFunc = convertEventEncoded if encode else convertEventNonEncoded
+	nn = 0 if nowOrNext == EPG.NOW else 1
+	events = epg._instance.lookupEvent(['IBDCTSERNWX', (sRef, nn, -1)], convertFunc)
+	return {"events": events, "result": True}
 
 
 # TODO: add sort options
