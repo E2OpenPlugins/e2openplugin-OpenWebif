@@ -218,6 +218,7 @@ def saveConfig(path, value):
 def getConfigs(key):
 	configs = []
 	title = None
+	config_entries = None
 	if not len(configfiles.sections):
 		configfiles.parseConfigFiles()
 	if key in configfiles.section_config:
