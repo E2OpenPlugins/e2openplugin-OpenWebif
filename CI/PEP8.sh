@@ -65,6 +65,13 @@ git add *
 git commit -m "PEP8 double aggressive W291 ~ W293 and W391"
 
 echo ""
+echo "PEP8 double aggressive E101 and E113"
+autopep8 . -a -a -j 0 --recursive --select=E101,E113 --in-place
+git add -u
+git add *
+git commit -m "PEP8 double aggressive E101 and E113"
+
+echo ""
 finish=$(date +"%s")
 timediff=$(($finish-$begin))
 echo -e "Change time was $(($timediff / 60)) minutes and $(($timediff % 60)) seconds."
