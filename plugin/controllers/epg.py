@@ -330,22 +330,13 @@ class EPG():
 		# epgEvent.getExtraEventData(),
 		# epgEvent.getPdcPil()
 
-	def getEventByTime(self, sRef, eventTime, direction=NOW_EVENT):
-		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime), "EPG")
+	def getEventIdByTime(self, sRef, eventTime):
 		if not sRef or not eventTime:
 			error("A required parameter 'sRef' or eventTime is missing!", "EPG")
-			# return None
-		elif not isinstance(sRef, eServiceReference):
-			sRef = eServiceReference(sRef)
-
-		with TimedProcess() as tp:
-			epgEvent = self._instance.lookupEventTime(sRef, eventTime, direction)
-
-		epgEvent = EPGEvent(epgEvent)
-		epgEvent.service = getServiceDetails(sRef)
-
-		debug(epgEvent.toJSON(indent=2), "EPG")
-		return epgEvent
+			return None
+		event = self._instance.lookupEventTime(eServiceReference(sRef), eventTime)
+		eventid = event and event.getEventId()
+		return eventid
 
 	def getEvent(self, sRef, eventId):
 		debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId), "EPG")
