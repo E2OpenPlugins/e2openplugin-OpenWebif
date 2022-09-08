@@ -1155,9 +1155,10 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		return timerDetails
 
 	ret = OrderedDict()
+	channelnames = {}
 	services = eServiceCenter.getInstance().list(eServiceReference(ref))
 	if not services:
-		return {"events": ret, "result": False, "slot": None}
+		return {"events": ret, "channelnames": channelnames, "result": False, "slot": None}
 
 	sRefs = services.getContent('S')
 	epg = EPG()
@@ -1229,7 +1230,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			if Mode == 2:
 				ev['duration'] = epgEvent.duration['seconds']
 
-			channel = filterName(epgEvent.service['name'])
+			channel = epgEvent.service['sRef']
 
 			if channel not in ret:
 				if Mode == 1:
@@ -1238,6 +1239,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 					ret[channel] = [[]]
 
 				picons[channel] = getPicon(epgEvent.service['sRef'])
+				channelnames[channel] = filterName(epgEvent.service['name'])
 
 			if Mode == 1:
 				slot = int((epgEvent.start['timestamp'] - offset) / 7200)
@@ -1248,7 +1250,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 					ret[channel][slot].append(ev)
 			else:
 				ret[channel][0].append(ev)
-	return {"events": ret, "result": True, "picons": picons}
+	return {"events": ret, "channelnames": channelnames, "result": True, "picons": picons}
 
 
 def getPicon(sname, pp=None, defaultpicon=True):

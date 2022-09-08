@@ -118,7 +118,7 @@
 		#set $ev=$evl[0]
 		#set $ref = "data-ref='" + $ev.ref + "'"
 	#end if
-	<td class="border"><div class="service ui-widget-header" $ref><img src="$(picons[$sname])" /> $sname</div></td>
+	<td class="border"><div class="service ui-widget-header" $ref><img src="$(picons[$sname])" /> $(channelnames[$sname])</div></td>
 	#end for
 </tr>
 </thead>
@@ -141,7 +141,7 @@
 <tfoot>
 <tr>
 	#for $sname, $eventlist in six.iteritems($events)
-	<td class="border"><div class="service ui-widget-header"><img src="$(picons[$sname])" /> $sname</div></td>
+	<td class="border"><div class="service ui-widget-header"><img src="$(picons[$sname])" /> $(channelnames[$sname])</div></td>
 	#end for
 </tr>
 </tfoot>
@@ -186,8 +186,8 @@
 			<li>
 				<span class="ui-widget-header">
 					<div>
-						<h2 class="picon" ><img src="$(picons[$sname])" title="$sname" /></h2>
-						<span>$sname</span>
+						<h2 class="picon" ><img src="$(picons[$sname])" title="$(channelnames[$sname])" /></h2>
+						<span>$(channelnames[$sname])</span>
 					</div>
 				</span>
 				<ol cass="eventlist">
