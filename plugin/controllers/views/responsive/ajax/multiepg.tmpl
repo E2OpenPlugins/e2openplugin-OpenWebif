@@ -211,7 +211,7 @@
 	#set $ref = "data-ref='" + $ev.ref + "'"
 #end if
 				<td class="serviceheader">
-					<div class="service event" $ref><img src="$(picons[$sname])" loading="lazy">$sname</div>
+					<div class="service event" $ref><img src="$(picons[$sname])" loading="lazy">$(channelnames[$sname])</div>
 				</td>
 #end for
 			</tr>
@@ -253,8 +253,8 @@
 #for $sname, $eventlist in six.iteritems($events)
 									<div class="row epg__row">
 										<div class="epg__channel pull-left">
-											<h2 class="picon"><img src="$(picons[$sname])" title="$sname" loading="lazy"></h2>
-											</br><label>$sname</label>
+											<h2 class="picon"><img src="$(picons[$sname])" title="$(channelnames[$sname])" loading="lazy"></h2>
+											</br><label>$(channelnames[$sname])</label>
 										</div>
 									</div>
 #end for
