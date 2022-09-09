@@ -877,26 +877,40 @@ def getSimilarEpg(sRef, eventId, encode=False):
 
 
 def getBouquetEpg(bqRef, begintime=-1, endtime=-1, encode=False):
-	bqRef = unquote(bqRef)
-	epg = EPG()
-	epgEvents = epg.getBouquetEvents(bqRef, begintime, endtime)
-	ret = []
 
-	if epgEvents is not None:
-		for epgEvent in epgEvents:
-			ev = {
-				'id': epgEvent.eventId,
-				'begin_timestamp': epgEvent.start['timestamp'],
-				'duration_sec': epgEvent.duration['seconds'],
-				'title': filterName(epgEvent.title, encode),
-				'shortdesc': convertDesc(epgEvent.shortDescription, encode),
-				'longdesc': convertDesc(epgEvent.longDescription, encode),
-				'sref': epgEvent.service['sRef'],
-				'sname': filterName(epgEvent.service['name'], encode),
-				'now_timestamp': epgEvent.currentTimestamp,
-				'genre': epgEvent.genre,
-				'genreid': epgEvent.genreId
-			}
+	bqRef = unquote(bqRef)
+	ret = []
+	services = eServiceCenter.getInstance().list(eServiceReference(bqRef))
+	if not services:
+		return {"events": ret, "result": False}
+
+	epg = EPG()
+
+	if endtime == None:
+		endtime = -1
+
+	# prevent crash
+	if endtime > 100000:
+		endtime = -1
+
+	search = ['IBDCTSERNW']
+	for service in services.getContent('S'):
+		search.append((service, 0, begintime, endtime))
+
+	events = epg._instance.lookupEvent(search)
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['duration_sec'] = event[2]
+			ev['title'] = filterName(event[4], encode)
+			ev['shortdesc'] = convertDesc(event[5], encode)
+			ev['longdesc'] = convertDesc(event[6], encode)
+			ev['sref'] = event[7]
+			ev['sname'] = filterName(event[8], encode)
+			ev['now_timestamp'] = event[3]
+			ev['genre'], ev['genreid'] = convertGenre(event[9])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -910,25 +924,29 @@ def getMultiChannelNowNextEpg(sList, encode=False):
 	if not isinstance(sList, list):
 		sList = sList.split(",")
 
-	epg = EPG()
-	epgEvents = epg.getMultiChannelNowNextEvents(sList)
+	search = ['IBDCTSERNX']
+	for service in sList:
+		search.append((service, 0, -1))
+		search.append((service, 1, -1))
 
-	if epgEvents is not None:
-		for epgEvent in epgEvents:
+	epg = EPG()
+	events = epg._instance.lookupEvent(search)
+	if events is not None:
+		for event in events:
 			ev = {}
-			ev['id'] = epgEvent[0]
-			ev['begin_timestamp'] = epgEvent[1]
-			ev['duration_sec'] = epgEvent[2]
-			ev['title'] = filterName(epgEvent[4], encode)
-			ev['shortdesc'] = convertDesc(epgEvent[5], encode)
-			ev['longdesc'] = convertDesc(epgEvent[6], encode)
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['duration_sec'] = event[2]
+			ev['title'] = filterName(event[4], encode)
+			ev['shortdesc'] = convertDesc(event[5], encode)
+			ev['longdesc'] = convertDesc(event[6], encode)
 			# if event[7] is not None:
 			#  achannels = GetWithAlternative(event[7], False)
 			#   if achannels:
 			#    ev['asrefs'] = achannels
-			ev['sref'] = epgEvent[7]
-			ev['sname'] = filterName(epgEvent[8], encode)
-			ev['now_timestamp'] = epgEvent[3]
+			ev['sref'] = event[7]
+			ev['sname'] = filterName(event[8], encode)
+			ev['now_timestamp'] = event[3]
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
