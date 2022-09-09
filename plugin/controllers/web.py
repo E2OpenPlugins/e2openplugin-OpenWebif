@@ -1075,11 +1075,9 @@ class WebController(BaseController):
 		elif b"eit" in list(request.args.keys()) and isinstance(request.args[b"eit"][0], int):
 			eit = int(request.args[b"eit"][0])
 		else:
-			# TODO : move this code to timers.py
 			queryTime = int(request.args[b"begin"][0]) + (int(request.args[b"end"][0]) - int(request.args[b"begin"][0])) // 2
 			epg = EPG()
-			event = epg.getEventByTime(sRef, queryTime)
-			eventid = event and event.eventId
+			eventid = epg.getEventIdByTime(sRef, queryTime)
 			if eventid is not None:
 				eit = int(eventid)
 
