@@ -936,45 +936,40 @@ def getMultiChannelNowNextEpg(sList, encode=False):
 
 def getBouquetNowNextEpg(bqRef, nowOrNext, encode=False):
 	bqRef = unquote(bqRef)
-	epg = EPG()
 	ret = []
+	services = eServiceCenter.getInstance().list(eServiceReference(bqRef))
+	if not services:
+		return {"events": ret, "result": False}
 
-	if nowOrNext == EPG.NOW:
-		epgEvents = epg.getBouquetNowEvents(bqRef)
-	elif nowOrNext == EPG.NEXT:
-		epgEvents = epg.getBouquetNextEvents(bqRef)
+	epg = EPG()
+
+	search = ['IBDCTSERNWX']
+	if nowOrNext == EPG.NOW_NEXT:
+		for service in services.getContent('S'):
+			search.append((service, 0, -1))
+			search.append((service, 1, -1))
 	else:
-		epgEvents = epg.getBouquetNowNextEvents(bqRef)
+		for service in services.getContent('S'):
+			search.append((service, nowOrNext, -1))
 
-	if epgEvents is not None:
-		for epgEvent in epgEvents:
-			eventId = epgEvent.eventId
-
-			if not eventId:
-				continue
-
-			serviceReference = epgEvent.service['sRef']
-			serviceName = filterName(epgEvent.service['name'], encode)
-			ev = {
-				'id': eventId,
-				'begin_timestamp': epgEvent.start['timestamp'],
-				'duration_sec': epgEvent.duration['seconds'],
-				'title': filterName(epgEvent.title, encode),
-				'shortdesc': convertDesc(epgEvent.shortDescription, encode),
-				'longdesc': convertDesc(epgEvent.longDescription, encode),
-				'sref': serviceReference,
-				'sname': filterName(serviceName, encode),
-				'now_timestamp': epgEvent.currentTimestamp,
-				'genre': epgEvent.genre,
-				'genreid': epgEvent.genreId
-			}
-
-			if serviceReference:
-				achannels = GetWithAlternative(serviceReference, False)
-
+	events = epg._instance.lookupEvent(search)
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['duration_sec'] = event[2]
+			ev['title'] = filterName(event[4], encode)
+			ev['shortdesc'] = convertDesc(event[5], encode)
+			ev['longdesc'] = convertDesc(event[6], encode)
+			if event[7] is not None:
+				achannels = GetWithAlternative(event[7], False)
 				if achannels:
 					ev['asrefs'] = achannels
-
+			ev['sref'] = event[7]
+			ev['sname'] = filterName(event[8], encode)
+			ev['now_timestamp'] = event[3]
+			ev['genre'], ev['genreid'] = convertGenre(event[9])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}

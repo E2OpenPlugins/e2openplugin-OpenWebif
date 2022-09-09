@@ -96,9 +96,9 @@ class TimedProcess:
 
 
 class EPG():
-	NOW = 10
-	NEXT = 11
-	NOW_NEXT = 21
+	NOW = 0
+	NEXT = 1
+	NOW_NEXT = 2
 
 	def __init__(self):
 		self._instance = eEPGCache.getInstance()
@@ -188,6 +188,7 @@ class EPG():
 		debug(epgEvents[-1].toJSON(indent=2) if epgEvents and len(epgEvents) else epgEvents)
 		return epgEvents
 
+	# this function is wrong
 	def _getBouquetNowOrNext(self, bqRef, nowOrNext):
 		if not bqRef:
 			debug("A required parameter 'bqRef' is missing!", "EPG")
@@ -270,22 +271,6 @@ class EPG():
 		sRefs = getBouquetServices(bqRef, 'S')
 
 		return self.getMultiChannelEvents(sRefs, startTime, endTime, BOUQUET_FIELDS)
-
-	def getBouquetNowEvents(self, bqRef):
-		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef), "EPG")
-
-		return self._getBouquetNowOrNext(bqRef, NOW_EVENT)
-
-	def getBouquetNextEvents(self, bqRef):
-		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef), "EPG")
-
-		return self._getBouquetNowOrNext(bqRef, NEXT_EVENT)
-
-	def getBouquetNowNextEvents(self, bqRef):
-		debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (bqRef), "EPG")
-		sRefs = getBouquetServices(bqRef, 'S')
-
-		return self.getMultiChannelNowNextEvents(sRefs, BOUQUET_NOWNEXT_FIELDS)
 
 	def getCurrentEvent(self, sRef):
 		debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef), "EPG")
