@@ -15,7 +15,8 @@ import os
 def getLocations():
 	return {
 		"result": True,
-		"locations": config.movielist.videodirs.value
+		"locations": config.movielist.videodirs.value,
+		"default": config.usage.default_path.value
 	}
 
 

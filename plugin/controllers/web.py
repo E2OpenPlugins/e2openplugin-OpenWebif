@@ -1041,6 +1041,7 @@ class WebController(BaseController):
 		"""
 		ret = getTimers(self.session)
 		ret["locations"] = comp_config.movielist.videodirs.value
+		ret["default"] = comp_config.usage.default_path.value
 		return ret
 
 	def _AddEditTimer(self, request, mode):
