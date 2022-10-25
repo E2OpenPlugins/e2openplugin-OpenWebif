@@ -38,7 +38,7 @@ class ATUploadFile(resource.Resource):
 		request.setResponseCode(http.OK)
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
-		content = request.args[r'rfile'][0]
+		content = request.args[b'rfile'][0]
 		if not content:
 			result = [False, 'Error upload File']
 		else:
