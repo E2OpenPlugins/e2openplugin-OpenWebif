@@ -77,7 +77,7 @@ class AutoTimerDoBackupResource(resource.Resource):
 		f = os.open(checkfile, os.O_WRONLY | os.O_CREAT)
 		if f:
 			files = []
-			os.write(f, 'created with AutoTimerWebEditor')
+			os.write(f, b'created with AutoTimerWebEditor')
 			os.close(f)
 			files.append(checkfile)
 			files.append("/etc/enigma2/autotimer.xml")
