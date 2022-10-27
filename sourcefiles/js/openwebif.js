@@ -172,6 +172,7 @@ function initJsTranslation(strings) {
 	tstr_del_autotimer = strings.at_delete_autotimer_question;
 	tstr_del_recording = strings.delete_recording_question;
 	tstr_ren_recording = strings.rename_recording_question;
+	tstr_edit_recording = strings.edit_recording;
 	tstr_done = strings.done;
 	tstr_edit_timer = strings.edit_timer;
 	tstr_hour = strings.hour;
@@ -247,7 +248,7 @@ function initJsTranslation(strings) {
 	tstr_channel = strings.channel;
 	tstr_end = strings.begin;
 	tstr_begin = strings.end;
-	tstr_rename_recording = strings.tstr_rename_recording;
+	tstr_rename_recording = strings.rename_recording;
 
 }
 
@@ -2217,7 +2218,7 @@ var SSHelper = new SSHelperObj();
 function editmovie(sref, mt, directory) {
 
 	var url = "ajax/editmovie?sRef=" + sref;
-	var title = "$tstrings['edit_recording']";
+	var title = tstr_edit_recording;
 	var buttons = {};
 	buttons[tstr_rename_recording] = function() { renameMovie(sref, mt);};
 	buttons[tstr_save] = function() { editmovieAction(sref, directory);};
