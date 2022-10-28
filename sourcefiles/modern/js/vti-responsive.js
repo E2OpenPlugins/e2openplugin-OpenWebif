@@ -584,6 +584,16 @@ function addTimerEvent(sRef, eventId, justplay, callback) {
 	);
 }
 
+function isRadio(serviceref) {
+	var ret = false;
+	if (typeof serviceref !== 'undefined') {
+		if (serviceref.length > 6) {
+			ret = (serviceref.substring(0,6) == '1:0:2:') || (serviceref.substring(0,6) == '1:0:A:');
+		}
+	}
+	return ret;
+}
+
 function addTimer(evt,chsref,chname,top) {
 	current_serviceref = '';
 	current_begin = -1;
@@ -611,10 +621,7 @@ function addTimer(evt,chsref,chname,top) {
 
 	var lch=$('#bouquet_select > optgroup').length;
 
-	var radio = false;
-	if (typeof chsref !== 'undefined') {
-		radio = ( chsref.substring(0,6) == '1:0:2:');
-	}
+	var radio = isRadio(chsref);
 
 	$('#cbtv').prop('checked',!radio);
 	$('#cbradio').prop('checked',radio);
@@ -668,9 +675,7 @@ function addTimer(evt,chsref,chname,top) {
 	else
 	{
 		var _chsref=$("#bouquet_select option:last").val();
-		if(radio && _chsref.substring(0,6) !== '1:0:2:') {
-			initTimerEdit(radio, bottomhalf);
-		} else if(!radio && _chsref.substring(0,6) == '1:0:2:') {
+		if(radio != isRadio(_chsref)) {
 			initTimerEdit(radio, bottomhalf);
 		} else {
 			bottomhalf();
@@ -685,10 +690,7 @@ function editTimer(serviceref, begin, end) {
 	current_begin = begin;
 	current_end = end;
 	
-	var radio = false;
-	if (typeof serviceref !== 'undefined') {
-		radio = ( serviceref.substring(0,6) == '1:0:2:');
-	}
+	var radio = isRadio(serviceref);
 	
 	$('#cbtv').prop('checked',!radio);
 	$('#cbradio').prop('checked',radio);
@@ -813,9 +815,7 @@ function editTimer(serviceref, begin, end) {
 	else
 	{
 		var _chsref=$("#bouquet_select option:last").val();
-		if(radio && _chsref.substring(0,6) !== '1:0:2:') {
-			initTimerEdit(radio, bottomhalf);
-		} else if(!radio && _chsref.substring(0,6) == '1:0:2:') {
+		if(radio != isRadio(_chsref)) {
 			initTimerEdit(radio, bottomhalf);
 		} else {
 			bottomhalf();
