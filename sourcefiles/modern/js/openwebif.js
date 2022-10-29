@@ -1310,6 +1310,15 @@ function editTimer(serviceref, begin, end) {
 	
 }
 
+function unEscape(htmlStr) {
+    htmlStr = htmlStr.replace(/&lt;/g , "<");	 
+    htmlStr = htmlStr.replace(/&gt;/g , ">");     
+    htmlStr = htmlStr.replace(/&quot;/g , "\"");  
+    htmlStr = htmlStr.replace(/&#39;/g , "\'");   
+    htmlStr = htmlStr.replace(/&amp;/g , "&");
+    return htmlStr;
+}
+
 function addTimer(evt,chsref,chname,top,isradio) {
 	current_serviceref = '';
 	current_begin = -1;
@@ -1329,8 +1338,8 @@ function addTimer(evt,chsref,chname,top,isradio) {
 		end = evt.begin+evt.duration;
 		serviceref = evt.sref;
 		servicename = evt.channel;
-		title = evt.title;
-		desc = evt.shortdesc;
+		title = unEscape(evt.title);
+		desc = unEscape(evt.shortdesc);
 		margin_before = evt.recording_margin_before;
 		margin_after = evt.recording_margin_after;
 	}
