@@ -1,47 +1,48 @@
+# Tlsn <developer216@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-10 09:36+0000\n"
-"PO-Revision-Date: 2021-12-02 19:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/e2openplugin-"
-"openwebif/e2openplugin-openwebif/uk/>\n"
+"PO-Revision-Date: 2022-11-11 14:52+0000\n"
+"Last-Translator: Tlsn <developer216@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 #, python-format
 msgid "%02d.%02d."
-msgstr ""
+msgstr "%02d.%02d."
 
 #, python-format
 msgid "%02d.%02d.%d"
-msgstr ""
+msgstr "%02d.%02d.%d"
 
 #, python-format
 msgid "%02d:%02d"
-msgstr ""
+msgstr "%02d:%02d"
 
 msgid "%d.%m.%Y"
-msgstr ""
+msgstr "%d.%m.%Y"
 
 msgid "%d.%m.%Y %H:%M"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
 #, python-format
 msgid "%s %02d.%02d."
-msgstr ""
+msgstr "%s %02d.%02d."
 
 #, python-format
 msgid "%s %02d.%02d.%d"
-msgstr ""
+msgstr "%s %02d.%02d.%d"
 
 #, python-format
 msgid "%s %s is locked."
@@ -49,11 +50,11 @@ msgstr "%s %s заблоковано."
 
 #, python-format
 msgid "%s / %s"
-msgstr ""
+msgstr "%s / %s"
 
 #, python-format
 msgid "%s Style"
-msgstr ""
+msgstr "%s Стиль"
 
 #, python-format
 msgid "%s free / %s total"
@@ -62,15 +63,14 @@ msgstr "%s вільно / %s всього"
 msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Shift + Клік як Довге натискання)"
 
-#, fuzzy
 msgid "(in minutes)"
-msgstr "хвилина"
+msgstr "(в хвилинах)"
 
 msgid "A filename is required"
 msgstr "Будь ласка, введіть назву файлу"
 
 msgid "A value is required"
-msgstr "Вам потрібно щось написати!"
+msgstr "Потрібно вказати значення"
 
 msgid "AGC"
 msgstr "Рівень сигналу"
@@ -91,7 +91,7 @@ msgid "Add Bouquet"
 msgstr "Додати фаворит"
 
 msgid "Add IPTV/URL"
-msgstr ""
+msgstr "Додати IPTV/URL"
 
 msgid "Add Marker"
 msgstr "Додати маркер"
@@ -111,9 +111,8 @@ msgstr "Додати Автотаймер"
 msgid "Add channel(s) as alternate"
 msgstr "Додати канал(и) як альтернативу"
 
-#, fuzzy
 msgid "Add filters"
-msgstr "Додати таймер"
+msgstr "Додати фільтри"
 
 msgid "Add selection to bouquet"
 msgstr "Додати канал(и) в букет"
@@ -125,14 +124,14 @@ msgid "Add similar on conflict"
 msgstr "Додати подібний при конфлікті"
 
 msgid "Add tags to recordings"
-msgstr ""
+msgstr "Додати теги до записів"
 
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "%s додано в альтернативні канали %s."
 
 msgid "Adjust recording time to real event time"
-msgstr ""
+msgstr "Налаштуйте час запису до реального часу події"
 
 msgid "After event"
 msgstr "Після події"
@@ -159,11 +158,11 @@ msgid "Allow IPK Upload"
 msgstr "Дозволити завантаження IPK"
 
 msgid "Allow duplicates"
-msgstr ""
+msgstr "Дозволити дублікати"
 
 #, python-format
 msgid "Alternative %s created failed."
-msgstr "Не вдалося створити альтернативу %s"
+msgstr "Не вдалося створити альтернативу %s."
 
 msgid "Always"
 msgstr "Завжди"
@@ -175,10 +174,10 @@ msgid "Answer is YES!"
 msgstr "Відповідь - ТАК!"
 
 msgid "Any"
-msgstr ""
+msgstr "Будь-який"
 
 msgid "Any day"
-msgstr ""
+msgstr "Будь-який день"
 
 msgid "Any service/recording"
 msgstr "Будь який сервіс/запись"
@@ -190,11 +189,10 @@ msgid "Are you sure you want to delete the selected bouquet?"
 msgstr "Ви дійсно бажаєте видалити фаворит?"
 
 msgid "Are you sure you want to delete the selected item(s)?"
-msgstr "Ви дійсно бажаєте видалити обраний елемент(и)"
+msgstr "Ви дійсно бажаєте видалити обраний елемент(и)?"
 
-#, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
-msgstr "Дійсно видалити таймер?"
+msgstr "Ви дійсно бажаєте видалити АвтоТаймер?"
 
 msgid "Are you sure you want to delete this recording?"
 msgstr "Дійсно видалити запис?"
@@ -208,9 +206,8 @@ msgstr "Дійсно перейменувати запис?"
 msgid "Are you sure you want to restore from file?"
 msgstr "Ви дійсно хочете відновити з файлу?"
 
-#, fuzzy
 msgid "Are you sure you want to start recording instantly?"
-msgstr "Негайний запис"
+msgstr "Ви впевнені, що хочете негайно почати запис?"
 
 msgid "Ask, default No"
 msgstr "Запитати, за замовчуванням - Так"
@@ -219,13 +216,13 @@ msgid "Ask, default Yes"
 msgstr "Запитати, за замовчуванням - Ні"
 
 msgid "Audio Encoding"
-msgstr ""
+msgstr "Кодування звуку"
 
 msgid "Audio PID (APID)"
-msgstr ""
+msgstr "Аудіо PID (APID)"
 
 msgid "Audio Track"
-msgstr ""
+msgstr "Звукова доріжка"
 
 msgid "August"
 msgstr "Серпень"
@@ -263,15 +260,14 @@ msgstr "Тільки в фоні"
 msgid "Begin"
 msgstr "Початок"
 
-#, fuzzy
 msgid "Begin of \"After event\" timespan"
-msgstr "Початок \"після події\" в проміжку часу"
+msgstr "Початок періоду часу \"Після події\""
 
 msgid "Beginning of timespan"
 msgstr "Початок тимчасового проміжку"
 
 msgid "Bit Error Rate (BER)"
-msgstr ""
+msgstr "Рівень бітових помилок (BER)"
 
 msgid "Bookmark"
 msgstr "Закладка"
@@ -289,7 +285,7 @@ msgstr "Фаворит %s не може бути переміщений."
 
 #, python-format
 msgid "Bouquet %s created."
-msgstr "Фаворит %s створено"
+msgstr "Фаворит %s створено."
 
 #, python-format
 msgid "Bouquet %s deleted."
@@ -354,7 +350,7 @@ msgid "Brand"
 msgstr "Бренд"
 
 msgid "Build"
-msgstr ""
+msgstr "Збірка"
 
 msgid "Cable"
 msgstr "Кабельний"
@@ -363,11 +359,10 @@ msgid "Calendar Week"
 msgstr "Календарний тиждень"
 
 msgid "Cancel"
-msgstr "Скасування"
+msgstr "Скасувати"
 
-#, fuzzy
 msgid "Cancelled"
-msgstr "Скасування"
+msgstr "Скасовано"
 
 msgid "Capacity"
 msgstr "Ємність"
@@ -393,12 +388,11 @@ msgstr "Очистити таймери"
 msgid "Close"
 msgstr "Закрити"
 
-#, fuzzy
 msgid "Common Settings"
 msgstr "Загальні налаштування"
 
 msgid "Config"
-msgstr ""
+msgstr "Налаштування"
 
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
@@ -428,7 +422,7 @@ msgid "Current Event"
 msgstr "Поточна подія"
 
 msgid "Currently recording"
-msgstr ""
+msgstr "Зараз записується"
 
 msgid "Custom box name"
 msgstr "Альтернативне ім'я ресивера"
@@ -443,13 +437,13 @@ msgid "Date"
 msgstr "Дата"
 
 msgid "Date (newest)"
-msgstr ""
+msgstr "Дата (найновіша)"
 
 msgid "Date (oldest)"
-msgstr ""
+msgstr "Дата (найстаріша)"
 
 msgid "Debug - Display Tracebacks in browser"
-msgstr ""
+msgstr "Відлагоджувати - Відображати трасування в браузері"
 
 msgid "December"
 msgstr "Грудень"
@@ -466,9 +460,8 @@ msgstr "Відкладене вимкнення"
 msgid "Delete"
 msgstr "Видалити"
 
-#, fuzzy
 msgid "Delete Bookmark"
-msgstr "Закладка"
+msgstr "Видалити закладку"
 
 msgid "Delete Bouquet"
 msgstr "Видалити фаворит"
@@ -493,11 +486,10 @@ msgid "Description"
 msgstr "Опис"
 
 msgid "Device"
-msgstr ""
+msgstr "Пристрій"
 
-#, fuzzy
 msgid "Disable"
-msgstr "вимкнено"
+msgstr "Вимкнено"
 
 msgid "Disable Timer"
 msgstr "Відключити таймер"
@@ -521,7 +513,7 @@ msgid "Dolby"
 msgstr "Dolby"
 
 msgid "Don't create timer when movie exists in database"
-msgstr ""
+msgstr "Не створюйте таймер, якщо фільм існує в базі даних"
 
 msgid "Done"
 msgstr "Готово"
@@ -554,13 +546,11 @@ msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
 "ПОМИЛКА: Не вдається встановити таймер сну поки пристрій в режимі очікування"
 
-#, fuzzy
 msgid "Edit"
-msgstr "Редактор"
+msgstr "Редагувати"
 
-#, fuzzy
 msgid "Edit Recording"
-msgstr "Видалити запис"
+msgstr "Редагувати запис"
 
 msgid "Edit Timer"
 msgstr "Редагувати таймер"
@@ -568,9 +558,8 @@ msgstr "Редагувати таймер"
 msgid "Editor"
 msgstr "Редактор"
 
-#, fuzzy
 msgid "Enable"
-msgstr "Ввімкнений"
+msgstr "Ввімкнено"
 
 msgid "Enable Authentication for streaming"
 msgstr "Включити аутентифікацію для стрімінга"
@@ -611,9 +600,8 @@ msgstr "Кодований"
 msgid "End"
 msgstr "Кінець"
 
-#, fuzzy
 msgid "End of \"After event\" timespan"
-msgstr "Закінчення \"після події\" в проміжку часу"
+msgstr "Кінець періоду часу \"Після події\""
 
 msgid "End of timespan"
 msgstr "Кінець тимчасового проміжку"
@@ -624,18 +612,17 @@ msgstr "Введіть нову назву фаворита"
 msgid "Enter a name for the new marker"
 msgstr "Введіть нову назву маркера"
 
-#, fuzzy
 msgid "Enter a name for this AutoTimer"
-msgstr "Введіть нову назву маркера"
+msgstr "Введіть нову назву для цього АвтоТаймеру"
 
 msgid "Enter path"
-msgstr ""
+msgstr "Введіть шлях"
 
 msgid "Enter text"
-msgstr ""
+msgstr "Введіть текст"
 
 msgid "Enter the text to find in the EPG"
-msgstr ""
+msgstr "Введіть текст для пошуку в EPG"
 
 msgid "Error"
 msgstr "Помилка"
@@ -648,7 +635,7 @@ msgstr "Помилка завантаження файла"
 
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr "Помилка під час підготовки файлу резевної копії, % не існує."
+msgstr "Помилка під час підготовки файлу резервної копії, %s не існує."
 
 msgid "Error while preparing backup file."
 msgstr "Помилка під час підготовки файлу резервної копії."
@@ -680,9 +667,8 @@ msgstr "Кожен"
 msgid "Exclude when"
 msgstr "Виключити"
 
-#, fuzzy
 msgid "Execute \"After event\" during timespan"
-msgstr "Виконати \"після події\" в проміжку часу"
+msgstr "Виконати «Після події» протягом періоду часу"
 
 msgid "Export"
 msgstr "Експорт"
@@ -715,7 +701,7 @@ msgid "Free Memory"
 msgstr "Вільна пам'ять"
 
 msgid "Free space"
-msgstr ""
+msgstr "Вільний простір"
 
 msgid "Fri"
 msgstr "П'ят"
@@ -748,7 +734,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "Не вдалося отримати змінюваний список для новоствореного букету!"
 
 msgid "HH:MM"
-msgstr ""
+msgstr "HH:MM"
 
 msgid "HTTP port"
 msgstr "Порт HTTP"
@@ -760,7 +746,7 @@ msgid "Hard disk model"
 msgstr "Модель жорсткого диска"
 
 msgid "Hardware"
-msgstr ""
+msgstr "Обладнання"
 
 msgid "Hide full remote"
 msgstr "Приховати повний пульт"
@@ -769,13 +755,13 @@ msgid "High Resolution"
 msgstr "Висока роздільна здатність"
 
 msgid "Hold to drag"
-msgstr ""
+msgstr "Утримуйте, щоб перетягнути"
 
 msgid "Hour"
 msgstr "Година"
 
 msgid "IPTV / URL name"
-msgstr ""
+msgstr "IPTV / URL-адреса"
 
 msgid "IPv4 address"
 msgstr "IPv4 адреса"
@@ -808,10 +794,10 @@ msgid "Infinite Instant recording started"
 msgstr "Запис без певного часу закінчення розпочато"
 
 msgid "Info"
-msgstr "Інформація"
+msgstr "Інфо"
 
 msgid "Information"
-msgstr ""
+msgstr "Інформація"
 
 msgid "Inherit AutoTimer"
 msgstr "Наслідувати Автотаймер"
@@ -832,7 +818,7 @@ msgid "Internal error!"
 msgstr "Внутрішня помилка!"
 
 msgid "Internal flash memory"
-msgstr ""
+msgstr "Внутрішня флеш-пам'ять"
 
 #, python-format
 msgid "Interval (in %s)"
@@ -863,7 +849,7 @@ msgid "Kernel"
 msgstr "Ядро"
 
 msgid "LCD"
-msgstr ""
+msgstr "LCD"
 
 msgid "LCD4Linux Setup"
 msgstr "Налаштування LCD4Linux"
@@ -872,7 +858,7 @@ msgid "Label series"
 msgstr "Відзначити групу"
 
 msgid "License"
-msgstr ""
+msgstr "Ліцензія"
 
 msgid "Link speed"
 msgstr "Швидкість з'єднання"
@@ -880,9 +866,8 @@ msgstr "Швидкість з'єднання"
 msgid "List of Timers has been cleaned"
 msgstr "Список таймерів очищенно"
 
-#, fuzzy
 msgid "Loading..."
-msgstr "завантаження"
+msgstr "Завантаження..."
 
 msgid "Location"
 msgstr "Розташування"
@@ -963,12 +948,11 @@ msgstr "Щомісяця"
 msgid "More"
 msgstr "Більше"
 
-#, fuzzy
 msgid "More details"
-msgstr "Показати деталі"
+msgstr "Детальніше"
 
 msgid "Mount point"
-msgstr ""
+msgstr "Точка монтування"
 
 msgid "Movie database for EPG"
 msgstr "База даних фільмів для EPG"
@@ -989,20 +973,19 @@ msgid "MultiEPG"
 msgstr "Мульти EPG"
 
 msgid "Mute/Unmute"
-msgstr ""
+msgstr "Вимкнути/Увімкнути звук"
 
-#, fuzzy
 msgid "NCam Webinterface"
-msgstr "Веб-інтерфейс OSCam"
+msgstr "Веб-інтерфейс NCam"
 
 msgid "Name"
 msgstr "Ім'я"
 
 msgid "Name (a-z)"
-msgstr ""
+msgstr "Ім'я (a-z)"
 
 msgid "Name (z-a)"
-msgstr ""
+msgstr "Ім'я (z-a)"
 
 msgid "Namespace"
 msgstr "Простір назв"
@@ -1019,9 +1002,8 @@ msgstr "Ніколи"
 msgid "New"
 msgstr "Новий"
 
-#, fuzzy
 msgid "New Bookmark:"
-msgstr "Закладка"
+msgstr "Нова Закладка:"
 
 msgid "New Name"
 msgstr "Нова назва"
@@ -1029,9 +1011,8 @@ msgstr "Нова назва"
 msgid "No"
 msgstr "Ні"
 
-#, fuzzy
 msgid "No EPG data available."
-msgstr "доступного опису немає"
+msgstr "Немає даних EPG."
 
 msgid "No Parent Control Setup Pin given!"
 msgstr "Не задано Pin батьківського контролю!"
@@ -1054,15 +1035,14 @@ msgstr "Подію не знайдено! Запис зупинено!"
 msgid "No marker-name given!"
 msgstr "Не задано ім'я маркера!"
 
-#, fuzzy
 msgid "No matches were found in the EPG"
-msgstr "Не знайден відповідний таймер"
+msgstr "В EPG не знайдено збігів"
 
 msgid "No matching Timer found"
 msgstr "Не знайден відповідний таймер"
 
 msgid "No network connection"
-msgstr ""
+msgstr "Немає підключення до мережі"
 
 msgid "No new servicename given!"
 msgstr "Не задано ім'я нового каналу!"
@@ -1101,13 +1081,13 @@ msgid "Now"
 msgstr "Зараз"
 
 msgid "Now/Next Columns"
-msgstr ""
+msgstr "Цей/Наступні стовпці"
 
 msgid "Number of recordings remaining"
 msgstr "Кількість решти записів"
 
 msgid "ONID"
-msgstr ""
+msgstr "ONID"
 
 msgid "OSCam Webinterface"
 msgstr "Веб-інтерфейс OSCam"
@@ -1140,10 +1120,10 @@ msgid "Only match during timespan"
 msgstr "Тільки збіг в проміжок часу"
 
 msgid "Oops, no results matched your search"
-msgstr ""
+msgstr "На жаль, немає результатів, що відповідають вашому запиту"
 
 msgid "Oops..."
-msgstr ""
+msgstr "На жаль..."
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Відкритий веб інтерфейс для лінукс-ресиверів"
@@ -1163,9 +1143,8 @@ msgstr "Налаштування OpenWebif"
 msgid "OpenWebif Settings"
 msgstr "Налаштування Веб-інтерфейса"
 
-#, fuzzy
 msgid "OpenWebif url:"
-msgstr "OpenWebif URL:"
+msgstr "URL-адреса OpenWebif:"
 
 msgid "Orbital Position"
 msgstr "Орбітальна позиція"
@@ -1174,10 +1153,10 @@ msgid "Override found with alternative service"
 msgstr "Скасувати використання з альтернативним каналом"
 
 msgid "PCR PID"
-msgstr ""
+msgstr "PCR PID"
 
 msgid "PMT PID"
-msgstr ""
+msgstr "PMT PID"
 
 msgid "Packages"
 msgstr "Пакети"
@@ -1207,14 +1186,13 @@ msgid "Playback"
 msgstr "Відтворити"
 
 msgid "Playback IPTV Streams in browser"
-msgstr ""
+msgstr "Відтворення потоків IPTV у браузері"
 
 msgid "Playlist"
 msgstr "Плейлист"
 
-#, fuzzy
 msgid "Playlist format"
-msgstr "Плейлист"
+msgstr "Формат плейлиста"
 
 msgid "Power Control"
 msgstr "Керування живленням"
@@ -1223,7 +1201,7 @@ msgid "PowerTimer feature not available"
 msgstr "Функції тамера живлення не доступні"
 
 msgid "Preview"
-msgstr ""
+msgstr "Попередній перегляд"
 
 msgid "Primetimes"
 msgstr "Прайм-Тайм"
@@ -1238,7 +1216,7 @@ msgid "Providers"
 msgstr "Провайдери"
 
 msgid "REC"
-msgstr ""
+msgstr "REC"
 
 msgid "Radio"
 msgstr "Радіо"
@@ -1250,11 +1228,10 @@ msgid "Record a maximum of # times"
 msgstr "Записати максимум x разів"
 
 msgid "Recording"
-msgstr ""
+msgstr "Запис"
 
-#, fuzzy
 msgid "Recording Type"
-msgstr "Статус запису"
+msgstr "Тип запису"
 
 msgid "Refresh"
 msgstr "Оновити"
@@ -1277,9 +1254,8 @@ msgstr "Пульт"
 msgid "Remove Package"
 msgstr "Видалити пакет"
 
-#, fuzzy
 msgid "Remove filter"
-msgstr "Пульт"
+msgstr "Зняти фільтр"
 
 msgid "Rename"
 msgstr "Перейменувати"
@@ -1299,12 +1275,11 @@ msgstr "Вимагати клієнтський сертифікат для HTTP
 msgid "Require description to be unique"
 msgstr "Потрібно, щоб опис був унікальним"
 
-#, fuzzy
 msgid "Reset"
-msgstr "Скидання лічильника"
+msgstr "Скинути"
 
 msgid "Reset count"
-msgstr "Скидання лічильника"
+msgstr "Скинути лічильник"
 
 msgid "Restart GUI"
 msgstr "Рестарт GUI"
@@ -1312,21 +1287,20 @@ msgstr "Рестарт GUI"
 msgid "Restrict to bouquets"
 msgstr "Обмежити для фаворитів"
 
-#, fuzzy
 msgid "Restrict to channels"
-msgstr "Обмежити для фаворитів"
+msgstr "Обмежити доступ до каналів"
 
 msgid "Root"
 msgstr "Корінь"
 
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 msgid "SNR"
 msgstr "SNR"
 
 msgid "SRef"
-msgstr ""
+msgstr "SRef"
 
 msgid "Sa"
 msgstr "Сб"
@@ -1359,7 +1333,7 @@ msgid "Search CSFD"
 msgstr "Пошук у CSFD"
 
 msgid "Search EPG"
-msgstr ""
+msgstr "Пошук EPG"
 
 msgid "Search IMDb"
 msgstr "Пошук у IMDb"
@@ -1367,29 +1341,26 @@ msgstr "Пошук у IMDb"
 msgid "Search KinoPoisk"
 msgstr "Пошук у KinoPoisk"
 
-#, fuzzy
 msgid "Search TV Guide UK"
-msgstr "ТВ гід"
+msgstr "Пошук TV гід UK"
 
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr ""
+msgstr "Пошук за назвою, SD / HD / UHD або постачальником"
 
-#, fuzzy
 msgid "Search strictness"
-msgstr "Пошук у KinoPoisk"
+msgstr "Суворість пошуку"
 
-#, fuzzy
 msgid "Search type"
-msgstr "Пошук"
+msgstr "Тип пошуку"
 
 msgid "Select IPK file for upload"
 msgstr "Виберіть файл IPK для завантаження"
 
 msgid "Select..."
-msgstr ""
+msgstr "Виберіть..."
 
 msgid "Send"
-msgstr ""
+msgstr "Надіслати"
 
 msgid "Send Message"
 msgstr "Відправити повідомлення"
@@ -1436,7 +1407,7 @@ msgid "Service %s removed."
 msgstr "Канал %s видалено."
 
 msgid "Service ID (SID)"
-msgstr ""
+msgstr "Сервіс ID (SID)"
 
 msgid "Service can not be moved."
 msgstr "Канал не може бути переміщений."
@@ -1454,7 +1425,7 @@ msgid "Services"
 msgstr "Канали"
 
 msgid "Serving stream"
-msgstr ""
+msgstr "Потік обслуговування"
 
 msgid "Set maximum duration"
 msgstr "Встановіть максимальну тривалість"
@@ -1469,11 +1440,10 @@ msgid "Show Full OpenWebif"
 msgstr "Показати весь OpenWebif"
 
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr ""
+msgstr "Показати канали IPTV у вибраному режимі (наприклад, автотаймер)"
 
-#, fuzzy
 msgid "Show all packages"
-msgstr "Оновити всі пакети"
+msgstr "Показати всі пакети"
 
 msgid "Show box name in header"
 msgstr "Показувати назву ресивера в заголовку"
@@ -1488,11 +1458,10 @@ msgid "Show in Extensions menu"
 msgstr "Показа в Меню доповнень"
 
 msgid "Show picon background"
-msgstr ""
+msgstr "Показати фон піктограми"
 
-#, fuzzy
 msgid "Show picons"
-msgstr "Показати деталі"
+msgstr "Показати піктограму"
 
 msgid "Show picons in channel list"
 msgstr "Показати пікони в списку каналів"
@@ -1504,13 +1473,13 @@ msgid "Shutdown"
 msgstr "Вимкнути"
 
 msgid "Signal Power (AGC)"
-msgstr ""
+msgstr "Потужність сигналу (AGC)"
 
 msgid "Signal Quality (SNR DB)"
-msgstr ""
+msgstr "Якість сигналу (SNR DB)"
 
 msgid "Signal Quality (SNR)"
-msgstr ""
+msgstr "Якість сигналу (SNR)"
 
 msgid "Simulate"
 msgstr "Імітувати"
@@ -1519,7 +1488,7 @@ msgid "Site and sources"
 msgstr "Сайт та вихідний код"
 
 msgid "Skins"
-msgstr ""
+msgstr "Скіни"
 
 msgid "SleepTimer error"
 msgstr "Помилки таймера сну"
@@ -1538,7 +1507,7 @@ msgid "Sleeptimer set to %d minutes"
 msgstr "Таймер сну встановлений на %d хвилин"
 
 msgid "Small remote layout"
-msgstr ""
+msgstr "Маленький дистанційний макет"
 
 msgid "Software"
 msgstr "ПЗ"
@@ -1547,7 +1516,7 @@ msgid "Sorry this page is not yet implemented"
 msgstr "Вибачте, ця сторінка недоступна"
 
 msgid "Sort"
-msgstr ""
+msgstr "Сортувати"
 
 msgid "Spinner"
 msgstr "Спінер"
@@ -1565,30 +1534,28 @@ msgid "Start time is after end time"
 msgstr "Час початку після часу закінчення"
 
 msgid "Start typing..."
-msgstr ""
+msgstr "Почніть вводити..."
 
 msgid "State"
-msgstr ""
+msgstr "Стан"
 
 msgid "Storage"
-msgstr ""
+msgstr "Сховище"
 
 msgid "Stream"
 msgstr "Стрім"
 
-#, fuzzy
 msgid "Stream Clients"
-msgstr "Стрім"
+msgstr "Потокові клієнти"
 
-#, fuzzy
 msgid "Streaming port"
-msgstr "Стрім"
+msgstr "Потоковий порт"
 
 msgid "Su"
 msgstr "Нд"
 
 msgid "Subdirectories"
-msgstr ""
+msgstr "Підкаталоги"
 
 msgid "Subnet mask"
 msgstr "Маска підмережі"
@@ -1606,19 +1573,19 @@ msgid "System OE"
 msgstr "Система OE"
 
 msgid "TB"
-msgstr "Тб"
+msgstr "TB"
 
 msgid "TSID"
-msgstr ""
+msgstr "TSID"
 
 msgid "TV"
-msgstr "ТВ"
+msgstr "ТБ"
 
 msgid "TV Guide"
-msgstr "ТВ гід"
+msgstr "ТБ гід"
 
 msgid "TV Multi EPG"
-msgstr "ТВ Мульти ЕПГ"
+msgstr "ТБ Мульти EPG"
 
 msgid "Tags"
 msgstr "Теги"
@@ -1627,7 +1594,7 @@ msgid "Teletext"
 msgstr "Телетекст"
 
 msgid "Teletext PID"
-msgstr "Teletext PID"
+msgstr "Телетекст PID"
 
 msgid "Television"
 msgstr "ТВ канали"
@@ -1660,7 +1627,7 @@ msgstr "Таймер '%s' був %s успішно виконаний"
 
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
-msgstr "Не вдалося знайти таймер '%s' з заданим часом початку та закінчення!"
+msgstr "Таймер '%s' успішно видалено"
 
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
@@ -1669,9 +1636,8 @@ msgstr "Таймер '%s' зараз записується! ННе вимкне
 msgid "Theme"
 msgstr "Тема"
 
-#, fuzzy
 msgid "Theme mode"
-msgstr "Тема"
+msgstr "Тематичний режим"
 
 msgid "This service can not be added."
 msgstr "Цей канал не може бути доданий."
@@ -1718,7 +1684,7 @@ msgid "Timer Added"
 msgstr "Таймер додано"
 
 msgid "Timer Conflict"
-msgstr ""
+msgstr "Конфлікт таймера"
 
 msgid "Timer added"
 msgstr "Таймер додано"
@@ -1745,10 +1711,10 @@ msgid "To date"
 msgstr "Не раніше, ніж"
 
 msgid "Today"
-msgstr ""
+msgstr "Сьогодні"
 
 msgid "Toggle Standby"
-msgstr ""
+msgstr "Перемкнути режим очікування"
 
 msgid "Transcode"
 msgstr "Транскодування"
@@ -1816,28 +1782,25 @@ msgid "Uploaded Files"
 msgstr "Завантажені файли"
 
 msgid "Use Channelname for screenshots"
-msgstr ""
+msgstr "Для скріншотів використовуйте назву каналу"
 
 msgid "Use a custom location"
 msgstr "Використовуйте інше розташування"
 
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Якщо можливо, використовуйте як картинку в картинці"
 
-#, fuzzy
 msgid "Use classic interface"
-msgstr "Використовуйте новий дизайн"
+msgstr "Використовуйте класичний інтерфейс"
 
-#, fuzzy
 msgid "Use custom Color"
-msgstr "Використовуйте інше розташування"
+msgstr "Використовуйте користувацький кольор"
 
 msgid "Use custom box name"
 msgstr "Використовувати альтернативне ім'я ресивера"
 
-#, fuzzy
 msgid "Use modern design"
-msgstr "Використовуйте новий дизайн"
+msgstr "Використовуйте сучасний дизайн"
 
 msgid "Use modern interface"
 msgstr "Використовуйте новий дизайн"
@@ -1858,7 +1821,7 @@ msgid "Video Height"
 msgstr "Висота відео"
 
 msgid "Video PID (VPID)"
-msgstr ""
+msgstr "Відео PID (VPID)"
 
 msgid "Video Width"
 msgstr "Ширина відео"
@@ -1906,7 +1869,7 @@ msgid "Weekly (Sunday)"
 msgstr "Щотижня (неділя)"
 
 msgid "Widescreen"
-msgstr ""
+msgstr "Широкоформатний"
 
 msgid "Without auth only local access is allowed!"
 msgstr "Без аутентифікації дозволяється тільки локальний доступ!"
@@ -1915,14 +1878,14 @@ msgid "Wizard"
 msgstr "Помічник"
 
 msgid "Would you like to save your changes?"
-msgstr ""
+msgstr "Бажаєте зберегти зміни?"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Невірний формат параметру 'set=%s'. Використовуйте set=set15 "
 
 msgid "YYYY-MM-DD"
-msgstr ""
+msgstr "YYYY-MM-DD"
 
 msgid "Yes"
 msgstr "Так"
@@ -1931,7 +1894,7 @@ msgid "Yes/No"
 msgstr "Так/ні"
 
 msgid "Yesterday"
-msgstr ""
+msgstr "Вчора"
 
 msgid "Zap"
 msgstr "Переключити"
@@ -1948,33 +1911,29 @@ msgstr "Переключити на"
 msgid "Zapped to"
 msgstr "Переключено на"
 
-#, fuzzy
 msgid "any time"
-msgstr "Додати таймер"
+msgstr "будь-коли"
 
 msgid "auto"
 msgstr "авто"
 
 msgid "box_ip"
-msgstr ""
+msgstr "box_ip"
 
-#, fuzzy
 msgid "case-insensitive"
-msgstr "Суворий пошук"
+msgstr "без урахування регістру"
 
-#, fuzzy
 msgid "case-sensitive"
-msgstr "Суворий пошук"
+msgstr "чутливий до регістру"
 
 msgid "descramble and record ecm"
-msgstr ""
+msgstr "дешифрувати та записувати ecm"
 
 msgid "description contains"
 msgstr "в описі"
 
-#, fuzzy
 msgid "description match"
-msgstr "Опис"
+msgstr "відповідність опису"
 
 msgid "disabled"
 msgstr "вимкнено"
@@ -1983,16 +1942,16 @@ msgid "do nothing"
 msgstr "нічого не робити"
 
 msgid "don't descramble, record ecm"
-msgstr ""
+msgstr "не дешифрувати, записати ecm"
 
 msgid "error! Loading Page"
 msgstr "помилка! Сторінка завантажується"
 
 msgid "exact title match"
-msgstr ""
+msgstr "точний збіг назви"
 
 msgid "favourite desc match"
-msgstr ""
+msgstr "улюблена відповідність опису"
 
 msgid "finished"
 msgstr "закінчено"
@@ -2016,7 +1975,7 @@ msgid "manual/disabled"
 msgstr "вручну/вимкнено"
 
 msgid "mins"
-msgstr ""
+msgstr "хв"
 
 msgid "minute"
 msgstr "хвилина"
@@ -2028,10 +1987,10 @@ msgid "none/IPv4-only network"
 msgstr "нема/мережа тільки IPv4"
 
 msgid "normal"
-msgstr ""
+msgstr "нормально"
 
 msgid "on day"
-msgstr ""
+msgstr "на день"
 
 msgid "on weekday"
 msgstr "у будні"
@@ -2040,22 +1999,22 @@ msgid "one two three four unknown command"
 msgstr "одна, дві, три невідомі команди"
 
 msgid "partial title match"
-msgstr ""
+msgstr "частковий збіг назви"
 
 msgid "r/o"
-msgstr ""
+msgstr "r/o"
 
 msgid "r/w"
-msgstr ""
+msgstr "r/w"
 
 msgid "Receiver"
-msgstr ""
+msgstr "Приймач"
 
 msgid "record"
 msgstr "запис"
 
 msgid "regex match (experimental)"
-msgstr ""
+msgstr "збіг регулярного виразу (експериментальний)"
 
 msgid "remove"
 msgstr "видалити"
@@ -2078,7 +2037,6 @@ msgstr "вибір тегів"
 msgid "short description contains"
 msgstr "в короткому описі"
 
-#, fuzzy
 msgid "short description match"
 msgstr "збіг короткого опису"
 
@@ -2089,24 +2047,22 @@ msgid "static"
 msgstr "статичний"
 
 msgid "this service is protected by a parental control pin"
-msgstr ""
+msgstr "ця служба захищена PIN-кодом батьківського контролю"
 
 msgid "title contains"
 msgstr "в заголовку"
 
 msgid "title ends with"
-msgstr ""
+msgstr "назва закінчується на"
 
-#, fuzzy
 msgid "title or description match"
 msgstr "збіг назви або опису"
 
-#, fuzzy
 msgid "title or short description match"
 msgstr "збіг назви або короткого опису"
 
 msgid "title starts with"
-msgstr ""
+msgstr "назва починається з"
 
 msgid "transcoded"
 msgstr "транскодування"

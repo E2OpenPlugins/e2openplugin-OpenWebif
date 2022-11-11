@@ -1,19 +1,20 @@
 # Kiki Mora <kikimora2k13@gmail.com>, 2022.
+# vaanja <vaanja@vaanja.sk>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-10 09:36+0000\n"
-"PO-Revision-Date: 2022-01-18 16:58+0000\n"
+"PO-Revision-Date: 2022-09-17 21:03+0000\n"
 "Last-Translator: Kiki Mora <kikimora2k13@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/e2openplugin-"
-"openwebif/e2openplugin-openwebif/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #, python-format
 msgid "%02d.%02d."
@@ -51,7 +52,7 @@ msgstr "%s / %s"
 
 #, python-format
 msgid "%s Style"
-msgstr ""
+msgstr "%s Style"
 
 #, python-format
 msgid "%s free / %s total"
@@ -115,7 +116,7 @@ msgid "Add selection to bouquet"
 msgstr "Pridať stanicu(e) do prehľadu"
 
 msgid "Add service name to stream information"
-msgstr "Pridať názov služby do informácie o prúde"
+msgstr "Pridať názov služby do informácie o streame"
 
 msgid "Add similar on conflict"
 msgstr "Pri konflikte pridať rovnaké"
@@ -171,7 +172,7 @@ msgid "Answer is YES!"
 msgstr "Odpoveď je ÁNO!"
 
 msgid "Any"
-msgstr ""
+msgstr "Všetky"
 
 msgid "Any day"
 msgstr "Kedykoľvek"
@@ -213,13 +214,13 @@ msgid "Ask, default Yes"
 msgstr "Spýtať sa, predvolene áno"
 
 msgid "Audio Encoding"
-msgstr ""
+msgstr "Kódovanie zvuku"
 
 msgid "Audio PID (APID)"
-msgstr ""
+msgstr "Zvukový PID (APID)"
 
 msgid "Audio Track"
-msgstr ""
+msgstr "Zvuková stopa"
 
 msgid "August"
 msgstr "August"
@@ -264,7 +265,7 @@ msgid "Beginning of timespan"
 msgstr "Začiatok časového rozpätia"
 
 msgid "Bit Error Rate (BER)"
-msgstr ""
+msgstr "Bitová chybovosť (BER)"
 
 msgid "Bookmark"
 msgstr "Záložka"
@@ -345,7 +346,7 @@ msgid "Brand"
 msgstr "Značka"
 
 msgid "Build"
-msgstr ""
+msgstr "Zostava"
 
 msgid "Cable"
 msgstr "Káblové"
@@ -417,7 +418,7 @@ msgid "Current Event"
 msgstr "Aktuálna relácia"
 
 msgid "Currently recording"
-msgstr ""
+msgstr "Aktuálne nahrávanie"
 
 msgid "Custom box name"
 msgstr "Vlastný názov prijímača"
@@ -481,7 +482,7 @@ msgid "Description"
 msgstr "Popis"
 
 msgid "Device"
-msgstr ""
+msgstr "Zariadenie"
 
 msgid "Disable"
 msgstr "Zakázať"
@@ -558,7 +559,7 @@ msgid "Enable"
 msgstr "Povoliť"
 
 msgid "Enable Authentication for streaming"
-msgstr "Zapnúť overovanie pre streaming"
+msgstr "Zapnúť overovanie pre streamovanie"
 
 msgid "Enable HTTP Authentication"
 msgstr "Vyžadovať prihlásenie pre HTTP"
@@ -618,7 +619,7 @@ msgid "Enter path"
 msgstr "Zadajte cestu"
 
 msgid "Enter text"
-msgstr ""
+msgstr "Zadajte text"
 
 msgid "Enter the text to find in the EPG"
 msgstr "Zadajte text pre vyhľadanie v EPG"
@@ -700,7 +701,7 @@ msgid "Free Memory"
 msgstr "Voľná pamäť"
 
 msgid "Free space"
-msgstr ""
+msgstr "Voľné miesto"
 
 msgid "Fri"
 msgstr "Pia"
@@ -745,7 +746,7 @@ msgid "Hard disk model"
 msgstr "Model pevného disku"
 
 msgid "Hardware"
-msgstr ""
+msgstr "Hardvér"
 
 msgid "Hide full remote"
 msgstr "Skryť úplný diaľkový ovládač"
@@ -754,7 +755,7 @@ msgid "High Resolution"
 msgstr "Vysoké rozlíšenie"
 
 msgid "Hold to drag"
-msgstr ""
+msgstr "Podržaním potiahnite"
 
 msgid "Hour"
 msgstr "Hodina"
@@ -796,7 +797,7 @@ msgid "Info"
 msgstr "Informácie"
 
 msgid "Information"
-msgstr ""
+msgstr "Informácie"
 
 msgid "Inherit AutoTimer"
 msgstr "Prevziať autočasovač"
@@ -817,7 +818,7 @@ msgid "Internal error!"
 msgstr "Vnútorná chyba!"
 
 msgid "Internal flash memory"
-msgstr ""
+msgstr "Interná flash pamäť"
 
 #, python-format
 msgid "Interval (in %s)"
@@ -857,7 +858,7 @@ msgid "Label series"
 msgstr "Série menoviek"
 
 msgid "License"
-msgstr ""
+msgstr "Licencia"
 
 msgid "Link speed"
 msgstr "Rýchlosť pripojenia"
@@ -884,7 +885,7 @@ msgid "Main"
 msgstr "Hlavné"
 
 msgid "Main memory"
-msgstr "Celková pamäť"
+msgstr "Základná pamäť"
 
 msgid "March"
 msgstr "Marec"
@@ -951,7 +952,7 @@ msgid "More details"
 msgstr "Zobraziť podrobnosti"
 
 msgid "Mount point"
-msgstr ""
+msgstr "Pripojené miesto"
 
 msgid "Movie database for EPG"
 msgstr "Databáza filmov pre EPG"
@@ -972,7 +973,7 @@ msgid "MultiEPG"
 msgstr "MultiEPG"
 
 msgid "Mute/Unmute"
-msgstr ""
+msgstr "Vypnúť/Zapnúť zvuk"
 
 msgid "NCam Webinterface"
 msgstr "OSCam Webinterface"
@@ -990,7 +991,7 @@ msgid "Namespace"
 msgstr "Priestor pre názvy"
 
 msgid "Network Interface"
-msgstr "Sietový adaptér"
+msgstr "Sieťové rozhranie"
 
 msgid "Network Shares"
 msgstr "Sieťové zdieľania"
@@ -1041,7 +1042,7 @@ msgid "No matching Timer found"
 msgstr "Zhodný časovač sa nenašiel"
 
 msgid "No network connection"
-msgstr ""
+msgstr "Žiadne sieťové pripojenie"
 
 msgid "No new servicename given!"
 msgstr "Nie je zadaný nový názov stanice!"
@@ -1086,7 +1087,7 @@ msgid "Number of recordings remaining"
 msgstr "Počet zostávajúcich nahrávaní"
 
 msgid "ONID"
-msgstr ""
+msgstr "ONID"
 
 msgid "OSCam Webinterface"
 msgstr "OSCam Webinterface"
@@ -1152,10 +1153,10 @@ msgid "Override found with alternative service"
 msgstr "Nájdenú prepísať alternatívnou stanicou"
 
 msgid "PCR PID"
-msgstr ""
+msgstr "PCR PID"
 
 msgid "PMT PID"
-msgstr ""
+msgstr "PMT PID"
 
 msgid "Packages"
 msgstr "Balíčky"
@@ -1227,7 +1228,7 @@ msgid "Record a maximum of # times"
 msgstr "Nahrať maximálne x krát"
 
 msgid "Recording"
-msgstr ""
+msgstr "Nahrávanie"
 
 msgid "Recording Type"
 msgstr "Typ nahrávky"
@@ -1299,7 +1300,7 @@ msgid "SNR"
 msgstr "SNR"
 
 msgid "SRef"
-msgstr ""
+msgstr "SRef"
 
 msgid "Sa"
 msgstr "So"
@@ -1332,7 +1333,7 @@ msgid "Search CSFD"
 msgstr "Hľadať v ČSFD"
 
 msgid "Search EPG"
-msgstr ""
+msgstr "Vyhľadávať v EPG"
 
 msgid "Search IMDb"
 msgstr "Hľadať v IMDb"
@@ -1359,7 +1360,7 @@ msgid "Select..."
 msgstr "Vybrať..."
 
 msgid "Send"
-msgstr ""
+msgstr "Odoslať"
 
 msgid "Send Message"
 msgstr "Poslať správu"
@@ -1406,7 +1407,7 @@ msgid "Service %s removed."
 msgstr "Stanica %s zmazaná."
 
 msgid "Service ID (SID)"
-msgstr ""
+msgstr "Identifikátor služby (SID)"
 
 msgid "Service can not be moved."
 msgstr "Stanica sa nedá presunúť."
@@ -1424,7 +1425,7 @@ msgid "Services"
 msgstr "Stanice"
 
 msgid "Serving stream"
-msgstr ""
+msgstr "Poskytované streamovanie"
 
 msgid "Set maximum duration"
 msgstr "Nastaviť maximálnu dĺžku"
@@ -1472,13 +1473,13 @@ msgid "Shutdown"
 msgstr "Vypnúť"
 
 msgid "Signal Power (AGC)"
-msgstr ""
+msgstr "Sila signálu (AGC)"
 
 msgid "Signal Quality (SNR DB)"
-msgstr ""
+msgstr "Kvalita signálu (SNR DB)"
 
 msgid "Signal Quality (SNR)"
-msgstr ""
+msgstr "Kvalita signálu (SNR)"
 
 msgid "Simulate"
 msgstr "Simulovať"
@@ -1506,7 +1507,7 @@ msgid "Sleeptimer set to %d minutes"
 msgstr "Časovač uspania nastavený na %d minút"
 
 msgid "Small remote layout"
-msgstr ""
+msgstr "Malý diaľkový ovládač"
 
 msgid "Software"
 msgstr "Softvér"
@@ -1539,7 +1540,7 @@ msgid "State"
 msgstr "Stav"
 
 msgid "Storage"
-msgstr ""
+msgstr "Úložisko"
 
 msgid "Stream"
 msgstr "Stream"
@@ -1575,7 +1576,7 @@ msgid "TB"
 msgstr "TB"
 
 msgid "TSID"
-msgstr ""
+msgstr "TSID"
 
 msgid "TV"
 msgstr "TV"
@@ -1683,7 +1684,7 @@ msgid "Timer Added"
 msgstr "Časovač pridaný"
 
 msgid "Timer Conflict"
-msgstr ""
+msgstr "Konflikt časovačov"
 
 msgid "Timer added"
 msgstr "Časovač pridaný"
@@ -1713,7 +1714,7 @@ msgid "Today"
 msgstr "Dnes"
 
 msgid "Toggle Standby"
-msgstr ""
+msgstr "Prepnutie do pohotovostného režimu"
 
 msgid "Transcode"
 msgstr "Transkódovanie"
@@ -1820,7 +1821,7 @@ msgid "Video Height"
 msgstr "Výška videa"
 
 msgid "Video PID (VPID)"
-msgstr ""
+msgstr "Video PID (VPID)"
 
 msgid "Video Width"
 msgstr "Šírka videa"
@@ -1868,7 +1869,7 @@ msgid "Weekly (Sunday)"
 msgstr "Týždenne (nedeľa)"
 
 msgid "Widescreen"
-msgstr ""
+msgstr "Širokouhlá obrazovka"
 
 msgid "Without auth only local access is allowed!"
 msgstr "Bez autorizácie je povolený iba lokálny prístup!"
@@ -1902,7 +1903,7 @@ msgid "Zap & Record"
 msgstr "Nahrávať & prepnúť"
 
 msgid "Zap before streaming"
-msgstr "prepnúť pred streamovaním"
+msgstr "Prepnúť pred streamovaním"
 
 msgid "Zap to"
 msgstr "Prepnúť na"
@@ -2007,7 +2008,7 @@ msgid "r/w"
 msgstr "r/w"
 
 msgid "Receiver"
-msgstr ""
+msgstr "Prijímač"
 
 msgid "record"
 msgstr "nahrať"
