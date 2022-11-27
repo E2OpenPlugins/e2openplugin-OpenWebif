@@ -769,6 +769,8 @@ def getAllInfo():
 		remote = "amiko1"
 	elif procmodel == "viperslim":
 		remote = "viperslim"
+	elif procmodel.startswith("sfx"):
+		remote = "octagon3"
 	elif procmodel.startswith("sf"):
 		remote = "octagon"
 	elif procmodel in ("vs1100", "vs1500"):
