@@ -95,7 +95,7 @@ def getDisplayday():
 	try:
 		return config.usage.date.displayday.value
 	except (AttributeError, KeyError):
-		return "%a %-d+%b_"
+		return "%a %-d %b"
 
 
 def getTimeShort():
