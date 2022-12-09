@@ -526,11 +526,10 @@ def getAllInfo():
 			brand = "Octagon"
 			sfx6008type = open("/proc/stb/info/type").read()
 			if sfx6008type.startswith("10"):
-					procmodel = "sfx6018"
-					model = "SFX6018 S2 IP"
-				else:  # sfx6008type.startswith("10")
-					model = "SFX6008 IP"
-			
+				procmodel = "sfx6018"
+				model = "SFX6018 S2 IP"
+			else:  # sfx6008type.startswith("10")
+				model = "SFX6008 IP"
 		elif procmodel == "sf8008m":
 			brand = "Octagon"
 			model = "SF8008 4K Mini"
