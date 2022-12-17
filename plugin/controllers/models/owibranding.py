@@ -537,7 +537,7 @@ def getAllInfo():
 				if wifi == "f179":
 					procmodel = "sfx6008wl"
 					model = "SFX6008 WL"
-				elif:
+				else:
 					model = "SFX6008 IP"
 		elif procmodel == "sf8008m":
 			brand = "Octagon"
