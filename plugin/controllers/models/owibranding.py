@@ -529,7 +529,16 @@ def getAllInfo():
 				procmodel = "sfx6018"
 				model = "SFX6018 S2 IP"
 			else:  # sfx6008type.startswith("10")
-				model = "SFX6008 IP"
+				wifi = None
+				if fileExists("/sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct"):
+					f = open("//sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct", 'r')
+					wifi = f.readline().strip().lower()
+					f.close()
+				if wifi == "f179":
+					procmodel = "sfx6008wl"
+					model = "SFX6008 WL"
+				elif:
+					model = "SFX6008 IP"
 		elif procmodel == "sf8008m":
 			brand = "Octagon"
 			model = "SF8008 4K Mini"
