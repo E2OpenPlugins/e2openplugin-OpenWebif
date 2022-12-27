@@ -276,7 +276,7 @@ class EPGEvent():
 			if currentTimestamp:
 				remaining = endTimestamp - currentTimestamp if currentTimestamp > startTimestamp else durationSeconds
 				try:
-					progressPercent = int(((currentTimestamp - startTimestamp) / durationSeconds) * 100)
+					progressPercent = int((100 * (currentTimestamp - startTimestamp) / durationSeconds))
 					progressPercent = progressPercent if progressPercent >= 0 else 0
 					self.progress = {
 						'number': progressPercent,
