@@ -37,5 +37,5 @@ class renderEvtBlock:
             hourmin=strftime("%H:%M", localtime(event['begin_timestamp'])),
             evtsymbol=timerEventSymbol,
             title=event['title'],
-            shortdesc=shortdesc, 
+            shortdesc=shortdesc,
             timerbar=timerbar)
