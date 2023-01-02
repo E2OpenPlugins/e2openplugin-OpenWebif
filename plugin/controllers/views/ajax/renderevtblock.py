@@ -32,10 +32,10 @@ class renderEvtBlock:
             timerbar = ''
 
         return self.template.format(
-            ref = quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
-            id = event['id'],
-            hourmin = strftime("%H:%M", localtime(event['begin_timestamp'])),
-            evtsymbol = timerEventSymbol,
-            title = event['title'],
-            shortdesc = shortdesc, 
-            timerbar = timerbar)
+            ref=quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
+            id=event['id'],
+            hourmin=strftime("%H:%M", localtime(event['begin_timestamp'])),
+            evtsymbol=timerEventSymbol,
+            title=event['title'],
+            shortdesc=shortdesc, 
+            timerbar=timerbar)
