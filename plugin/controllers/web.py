@@ -1688,11 +1688,10 @@ class WebController(BaseController):
 	# (/web/event returns a 404 in both `classic` and `modern` interfaces
 	def P_event(self, request):
 		sRef = getUrlArg(request, "sRef")
-		if sRef == None:
+		if sRef is None:
 			sRef = getUrlArg(request, "sref")
 
 		event = getEvent(sRef, request.args[b"idev"][0], self.isJson)
-
 		if event is not None:
 			# TODO: this shouldn't really be part of an event's data
 			event['event']['recording_margin_before'] = comp_config.recording.margin_before.value

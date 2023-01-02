@@ -583,7 +583,11 @@ function addEditTimerEvent(sRef, eventId) {
 		dataType: "json",
 		success: function(result) { 
 			if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
-				addTimer(result.event);
+				if (result.event.timer) {
+					editTimer(sRef, null, null, result.event.id);
+				} else {
+					addTimer(result.event);
+				}
 			}
 			else
 				alert(tstr_event_not_found);
@@ -1163,11 +1167,12 @@ function isRadio(serviceref) {
 	return ret;
 }
 
-function editTimer(serviceref, begin, end) {
+function editTimer(serviceref, begin, end, evtid) {
 	serviceref=decodeURI(serviceref);
 	current_serviceref = serviceref;
 	current_begin = begin;
 	current_end = end;
+	evtid = evtid || -1
 	
 	var radio = isRadio(serviceref);
 	
@@ -1189,116 +1194,119 @@ function editTimer(serviceref, begin, end) {
 				for (var id in timers.timers) {
 					timer = timers.timers[id];
 					if (timer.serviceref == serviceref &&
-						Math.round(timer.begin) == Math.round(begin) &&
-						Math.round(timer.end) == Math.round(end)) {
-							$('#timername').val(timer.name);
-							$('#description').val(timer.description);
+						( Math.round(timer.begin) == Math.round(begin) &&
+						  Math.round(timer.end) == Math.round(end) ||
+						  timer.eit == evtid
+						)
+					) {
+						$('#timername').val(timer.name);
+						$('#description').val(timer.description);
+						$('#bouquet_select').val(timer.serviceref);
+						$('#bouquet_select').trigger("chosen:updated");
+						if(timer.serviceref !== $('#bouquet_select').val()) {
+							$('#bouquet_select').append($("<option></option>").attr("value", timer.serviceref).text(timer.servicename));
 							$('#bouquet_select').val(timer.serviceref);
-							$('#bouquet_select').trigger("chosen:updated");
-							if(timer.serviceref !== $('#bouquet_select').val()) {
-								$('#bouquet_select').append($("<option></option>").attr("value", timer.serviceref).text(timer.servicename));
-								$('#bouquet_select').val(timer.serviceref);
-							}
-							$('#dirname').val(timer.dirname);
-							if(timer.dirname !== $('#dirname').val()) {
-								current_location = "<option value='" + timer.dirname + "'>" + timer.dirname + "</option>";
-								$('#dirname').append(current_location);
-								$('#dirname').val(timer.dirname);
-							}
-							$('#enabled').prop("checked", timer.disabled == 0);
-							$('#justplay').prop("checked", timer.justplay);
-							$('#afterevent').val(timer.afterevent);
-							$('#recordingtype').val(timer.recordingtype);
-							$('#errorbox').hide();
-							var flags=timer.repeated;
-							for (var i=0; i<7; i++) {
-								$('#day'+i).prop('checked', ((flags & 1)==1)).checkboxradio("refresh");
-								flags >>= 1;
-							}
-							
-							$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
-							
-							var tags = timer.tags.split(' ');
-							for (var j=0; j<tags.length; j++) {
-								var tag = tags[j].replace(/\(/g,'_').replace(/\)/g,'_').replace(/\'/g,'_');
-								if (tag.length>0)
-								{
-									if($('#tag_'+tag).length)
-									{
-										$('#tag_'+tag).prop('checked', true).checkboxradio("refresh");
-									}
-									else
-									{
-										$('#tagsnew').append("<input type='checkbox' checked='checked' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
-							}
-								}
-							}
-							$("#tagsnew > input").checkboxradio({icon: false});
-							
-							$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
-							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
-							
-							var r = (timer.state === 2);
-							// don't allow edit some fields if running
-							if(r) {
-								$('#timerbegin').datetimepicker('destroy');
-								timeredit_begindestroy=true;
-								$('#timerbegin').addClass('ui-state-disabled');
-								$('#timername').addClass('ui-state-disabled');
-								$("#dirname option").not(":selected").attr("disabled", "disabled");
-								$("#bouquet_select option").not(":selected").attr("disabled", "disabled");
-							} else {
-								$('#timername').removeClass('ui-state-disabled');
-								$('#timerbegin').removeClass('ui-state-disabled');
-								$("#dirname option").removeAttr('disabled');
-								$("#bouquet_select option").removeAttr('disabled');
-							}
-							$('#timerbegin').prop('readonly', r);
-							$('#timername').prop('readonly',r);
-							
-							if (typeof timer.vpsplugin_enabled !== 'undefined')
-							{
-								$('#vpsplugin_enabled').prop("checked", timer.vpsplugin_enabled);
-								$('#vpsplugin_safemode').prop("checked", !timer.vpsplugin_overwrite);
-								$('#has_vpsplugin1').show();
-								checkVPS();
-							}
-							else {
-								$('#has_vpsplugin1').hide();
-							}
-							
-							if (typeof timer.always_zap !== 'undefined')
-							{
-								//$('#always_zap1').show();
-								$('#always_zap').prop("checked", timer.always_zap==1);
-								$('#justplay').prop("disabled",timer.always_zap==1);
-							} else {
-								//$('#always_zap1').hide();
-								$('#always_zap').prop("disabled", true);
-							}
-
-							if (typeof timer.pipzap !== 'undefined')
-							{
-								$('#pipzap').prop("disabled",false);
-								$('#pipzap').prop("checked", timer.pipzap==1);
-							} else {
-								$('#pipzap').prop("disabled",true);
-							}
-
-							if (typeof timer.allow_duplicate !== 'undefined')
-							{
-								$('#allow_duplicate').prop("checked", timer.allow_duplicate==1);
-								//autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
-							}
-							if (typeof timer.autoadjust !== 'undefined')
-							{
-								$('#autoadjust').prop("checked", timer.autoadjust==1);
-							}
-
-							openTimerDlg(tstr_edit_timer + " - " + timer.name);
-							
-							break;
 						}
+						$('#dirname').val(timer.dirname);
+						if(timer.dirname !== $('#dirname').val()) {
+							current_location = "<option value='" + timer.dirname + "'>" + timer.dirname + "</option>";
+							$('#dirname').append(current_location);
+							$('#dirname').val(timer.dirname);
+						}
+						$('#enabled').prop("checked", timer.disabled == 0);
+						$('#justplay').prop("checked", timer.justplay);
+						$('#afterevent').val(timer.afterevent);
+						$('#recordingtype').val(timer.recordingtype);
+						$('#errorbox').hide();
+						var flags=timer.repeated;
+						for (var i=0; i<7; i++) {
+							$('#day'+i).prop('checked', ((flags & 1)==1)).checkboxradio("refresh");
+							flags >>= 1;
+						}
+						
+						$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
+						
+						var tags = timer.tags.split(' ');
+						for (var j=0; j<tags.length; j++) {
+							var tag = tags[j].replace(/\(/g,'_').replace(/\)/g,'_').replace(/\'/g,'_');
+							if (tag.length>0)
+							{
+								if($('#tag_'+tag).length)
+								{
+									$('#tag_'+tag).prop('checked', true).checkboxradio("refresh");
+								}
+								else
+								{
+									$('#tagsnew').append("<input type='checkbox' checked='checked' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
+						}
+							}
+						}
+						$("#tagsnew > input").checkboxradio({icon: false});
+						
+						$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
+						$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
+						
+						var r = (timer.state === 2);
+						// don't allow edit some fields if running
+						if(r) {
+							$('#timerbegin').datetimepicker('destroy');
+							timeredit_begindestroy=true;
+							$('#timerbegin').addClass('ui-state-disabled');
+							$('#timername').addClass('ui-state-disabled');
+							$("#dirname option").not(":selected").attr("disabled", "disabled");
+							$("#bouquet_select option").not(":selected").attr("disabled", "disabled");
+						} else {
+							$('#timername').removeClass('ui-state-disabled');
+							$('#timerbegin').removeClass('ui-state-disabled');
+							$("#dirname option").removeAttr('disabled');
+							$("#bouquet_select option").removeAttr('disabled');
+						}
+						$('#timerbegin').prop('readonly', r);
+						$('#timername').prop('readonly',r);
+						
+						if (typeof timer.vpsplugin_enabled !== 'undefined')
+						{
+							$('#vpsplugin_enabled').prop("checked", timer.vpsplugin_enabled);
+							$('#vpsplugin_safemode').prop("checked", !timer.vpsplugin_overwrite);
+							$('#has_vpsplugin1').show();
+							checkVPS();
+						}
+						else {
+							$('#has_vpsplugin1').hide();
+						}
+						
+						if (typeof timer.always_zap !== 'undefined')
+						{
+							//$('#always_zap1').show();
+							$('#always_zap').prop("checked", timer.always_zap==1);
+							$('#justplay').prop("disabled",timer.always_zap==1);
+						} else {
+							//$('#always_zap1').hide();
+							$('#always_zap').prop("disabled", true);
+						}
+
+						if (typeof timer.pipzap !== 'undefined')
+						{
+							$('#pipzap').prop("disabled",false);
+							$('#pipzap').prop("checked", timer.pipzap==1);
+						} else {
+							$('#pipzap').prop("disabled",true);
+						}
+
+						if (typeof timer.allow_duplicate !== 'undefined')
+						{
+							$('#allow_duplicate').prop("checked", timer.allow_duplicate==1);
+							//autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
+						}
+						if (typeof timer.autoadjust !== 'undefined')
+						{
+							$('#autoadjust').prop("checked", timer.autoadjust==1);
+						}
+
+						openTimerDlg(tstr_edit_timer + " - " + timer.name);
+						
+							break;
+					}
 				}
 			}
 		}

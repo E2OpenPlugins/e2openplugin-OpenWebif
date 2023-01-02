@@ -8,12 +8,12 @@ class renderEvtBlock:
 
     def __init__(self):
         self.template = """
-        <div class="event" data-ref="%s" data-id="%s">
-            <div style="width:40px; float:left; padding: 0 3px">%s%s</div>
+        <div class="event" data-ref="{ref}" data-id="{id}">
+            <div style="width:40px; float:left; padding: 0 3px">{hourmin}{evtsymbol}</div>
             <div style="width:144px; float:left">
-                <div class="title">%s</div>%s
+                <div class="title">{title}</div>{shortdesc}
             </div>
-            <div style="clear:left;height:2px;%s"></div>
+            <div style="clear:left;height:2px;{timerbar}"></div>
         </div>
         """
 
@@ -23,19 +23,19 @@ class renderEvtBlock:
         else:
             shortdesc = ''
 
-        timerbar = ""
-
         if event['timerStatus'] != '':
             text = event['timer']['text']
             timerEventSymbol = '<div class="%s">%s</div>' % (event['timerStatus'], text)
             timerbar = "background-color:red;"
         else:
             timerEventSymbol = ''
+            timerbar = ''
 
-        return self.template % (
-            quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
-            event['id'],
-            strftime("%H:%M", localtime(event['begin_timestamp'])),
-            timerEventSymbol,
-            event['title'],
-            shortdesc, timerbar)
+        return self.template.format(
+            ref = quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
+            id = event['id'],
+            hourmin = strftime("%H:%M", localtime(event['begin_timestamp'])),
+            evtsymbol = timerEventSymbol,
+            title = event['title'],
+            shortdesc = shortdesc, 
+            timerbar = timerbar)
