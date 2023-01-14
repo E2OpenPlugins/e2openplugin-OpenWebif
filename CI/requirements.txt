@@ -1,4 +1,4 @@
-future==0.18.2
+future==0.18.3
 pyOpenSSL>=16.2.0
 twisted>=19.2.1
 flake8==3.8.3
