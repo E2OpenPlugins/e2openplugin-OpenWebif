@@ -28,7 +28,7 @@ from Plugins.Plugin import PluginDescriptor
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
-from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
+from Components.config import config, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
 from enigma import getDesktop
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.defaults import EXT_EVENT_INFO_SOURCE, getIP, setDebugEnabled
@@ -156,41 +156,41 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 
 	def runSetup(self):
 		self.list = []
-		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
+		self.list.append((_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		if config.OpenWebif.enabled.value:
-			self.list.append(getConfigListEntry(_("Use modern interface"), config.OpenWebif.responsive_enabled))
+			self.list.append((_("Use modern interface"), config.OpenWebif.responsive_enabled))
 			if config.OpenWebif.responsive_enabled.value:
-				self.list.append(getConfigListEntry(_("Theme mode"), config.OpenWebif.responsive_themeMode))
-				self.list.append(getConfigListEntry(_("Use custom Color"), config.OpenWebif.responsive_skinColor))
-			self.list.append(getConfigListEntry(_("Show box name in header"), config.OpenWebif.identifier))
+				self.list.append((_("Theme mode"), config.OpenWebif.responsive_themeMode))
+				self.list.append((_("Use custom Color"), config.OpenWebif.responsive_skinColor))
+			self.list.append((_("Show box name in header"), config.OpenWebif.identifier))
 			if config.OpenWebif.identifier.value:
-				self.list.append(getConfigListEntry(_("Use custom box name"), config.OpenWebif.identifier_custom))
+				self.list.append((_("Use custom box name"), config.OpenWebif.identifier_custom))
 				if config.OpenWebif.identifier_custom.value:
-					self.list.append(getConfigListEntry(_("Custom box name"), config.OpenWebif.identifier_text))
-			self.list.append(getConfigListEntry(_("HTTP port"), config.OpenWebif.port))
-			self.list.append(getConfigListEntry(_("Enable HTTP Authentication"), config.OpenWebif.auth))
-			self.list.append(getConfigListEntry(_("Enable HTTPS"), config.OpenWebif.https_enabled))
+					self.list.append((_("Custom box name"), config.OpenWebif.identifier_text))
+			self.list.append((_("HTTP port"), config.OpenWebif.port))
+			self.list.append((_("Enable HTTP Authentication"), config.OpenWebif.auth))
+			self.list.append((_("Enable HTTPS"), config.OpenWebif.https_enabled))
 			if config.OpenWebif.https_enabled.value:
-				self.list.append(getConfigListEntry(_("HTTPS port"), config.OpenWebif.https_port))
-				self.list.append(getConfigListEntry(_("Enable HTTPS Authentication"), config.OpenWebif.https_auth))
-				self.list.append(getConfigListEntry(_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
+				self.list.append((_("HTTPS port"), config.OpenWebif.https_port))
+				self.list.append((_("Enable HTTPS Authentication"), config.OpenWebif.https_auth))
+				self.list.append((_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
 			if config.OpenWebif.auth.value:
-				self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
-				self.list.append(getConfigListEntry(_("Disable remote access for user root"), config.OpenWebif.no_root_access))
+				self.list.append((_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
+				self.list.append((_("Disable remote access for user root"), config.OpenWebif.no_root_access))
 			if not config.OpenWebif.auth.value or (config.OpenWebif.https_enabled.value and not config.OpenWebif.https_auth.value):
-				self.list.append(getConfigListEntry(_("Without auth only local access is allowed!"), config.OpenWebif.local_access_only))
-				self.list.append(getConfigListEntry(_("Enable access from VPNs"), config.OpenWebif.vpn_access))
-			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
-			self.list.append(getConfigListEntry(_("Streaming port"), config.OpenWebif.streamport))
-			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
+				self.list.append((_("Without auth only local access is allowed!"), config.OpenWebif.local_access_only))
+				self.list.append((_("Enable access from VPNs"), config.OpenWebif.vpn_access))
+			self.list.append((_("Enable Parental Control"), config.OpenWebif.parentalenabled))
+			self.list.append((_("Streaming port"), config.OpenWebif.streamport))
+			self.list.append((_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 			if imagedistro in ("VTi-Team Image"):
-				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
-			self.list.append(getConfigListEntry(_("Allow IPK Upload"), config.OpenWebif.allow_upload_ipk))
-			self.list.append(getConfigListEntry(_("Playback IPTV Streams in browser"), config.OpenWebif.playiptvdirect))
-			self.list.append(getConfigListEntry(_("Debug - Display Tracebacks in browser"), config.OpenWebif.displayTracebacks))
+				self.list.append((_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
+			self.list.append((_("Allow IPK Upload"), config.OpenWebif.allow_upload_ipk))
+			self.list.append((_("Playback IPTV Streams in browser"), config.OpenWebif.playiptvdirect))
+			self.list.append((_("Debug - Display Tracebacks in browser"), config.OpenWebif.displayTracebacks))
 			# FIXME Submenu
-			# self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
-			# self.list.append(getConfigListEntry(_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
+			# self.list.append((_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
+			# self.list.append((_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
