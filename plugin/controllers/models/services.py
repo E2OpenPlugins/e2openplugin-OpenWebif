@@ -324,11 +324,11 @@ def getCurrentFullInfo(session):
 
 	ev = getChannelEpg(ref)
 	if len(ev['events']) > 1:
-		now = ev['events'][0]
-		next = ev['events'][1]
-		if len(now['title']) > 50:
+		now = ev['events'][0] or {}
+		next = ev['events'][1] or {}
+		if now and len(now['title']) > 50:
 			now['title'] = now['title'][0:48] + "..."
-		if len(next['title']) > 50:
+		if next and len(next['title']) > 50:
 			next['title'] = next['title'][0:48] + "..."
 
 	return {"info": inf, "now": now, "next": next}
