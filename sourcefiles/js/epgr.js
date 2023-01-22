@@ -24,14 +24,14 @@
 //var epgxml;
 
 function toUnixDate(date){
-	var datea = date.split('.');
-	var d = new Date();
-	d.setFullYear(datea[2],datea[1]-1,datea[0]);
-	d.setHours( 0 );
-	d.setMinutes( 0 );
+	let datea = date.split(':');
+	let d = new Date();
+	d.setHours( datea[0] );
+	d.setMinutes( datea[1] );
 	d.setSeconds( 0 );
 	return Math.floor(d.getTime() / 1000);
 }
+
 function addZero(i) { if (i < 10) { i = "0" + i; } return i; }
 function isBQ(sref) {return ((sref.indexOf("FROM BOUQUET") > -1) && (sref.indexOf("1:134:1") != 0));}
 function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
