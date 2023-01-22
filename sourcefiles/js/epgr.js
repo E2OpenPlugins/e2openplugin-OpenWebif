@@ -1,9 +1,9 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.7
+//* Version 1.8
 //******************************************************************************
-//* Copyright (C) 2016-2022 Joerg Bleyel
-//* Copyright (C) 2016-2022 E2OpenPlugins
+//* Copyright (C) 2016-2023 Joerg Bleyel
+//* Copyright (C) 2016-2023 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Theme Support
@@ -13,6 +13,7 @@
 //* V 1.5 - improve getallservices
 //* V 1.6 - improve getallservices
 //* V 1.7 - improve FillAllServices
+//* V 1.8 - fix save begin/end
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -229,10 +230,8 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				reqs += $('#er_enabled').is(':checked') ? "true":"";
 				reqs += "&enablemessage=";
 				reqs += $('#er_enablemessage').is(':checked') ? "true":"";
-				if($('#er_ebegin').is(':checked'))
-					reqs += "&begin=" + toUnixDate($('#er_begin').val());
-				if($('#er_eend').is(':checked'))
-					reqs += "&end=" + toUnixDate($('#er_end').val());
+				reqs += "&begin=" + toUnixDate($('#er_begin').val());
+				reqs += "&end=" + toUnixDate($('#er_end').val());
 				reqs += "&delay_standby=" + $('#er_delay_standby').val();
 				reqs += "&afterevent=";
 				reqs += $('#er_afterevent').is(':checked') ? "true":"";
