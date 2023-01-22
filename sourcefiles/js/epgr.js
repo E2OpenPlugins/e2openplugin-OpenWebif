@@ -23,14 +23,15 @@
 //var epgxml;
 
 function toUnixDate(date){
-	var datea = date.split('.');
+	var datea = date.split(':');
 	var d = new Date();
-	d.setFullYear(datea[2],datea[1]-1,datea[0]);
-	d.setHours( 0 );
-	d.setMinutes( 0 );
+	//d.setFullYear(datea[2],datea[1]-1,datea[0]);
+	d.setHours( datea[0] );
+	d.setMinutes( datea[1] );
 	d.setSeconds( 0 );
 	return Math.floor(d.getTime() / 1000);
 }
+
 function addZero(i) { if (i < 10) { i = "0" + i; } return i; }
 function isBQ(sref) {return ((sref.indexOf("FROM BOUQUET") > -1) && (sref.indexOf("1:134:1") != 0));}
 function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
@@ -224,15 +225,12 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				}
 
 			}, saveEPGR: function() {
-
 				var reqs = "/epgrefresh/set?&enabled=";
 				reqs += $('#er_enabled').is(':checked') ? "true":"";
 				reqs += "&enablemessage=";
 				reqs += $('#er_enablemessage').is(':checked') ? "true":"";
-				if($('#er_ebegin').is(':checked'))
-					reqs += "&begin=" + toUnixDate($('#er_begin').val());
-				if($('#er_eend').is(':checked'))
-					reqs += "&end=" + toUnixDate($('#er_end').val());
+				reqs += "&begin=" + toUnixDate($('#er_begin').val());
+				reqs += "&end=" + toUnixDate($('#er_end').val());
 				reqs += "&delay_standby=" + $('#er_delay_standby').val();
 				reqs += "&afterevent=";
 				reqs += $('#er_afterevent').is(':checked') ? "true":"";
