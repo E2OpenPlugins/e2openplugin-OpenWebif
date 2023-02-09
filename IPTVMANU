@@ -1,0 +1,191 @@
+#EXTM3U
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",ABN HD
+https://s1.abntelevision.com/avivamientohd/avivamientohd/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/frd60hR.png" group-title="COLOMBIA",AGROTENDENCIA TV HD
+https://5fc584f3f19c9.streamlock.net/agrotendencia/videoagrotendencia_hls1/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://amagatelevision.com/wp-content/uploads/elementor/thumbs/LOGO-CON-ESLOGAN-IZQUIEDO-TRANSPARENCIA-1110px-pi7q5n338764nw59609jk05y5306k0ca6nf7dceh8w.png" group-title="COLOMBIA",AMAGA TV HD
+https://hvtrafico.ddns.net/amagatv/amagatv.stream/playlist.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",AMORDISCOS HD
+https://canal.mediaserver.com.co:8088/live/canalamordiscos.m3u8
+#EXTINF:-1 tvg-logo="https://es.m.wikipedia.org/wiki/Archivo:ATN_Televisi%C3%B3n_logo.svg" group-title="COLOMBIA",ATN TV HD
+https://59ef525c24caa.streamlock.net/atntelevision/atntelevision/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://cdn.colombia.com/canales/buenisima-radio-tv-4886.jpg" group-title="COLOMBIA",BUENISIMA RADIO TV HD
+https://streamyes.alsolnet.com/buturama/live/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/d/d8/Cablenoticias2015.png/revision/latest?cb=20210422011619&path-prefix=es" group-title="COLOMBIA",CABLE NOTICIAS HD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/35178
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/1b/Cali_TV.png/revision/latest?cb=20210422013022&path-prefix=es" group-title="COLOMBIA",CALI TV HD 
+http://nmstreaming.live:25461/UzielLCH/123456789/217129
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/2/2b/Canal_C_Cali.png/revision/latest?cb=20210501193138&path-prefix=es" group-title="COLOMBIA",CANAL C HD
+https://stmv2.voxtvhd.com.br/canalccali/canalccali/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/57/Canal_Capital_2020_3.png/revision/latest?cb=20200321174959&path-prefix=es" group-title="COLOMBIA",CANAL CAPITAL HD
+https://play.cdn.enetres.net/C99D9A0676F3401589C768D47D31605C021/021/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://api.teveo.com.co/1.1/node/poster?x=AgAlAANr" group-title="COLOMBIA",CANAL CARTAGENA HD
+https://edge.teveo.com.co/live/AeAAAgAlAANrA1IAyADIQCAAAAAAAAAAAmPj-wS-eYAlAAAA/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/0/02/CanalInstitucional2018.png/revision/latest?cb=20180109173215&path-prefix=es" group-title="COLOMBIA",CANAL INSTITUCIONAL HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176611
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",CANAL MÁS HD
+https://movil.ejeserver.com/live/teledoradahd.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",CANAL TELE PALMAR HD
+https://play.amelbasoluciones.co:3976/live/telepalmartvlive.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/ed/Canal-trece-colombia.svg/revision/latest?cb=20210425220830&path-prefix=es" group-title="COLOMBIA",CANAL TRECE HD
+https://canaltrece-live.logicideas.media/canaltrece-live/smil:live.smil/chunklist_w1357755875_b900000_sles.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/8/80/Canal_TRO_2020.png/revision/latest?cb=20200921160343&path-prefix=es" group-title="COLOMBIA",CANAL TRO HD
+http://nmstreaming.live:25461/UzielLCH/123456789/202066
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",CANAL VISIÓN DORADA HD 
+https://movil.ejeserver.com/live/visiondorada.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/2/28/Definitive-logo-Canal-Uno-2017.svg/revision/latest?cb=20210426210133&path-prefix=es" group-title="COLOMBIA",CANAL 1 HD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/304224
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",CANAL 2 HD TELEVISION HD
+https://video13.virtualtronics.com/streamer/canal2_480/index.m3u8
+#EXTINF:-1 tvg-logo="https://campotv.tv/img/logo.png" group-title="COLOMBIA",CAMPO TV HD
+https://video17.virtualtronics.com/streamer/canalcampotv_720p2628kbs/index.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/15/CaracolTV2019.png/revision/latest?cb=20210218224231&path-prefix=es" group-title="COLOMBIA",CARACOL HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176569
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/40/Caracol_HD2.png" group-title="COLOMBIA",CARACOL HD 2
+https://ssh101.bozztv.com/ssh101/c4rc0l/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/a/a0/CanalCaracolInternacional2023.png/revision/latest?cb=20230109043810&path-prefix=es" group-title="COLOMBIA",CARACOL INTERNACIONAL HD
+http://nmstreaming.live:25461/UzielLCH/123456789/202068
+#EXTINF:-1 tvg-logo="https://www.cmbcolombia.tv/images/footer-logo.png" group-title="COLOMBIA",CMB HD
+https://customer-gllhkkbamkskdl1p.cloudflarestream.com/eyJhbGciOiJSUzI1NiIsImtpZCI6ImI3YmIwODNmMDhkNmQ5NWExZjIzZWE3ZWRhOWY4NTZhIn0.eyJzdWIiOiIwMzNmODgzYWU2ZmFlODk3OGUwODJmOTQwNzUyNTg2NyIsImtpZCI6ImI3YmIwODNmMDhkNmQ5NWExZjIzZWE3ZWRhOWY4NTZhIiwiZXhwIjoxNjc1OTE1MDY1LCJhY2Nlc3NSdWxlcyI6W3sidHlwZSI6ImlwLmdlb2lwLmNvdW50cnkiLCJhY3Rpb24iOiJibG9jayIsImNvdW50cnkiOlsiUlUiLCJCWSJdfV19.f_SxDE6EZgJ_vX8T9EmmpwX-eXAmlhPe6FpVMtjiAz9VecR2q4MLvqRDA-hsHQwAWc-oz-8_Qjk__MSU-usbOx8eL6Es4Tz9n20ri2dni_uuFpiJEj56Y63STNKuyCD5nOIonc4mJbrCaPjgYzma5PRPTa_n8Lcf9ph93i5eFSbwIFxvcD5OYhrwSULIkifIq5qu2ODZ9sjA-Ybd9rZZHemuBh4R7-dx66Tz0DeCO2vutTYFqp8RApWdfPIiBEJ-ipEaUme3BICDv_vuJcL1XoU2EzCOl6Twd1UJYXytBtltaa3oqXqt-OuwQ57ZLjhg5hyJEO0kMfrHl4LreAcDzA/manifest/video.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/54/Cinemax_2011_%28Yellow%29.svg/revision/latest?cb=20200120201051&path-prefix=es" group-title="COLOMBIA",CINEMAX HD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/312966
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/f/ff/CanalCityTV2017.png/revision/latest?cb=20180329145023&path-prefix=es" group-title="COLOMBIA",CITY TV HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176573
+#EXTINF:-1 tvg-logo="https://ewsat.com/img/COSMOVISION.png" group-title="COLOMBIA",COSMOVISION HD
+https://videohls2.cosmovision.tv/hls/sd.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/9e/ClaroSports.png/revision/latest?cb=20210414152347&path-prefix=es" group-title="COLOMBIA",CLARO SPORTS HD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/34618
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/56/ClaroSports2.png/revision/latest?cb=20210423191014&path-prefix=es" group-title="COLOMBIA",CLARO SPORTS 2 HD
+http://nmstreaming.live:25461/UzielLCH/123456789/218209
+#EXTINF:-1 tvg-logo="tvg-logo="http://sdmx.com.mx/logos/canalcnc.png" group-title="COLOMBIA", CNC MEDELLIN HD
+http://nmstreaming.live:25461/UzielLCH/123456789/155737
+#EXTINF:-1 tvg-logo="tvg-logo="http://sdmx.com.mx/logos/canalcnc.png" group-title="COLOMBIA", CNC PASTO HD
+https://hvtrafico.ddns.net/pastocnc9/cnc9/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://cnctulua.tv/wp-content/uploads/2022/07/cropped-CANAL-CNC-TULUA.png" group-title="COLOMBIA",CNC TULUA HD
+https://streamtech.ml:5443/cnctulua/streams/054789868834271693532511.m3u8?token=undefined&subscriberId=undefined&subscriberCode=undefined?token=undefined&subscriberId=undefined&subscriberCode=undefined
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/94/Cristovisi%C3%B3n_2016.png/revision/latest?cb=20210503213723&path-prefix=es" group-title="COLOMBIA",CRISTOVISION SD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/304252
+#EXTINF:-1 tvg-logo="" group-title="COLOMBIA",CTV BARRANQUILLA HD 
+https://59a564764e2b6.streamlock.net/ctvbarranquilla/ctv/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/2/24/DSports_2022.png/revision/latest?cb=20221114235431&path-prefix=es" group-title="COLOMBIA",DIRECTV SPORTS HD
+http://nmstreaming.live:25461/UzielLCH/123456789/202157
+#EXTINF:-1 tvg-logo="tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/1f/DSports_2_2022.png/revision/latest?cb=20221115002249&path-prefix=es" group-title="COLOMBIA",DIRECTV SPORTS 2 HD
+http://nmstreaming.live:25461/UzielLCH/123456789/203187
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/6/6b/DSports_%2B_2022.png/revision/latest?cb=20221115002318&path-prefix=es" group-title="COLOMBIA",DIRECTV SPORTS + HD
+http://nmstreaming.live:25461/UzielLCH/123456789/203186
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",EDUVISIÓN HD
+https://stmv3.voxtvhd.com.br/conex2/conex2/playlist.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",EDVTV HD
+https://tv.portalexpress.es:3913/hybrid/play.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="https://www.enlacetelevision.com/wp-content/uploads/2021/05/FACEBOOK-4.jpg" group-title="COLOMBIA", ENLACE TV HD
+https://edge.teveo.com.co/live/AeAAAgAFAADLA1IAyADIQCAAAAAAAAAAAmPj7WC-eYAlAAAA/playlist.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="tvg-logo="https://s3.amazonaws.com/imagenes.conexioncapital.co/wp-content/uploads/2021/06/29232153/logo-eureka-new-1.png" group-title="COLOMBIA", EUREKA HD
+http://directo.ddns.me:33200/adolfo/adolfo123/51030
+#EXTINF:-1 tvg-logo="http://l3d.us:25461/images/ff5651c98b9ac4c0d783fc02c82d864b.png" group-title="COLOMBIA",EL TIEMPO HD
+http://nmstreaming.live:25461/UzielLCH/123456789/155738
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",FAMILY CHANNEL HD
+https://cp.panelchs.com:1936/8012/8012/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://www.huilatv.com/wp-content/uploads/2020/01/LOGO-HUILA-TV-ICONO.png" group-title="COLOMBIA",HUILA TV HD
+https://plataformavideo.com:19360/8020/8020.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="https://static.wikia.nocookie.net/logopedia/images/d/d4/HTV_%282016%29.png/revision/latest?cb=20220125014835&path-prefix=es" group-title="COLOMBIA", HTV HD
+http://nmstreaming.live:25461/UzielLCH/123456789/2098837
+#EXTINF:-1 tvg-logo="tvg-logo="https://i2.paste.pics/f3abe4415e90765f85d20737dcfdb006.png" group-title="COLOMBIA",LA DESPECHADA TV HD
+https://servidordevideo.com:3077/stream/play.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/cf/Lakallecol.png/revision/latest?cb=20210218135608&path-prefix=es" group-title="COLOMBIA",LA KALLE HD
+http://200.110.169.237:8202/play/a04h
+#EXTINF:-1 tvg-logo="https://masencarnacion.opentechla.com/themes/mas-encarnacion/assets/tv/images/logo.png" group-title="COLOMBIA",MÁS TV HD
+https://59ce1298bfb98.streamlock.net/mastv/mastv/playlist.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",MELODDY CHANNEL HD
+https://canal.mediaserver.com.co:8088/live/MelodyChannel.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",MULTICANAL TELEVISIÓN HD
+https://ssh101.bozztv.com/ssh101/KIOCApP/playlist.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="tvg-logo="https://i2.paste.pics/711d250f609782c10c5afef0d9628632.png" group-title="COLOMBIA", NOTICIERO 90 MINUTOS HD
+http://directo.ddns.me:33200/adolfo/adolfo123/13327
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",NTN24 HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176615
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",OASIS TV HD
+https://5e85d90130e77.streamlock.net/6020/6020/playlist.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",ONDAMBIENTAL TELEVISIÓN HD
+https://server12.videostreaming.net:3230/stream/play.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",PSC TELEVISIÓN HD
+https://cloud28.vsgtech.co:3052/live/psctvlive.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/ytc/AL5GRJU1jsRJoaWZ4qWGMdbr1vMgPXR3E0DbT0pwoHsZmw=s900-c-k-c0x00ffffff-no-rj" group-title="COLOMBIA",P&C TELEVISIÓN HD
+https://edge.teveo.com.co/live/AeAAAgAkAANqA1IAyADIUDAAAAGAAAAAAmPj5Iu-eYAlAAAA/playlist.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",PYMES TEVE
+https://vse2-sa-all2.secdn.net/tvstartup6-channel/live/pymestv/chunklist_sess555640359.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/a/a3/RedM%C3%A1s2019.png/revision/latest?cb=20210423191355&path-prefix=es" group-title="COLOMBIA",RED + HD
+https://inforedvos.lcdn.claro.net.co/Content/HLS_HLS_DIR/Live/channel(REDMASHDWEB)/06.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/4/40/Canal_RCN_%282019%29.svg/revision/latest?cb=20210307123609&path-prefix=es" group-title="COLOMBIA",RCN HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176580
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/b/b4/NuestraTeleInternacional2019.png/revision/latest?cb=20210307132823&path-prefix=es" group-title="COLOMBIA",RCN INTERNACIONAL HD
+http://nmstreaming.live:25461/UzielLCH/123456789/199513
+#EXTINF:-1 tvg-logo="https://i.imgur.com/MJzuRAN.png" group-title="COLOMBIA",RCN MÁX HD
+https://rcntv-rcnmas-1-us.roku.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/4/40/CanalRCNNovelas2019.png/revision/latest?cb=20210307131301&path-prefix=es" group-title="COLOMBIA",RCN NOVELAS HD
+http://nmstreaming.live:25461/UzielLCH/123456789/155682
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/2/2a/CanalSURAM.png/revision/latest?cb=20210517025400&path-prefix=es" group-title="COLOMBIA",SURAM TV HD
+https://livetv.305streamhd.com:3111/live/suramtvlive.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",TDI HD
+https://play.amelbasoluciones.co:3971/live/tdicolombiatvlive.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/c/cc/Teleantioquia_2020.png/revision/latest?cb=20200307000523&path-prefix=es" group-title="COLOMBIA",TELEANTIOQUIA HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176582
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/54/Telecaf%C3%A9_2020.png/revision/latest?cb=20201219143033&path-prefix=es" group-title="COLOMBIA",TELECAFE HD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/304272
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/e/e7/Telecaribe_2017.png/revision/latest?cb=20210212025435&path-prefix=es" group-title="COLOMBIA",TELECARIBE HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176583
+#EXTINF:-1 tvg-logo="https://directostv.teleame.com/wp-content/uploads/2020/10/Canal-Telefamilia-en-vivo-Online.png" group-title="COLOMBIA",TELE FAMILIA HD
+https://stmv2.voxtvhd.com.br/telefamilia/telefamilia/playlist.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="https://static.wikia.nocookie.net/logopedia/images/8/82/Telehit_M%C3%BAsica_2020.png/revision/latest?cb=20200916014619&path-prefix=es" group-title="COLOMBIA", TELEHIT MUSICA HD
+http://nmstreaming.live:25461/UzielLCH/123456789/2098831
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/d/d4/Teleislas_2012.svg/revision/latest?cb=20210505200247&path-prefix=es" group-title="COLOMBIA",TELEISLA HD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/304278
+#EXTINF:-1 tvg-logo="tvg-logo="https://i.postimg.cc/QCRbMyDY/telemedellin.png" group-title="COLOMBIA", TELE MEDELLIN HD
+http://directo.ddns.me:33200/adolfo/adolfo123/19636
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",TELEMUSICA HD
+https://canal.mediaserver.com.co:8088/live/telemusica.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/4/45/Telepac%C3%ADfico2019.png/revision/latest?cb=20210213133514&path-prefix=es" group-title="COLOMBIA",TELEPACIFICO HD
+https://stream.logicideas.media/telepacifico-live/smil:live.smil/playlist.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",TELEPASTO HD
+https://byecableiptv.com/telepasto/Telepasto.stream/chunklist_w537868893.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="https://telepetroleo.com/wp-content/uploads/2015/10/logo1.png" group-title="COLOMBIA", TELEPETROLEO HD
+https://edge.teveo.com.co/live/AeAAAgAIAAE7A1IAyADIUCAAAAAAAAAAAmPj7pi-eYAlAAAA/playlist.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="https://www.google.com/search?q=telesangil&tbm=isch&ved=2ahUKEwj9mfv78Yb9AhVhcDABHUmCCr0Q2-cCegQIABAC&oq=telesangil&gs_lcp=ChJtb2JpbGUtZ3dzLXdpei1pbWcQAzIHCAAQgAQQGDIHCAAQgAQQGDIHCAAQgAQQGDoECCMQJzoECAAQQzoFCAAQgAQ6BwgjEOoCECc6BAgAEAM6BggAEAUQHjoECAAQHjoFCAAQogQ6BwgAELEDEEM6CwgAEIAEELEDEIMBOggIABCABBCxA1DOBVjtPWDqP2gFcAB4BIABoQOIAcMpkgEJMC4yLjkuNS4ymAEAoAEBsAEFwAEB&sclient=mobile-gws-wiz-img&ei=-BbkY_29FOHgwbkPyYSq6As&client=ms-android-samsung-ss&prmd=ivmn#imgrc=hvYstwMKKLyA9M" group-title="COLOMBIA", TELESANGIL HD
+https://byecableiptv.com/tvsangil/tvsangil.stream/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://toplatino.net/wp-content/uploads/2019/04/cropped-LogoTL-300-new-9.png" group-title="COLOMBIA",TOP LATINO HD
+https://5cefcbf58ba2e.streamlock.net:543/tltvweb/latintv.stream/playlist.m3u8
+#EXTINF:-1 tvg-logo="" group-title="COLOMBIA",TU UNIVERSO TV
+https://5bf8041cb3fed.streamlock.net/TUUNIVERSOTV/TUUNIVERSOTV/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/17/TVAgro_2003_1.png/revision/latest?cb=20210517024923&path-prefix=es" group-title="COLOMBIA",TV AGRO HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176608
+#EXTINF:-1 tvg-logo=" tvg-logo="http://l3d.us:25461/images/fc82b1ae37ba77a6d6213188a46ad21f.png" group-title="COLOMBIA",TV GRACIA HD
+https://streamyes.alsolnet.com/tvgracia/live/playlist.m3u8
+#EXTINF:-1 tvg-logo="data:image/jpeg;base64,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" group-title="COLOMBIA",TV SANCARLOS HD
+https://live.tvcontrolcp.com:1936/sancarlostv/sancarlostv/chunklist_w164655078.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="https://yt3.googleusercontent.com/CKRyQbMtvi498BmXyWtDlmHBV1SOA1aFQB_PT3nLmRx89-Xi8kyVre7NJ1KUmZoYkSjb9PbuvA=s900-c-k-c0x00ffffff-no-rj" group-title="COLOMBIA", TV SAN JORGE HD
+https://asucap.com/livestream/asucap_envivo.m3u8
+#EXTINF:-1 tvg-logo="ddf45e_5d497329920543eea64b6b71 0967480c-mv2.png" group-title="COLOMBIA",TV PEÑOL HD
+https://stmv1.voxtvhd.com.br/tvpenol/tvpenol/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/ytc/AL5GRJUI9_wUEH-3BSJA3-ODACZUFf5VPHBUs7wABrFIEw=s900-c-k-c0x00ffffff-no-rj" group-title="COLOMBIA",TV5 HD
+https://edge.teveo.com.co/live/AeAAAgAgAANmA1IAyADIUCAAAAAAAAAAAmPjx4u-eYAlAAAA/playlist.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="LOGO" group-title="COLOMBIA", TROPICAL MUSIC HD
+https://59a564764e2b6.streamlock.net/vallenato/vallenato/playlist.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="https://image.roku.com/developer_channels/prod/3f4740711f32174fe3b7b82ed40bff9ecff191bdb2a4da07ef4a98d766869740.png" group-title="COLOMBIA", VALLENATO INTERNACIONAL HD
+https://59a564764e2b6.streamlock.net/vallenato/Vallenato2/playlist.m3u8
+#EXTINF:-1 tvg-logo="LOGO" group-title="COLOMBIA",VEO TELEVISIÓN HD
+https://movil.ejeserver.com/live/veotv.m3u8
+#EXTINF:-1 tvg-logo="tvg-logo="http://l3d.us:25461/images/f452c53df950ed55c66dc89470659fbd.png" group-title="COLOMBIA", VEVO REGGAETON Y TRAP HD
+http://nmstreaming.live:25461/UzielLCH/123456789/2098846
+#EXTINF:-1 tvg-logo=" tvg-logo="https://cdn.colombia.com/canales/la-wapa-radio-5454.jpg" group-title="COLOMBIA",VIDA NUEVA TV HD
+https://eu1.servers10.com:8081/vidanuevatv/index.m3u8
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/5/54/WinSports2022.png/revision/latest?cb=20230109124705&path-prefix=es" group-title="COLOMBIA",WIN SPORTS HD
+http://nmstreaming.live:25461/UzielLCH/123456789/176587
+#EXTINF:-1 tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/99/WinSports%2B2022.png/revision/latest?cb=20230109125452&path-prefix=es" group-title="COLOMBIA",WIN SPORTS + HD
+http://nmstreaming.live:25461/UzielLCH/123456789/12257
+#EXTINF:-1 tvg-logo="tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/99/WinSports%2B2022.png/revision/latest?cb=20230109125452&path-prefix=es" group-title="COLOMBIA", WIN SPORTS + 2 HD
+http://200.110.169.237:8202/play/a04m
+#EXTINF:-1 tvg-logo="tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/99/WinSports%2B2022.png/revision/latest?cb=20230109125452&path-prefix=es" group-title="COLOMBIA", WIN SPORTS + 3 HD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/34691
+#EXTINF:-1 tvg-logo="tvg-logo="https://static.wikia.nocookie.net/logopedia/images/9/99/WinSports%2B2022.png/revision/latest?cb=20230109125452&path-prefix=es" group-title="COLOMBIA", WIN SPORTS + 4 HD
+http://directo.ddns.me:33200/adolfo/adolfo123/15348
+#EXTINF:-1 tvg-logo="https://masmediatv.es/images/2021/colombia/canales-zoom.png" group-title="COLOMBIA",ZOOM TV HD
+http://hidra.live:80/sudcsaua/y3ya1M24Xx/304288
