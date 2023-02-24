@@ -561,6 +561,9 @@ def getAllInfo():
 					model = "SF8008 4K Single"
 			else:
 				model = procmodel.upper()
+		elif procmodel == "sx88v2":
+			brand = "Octagon"
+			model = "SX888 4K UHD"
 		elif procmodel == "e4hd":
 			brand = "Axas"
 			model = "E4HD"
@@ -794,7 +797,7 @@ def getAllInfo():
 		remote = "amiko1"
 	elif procmodel == "viperslim":
 		remote = "viperslim"
-	elif procmodel.startswith("sfx"):
+	elif procmodel.startswith("sfx") or procmodel.startswith("sx"):
 		remote = "octagon3"
 	elif procmodel.startswith("sf"):
 		remote = "octagon"
