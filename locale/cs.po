@@ -10,10 +10,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 #, python-format
@@ -895,7 +895,7 @@ msgid "Marker name"
 msgstr "Název značky"
 
 msgid "Match text"
-msgstr "Hledat v názvu"
+msgstr "Hledaný text"
 
 msgid "Max Days"
 msgstr "Max dnů"
@@ -1931,7 +1931,7 @@ msgid "description contains"
 msgstr "v popisu"
 
 msgid "description match"
-msgstr "popis odpovídá"
+msgstr "hledat v popisu"
 
 msgid "disabled"
 msgstr "zakázáno"
@@ -1949,7 +1949,7 @@ msgid "exact title match"
 msgstr "název přesně odpovídá"
 
 msgid "favourite desc match"
-msgstr "v popisu oblíbených"
+msgstr "v popisu jen v přehledech"
 
 msgid "finished"
 msgstr "dokončeno"
