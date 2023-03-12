@@ -137,7 +137,7 @@ if [ "$1" == "deb" ]; then
 	cp ${P}/CONTROL/control ${B}/OpenWebif/DEBIAN/control
 	cd ${B}
 	ls -la
-	dpkg-deb --build OpenWebif
+	dpkg-deb -Zxz --build OpenWebif
 	ls -la
 	mv OpenWebif.deb ${PKG}
 fi
