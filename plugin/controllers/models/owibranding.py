@@ -572,6 +572,9 @@ def getAllInfo():
 		elif procmodel == "ustym4kpro":
 			brand = "uClan"
 			model = "Ustym 4K Pro"
+		elif procmodel == "ustym4ks2ottx":
+			brand = "uClan"
+			model = "Ustym 4K S2 OTT X"
 		elif procmodel == "pulse4k":
 			brand = "AB-COM"
 			model = "PULSe 4K"
@@ -807,6 +810,8 @@ def getAllInfo():
 		remote = "e4hd"
 	elif procmodel in ("ustym4kpro"):
 		remote = "uclan"
+	elif procmodel in ("ustym4ks2ottx"):
+		remote = "ustym4ks2ottx"
 	elif procmodel in ("pulse4k", "pulse4kmini"):
 		remote = "pulse4k"
 
