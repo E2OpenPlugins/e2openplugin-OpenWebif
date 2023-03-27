@@ -811,7 +811,7 @@ def getAllInfo():
 	elif procmodel in ("ustym4kpro"):
 		remote = "uclan"
 	elif procmodel in ("ustym4ks2ottx"):
-		remote = "ustym4ks2ottx"
+		remote = "uclan3"
 	elif procmodel in ("pulse4k", "pulse4kmini"):
 		remote = "pulse4k"
 
