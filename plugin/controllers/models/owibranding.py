@@ -571,7 +571,12 @@ def getAllInfo():
 			grabpip = 1
 		elif procmodel == "ustym4kpro":
 			brand = "uClan"
-			model = "Ustym 4K Pro"
+			ustymtype = open("/proc/stb/info/type").read()
+			if ustymtype.startswith("11"):
+				procmodel = "ustym4ktwin"
+				model = "uStym 4K Twin"
+			elif ustymtype.startswith("12"):
+				model = "Usytm 4K Pro"
 		elif procmodel == "ustym4ks2ottx":
 			brand = "uClan"
 			model = "Ustym 4K S2 OTT X"
@@ -810,7 +815,7 @@ def getAllInfo():
 		remote = "e4hd"
 	elif procmodel in ("ustym4kpro"):
 		remote = "uclan"
-	elif procmodel in ("ustym4ks2ottx"):
+	elif procmodel in ("ustym4ktwin", "ustym4ks2ottx"):
 		remote = "uclan3"
 	elif procmodel in ("pulse4k", "pulse4kmini"):
 		remote = "pulse4k"
