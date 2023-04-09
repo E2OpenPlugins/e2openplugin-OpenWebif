@@ -92,7 +92,7 @@
 		<tr>
 			<td>
 				#if $moviedb == "Kinopoisk"
-					<a class="tb" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
+					<a class="tb" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$event.title.replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '').replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '').replace('(0+)', '').replace('0+', '').replace('+', '')"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
 				#elif $moviedb == "CSFD"
 					<a class="tb im" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_csfd']">csfd</a>
 				#else
