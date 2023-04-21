@@ -571,11 +571,12 @@ def getAllInfo():
 			grabpip = 1
 		elif procmodel == "ustym4kpro":
 			brand = "uClan"
-			model = "Usytm 4K Pro"
 			ustymtype = open("/proc/stb/info/type").read()
-			if ustymtype.startswith("12"):
+			if ustymtype.startswith("11"):
 				procmodel = "ustym4ktwin"
 				model = "uStym 4K Twin"
+			elif ustymtype.startswith("12"):
+				model = "Usytm 4K Pro"
 		elif procmodel == "ustym4ks2ottx":
 			brand = "uClan"
 			model = "Ustym 4K S2 OTT X"
