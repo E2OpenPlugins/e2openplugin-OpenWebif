@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-10 09:36+0000\n"
-"PO-Revision-Date: 2022-06-09 18:48+0300\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2023-04-22 16:25+0300\n"
+"Last-Translator: audi06_19 <info@dreamosat-forum.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/e2openplugin-"
 "openwebif/e2openplugin-openwebif/tr/>\n"
 "Language: tr\n"
@@ -17,33 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, python-format
 msgid "%02d.%02d."
-msgstr ""
+msgstr "%02d.%02d."
 
 #, python-format
 msgid "%02d.%02d.%d"
-msgstr ""
+msgstr "%02d.%02d.%d"
 
 #, python-format
 msgid "%02d:%02d"
-msgstr ""
+msgstr "%02d:%02d"
 
 msgid "%d.%m.%Y"
-msgstr ""
+msgstr "%d.%m.%Y"
 
 msgid "%d.%m.%Y %H:%M"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
 #, python-format
 msgid "%s %02d.%02d."
-msgstr ""
+msgstr "%s %02d.%02d."
 
 #, python-format
 msgid "%s %02d.%02d.%d"
-msgstr ""
+msgstr "%s %02d.%02d.%d"
 
 #, python-format
 msgid "%s %s is locked."
@@ -51,11 +51,11 @@ msgstr "%s %s kilitlendi."
 
 #, python-format
 msgid "%s / %s"
-msgstr ""
+msgstr "%s / %s"
 
 #, python-format
 msgid "%s Style"
-msgstr ""
+msgstr "%s Stil"
 
 #, python-format
 msgid "%s free / %s total"
@@ -64,9 +64,8 @@ msgstr "%s boş / %s toplam"
 msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Shift + Uzun Basmak İçin Tıklayın)"
 
-#, fuzzy
 msgid "(in minutes)"
-msgstr "dakika"
+msgstr "(dakikalar içinde)"
 
 msgid "A filename is required"
 msgstr "Lütfen dosya adını girin"
@@ -218,13 +217,13 @@ msgid "Ask, default Yes"
 msgstr "Sor, varsayılan Evet"
 
 msgid "Audio Encoding"
-msgstr ""
+msgstr "Ses Kodlaması"
 
 msgid "Audio PID (APID)"
-msgstr ""
+msgstr "Ses PID'si (APID)"
 
 msgid "Audio Track"
-msgstr ""
+msgstr "Ses parçası"
 
 msgid "August"
 msgstr "Ağustos"
@@ -262,15 +261,14 @@ msgstr "Yalnızca arka plan"
 msgid "Begin"
 msgstr "Başla"
 
-#, fuzzy
 msgid "Begin of \"After event\" timespan"
-msgstr "Başlangıç ​​\"olayından sonra\" zaman aralığı"
+msgstr "Başlangıç \"olayından sonra\" zaman aralığı"
 
 msgid "Beginning of timespan"
 msgstr "Zaman aralığının başlangıcı"
 
 msgid "Bit Error Rate (BER)"
-msgstr ""
+msgstr "Bit Hata Oranı (BER)"
 
 msgid "Bookmark"
 msgstr "Yer İşareti"
@@ -353,7 +351,7 @@ msgid "Brand"
 msgstr "Marka"
 
 msgid "Build"
-msgstr ""
+msgstr "Yapı"
 
 msgid "Cable"
 msgstr "Kablo"
@@ -425,7 +423,7 @@ msgid "Current Event"
 msgstr "Geçerli Etkinlik"
 
 msgid "Currently recording"
-msgstr ""
+msgstr "Şu anda kayıt"
 
 msgid "Custom box name"
 msgstr "Özel kutu adı"
@@ -489,7 +487,7 @@ msgid "Description"
 msgstr "Açıklama"
 
 msgid "Device"
-msgstr ""
+msgstr "Cihaz"
 
 msgid "Disable"
 msgstr "Devre dışı bırak"
@@ -551,9 +549,8 @@ msgstr "HATA: Cihaz Bekleme Modundayken uyku zamanlayıcısı ayarlanamıyor"
 msgid "Edit"
 msgstr "Düzenle"
 
-#, fuzzy
 msgid "Edit Recording"
-msgstr "Kaydı Sil"
+msgstr "Kaydı Düzenle"
 
 msgid "Edit Timer"
 msgstr "Zamanlayıcıyı Düzenle"
@@ -604,9 +601,8 @@ msgstr "Şifreli"
 msgid "End"
 msgstr "Bitiş"
 
-#, fuzzy
 msgid "End of \"After event\" timespan"
-msgstr "Zaman aralığı \"olayından sonra\" sonu"
+msgstr "Zaman aralığı \"Olayından sonra\" sonu"
 
 msgid "End of timespan"
 msgstr "Zaman aralığının Sonu"
@@ -633,7 +629,7 @@ msgid "Error"
 msgstr "Hata"
 
 msgid "Error parsing vps.xml"
-msgstr "vps.xml ayrıştırılırken hata oluştu"
+msgstr "Hata oluştu vps.xml ayrıştırılırken"
 
 msgid "Error upload File"
 msgstr "Dosya yükleme hatası"
@@ -672,7 +668,6 @@ msgstr "Her"
 msgid "Exclude when"
 msgstr "Hariç"
 
-#, fuzzy
 msgid "Execute \"After event\" during timespan"
 msgstr "Zaman aralığında \"olaydan sonra\" yürüt"
 
@@ -740,7 +735,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "Yeni oluşturulan buket için değişken liste alınamadı!"
 
 msgid "HH:MM"
-msgstr ""
+msgstr "HH:MM"
 
 msgid "HTTP port"
 msgstr "HTTP bağlantı noktası"
@@ -979,7 +974,7 @@ msgid "MultiEPG"
 msgstr "MultiEPG"
 
 msgid "Mute/Unmute"
-msgstr ""
+msgstr "Sesi Kapat/Aç"
 
 msgid "NCam Webinterface"
 msgstr "NCam Webinterface"
@@ -1093,7 +1088,7 @@ msgid "Number of recordings remaining"
 msgstr "Kalan kayıt miktarı"
 
 msgid "ONID"
-msgstr ""
+msgstr "ONID"
 
 msgid "OSCam Webinterface"
 msgstr "OSCam Webinterface"
@@ -1129,7 +1124,7 @@ msgid "Oops, no results matched your search"
 msgstr "Eşleşme bulunamadı"
 
 msgid "Oops..."
-msgstr ""
+msgstr "Hata..."
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Linux set üstü kutusu için Açık Kaynak Web Arayüzü"
@@ -1149,9 +1144,8 @@ msgstr "OpenWebif Yapılandırması"
 msgid "OpenWebif Settings"
 msgstr "OpenWebif Ayarları"
 
-#, fuzzy
 msgid "OpenWebif url:"
-msgstr "OpenWebif URL:"
+msgstr "OpenWebif url'si:"
 
 msgid "Orbital Position"
 msgstr "Yörünge Konumu"
@@ -1160,10 +1154,10 @@ msgid "Override found with alternative service"
 msgstr "Alternatif hizmetle geçersiz kılma bulundu"
 
 msgid "PCR PID"
-msgstr ""
+msgstr "PCR PID"
 
 msgid "PMT PID"
-msgstr ""
+msgstr "PMT PID"
 
 msgid "Packages"
 msgstr "Paketler"
@@ -1294,9 +1288,8 @@ msgstr "GUI'yi yeniden başlat"
 msgid "Restrict to bouquets"
 msgstr "Buketlerle Sınırla"
 
-#, fuzzy
 msgid "Restrict to channels"
-msgstr "Buketlerle Sınırla"
+msgstr "Kanallarla kısıtla"
 
 msgid "Root"
 msgstr "Kök"
@@ -1308,7 +1301,7 @@ msgid "SNR"
 msgstr "SNR"
 
 msgid "SRef"
-msgstr ""
+msgstr "SRef"
 
 msgid "Sa"
 msgstr "Cmt"
@@ -1349,16 +1342,14 @@ msgstr "IMDb'de Ara"
 msgid "Search KinoPoisk"
 msgstr "KinoPoisk'te Ara"
 
-#, fuzzy
 msgid "Search TV Guide UK"
-msgstr "TV Rehberi"
+msgstr "İngiltere TV Rehberinde Ara"
 
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr ""
+msgstr "Ada, sd / hd / uhd'ye veya sağlayıcıya göre arama yapın"
 
-#, fuzzy
 msgid "Search strictness"
-msgstr "KinoPoisk'te Ara"
+msgstr "Arama hassasiyeti"
 
 msgid "Search type"
 msgstr "Arama türü"
@@ -1417,7 +1408,7 @@ msgid "Service %s removed."
 msgstr "%s hizmeti kaldırıldı."
 
 msgid "Service ID (SID)"
-msgstr ""
+msgstr "Service ID (SID)"
 
 msgid "Service can not be moved."
 msgstr "Hizmet taşınamaz."
@@ -1435,7 +1426,7 @@ msgid "Services"
 msgstr "Hizmetler"
 
 msgid "Serving stream"
-msgstr ""
+msgstr "Sunum akışı"
 
 msgid "Set maximum duration"
 msgstr "Maksimum süreyi ayarla"
@@ -1450,11 +1441,10 @@ msgid "Show Full OpenWebif"
 msgstr "Tam OpenWebif'i Göster"
 
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr ""
+msgstr "Seçimde IPTV kanallarını göster (örn. Otomatik zamanlayıcı)"
 
-#, fuzzy
 msgid "Show all packages"
-msgstr "Tüm Paketleri Yükselt"
+msgstr "Tüm paketleri göster"
 
 msgid "Show box name in header"
 msgstr "Başlıkta kutu adını göster"
@@ -1469,7 +1459,7 @@ msgid "Show in Extensions menu"
 msgstr "Uzantı menüsünde göster"
 
 msgid "Show picon background"
-msgstr ""
+msgstr "Picon arka plan rengini göster"
 
 msgid "Show picons"
 msgstr "Piconları göster"
@@ -1484,13 +1474,13 @@ msgid "Shutdown"
 msgstr "Kapat"
 
 msgid "Signal Power (AGC)"
-msgstr ""
+msgstr "Sinyal Gücü (AGC)"
 
 msgid "Signal Quality (SNR DB)"
-msgstr ""
+msgstr "Sinyal Kalitesi (SNR DB)"
 
 msgid "Signal Quality (SNR)"
-msgstr ""
+msgstr "Sinyal Kalitesi (SNR)"
 
 msgid "Simulate"
 msgstr "Simüle et"
@@ -1499,7 +1489,7 @@ msgid "Site and sources"
 msgstr "Site ve kaynaklar"
 
 msgid "Skins"
-msgstr ""
+msgstr "Arayüzler"
 
 msgid "SleepTimer error"
 msgstr "Uyku Zamanlayıcısı hatası"
@@ -1518,7 +1508,7 @@ msgid "Sleeptimer set to %d minutes"
 msgstr "Uyku zamanlayıcısı %d dakikaya ayarlandı"
 
 msgid "Small remote layout"
-msgstr ""
+msgstr "Küçük uzak düzen"
 
 msgid "Software"
 msgstr "Yazılım"
@@ -1548,7 +1538,7 @@ msgid "Start typing..."
 msgstr "Yazmaya başla..."
 
 msgid "State"
-msgstr ""
+msgstr "Şehir"
 
 msgid "Storage"
 msgstr "Depolama"
@@ -1587,7 +1577,7 @@ msgid "TB"
 msgstr "TB"
 
 msgid "TSID"
-msgstr ""
+msgstr "TSID"
 
 msgid "TV"
 msgstr "TV"
@@ -1725,7 +1715,7 @@ msgid "Today"
 msgstr "Bugün"
 
 msgid "Toggle Standby"
-msgstr ""
+msgstr "Beklemeye Geç"
 
 msgid "Transcode"
 msgstr "Kod dönüştürme"
@@ -1810,9 +1800,8 @@ msgstr "Özel Renk Kullan"
 msgid "Use custom box name"
 msgstr "Özel kutu adı kullan"
 
-#, fuzzy
 msgid "Use modern design"
-msgstr "Yeni tasarım kullan"
+msgstr "Modern tasarımı kullanın"
 
 msgid "Use modern interface"
 msgstr "Yeni tasarım kullan"
@@ -1833,7 +1822,7 @@ msgid "Video Height"
 msgstr "Video Yüksekliği"
 
 msgid "Video PID (VPID)"
-msgstr ""
+msgstr "Video PID'si (VPID)"
 
 msgid "Video Width"
 msgstr "Video Genişliği"
@@ -1897,7 +1886,7 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Yanlış parametre biçimi 'set =%s'. set = set15 kullanın "
 
 msgid "YYYY-MM-DD"
-msgstr ""
+msgstr "YYYY-MM-DD"
 
 msgid "Yes"
 msgstr "Evet"
@@ -1930,7 +1919,7 @@ msgid "auto"
 msgstr "otomatik"
 
 msgid "box_ip"
-msgstr ""
+msgstr "box_ip"
 
 msgid "case-insensitive"
 msgstr "büyük-küçük duyarsız"
@@ -1939,7 +1928,7 @@ msgid "case-sensitive"
 msgstr "büyük-küçük duyarlı"
 
 msgid "descramble and record ecm"
-msgstr ""
+msgstr "şifresini çöz ve ecm'yi kaydet"
 
 msgid "description contains"
 msgstr "açıklama içeriği"
@@ -1954,16 +1943,16 @@ msgid "do nothing"
 msgstr "hiçbir şey yapma"
 
 msgid "don't descramble, record ecm"
-msgstr ""
+msgstr "şifreyi çözme, ecm'yi kaydet"
 
 msgid "error! Loading Page"
 msgstr "hata! Sayfa yükleniyor"
 
 msgid "exact title match"
-msgstr ""
+msgstr "tam başlık eşleşmesi"
 
 msgid "favourite desc match"
-msgstr ""
+msgstr "favori açıklama eşleşmesi"
 
 msgid "finished"
 msgstr "bitti"
@@ -1987,7 +1976,7 @@ msgid "manual/disabled"
 msgstr "manuel/devre dışı"
 
 msgid "mins"
-msgstr ""
+msgstr "dakikalar"
 
 msgid "minute"
 msgstr "dakika"
@@ -1999,10 +1988,10 @@ msgid "none/IPv4-only network"
 msgstr "yok/yalnızca IPv4 ağ"
 
 msgid "normal"
-msgstr ""
+msgstr "normal"
 
 msgid "on day"
-msgstr ""
+msgstr "bugün"
 
 msgid "on weekday"
 msgstr "hafta içi"
@@ -2020,7 +2009,7 @@ msgid "r/w"
 msgstr "r/w"
 
 msgid "Receiver"
-msgstr ""
+msgstr "Alıcı"
 
 msgid "record"
 msgstr "kayıt"
@@ -2049,7 +2038,6 @@ msgstr "etiketleri seçin"
 msgid "short description contains"
 msgstr "kısa açıklama içeriği"
 
-#, fuzzy
 msgid "short description match"
 msgstr "kısa açıklama eşleşmesi"
 
@@ -2060,24 +2048,22 @@ msgid "static"
 msgstr "statik"
 
 msgid "this service is protected by a parental control pin"
-msgstr ""
+msgstr "bu kanal ebeveyn kontrol şifresiyle korunuyor"
 
 msgid "title contains"
 msgstr "başlık içeriği"
 
 msgid "title ends with"
-msgstr ""
+msgstr "başlık ile biter"
 
-#, fuzzy
 msgid "title or description match"
 msgstr "başlık veya açıklama eşleşmesi"
 
-#, fuzzy
 msgid "title or short description match"
 msgstr "başlık veya kısa açıklama eşleşmesi"
 
 msgid "title starts with"
-msgstr ""
+msgstr "başlık ile başlar"
 
 msgid "transcoded"
 msgstr "kod dönüştürüldü"
