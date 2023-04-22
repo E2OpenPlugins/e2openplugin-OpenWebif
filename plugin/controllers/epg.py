@@ -359,3 +359,9 @@ class EPG():
 
 	def save(self):
 		self._instance.save()
+
+	# /web/clearepg
+
+	def clear(self):
+		self._instance.clearDB()
+		self._instance.save()
