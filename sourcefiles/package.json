@@ -44,6 +44,6 @@
   "homepage": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif#readme",
   "dependencies": {
     "path-exists": "^5.0.0",
-    "semver": "^7.3.7"
+    "semver": "^7.5.2"
   }
 }
