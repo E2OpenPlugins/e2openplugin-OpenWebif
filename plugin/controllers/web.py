@@ -2243,6 +2243,26 @@ class WebController(BaseController):
 			"message": "EPG data loaded"
 		}
 
+	def P_clearepg(self, request):
+		"""
+		Request handler for the `clearepg` endpoint.
+
+		.. note::
+
+			Not available in *Enigma2 WebInterface API*.
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+		Returns:
+			HTTP response with headers
+		"""
+		EPG().clear()
+
+		return {
+			"result": True,
+			"message": "EPG data cleared"
+		}
+
 	def P_getsubtitles(self, request):
 		"""
 		Request handler for the `getsubtitles` endpoint.
