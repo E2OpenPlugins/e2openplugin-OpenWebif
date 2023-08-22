@@ -51,9 +51,6 @@ If possible, even more helpful details to include are:
 - OS or device version (Monterey / Win10 / Android 11 / iOS12 ...)
 - browser (Brave / Chrome / Firefox / Safari / Edge ...)
 
-## Want to Help Translate OpenWebif?
-Feel free to [contribute to the Weblate project](https://hosted.weblate.org/engage/e2openplugin-OpenWebif/).
-
 ## Latest Reports
 
 [[Bandit]](https://wiki.openstack.org/wiki/Security/Projects/Bandit):
@@ -145,6 +142,3 @@ or
 ### Updating Assets
 Find out how to [make changes to OpenWebif's JS & CSS assets](sourcefiles/README.md).
 
-## Translation status
-
-[![Translation status](https://hosted.weblate.org/widgets/e2openplugin-OpenWebif/-/e2openplugin-OpenWebif/open-graph.png)](https://hosted.weblate.org/engage/e2openplugin-OpenWebif/)
