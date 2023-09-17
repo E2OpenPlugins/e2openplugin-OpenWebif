@@ -549,7 +549,7 @@ class WebController(BaseController):
 			if session.GetAuth(request) is not None:
 				auth = ':'.join(session.GetAuth(request)) + "@"
 			else:
-				auth = '-sid:' + str(session.GetSID(request)) + "@"
+				auth = '-sid:' + ensure_str(session.GetSID(request)) + "@"
 		else:
 			auth = ''
 		portNumber = comp_config.OpenWebif.streamport.value
@@ -588,7 +588,7 @@ class WebController(BaseController):
 			if session.GetAuth(request) is not None:
 				auth = ':'.join(session.GetAuth(request)) + "@"
 			else:
-				auth = '-sid:' + str(session.GetSID(request)) + "@"
+				auth = '-sid:' + ensure_str(session.GetSID(request)) + "@"
 		else:
 			auth = ''
 		portNumber = comp_config.OpenWebif.streamport.value

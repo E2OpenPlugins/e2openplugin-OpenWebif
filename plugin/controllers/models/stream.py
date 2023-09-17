@@ -11,6 +11,7 @@
 from enigma import eServiceReference, getBestPlayableServiceReference
 from ServiceReference import ServiceReference
 from six.moves.urllib.parse import unquote, quote
+from six import ensure_str
 import os
 import re
 from Components.config import config
@@ -120,7 +121,7 @@ def getStream(session, request, m3ufile):
 		if asession.GetAuth(request) is not None:
 			auth = ':'.join(asession.GetAuth(request)) + "@"
 		else:
-			auth = '-sid:' + str(asession.GetSID(request)) + "@"
+			auth = '-sid:' + ensure_str(asession.GetSID(request)) + "@"
 	else:
 		auth = ''
 
@@ -240,7 +241,7 @@ def getTS(self, request):
 			if asession.GetAuth(request) is not None:
 				auth = ':'.join(asession.GetAuth(request)) + "@"
 			else:
-				auth = '-sid:' + str(asession.GetSID(request)) + "@"
+				auth = '-sid:' + ensure_str(asession.GetSID(request)) + "@"
 		else:
 			auth = ''
 

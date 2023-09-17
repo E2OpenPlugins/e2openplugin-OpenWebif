@@ -23,6 +23,7 @@
 from Tools.Directories import fileExists
 from Components.config import config
 from time import mktime, localtime
+from six import ensure_str
 import os
 
 from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getAllServices, getSatellites, getProviders, getEventDesc, getSimilarEpg, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
@@ -369,7 +370,7 @@ class AjaxController(BaseController):
 			if session.GetAuth(request) is not None:
 				auth = ':'.join(session.GetAuth(request)) + "@"
 			else:
-				auth = '-sid:' + str(session.GetSID(request)) + "@"
+				auth = '-sid:' + ensure_str(session.GetSID(request)) + "@"
 		else:
 			auth = ''
 		vxgenabled = False
