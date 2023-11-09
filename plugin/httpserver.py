@@ -31,6 +31,7 @@ from twisted.web import server, http, resource
 from twisted.internet.error import CannotListenError
 
 from Plugins.Extensions.OpenWebif.controllers.root import RootController
+from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Plugins.Extensions.OpenWebif.sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE, CA_FILE, CHAIN_FILE
 from socket import has_ipv6
 from OpenSSL import SSL
@@ -38,7 +39,6 @@ from OpenSSL import crypto
 from Components.Network import iNetwork
 
 import os
-import imp
 import ipaddress
 import six
 
@@ -159,7 +159,7 @@ def buildRootTree(session):
 
 				loaded.append(modulename)
 				try:
-					imp.load_source(modulename, origwebifpath + "/WebChilds/External/" + modulename + ".py")
+					BaseController.load_source(modulename, origwebifpath + "/WebChilds/External/" + modulename + ".py")
 				except Exception as e:
 					# maybe there's only the compiled version
 					imp.load_compiled(modulename, origwebifpath + "/WebChilds/External/" + external)

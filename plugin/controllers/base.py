@@ -22,9 +22,11 @@
 
 from __future__ import print_function
 import os
-import imp
 import json
 import six
+from importlib.machinery import SourcelessFileLoader, SourceFileLoader
+from importlib import util
+from importlib._bootstrap import _load
 
 from twisted.web import server, http, resource
 from twisted.web.resource import EncodingResourceWrapper
@@ -117,14 +119,32 @@ class BaseController(resource.Resource):
 		request.write(b"<html><head><title>OpenWebif</title></head><body><h1>Error 404: Not found</h1><br>The requested page doesn't exist.</body></html>")
 		request.finish()
 
+	def load_compiled(self, name, pathname):
+		loader = SourcelessFileLoader(name, pathname)
+		spec = util.spec_from_file_location(name, pathname, loader=loader)
+		module = _load(spec)
+		module.__loader__ = SourcelessFileLoader(name, pathname)
+		module.__spec__.loader = module.__loader__
+		return module
+
+	def load_source(self, modname, filename):
+		loader = SourceFileLoader(modname, filename)
+		spec = util.spec_from_file_location(modname, filename, loader=loader)
+		module = util.module_from_spec(spec)
+		# The module is always executed and not cached in sys.modules.
+		# Uncomment the following line to cache the module.
+		# sys.modules[module.__name__] = module
+		loader.exec_module(module)
+		return module
+
 	def loadTemplate(self, path, module, args):
 		if fileExists(getViewsPath(path + ".py")) or fileExists(getViewsPath(path + ".pyo")) or fileExists(getViewsPath(path + ".pyc")):
 			if fileExists(getViewsPath(path + ".pyo")):
-				template = imp.load_compiled(module, getViewsPath(path + ".pyo"))
+				template = self.load_compiled(module, getViewsPath(path + ".pyo"))
 			elif fileExists(getViewsPath(path + ".pyc")):
-				template = imp.load_compiled(module, getViewsPath(path + ".pyc"))
+				template = self.load_compiled(module, getViewsPath(path + ".pyc"))
 			else:
-				template = imp.load_source(module, getViewsPath(path + ".py"))
+				template = self.load_source(module, getViewsPath(path + ".py"))
 			mod = getattr(template, module, None)
 			if callable(mod):
 				return str(mod(searchList=args))
