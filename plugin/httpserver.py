@@ -38,7 +38,6 @@ from OpenSSL import crypto
 from Components.Network import iNetwork
 
 import os
-import imp
 import ipaddress
 import six
 
@@ -158,11 +157,6 @@ def buildRootTree(session):
 					continue
 
 				loaded.append(modulename)
-				try:
-					imp.load_source(modulename, origwebifpath + "/WebChilds/External/" + modulename + ".py")
-				except Exception as e:
-					# maybe there's only the compiled version
-					imp.load_compiled(modulename, origwebifpath + "/WebChilds/External/" + external)
 
 		if len(loaded_plugins) > 0:
 			for plugin in loaded_plugins:

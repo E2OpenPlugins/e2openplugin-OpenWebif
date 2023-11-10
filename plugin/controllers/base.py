@@ -22,9 +22,9 @@
 
 from __future__ import print_function
 import os
-import imp
 import json
 import six
+from importlib.util import spec_from_file_location, module_from_spec
 
 from twisted.web import server, http, resource
 from twisted.web.resource import EncodingResourceWrapper
@@ -117,18 +117,25 @@ class BaseController(resource.Resource):
 		request.write(b"<html><head><title>OpenWebif</title></head><body><h1>Error 404: Not found</h1><br>The requested page doesn't exist.</body></html>")
 		request.finish()
 
+	def load_source(self, module, pathname):
+		spec = spec_from_file_location(module, pathname)
+		template = module_from_spec(spec)
+		spec.loader.exec_module(template)
+		return template
+
 	def loadTemplate(self, path, module, args):
-		if fileExists(getViewsPath(path + ".py")) or fileExists(getViewsPath(path + ".pyo")) or fileExists(getViewsPath(path + ".pyc")):
-			if fileExists(getViewsPath(path + ".pyo")):
-				template = imp.load_compiled(module, getViewsPath(path + ".pyo"))
-			elif fileExists(getViewsPath(path + ".pyc")):
-				template = imp.load_compiled(module, getViewsPath(path + ".pyc"))
-			else:
-				template = imp.load_source(module, getViewsPath(path + ".py"))
+		template = None
+		if fileExists(getViewsPath(path + ".pyo")):
+			template = self.load_source(module, getViewsPath(path + ".pyo"))
+		elif fileExists(getViewsPath(path + ".pyc")):
+			template = self.load_source(module, getViewsPath(path + ".pyc"))
+		elif fileExists(getViewsPath(path + ".py")):
+			template = self.load_source(module, getViewsPath(path + ".py"))
+		if template:
 			mod = getattr(template, module, None)
 			if callable(mod):
 				return str(mod(searchList=args))
-		elif fileExists(getViewsPath(path + ".tmpl")):
+		if fileExists(getViewsPath(path + ".tmpl")):
 			vp = str(getViewsPath(path + ".tmpl"))
 			return str(Template(file=vp, searchList=[args]))
 		return None
