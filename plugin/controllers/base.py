@@ -24,7 +24,10 @@ from __future__ import print_function
 import os
 import json
 import six
-from importlib.util import spec_from_file_location, module_from_spec
+if six.PY3:
+	from importlib.util import spec_from_file_location, module_from_spec
+else:
+	import imp
 
 from twisted.web import server, http, resource
 from twisted.web.resource import EncodingResourceWrapper
@@ -126,11 +129,11 @@ class BaseController(resource.Resource):
 	def loadTemplate(self, path, module, args):
 		template = None
 		if fileExists(getViewsPath(path + ".pyo")):
-			template = self.load_source(module, getViewsPath(path + ".pyo"))
+			template = self.load_source(module, getViewsPath(path + ".pyo")) if six.PY3 else imp.load_compiled(module, getViewsPath(path + ".pyo"))
 		elif fileExists(getViewsPath(path + ".pyc")):
-			template = self.load_source(module, getViewsPath(path + ".pyc"))
+			template = self.load_source(module, getViewsPath(path + ".pyc")) if six.PY3 else imp.load_compiled(module, getViewsPath(path + ".pyc"))
 		elif fileExists(getViewsPath(path + ".py")):
-			template = self.load_source(module, getViewsPath(path + ".py"))
+			template = self.load_source(module, getViewsPath(path + ".py")) if six.PY3 else imp.load_source(module, getViewsPath(path + ".py"))
 		if template:
 			mod = getattr(template, module, None)
 			if callable(mod):
