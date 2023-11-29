@@ -124,7 +124,7 @@ See also #215
 Creating key and cert is beyond the scope of this readme.
 I found [Ivan Ristić's ](https://www.feistyduck.com/books/openssl-cookbook/) helpful.
 
-FWIW, an `ecparam` `secp384r1` key and a sha256 cert with 4 SAN worked just fine with the following;
+FWIW, an `ecparam` `secp384r1` key and a `ecdsa-with-SHA256` cert with 4 SAN worked just fine on the following;
 
 ```bash
 root@vuduo4kse:~# date ; cat /etc/os-release 
