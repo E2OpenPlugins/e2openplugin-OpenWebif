@@ -119,6 +119,23 @@ It doesn't bypass the password login yet and you should of course use your own C
 
 See also #215
 
+### Problems with a custom Certificate
+
+Creating key and cert is beyond the scope of this readme.
+I found [Ivan Ristić's ](https://www.feistyduck.com/books/openssl-cookbook/) helpful.
+
+FWIW, an `ecparam` `secp384r1` key and a sha256 cert with 4 SAN worked just fine with the following;
+
+```bash
+root@vuduo4kse:~# date ; cat /etc/os-release 
+Wed Nov 29 22:58:24 CET 2023
+ID=openbh
+NAME="openbh"
+VERSION="5.1"
+VERSION_ID=5.1
+PRETTY_NAME="openbh 5.1"
+```
+
 ---
 
 ## Development Information
