@@ -105,6 +105,22 @@ init 3
 
 ---
 
+## Custom SSL Certificate
+
+If you want to use your own certificate, then replace both `/etc/enigma2/key.pem` and `/etc/enigma2/cert.pem` with your own key and cert, in PEM format.
+
+Restart Enigma2 after replacing those files.
+
+### Using your own CA
+
+You can also put the ca cert as `/etc/enigma2/ca.pem` and enable HTTPS Client Cert auth in settings you can even login using Client certs signed by the same CA auth.
+
+It doesn't bypass the password login yet and you should of course use your own CA, because else any client with a key signed by that CA auth can login, as there is no option to limit access to certain users (yet, and probably newer will be).
+
+See also #215
+
+---
+
 ## Development Information
 
 See what's been happening, check out the [OpenWebif changelog](CHANGES.md)
