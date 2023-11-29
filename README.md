@@ -122,7 +122,7 @@ See also #215
 ### Problems with a custom Certificate
 
 Creating key and cert is beyond the scope of this readme.
-I found [Ivan Ristić's ](https://www.feistyduck.com/books/openssl-cookbook/) helpful.
+I found [Ivan Ristić's openssl cookbook](https://www.feistyduck.com/books/openssl-cookbook/) helpful.
 
 FWIW, an `ecparam` `secp384r1` key and a `ecdsa-with-SHA256` cert with 4 SAN worked just fine on the following;
 
