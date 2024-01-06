@@ -1080,8 +1080,9 @@ class WebController(BaseController):
 				}
 		elif b"eit" in list(request.args.keys()) and isinstance(request.args[b"eit"][0], int):
 			eit = int(request.args[b"eit"][0])
-		else:
-			queryTime = int(request.args[b"begin"][0]) + (int(request.args[b"end"][0]) - int(request.args[b"begin"][0])) // 2
+		else
+			#This might need further investigation. Dp npt get exactly the middle, take 20% so we usually expect to get first event.
+			queryTime = int(request.args[b"begin"][0]) + (int(request.args[b"end"][0]) - int(request.args[b"begin"][0])) // 5
 			epg = EPG()
 			eventid = epg.getEventIdByTime(sRef, queryTime)
 			if eventid is not None:
