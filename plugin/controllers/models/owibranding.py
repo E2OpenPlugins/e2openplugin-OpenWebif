@@ -549,16 +549,25 @@ def getAllInfo():
 		elif procmodel.startswith("sf"):
 			brand = "Octagon"
 			if procmodel.startswith("sf8008"):
-				sf8008type = open("/proc/stb/info/type").read()
-				if sf8008type.startswith("11"):
-					procmodel = "sf8008t"
-					model = "SF8008 4K Twin"
-				elif sf8008type.startswith("12"):
-					procmodel = "sf8008c"
-					model = "SF8008 4K Combo"
-				else:  # sf8008type.startswith("10")
-					procmodel = "sf8008s"
-					model = "SF8008 4K Single"
+				wifi = None
+				if fileExists("/sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct"):
+					f = open("//sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct", 'r')
+					wifi = f.readline().strip().lower()
+					f.close()
+				if wifi == "c82c":
+					procmodel = "sf8008x"
+					model = "SF8008 4K Supreme"
+				else:
+					sf8008type = open("/proc/stb/info/type").read()
+					if sf8008type.startswith("11"):
+						procmodel = "sf8008t"
+						model = "SF8008 4K Twin"
+					elif sf8008type.startswith("12"):
+						procmodel = "sf8008c"
+						model = "SF8008 4K Combo"
+					else:  # sf8008type.startswith("10")
+						procmodel = "sf8008s"
+						model = "SF8008 4K Single"
 			else:
 				model = procmodel.upper()
 		elif procmodel == "sx88v2":
