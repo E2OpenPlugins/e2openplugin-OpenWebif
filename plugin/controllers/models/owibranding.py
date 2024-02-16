@@ -535,7 +535,7 @@ def getAllInfo():
 			else:  # sfx6008type.startswith("10")
 				wifi = None
 				if fileExists("/sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct"):
-					f = open("//sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct", 'r')
+					f = open("/sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct", 'r')
 					wifi = f.readline().strip().lower()
 					f.close()
 				if wifi == "f179":
@@ -551,7 +551,7 @@ def getAllInfo():
 			if procmodel.startswith("sf8008"):
 				wifi = None
 				if fileExists("/sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct"):
-					f = open("//sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct", 'r')
+					f = open("/sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct", 'r')
 					wifi = f.readline().strip().lower()
 					f.close()
 				if wifi == "c82c":
