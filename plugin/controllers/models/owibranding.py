@@ -550,12 +550,12 @@ def getAllInfo():
 			brand = "Octagon"
 			if procmodel.startswith("sf8008"):
 				wifi = None
-				if fileExists("/sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct"):
-					f = open("/sys/devices/platform/soc/f9890000.ehci/usb1/1-1/idProduct", 'r')
+				if fileExists("/sys/devices/platform/soc/f9890000.ehci/usb1/1-2/idProduct"):
+					f = open("/sys/devices/platform/soc/f9890000.ehci/usb1/1-2/idProduct", 'r')
 					wifi = f.readline().strip().lower()
 					f.close()
 				if wifi == "c82c":
-					procmodel = "sf8008x"
+					procmodel = "sf8008sc"
 					model = "SF8008 4K Supreme"
 				else:
 					sf8008type = open("/proc/stb/info/type").read()
