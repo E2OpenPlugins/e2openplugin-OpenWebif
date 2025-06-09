@@ -3,7 +3,6 @@ name: build
 on:
   push:
     branches: [ master ]
-
   workflow_dispatch:
 
 jobs:
@@ -38,36 +37,20 @@ jobs:
       - name: Build python 3.9
         run: |
           sudo apt-get -q update
-          sudo apt-get install -y nodejs npm dos2unix
-          pip3 install Cheetah3
-          pip3 install six
+          sudo apt-get install -y nodejs npm dos2unix gettext python3-sphinx
+          sudo npm install -g jshint
+          pip3 install bandit
           pip3 install autopep8
+          pip3 install flake8
+          pip3 install Cheetah3
+          pip3 install sphinx-rtd-theme
+          pip3 install sphinxcontrib-napoleon
+          pip3 install sphinxcontrib-websupport
+          pip3 install sphinxcontrib-httpdomain
           python -m compileall -l . -r 10 -q
           cheetah compile -R plugin
           python testsuite/evil_eval.py
           ./CI/build.sh
-
-      - uses: actions/checkout@v2
-        with:
-          ref: 'master'
-          fetch-depth: 0
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '2.7'
-
-      - name: Build python 2.7
-        run: |
-          sudo apt-get -q update
-          sudo apt-get install -y closure-compiler nodejs npm gettext
-          sudo npm install -g jshint
-          pip install Cheetah
-          pip install bandit==1.6.2
-          pip install -r CI/requirements.txt
-          pip install six
-          python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
-          cheetah compile -R plugin
-          python testsuite/evil_eval.py
           ./CI/create_ipk.sh
           ./CI/create_ipk.sh vti
           ./CI/create_ipk.sh deb

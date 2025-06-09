@@ -43,19 +43,3 @@ jobs:
           cheetah compile -R plugin
           python testsuite/evil_eval.py
 
-      - uses: actions/checkout@v2
-        with:
-          ref: 'master'
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '2.7'
-
-      - name: Build python 2.7
-        run: |
-          pip install Cheetah
-          pip install -r CI/requirements.txt
-          pip install six
-          python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
-          cheetah compile -R plugin
-          python testsuite/evil_eval.py
