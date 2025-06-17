@@ -1,0 +1,108 @@
+plugin/controllers/AT.py:89:4: F841 local variable 'lines' is assigned to but never used
+plugin/controllers/AT.py:150:3: F841 local variable 'e' is assigned to but never used
+plugin/controllers/AT.py:162:3: F841 local variable 'e' is assigned to but never used
+plugin/controllers/AT.py:168:3: F841 local variable 'e' is assigned to but never used
+plugin/controllers/AT.py:179:3: F841 local variable 'e' is assigned to but never used
+plugin/controllers/BQE.py:298:6: E722 do not use bare 'except'
+plugin/controllers/BouquetEditor.py:400:6: E117 over-indented
+plugin/controllers/BouquetEditor.py:622:4: F841 local variable 'lines' is assigned to but never used
+plugin/controllers/BouquetEditor.py:754:12: F821 undefined name 'MODE_RADIO'
+plugin/controllers/NET.py:199:34: W605 invalid escape sequence '\W'
+plugin/controllers/ajax.py:109:36: F841 local variable 'extEventInfoProvider' is assigned to but never used
+plugin/controllers/ajax.py:189:5: E124 closing bracket does not match visual indentation
+plugin/controllers/ajax.py:290:30: F821 undefined name '_'
+plugin/controllers/base.py:212:6: E117 over-indented (comment)
+plugin/controllers/base.py:216:6: E117 over-indented (comment)
+plugin/controllers/base.py:231:6: E117 over-indented (comment)
+plugin/controllers/base.py:394:20: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+plugin/controllers/base.py:430:70: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+plugin/controllers/defaults.py:77:1: E115 expected an indented block (comment)
+plugin/controllers/defaults.py:83:2: F824 `global MOBILEDEVICE` is unused: name is never assigned in scope
+plugin/controllers/defaults.py:114:2: F841 local variable 'PICON_EXT' is assigned to but never used
+plugin/controllers/defaults.py:136:2: F841 local variable 'PICON_PATH' is assigned to but never used
+plugin/controllers/defaults.py:233:3: F401 'enigma.setPrevAsciiCode' imported but unused
+plugin/controllers/epg.py:23:1: F401 'datetime.timedelta' imported but unused
+plugin/controllers/epg.py:24:1: F401 'json.dumps' imported but unused
+plugin/controllers/epg.py:64:2: E722 do not use bare 'except'
+plugin/controllers/epg.py:134:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epg.py:152:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epg.py:183:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epg.py:204:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epg.py:220:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epg.py:244:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epg.py:263:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epg.py:283:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epg.py:301:26: F841 local variable 'tp' is assigned to but never used
+plugin/controllers/epgevent.py:27:1: F401 'enigma.eServiceCenter' imported but unused
+plugin/controllers/epgevent.py:27:1: F401 'enigma.eServiceReference' imported but unused
+plugin/controllers/epgevent.py:28:1: F401 'ServiceReference.ServiceReference' imported but unused
+plugin/controllers/epgevent.py:36:2: E704 multiple statements on one line (def)
+plugin/controllers/epgevent.py:175:3: F841 local variable 'err' is assigned to but never used
+plugin/controllers/file.py:69:21: W605 invalid escape sequence '\:'
+plugin/controllers/file.py:69:24: W605 invalid escape sequence '\d'
+plugin/controllers/mobile.py:132:3: E722 do not use bare 'except'
+plugin/controllers/models/OWFMovieList.py:12:1: F401 'Tools.FuzzyDate.FuzzyTime' imported but unused
+plugin/controllers/models/OWFMovieList.py:14:1: F401 'Tools.Directories.resolveFilename' imported but unused
+plugin/controllers/models/OWFMovieList.py:16:1: F401 'ServiceReference.ServiceReference' imported but unused
+plugin/controllers/models/OWFMovieList.py:47:3: E722 do not use bare 'except'
+plugin/controllers/models/OWFMovieList.py:151:1: E115 expected an indented block (comment)
+plugin/controllers/models/info.py:442:30: W605 invalid escape sequence '\ '
+plugin/controllers/models/info.py:621:2: F841 local variable 'error' is assigned to but never used
+plugin/controllers/models/info.py:622:1: E115 expected an indented block (comment)
+plugin/controllers/models/info.py:827:2: F841 local variable 'error' is assigned to but never used
+plugin/controllers/models/info.py:828:1: E115 expected an indented block (comment)
+plugin/controllers/models/mediaplayer.py:192:22: W605 invalid escape sequence '\.'
+plugin/controllers/models/mediaplayer.py:196:22: W605 invalid escape sequence '\.'
+plugin/controllers/models/mediaplayer.py:200:22: W605 invalid escape sequence '\.'
+plugin/controllers/models/message.py:46:2: F824 `global lastreply` is unused: name is never assigned in scope
+plugin/controllers/models/movies.py:27:1: F401 'time.time' imported but unused
+plugin/controllers/models/movies.py:326:2: F841 local variable 'tag' is assigned to but never used
+plugin/controllers/models/movies.py:327:2: F841 local variable 'directory' is assigned to but never used
+plugin/controllers/models/movies.py:665:29: E741 ambiguous variable name 'l'
+plugin/controllers/models/movies.py:718:9: E123 closing bracket does not match indentation of opening bracket's line
+plugin/controllers/models/movies.py:735:9: E123 closing bracket does not match indentation of opening bracket's line
+plugin/controllers/models/owibranding.py:54:3: E731 do not assign a lambda expression, use a def
+plugin/controllers/models/owibranding.py:65:9: F821 undefined name 'reduce'
+plugin/controllers/models/owibranding.py:68:14: E741 ambiguous variable name 'l'
+plugin/controllers/models/owibranding.py:164:6: E117 over-indented
+plugin/controllers/models/services.py:418:26: W605 invalid escape sequence '\s'
+plugin/controllers/models/services.py:418:46: W605 invalid escape sequence '\s'
+plugin/controllers/models/services.py:418:51: W605 invalid escape sequence '\s'
+plugin/controllers/models/services.py:418:55: W605 invalid escape sequence '\d'
+plugin/controllers/models/services.py:418:59: W605 invalid escape sequence '\s'
+plugin/controllers/models/services.py:431:6: E741 ambiguous variable name 'l'
+plugin/controllers/models/services.py:1162:5: E126 continuation line over-indented for hanging indent
+plugin/controllers/models/services.py:1167:4: E126 continuation line over-indented for hanging indent
+plugin/controllers/models/stream.py:73:2: F841 local variable 'model' is assigned to but never used
+plugin/controllers/models/stream.py:74:2: F841 local variable 'machinebuild' is assigned to but never used
+plugin/controllers/models/stream.py:131:4: E741 ambiguous variable name 'l'
+plugin/controllers/models/stream.py:181:3: F841 local variable 'model' is assigned to but never used
+plugin/controllers/models/stream.py:182:3: F841 local variable 'machinebuild' is assigned to but never used
+plugin/controllers/models/stream.py:235:20: W605 invalid escape sequence '\:'
+plugin/controllers/models/stream.py:235:23: W605 invalid escape sequence '\d'
+plugin/controllers/models/timers.py:25:1: F401 'enigma.eServiceReference' imported but unused
+plugin/controllers/models/timers.py:333:5: E123 closing bracket does not match indentation of opening bracket's line
+plugin/controllers/models/timers.py:338:5: E123 closing bracket does not match indentation of opening bracket's line
+plugin/controllers/models/timers.py:444:6: E123 closing bracket does not match indentation of opening bracket's line
+plugin/controllers/models/timers.py:449:6: E123 closing bracket does not match indentation of opening bracket's line
+plugin/controllers/models/timers.py:717:136: F821 undefined name 'serviceref'
+plugin/controllers/models/timers.py:730:16: F823 local variable 'list' defined as a builtin referenced before assignment
+plugin/controllers/models/timers.py:893:5: E722 do not use bare 'except'
+plugin/controllers/root.py:42:1: F401 'Plugins.Extensions.OpenWebif.controllers.defaults.setMobile' imported but unused
+plugin/controllers/transcoding.py:115:2: E301 expected 1 blank line, found 0
+plugin/controllers/transcoding.py:134:2: E301 expected 1 blank line, found 0
+plugin/controllers/utilities.py:18:8: E126 continuation line over-indented for hanging indent
+plugin/controllers/web.py:60:15: W605 invalid escape sequence '\:'
+plugin/controllers/web.py:60:18: W605 invalid escape sequence '\d'
+plugin/controllers/web.py:2498:1: E402 module level import not at top of file
+plugin/httpserver.py:163:5: F841 local variable 'e' is assigned to but never used
+plugin/httpserver.py:184:3: F824 `global listener` is unused: name is never assigned in scope
+plugin/httpserver.py:246:7: E123 closing bracket does not match indentation of opening bracket's line
+plugin/httpserver.py:306:3: F841 local variable 'host' is assigned to but never used
+plugin/httpserver.py:325:3: F824 `global site` is unused: name is never assigned in scope
+plugin/httpserver.py:325:3: F824 `global sslsite` is unused: name is never assigned in scope
+plugin/httpserver.py:478:2: F841 local variable 'e' is assigned to but never used
+plugin/plugin.py:109:1: E402 module level import not at top of file
+plugin/plugin.py:213:6: E714 test for object identity should be 'is not'
+plugin/plugin.py:217:6: E714 test for object identity should be 'is not'
+plugin/plugin.py:264:3: E123 closing bracket does not match indentation of opening bracket's line
