@@ -26,6 +26,7 @@ import struct
 import six
 from time import localtime, time
 from six.moves.urllib.parse import unquote
+import re
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
@@ -110,6 +111,11 @@ def getMovieList(rargs=None, locations=None):
 	fields = None
 	internal = None
 	bookmarklist = []
+
+	if b'dirname' in rargs:
+		decoded_str = rargs[b'dirname'][0].decode('latin-1')
+		decoded_str = re.sub(r'%u([0-9A-Fa-f]{4})', lambda m: chr(int(m.group(1), 16)), decoded_str)
+		rargs[b'dirname'][0] = decoded_str.encode('utf-8')
 
 	if rargs:
 		tag = getUrlArg2(rargs, "tag")
