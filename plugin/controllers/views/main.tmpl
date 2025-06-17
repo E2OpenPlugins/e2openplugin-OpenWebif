@@ -118,7 +118,7 @@
 				<td data-code="358"><button>Info</button></td><td data-code="108" class="bgray"><button>&#x25BC;</button></td><td data-code="365"><button>EPG</button></td>
 			<tr>
 			</table>
-			#if $smallremote == 'ims'
+			#if $smallremote == 'ims' or $smallremote == 'ims2'
 				<table class="remotesmall" style="height:20px;">
 				<tr>
 					<td data-code="167" class="tdc" style="background:#f08080"><button>Rec</button></td>
@@ -126,6 +126,14 @@
 					<td data-code="138" class="tdc bgray"><button>Help</button></td>
 					<td data-code="393" class="tdc bgray"><button>PVR</button></td>
 				<tr>
+				#if $smallremote == 'ims2'
+					<tr>
+						<td data-code="128" class="tdc" style="background:#e0e0e0"><button>Stop</button></td>
+						<td data-code="364" class="tdc" style="background:#f0f0f0"><button>Fav</button></td>
+						<td data-code="403" class="tdf" style="background:#e0e0e0"><button>Ch-</button></td>
+						<td data-code="402" class="tdf" style="background:#e0e0e0"><button>Ch+</button></td>
+					<tr>
+				#end if
 				</table>
 			#else
 				<table class="remotesmall" style="height:20px;">
