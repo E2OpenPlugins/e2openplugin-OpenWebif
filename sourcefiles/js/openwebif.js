@@ -771,7 +771,7 @@ function setOSD( statusinfo )
 		var _osdch = "<span class='osdch'>" + station + "</span></a>&nbsp;&nbsp;";
 		var _beginend = _osdch + statusinfo.currservice_begin + " - " + statusinfo.currservice_end + "&nbsp;&nbsp;";
 		var desc = statusinfo.currservice_fulldescription;
-		desc = desc.replace(/'/g,"\\'");
+		desc = desc.replace(/\\/g, '\\\\').replace(/'/g,"\\'");
 
 		if ((sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1)) {
 			if (statusinfo.transcoding) {
