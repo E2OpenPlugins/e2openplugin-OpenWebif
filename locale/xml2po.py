@@ -12,8 +12,7 @@ try:
 	no_comments = False
 except ImportError:
 	class LexicalHandler:
-		def __init__(self):
-			pass
+		pass
 	no_comments = True
 
 
@@ -22,18 +21,18 @@ class parseXML(ContentHandler, LexicalHandler):
 		self.isPointsElement, self.isReboundsElement = 0, 0
 		self.attrlist = attrlist
 		self.last_comment = None
-		self.ishex = re.compile('#[0-9a-fA-F]+\Z')
+		self.ishex = re.compile(r'#[0-9a-fA-F]+\Z')
 
 	def comment(self, comment):
 		if "TRANSLATORS:" in comment:
 			self.last_comment = comment
 
 	def startElement(self, name, attrs):
-		for x in ["text", "title", "value", "caption", "description"]:
+		for x in ["text", "title", "value", "caption", "summary", "description"]:
 			try:
 				k = six.ensure_str(attrs[x])
 				if k.strip() != "" and not self.ishex.match(k):
-					attrlist.add((k, self.last_comment))
+					attrlist.add((attrs[x], self.last_comment))
 					self.last_comment = None
 			except KeyError:
 				pass
@@ -51,7 +50,7 @@ if not no_comments:
 for arg in sys.argv[1:]:
 	if os.path.isdir(arg):
 		for file in os.listdir(arg):
-			if file.endswith(".xml"):
+			if (file.endswith(".xml")):
 				parser.parse(os.path.join(arg, file))
 	else:
 		parser.parse(arg)
