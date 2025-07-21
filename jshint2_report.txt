@@ -1,0 +1,269 @@
+sourcefiles/modern/js/openwebif.js: line 667, col 44, ['disabled'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 756, col 16, You might be leaking a variable (current_ref) here.
+sourcefiles/modern/js/openwebif.js: line 756, col 40, ['currservice_serviceref'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 757, col 19, You might be leaking a variable (current_name) here.
+sourcefiles/modern/js/openwebif.js: line 757, col 44, ['currservice_station'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 764, col 44, ['currservice_begin'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 764, col 86, ['currservice_end'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 767, col 27, ['transcoding'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 774, col 227, ['currservice_fulldescription'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 774, col 278, ['currservice_name'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 778, col 230, ['currservice_fulldescription'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 778, col 281, ['currservice_name'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 780, col 32, ['currservice_filename'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 781, col 27, ['transcoding'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 788, col 59, ['currservice_name'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 790, col 50, ['currservice_name'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 792, col 41, ['currservice_description'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 808, col 48, ['volume'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 809, col 36, ['volume'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 814, col 23, ['muted'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 826, col 23, ['inStandby'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 832, col 23, ['isRecording'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 833, col 138, ['Recording_list'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 839, col 23, ['inStandby'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 884, col 50, ['message'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 911, col 50, ['message'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 1069, col 18, 'id' is already defined.
+sourcefiles/modern/js/openwebif.js: line 1165, col 24, Missing semicolon.
+sourcefiles/modern/js/openwebif.js: line 1805, col 29, ['sref'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 1805, col 67, ['sref'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 1807, col 47, ['begin'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 1808, col 47, ['end'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2064, col 22, ['servicereference'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2065, col 23, ['servicename'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2066, col 77, ['servicename'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2067, col 24, ['subservices'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2070, col 26, ['servicereference'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2081, col 69, ['servicename'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2084, col 69, ['servicename'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2086, col 89, ['servicename'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2124, col 25, ['services'] is better written in dot notation.
+sourcefiles/modern/js/openwebif.js: line 2136, col 27, ['services'] is better written in dot notation.
+
+sourcefiles/modern/js/owif.js: line 1, col 1, Use the function form of "use strict".
+sourcefiles/modern/js/owif.js: line 3, col 1, 'import' is only available in ES6 (use 'esversion: 6').
+sourcefiles/modern/js/owif.js: line 5, col 1, 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+sourcefiles/modern/js/owif.js: line 7, col 1, 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+sourcefiles/modern/js/owif.js: line 7, col 22, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+sourcefiles/modern/js/owif.js: line 9, col 2, Missing semicolon.
+sourcefiles/modern/js/owif.js: line 10, col 1, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+sourcefiles/modern/js/owif.js: line 16, col 14, Class properties must be methods. Expected '(' but instead saw '='.
+sourcefiles/modern/js/owif.js: line 16, col 17, 'rest operator' is only available in ES6 (use 'esversion: 6').
+sourcefiles/modern/js/owif.js: line 16, col 24, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 16, col 26, Expected an identifier and instead saw '=>'.
+sourcefiles/modern/js/owif.js: line 16, col 36, Class properties must be methods. Expected '(' but instead saw '.'.
+sourcefiles/modern/js/owif.js: line 16, col 43, 'rest operator' is only available in ES6 (use 'esversion: 6').
+sourcefiles/modern/js/owif.js: line 16, col 50, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 16, col 51, Expected an identifier and instead saw ';'.
+sourcefiles/modern/js/owif.js: line 18, col 21, Class properties must be methods. Expected '(' but instead saw '='.
+sourcefiles/modern/js/owif.js: line 18, col 34, Expected an identifier and instead saw '/\d{4}-\d{2}-\d{2}/'.
+sourcefiles/modern/js/owif.js: line 18, col 53, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 18, col 54, Expected an identifier and instead saw ';'.
+sourcefiles/modern/js/owif.js: line 27, col 16, Class properties must be methods. Expected '(' but instead saw '='.
+sourcefiles/modern/js/owif.js: line 27, col 23, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 27, col 25, Expected an identifier and instead saw '=>'.
+sourcefiles/modern/js/owif.js: line 27, col 28, Expected an operator and instead saw '('.
+sourcefiles/modern/js/owif.js: line 27, col 33, Class properties must be methods. Expected '(' but instead saw '.'.
+sourcefiles/modern/js/owif.js: line 27, col 40, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+sourcefiles/modern/js/owif.js: line 27, col 40, Expected an identifier and instead saw '${'.
+sourcefiles/modern/js/owif.js: line 27, col 50, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 27, col 51, Expected an identifier and instead saw ')'.
+sourcefiles/modern/js/owif.js: line 27, col 53, Expected an operator and instead saw '/'.
+sourcefiles/modern/js/owif.js: line 27, col 59, Class properties must be methods. Expected '(' but instead saw ';'.
+sourcefiles/modern/js/owif.js: line 30, col 20, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 30, col 22, Expected an identifier and instead saw '=>'.
+sourcefiles/modern/js/owif.js: line 30, col 25, Expected an operator and instead saw '('.
+sourcefiles/modern/js/owif.js: line 30, col 26, Expected an operator and instead saw '!'.
+sourcefiles/modern/js/owif.js: line 30, col 31, Class properties must be methods. Expected '(' but instead saw '.'.
+sourcefiles/modern/js/owif.js: line 30, col 43, Expected an identifier and instead saw '1:134:1'.
+sourcefiles/modern/js/owif.js: line 30, col 52, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 30, col 54, Expected an identifier and instead saw '&&'.
+sourcefiles/modern/js/owif.js: line 30, col 61, Duplicate class method 'sref'.
+sourcefiles/modern/js/owif.js: line 30, col 61, Class properties must be methods. Expected '(' but instead saw '.'.
+sourcefiles/modern/js/owif.js: line 30, col 71, Expected an identifier and instead saw 'FROM BOUQUET'.
+sourcefiles/modern/js/owif.js: line 30, col 85, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 30, col 86, Expected an identifier and instead saw ')'.
+sourcefiles/modern/js/owif.js: line 30, col 87, Unnecessary semicolon.
+sourcefiles/modern/js/owif.js: line 32, col 13, Class properties must be methods. Expected '(' but instead saw '='.
+sourcefiles/modern/js/owif.js: line 32, col 35, 'default parameters' is only available in ES6 (use 'esversion: 6').
+sourcefiles/modern/js/owif.js: line 32, col 54, 'spread operator' is only available in ES6 (use 'esversion: 6').
+sourcefiles/modern/js/owif.js: line 32, col 57, 'object spread property' is only available in ES9 (use 'esversion: 9').
+sourcefiles/modern/js/owif.js: line 32, col 61, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 32, col 63, Expected an identifier and instead saw '=>'.
+sourcefiles/modern/js/owif.js: line 32, col 66, Unexpected '{'.
+sourcefiles/modern/js/owif.js: line 33, col 9, Class properties must be methods. Expected '(' but instead saw '{'.
+sourcefiles/modern/js/owif.js: line 34, col 48, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 34, col 49, Expected an identifier and instead saw ';'.
+sourcefiles/modern/js/owif.js: line 36, col 19, Expected an identifier and instead saw '.'.
+sourcefiles/modern/js/owif.js: line 37, col 9, 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+sourcefiles/modern/js/owif.js: line 40, col 11, 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+sourcefiles/modern/js/owif.js: line 40, col 37, Missing semicolon.
+sourcefiles/modern/js/owif.js: line 44, col 11, 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+sourcefiles/modern/js/owif.js: line 44, col 37, Missing semicolon.
+sourcefiles/modern/js/owif.js: line 48, col 14, Class properties must be methods. Expected '(' but instead saw '{'.
+sourcefiles/modern/js/owif.js: line 49, col 33, Expected an identifier and instead saw '.'.
+sourcefiles/modern/js/owif.js: line 49, col 63, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+sourcefiles/modern/js/owif.js: line 49, col 64, Expected an identifier and instead saw ';'.
+sourcefiles/modern/js/owif.js: line 50, col 7, Unrecoverable syntax error. (16% scanned).
+
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 50, col 6, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 60, col 16, 'i' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 60, col 23, 'len' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 117, col 6, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 127, col 6, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 307, col 6, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 315, col 6, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 462, col 30, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 672, col 32, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 726, col 93, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 736, col 50, ['en'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 739, col 50, ['en'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 788, col 34, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 834, col 16, 'i' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 886, col 16, 'i' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 908, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 909, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 910, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 916, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 917, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 918, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 926, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 927, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 933, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 934, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 942, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 948, col 13, Misleading line break before '&&'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 995, col 32, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1151, col 19, 'day' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1152, col 19, 'year' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1153, col 17, 'month' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1154, col 17, 'hours' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1155, col 17, 'minutes' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1156, col 17, 'seconds' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1182, col 17, 'oldViewMode' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1253, col 11, Misleading line break before '?'; readers may interpret this as an expression boundary.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1550, col 78, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1553, col 104, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1630, col 11, 'parts' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1631, col 9, 'date' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1684, col 28, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1687, col 24, 'part' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1688, col 18, ['M'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1688, col 37, ['MM'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1688, col 57, ['mm'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1688, col 77, ['m'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1689, col 18, ['dd'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1689, col 38, ['d'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1690, col 18, ['P'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1690, col 37, ['p'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1691, col 18, ['Z'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1691, col 37, ['z'] is better written in dot notation.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1694, col 18, 'i' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1700, col 61, Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (parts, i)
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1708, col 66, Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (parts, i)
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1721, col 17, Expected an assignment or function call and instead saw an expression.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1728, col 18, 'i' is already defined.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1731, col 44, Missing semicolon.
+sourcefiles/modern/js/vti-bootstrap-date-timepicker.js: line 1817, col 11, 'date' is already defined.
+
+sourcefiles/modern/js/vti-responsive-epgr.js: line 75, col 39, ['services'] is better written in dot notation.
+
+sourcefiles/modern/js/vti-responsive-multiepg.js: line 61, col 13, 'new_height' is already defined.
+sourcefiles/modern/js/vti-responsive-multiepg.js: line 62, col 13, 'scrollheightI' is already defined.
+sourcefiles/modern/js/vti-responsive-multiepg.js: line 63, col 13, 'scrollwidth' is already defined.
+
+sourcefiles/modern/js/vti-responsive.js: line 344, col 23, ['muted'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 355, col 23, ['isRecording'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 356, col 34, ['Recording_list'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 373, col 23, ['isStreaming'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 374, col 37, ['Streaming_list'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 377, col 17, 'tmp' is already defined.
+sourcefiles/modern/js/vti-responsive.js: line 390, col 57, ['inStandby'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 391, col 6, Expected an assignment or function call and instead saw an expression.
+sourcefiles/modern/js/vti-responsive.js: line 392, col 2, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 396, col 16, You might be leaking a variable (current_ref) here.
+sourcefiles/modern/js/vti-responsive.js: line 396, col 40, ['currservice_serviceref'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 397, col 19, You might be leaking a variable (current_name) here.
+sourcefiles/modern/js/vti-responsive.js: line 397, col 44, ['currservice_station'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 407, col 59, ['currservice_name'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 409, col 70, ['currservice_begin'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 410, col 68, ['currservice_end'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 416, col 44, ['currservice_id'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 421, col 28, ['transcoding'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 426, col 27, ['currservice_filename'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 430, col 36, ['currservice_filename'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 434, col 31, ['transcoding'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 441, col 61, ['volume'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 480, col 14, 'id' is already defined.
+sourcefiles/modern/js/vti-responsive.js: line 489, col 6, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 520, col 92, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 521, col 33, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 522, col 67, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 523, col 49, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 524, col 50, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 525, col 21, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 526, col 39, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 527, col 266, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 528, col 110, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 529, col 25, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 530, col 26, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 531, col 52, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 532, col 82, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 533, col 22, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 534, col 33, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 535, col 29, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 536, col 25, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 537, col 37, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 538, col 53, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 539, col 80, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 540, col 73, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 541, col 23, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 542, col 33, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 543, col 29, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 544, col 25, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 545, col 21, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 546, col 23, Bad escaping of EOL. Use option multistr if needed.
+sourcefiles/modern/js/vti-responsive.js: line 547, col 10, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 750, col 72, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 859, col 43, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 901, col 63, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 902, col 79, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 908, col 21, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 959, col 2, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1002, col 2, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1007, col 63, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1010, col 79, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1019, col 77, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1020, col 83, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1039, col 85, ['message'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1080, col 28, ['always_zap'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1081, col 28, ['justplay'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1084, col 28, ['justplay'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1087, col 28, ['dirname'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1090, col 28, ['vpsplugin_enabled'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1091, col 28, ['vpsplugin_overwrite'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1095, col 28, ['begin'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1098, col 28, ['begin'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1128, col 28, ['channelOld'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1129, col 28, ['beginOld'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1130, col 28, ['endOld'] is better written in dot notation.
+sourcefiles/modern/js/vti-responsive.js: line 1161, col 86, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1169, col 69, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1174, col 69, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1179, col 68, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1184, col 64, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1189, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1194, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1200, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1207, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1215, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1219, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1223, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1228, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1232, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1237, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1254, col 53, Missing semicolon.
+sourcefiles/modern/js/vti-responsive.js: line 1387, col 67, Missing semicolon.
+
+262 errors

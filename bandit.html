@@ -1,0 +1,709 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+    Bandit Report
+</title>
+
+<style>
+
+html * {
+    font-family: "Arial", sans-serif;
+}
+
+pre {
+    font-family: "Monaco", monospace;
+}
+
+.bordered-box {
+    border: 1px solid black;
+    padding-top:.5em;
+    padding-bottom:.5em;
+    padding-left:1em;
+}
+
+.metrics-box {
+    font-size: 1.1em;
+    line-height: 130%;
+}
+
+.metrics-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: .25em;
+}
+
+.issue-description {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.candidate-issues {
+    margin-left: 2em;
+    border-left: solid 1px; LightGray;
+    padding-left: 5%;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
+.issue-block {
+    border: 1px solid LightGray;
+    padding-left: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+}
+
+.issue-sev-high {
+    background-color: Pink;
+}
+
+.issue-sev-medium {
+    background-color: NavajoWhite;
+}
+
+.issue-sev-low {
+    background-color: LightCyan;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="metrics">
+    <div class="metrics-box bordered-box">
+        <div class="metrics-title">
+            Metrics:<br>
+        </div>
+        Total lines of code: <span id="loc">13443</span><br>
+        Total lines skipped (#nosec): <span id="nosec">45</span>
+    </div>
+</div>
+
+
+
+
+<br>
+<div id="results">
+    
+<div id="issue-0">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a><br>
+    <b>Line number: </b>76<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+75				os.remove(ATFN)
+76			checkfile = &#x27;/tmp/.autotimeredit&#x27;
+77			f = os.open(checkfile, os.O_WRONLY | os.O_CREAT)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-1">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a><br>
+    <b>Line number: </b>89<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+88					tarFiles += &quot;%s &quot; % arg
+89				lines = os.popen(&quot;tar cvf %s %s&quot; % (ATFN, tarFiles)).readlines()
+90				os.remove(checkfile)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-2">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a><br>
+    <b>Line number: </b>113<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+112				check_tar = False
+113				lines = os.popen(&#x27;tar -tf %s&#x27; % ATFN).readlines()
+114				for line in lines:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-3">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a><br>
+    <b>Line number: </b>120<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+119				if check_tar:
+120					lines = os.popen(&#x27;tar xvf %s -C /&#x27; % ATFN).readlines()
+121	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-4">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a><br>
+    <b>Line number: </b>128<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+127							autotimer.readXml()
+128						except Exception:
+129							# TODO: proper error handling
+130							pass
+131	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-5">
+<div class="issue-block issue-sev-low">
+    <b>hardcoded_password_string: </b> Possible hardcoded password: ''<br>
+    <b>Test ID:</b> B105<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/259.html" target="_blank">CWE-259</a><br>
+    <b>File: </b><a href="plugin/controllers/NET.py" target="_blank">plugin/controllers/NET.py</a><br>
+    <b>Line number: </b>187<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html</a><br>
+
+<div class="code">
+<pre>
+186			if password is None:
+187				password = &quot;&quot;
+188	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-6">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="plugin/controllers/base.py" target="_blank">plugin/controllers/base.py</a><br>
+    <b>Line number: </b>282<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+281			variant = &quot;oscam&quot;
+282			for file in [&quot;/tmp/.ncam/ncam.version&quot;, &quot;/tmp/.oscam/oscam.version&quot;]:
+283				if fileExists(file):  # nosec
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-7">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="plugin/controllers/base.py" target="_blank">plugin/controllers/base.py</a><br>
+    <b>Line number: </b>282<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+281			variant = &quot;oscam&quot;
+282			for file in [&quot;/tmp/.ncam/ncam.version&quot;, &quot;/tmp/.oscam/oscam.version&quot;]:
+283				if fileExists(file):  # nosec
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-8">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/epgevent.py" target="_blank">plugin/controllers/epgevent.py</a><br>
+    <b>Line number: </b>175<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+174				debug(&quot;[[[   convertRating(%s) age=%s country=%s  ]]]&quot; % (val, age, country), &quot;EPGEvent&quot;)
+175			except Exception as err:
+176				pass
+177				#error(err, &quot;EPGEvent&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-9">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="plugin/controllers/ipkg.py" target="_blank">plugin/controllers/ipkg.py</a><br>
+    <b>Line number: </b>93<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+92			try:
+93				for line in open(&quot;/tmp/opkg.tmp&quot;, &#x27;r&#x27;):
+94					if line.startswith(&#x27;Package:&#x27;):
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-10">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="plugin/controllers/ipkg.py" target="_blank">plugin/controllers/ipkg.py</a><br>
+    <b>Line number: </b>217<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+216					try:
+217						data = open(&quot;/tmp/opkg.tmp&quot;, &#x27;r&#x27;).read()
+218						self.request.write(six.ensure_binary(data))
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-11">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/models/OWFMovieList.py" target="_blank">plugin/controllers/models/OWFMovieList.py</a><br>
+    <b>Line number: </b>47<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+46					return serviceref.getPath()
+47			except:
+48				pass
+49			return 0
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-12">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/models/config.py" target="_blank">plugin/controllers/models/config.py</a><br>
+    <b>Line number: </b>242<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+241					})
+242				except Exception:
+243					pass
+244		return {
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-13">
+<div class="issue-block issue-sev-medium">
+    <b>blacklist: </b> Use of possibly insecure function - consider using safer ast.literal_eval.<br>
+    <b>Test ID:</b> B307<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href="plugin/controllers/models/config.py" target="_blank">plugin/controllers/models/config.py</a><br>
+    <b>Line number: </b>331<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b307-eval" target="_blank">https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b307-eval</a><br>
+
+<div class="code">
+<pre>
+330						try:
+331							result = eval(require)
+332							result = bool(result.value and str(result.value).lower() not in (&quot;0&quot;, &quot;disable&quot;, &quot;false&quot;, &quot;no&quot;, &quot;off&quot;))
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-14">
+<div class="issue-block issue-sev-medium">
+    <b>blacklist: </b> Use of possibly insecure function - consider using safer ast.literal_eval.<br>
+    <b>Test ID:</b> B307<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href="plugin/controllers/models/config.py" target="_blank">plugin/controllers/models/config.py</a><br>
+    <b>Line number: </b>342<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b307-eval" target="_blank">https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b307-eval</a><br>
+
+<div class="code">
+<pre>
+341				try:
+342					if not bool(eval(conditional)):
+343						return False
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-15">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/377.html" target="_blank">CWE-377</a><br>
+    <b>File: </b><a href="plugin/controllers/models/grab.py" target="_blank">plugin/controllers/models/grab.py</a><br>
+    <b>Line number: </b>72<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+71	
+72			self.filepath = &quot;/tmp/screenshot.&quot; + fileformat
+73			self.container = eConsoleAppContainer()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-16">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href="plugin/controllers/models/info.py" target="_blank">plugin/controllers/models/info.py</a><br>
+    <b>Line number: </b>109<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+108				try:
+109					speed = os.popen(&#x27;iwlist &#x27; + iface + &#x27; bitrate | grep &quot;Bit Rate&quot;&#x27;).read().split(&#x27;:&#x27;)[1].split(&#x27; &#x27;)[0]
+110				except:  # nosec # noqa: E722
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-17">
+<div class="issue-block issue-sev-high">
+    <b>hashlib: </b> Use of weak SHA1 hash for security. Consider usedforsecurity=False<br>
+    <b>Test ID:</b> B324<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/327.html" target="_blank">CWE-327</a><br>
+    <b>File: </b><a href="plugin/controllers/models/owibranding.py" target="_blank">plugin/controllers/models/owibranding.py</a><br>
+    <b>Line number: </b>83<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html</a><br>
+
+<div class="code">
+<pre>
+82		dest = rsa_pub1024(src[:128], mod)
+83		hash = hashlib.sha1(dest[1:107])
+84		if len(src) == 202:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-18">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/models/stream.py" target="_blank">plugin/controllers/models/stream.py</a><br>
+    <b>Line number: </b>112<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+111					args = args.replace(&#x27;__&#x27;, urlparam)
+112				except Exception:
+113					pass
+114	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-19">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/models/stream.py" target="_blank">plugin/controllers/models/stream.py</a><br>
+    <b>Line number: </b>218<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+217						args = args.replace(&#x27;__&#x27;, urlparam)
+218					except Exception:
+219						pass
+220				# Add position parameter to m3u link
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-20">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/models/timers.py" target="_blank">plugin/controllers/models/timers.py</a><br>
+    <b>Line number: </b>96<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+95				filename = timer.Filename
+96			except Exception:
+97				pass
+98	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-21">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/models/timers.py" target="_blank">plugin/controllers/models/timers.py</a><br>
+    <b>Line number: </b>101<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+100				nextactivation = timer.next_activation
+101			except Exception:
+102				pass
+103	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-22">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/web.py" target="_blank">plugin/controllers/web.py</a><br>
+    <b>Line number: </b>2367<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+2366						return {&#x27;configs&#x27;: resultcfgs}
+2367				except Exception:
+2368					# TODO show exception
+2369					pass
+2370			return {}
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-23">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/web.py" target="_blank">plugin/controllers/web.py</a><br>
+    <b>Line number: </b>2381<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+2380					comp_config.OpenWebif.webcache.moviedb.save()
+2381				except Exception:
+2382					pass
+2383			elif b&quot;showpicons&quot; in list(request.args.keys()):
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-24">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/web.py" target="_blank">plugin/controllers/web.py</a><br>
+    <b>Line number: </b>2411<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+2410					comp_config.OpenWebif.webcache.smallremote.save()
+2411				except Exception:
+2412					pass
+2413			elif b&quot;theme&quot; in list(request.args.keys()):
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-25">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href="plugin/controllers/web.py" target="_blank">plugin/controllers/web.py</a><br>
+    <b>Line number: </b>2417<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+2416					comp_config.OpenWebif.webcache.theme.save()
+2417				except Exception:
+2418					pass
+2419			elif b&quot;mepgmode&quot; in list(request.args.keys()):
+</pre>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
