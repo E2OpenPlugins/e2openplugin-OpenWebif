@@ -764,7 +764,7 @@ function setOSD( statusinfo )
 	current_name = station;
 	
 	if (station) {
-		var stationA = station.replace(/'/g,"\\'");
+		var stationA = station.replace(/\\/g, '\\\\').replace(/'/g,"\\'");
 		var stream = "<div id='osdicon'>";
 		var streamtitle = tstr_stream + ": " + station + "'><i class='fa fa-desktop'></i></a>";
 		var streamtitletrans = tstr_stream + " (" + tstr_transcoded + "): " + station + "'><i class='fa fa-mobile'></i></a>";
