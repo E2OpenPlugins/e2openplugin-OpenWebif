@@ -57,7 +57,7 @@ def whoami(request):
 		port = comp_config.OpenWebif.https_port.value
 		proto = 'https'
 	ourhost = request.getHeader('host')
-	m = match('.+\:(\d+)$', ourhost)
+	m = match('.+\\:(\\d+)$', ourhost)
 	if m is not None:
 		port = m.group(1)
 	return {'proto': proto, 'port': port}

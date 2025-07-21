@@ -189,15 +189,15 @@ def mediaPlayerCurrent(session):
 
 def mediaPlayerList(session, path, types):
 	if types == "video":
-		mpattern = "(?i)^.*\.(ts|mts|m2ts|e2pls|mpg|vob|avi|divx|m4v|mkv|mp4|dat|flv|mov|dts)"
+		mpattern = "(?i)^.*\\.(ts|mts|m2ts|e2pls|mpg|vob|avi|divx|m4v|mkv|mp4|dat|flv|mov|dts)"
 		mserviceref = True
 	elif types == "audio":
 		mserviceref = True
-		mpattern = "(?i)^.*\.(mp2|mp3|ogg|wav|wave|m3u|pls|e2pls|m4a|flac)"
+		mpattern = "(?i)^.*\\.(mp2|mp3|ogg|wav|wave|m3u|pls|e2pls|m4a|flac)"
 	elif types == "any" or types == "":
 		mserviceref = True
 		# complete pattern from mediaplayer
-		mpattern = "(?i)^.*\.(mp2|mp3|ogg|ts|mts|m2ts|wav|wave|m3u|pls|e2pls|mpg|vob|avi|divx|m4v|mkv|mp4|m4a|dat|flac|flv|mov|dts)"
+		mpattern = "(?i)^.*\\.(mp2|mp3|ogg|ts|mts|m2ts|wav|wave|m3u|pls|e2pls|mpg|vob|avi|divx|m4v|mkv|mp4|m4a|dat|flac|flv|mov|dts)"
 	else:
 		mserviceref = False
 		mpattern = types

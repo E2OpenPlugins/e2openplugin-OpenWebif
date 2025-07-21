@@ -439,7 +439,7 @@ def getInfo(session=None, need_fullinfo=False):
 				if not line.startswith('#'):
 					# Replace escaped spaces that can appear inside credentials with underscores
 					# Not elegant but we wouldn't want to expose credentials on the OWIF anyways
-					tmpline = line.replace("\ ", "_")
+					tmpline = line.replace("\\ ", "_")
 					tmp = tmpline.split()
 					if not len(tmp) == 3:
 						continue

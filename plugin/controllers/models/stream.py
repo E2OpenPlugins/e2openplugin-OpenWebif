@@ -232,7 +232,7 @@ def getTS(self, request):
 				portNumber = config.OpenWebif.https_port.value
 				proto = 'https'
 			ourhost = request.getHeader('host')
-			m = re.match('.+\:(\d+)$', ourhost)
+			m = re.match('.+\\:(\\d+)$', ourhost)
 			if m is not None:
 				portNumber = m.group(1)
 

@@ -415,7 +415,7 @@ def sortSatellites(satList):
 	sortDict = {}
 	i = 0
 	for k in satList:
-		result = re.search("[(]\s*satellitePosition\s*==\s*(\d+)\s*[)]", k["service"], re.IGNORECASE)
+		result = re.search("[(]\\s*satellitePosition\\s*==\\s*(\\d+)\\s*[)]", k["service"], re.IGNORECASE)
 		if result is None:
 			return satList
 		orb = int(result.group(1))

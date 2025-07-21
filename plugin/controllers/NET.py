@@ -196,7 +196,7 @@ class NetController(resource.Resource):
 					data = {'isMounted': False}
 					data['active'] = active
 					data['ip'] = ip
-					data['sharename'] = re_sub("\W", "", sharename)
+					data['sharename'] = re_sub("\\W", "", sharename)
 					if sharedir.startswith("/"):
 						data['sharedir'] = sharedir[1:]
 					else:
