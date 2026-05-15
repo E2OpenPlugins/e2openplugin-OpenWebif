@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>controllers.utilities &mdash; e2openplugin-OpenWebif 1.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=bb516dca"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            e2openplugin-OpenWebif
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common.html">Common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controller.html">Controller</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">e2openplugin-OpenWebif</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">controllers.utilities</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for controllers.utilities</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">six</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="k">try</span><span class="p">:</span>  <span class="c1"># this is only for the testsuite</span>
+	<span class="kn">from</span><span class="w"> </span><span class="nn">Plugins.Extensions.OpenWebif.controllers.defaults</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEBUG_ENABLED</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+	<span class="n">DEBUG_ENABLED</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">PY3</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="n">MANY_SLASHES_PATTERN</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;[\/]+&#39;</span>
+<span class="n">MANY_SLASHES_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">MANY_SLASHES_PATTERN</span><span class="p">)</span>
+
+<span class="n">PATTERN_ITEM_OR_KEY_ACCESS</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^(?P&lt;attr_name&gt;[a-zA-Z][\w\d]*)&#39;</span> \
+							<span class="sa">r</span><span class="s1">&#39;\[((?P&lt;index&gt;\d+)|&#39;</span> \
+							<span class="sa">r</span><span class="s1">&#39;[</span><span class="se">\&#39;</span><span class="s1">\&quot;](?P&lt;key&gt;[\s\w\d]+)[</span><span class="se">\&#39;</span><span class="s1">\&quot;])\]$&#39;</span>
+<span class="n">REGEX_ITEM_OR_KEY_ACCESS</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">PATTERN_ITEM_OR_KEY_ACCESS</span><span class="p">)</span>
+
+<span class="c1"># stolen from enigma2_http_api ...</span>
+<span class="c1"># https://wiki.neutrino-hd.de/wiki/Enigma:Services:Formatbeschreibung</span>
+<span class="c1"># Dezimalwert: 1=TV, 2=Radio, 4=NVod, andere=Daten</span>
+
+<span class="n">SERVICE_TYPE_TV</span> <span class="o">=</span> <span class="mh">0x01</span>
+<span class="n">SERVICE_TYPE_RADIO</span> <span class="o">=</span> <span class="mh">0x02</span>
+<span class="n">SERVICE_TYPE_SD4</span> <span class="o">=</span> <span class="mh">0x16</span>
+<span class="n">SERVICE_TYPE_HDTV</span> <span class="o">=</span> <span class="mh">0x19</span>
+<span class="n">SERVICE_TYPE_UHD</span> <span class="o">=</span> <span class="mh">0x1f</span>
+<span class="n">SERVICE_TYPE_OPT</span> <span class="o">=</span> <span class="mh">0xd3</span>
+<span class="n">SERVICE_TYPE_RADIOA</span> <span class="o">=</span> <span class="mh">0x0a</span>
+
+<span class="c1"># type 1 = digital television service</span>
+<span class="c1"># type 2 = digital radio sound service</span>
+<span class="c1"># type 4 = nvod reference service (NYI)</span>
+<span class="c1"># type 10 = advanced codec digital radio sound service</span>
+<span class="c1"># type 17 = MPEG-2 HD digital television service</span>
+<span class="c1"># type 22 = advanced codec SD digital television</span>
+<span class="c1"># type 24 = advanced codec SD NVOD reference service (NYI)</span>
+<span class="c1"># type 25 = advanced codec HD digital television</span>
+<span class="c1"># type 27 = advanced codec HD NVOD reference service (NYI)</span>
+
+
+<span class="n">SERVICE_TYPE</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="n">SERVICE_TYPE_TV</span><span class="p">:</span> <span class="s1">&#39;TV&#39;</span><span class="p">,</span>
+	<span class="n">SERVICE_TYPE_HDTV</span><span class="p">:</span> <span class="s1">&#39;HDTV&#39;</span><span class="p">,</span>
+	<span class="n">SERVICE_TYPE_RADIO</span><span class="p">:</span> <span class="s1">&#39;RADIO&#39;</span><span class="p">,</span>
+	<span class="n">SERVICE_TYPE_RADIOA</span><span class="p">:</span> <span class="s1">&#39;RADIO&#39;</span><span class="p">,</span>
+	<span class="n">SERVICE_TYPE_UHD</span><span class="p">:</span> <span class="s1">&#39;UHD&#39;</span><span class="p">,</span>
+	<span class="n">SERVICE_TYPE_SD4</span><span class="p">:</span> <span class="s1">&#39;SD4&#39;</span><span class="p">,</span>
+	<span class="n">SERVICE_TYPE_OPT</span><span class="p">:</span> <span class="s1">&#39;OPT&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">SERVICE_TYPE_LOOKUP</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">six</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(</span><span class="n">SERVICE_TYPE</span><span class="p">)}</span>
+
+<span class="c1">#: Namespace - DVB-C services</span>
+<span class="n">NS_DVB_C</span> <span class="o">=</span> <span class="mh">0xffff0000</span>
+
+<span class="c1">#: Namespace - DVB-S services</span>
+<span class="c1"># NS_DVB_S = 0x00c00000</span>
+
+<span class="c1">#: Namespace - DVB-T services</span>
+<span class="n">NS_DVB_T</span> <span class="o">=</span> <span class="mh">0xeeee0000</span>
+
+<span class="c1">#: Label:Namespace map</span>
+<span class="n">NS</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="s1">&#39;DVB-C&#39;</span><span class="p">:</span> <span class="n">NS_DVB_C</span><span class="p">,</span>
+	<span class="c1"># &#39;DVB-S&#39;: NS_DVB_S,</span>
+	<span class="s1">&#39;DVB-T&#39;</span><span class="p">:</span> <span class="n">NS_DVB_T</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1">#: Namespace:Label lookup map</span>
+<span class="n">NS_LOOKUP</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">six</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(</span><span class="n">NS</span><span class="p">)}</span>
+
+
+<div class="viewcode-block" id="lenient_decode">
+<a class="viewcode-back" href="../../controller.html#controllers.utilities.lenient_decode">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">lenient_decode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Decode an encoded string and convert it to an unicode string.</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">		value: input value</span>
+<span class="sd">		encoding: string encoding, defaults to utf-8</span>
+<span class="sd">	Returns:</span>
+<span class="sd">		(unicode) decoded value</span>
+
+<span class="sd">	&gt;&gt;&gt; lenient_decode(&quot;Hallo&quot;)</span>
+<span class="sd">	u&#39;Hallo&#39;</span>
+<span class="sd">	&gt;&gt;&gt; lenient_decode(u&quot;Hallo&quot;)</span>
+<span class="sd">	u&#39;Hallo&#39;</span>
+<span class="sd">	&gt;&gt;&gt; lenient_decode(&quot;HällöÜ&quot;)</span>
+<span class="sd">	u&#39;H\\xe4ll\\xf6\\xdc&#39;</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">):</span>
+		<span class="k">return</span> <span class="n">value</span>
+
+	<span class="k">if</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf_8&#39;</span>
+
+	<span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">,</span> <span class="s1">&#39;ignore&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="lenient_force_utf_8">
+<a class="viewcode-back" href="../../controller.html#controllers.utilities.lenient_force_utf_8">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">lenient_force_utf_8</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">		value: input value</span>
+<span class="sd">	Returns:</span>
+<span class="sd">		(basestring) utf-8 encoded value</span>
+
+<span class="sd">	&gt;&gt;&gt; isinstance(lenient_force_utf_8(&#39;&#39;), basestring)</span>
+<span class="sd">	True</span>
+<span class="sd">	&gt;&gt;&gt; lenient_force_utf_8(u&quot;Hallo&quot;)</span>
+<span class="sd">	&#39;Hallo&#39;</span>
+<span class="sd">	&gt;&gt;&gt; lenient_force_utf_8(&quot;HällöÜ&quot;)</span>
+<span class="sd">	&#39;H\\xc3\\xa4ll\\xc3\\xb6\\xc3\\x9c&#39;</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">):</span>
+		<span class="k">return</span> <span class="n">value</span>
+	<span class="k">return</span> <span class="n">lenient_decode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf_8&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="sanitise_filename_slashes">
+<a class="viewcode-back" href="../../controller.html#controllers.utilities.sanitise_filename_slashes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sanitise_filename_slashes</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">		value: input value</span>
+<span class="sd">	Returns:</span>
+<span class="sd">		value w/o multiple slashes</span>
+
+<span class="sd">	&gt;&gt;&gt; in_value = &quot;///tmp/x/y/z&quot;</span>
+<span class="sd">	&gt;&gt;&gt; expected = re.sub(&quot;^/+&quot;, &quot;/&quot;, &quot;///tmp/x/y/z&quot;)</span>
+<span class="sd">	&gt;&gt;&gt; sanitise_filename_slashes(in_value) == expected</span>
+<span class="sd">	True</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">MANY_SLASHES_REGEX</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_config_attribute">
+<a class="viewcode-back" href="../../controller.html#controllers.utilities.get_config_attribute">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_config_attribute</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">root_obj</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Determine attribute of *root_obj* to be accessed by *path* in a</span>
+<span class="sd">	(somewhat) safe manner.</span>
+<span class="sd">	This implementation will allow key and index based accessing too</span>
+<span class="sd">	(e.g. ``config.some_list[0]`` or ``config.some_dict[&#39;some_key&#39;]``)</span>
+<span class="sd">	The *path* value needs to start with *head* (default=&#39;config&#39;).</span>
+
+<span class="sd">	Args:</span>
+<span class="sd">		path: character string specifying which attribute is to be accessed</span>
+<span class="sd">		root_obj: An object whose attributes are to be accessed.</span>
+<span class="sd">		head: Value of the first portion of *path*</span>
+
+<span class="sd">	Returns:</span>
+<span class="sd">		Attribute of *root_obj*</span>
+
+<span class="sd">	Raises:</span>
+<span class="sd">		ValueError: If *path* is invalid.</span>
+<span class="sd">		AttributeError: If attribute cannot be accessed</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="n">head</span> <span class="o">=</span> <span class="s1">&#39;config&#39;</span>
+	<span class="n">portions</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">portions</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid path length&#39;</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">portions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">head</span><span class="p">:</span>
+		<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+			<span class="s1">&#39;Head is </span><span class="si">{!r}</span><span class="s1">, expected </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">portions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">head</span><span class="p">))</span>
+
+	<span class="n">current_obj</span> <span class="o">=</span> <span class="n">root_obj</span>
+
+	<span class="k">for</span> <span class="n">attr_name</span> <span class="ow">in</span> <span class="n">portions</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">attr_name</span><span class="p">:</span>
+			<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;empty attr_name&quot;</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">attr_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
+			<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;private member&#39;</span><span class="p">)</span>
+
+		<span class="n">matcher</span> <span class="o">=</span> <span class="n">REGEX_ITEM_OR_KEY_ACCESS</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">attr_name</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">matcher</span><span class="p">:</span>
+			<span class="n">gdict</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+			<span class="n">attr_name</span> <span class="o">=</span> <span class="n">gdict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;attr_name&#39;</span><span class="p">)</span>
+			<span class="n">next_obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">current_obj</span><span class="p">,</span> <span class="n">attr_name</span><span class="p">)</span>
+
+			<span class="k">if</span> <span class="n">gdict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">):</span>
+				<span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gdict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">))</span>
+				<span class="n">current_obj</span> <span class="o">=</span> <span class="n">next_obj</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">key</span> <span class="o">=</span> <span class="n">gdict</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span>
+				<span class="n">current_obj</span> <span class="o">=</span> <span class="n">next_obj</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">current_obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">current_obj</span><span class="p">,</span> <span class="n">attr_name</span><span class="p">)</span>
+
+	<span class="k">return</span> <span class="n">current_obj</span></div>
+
+
+
+<div class="viewcode-block" id="parse_servicereference">
+<a class="viewcode-back" href="../../controller.html#controllers.utilities.parse_servicereference">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_servicereference</span><span class="p">(</span><span class="n">serviceref</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Parse a Enigma2 style service reference string representation.</span>
+
+<span class="sd">	:param serviceref: Enigma2 style service reference</span>
+<span class="sd">	:type serviceref: string</span>
+
+<span class="sd">	&gt;&gt;&gt; sref = &#39;1:0:1:300:7:85:00c00000:0:0:0:&#39;</span>
+<span class="sd">	&gt;&gt;&gt; result = parse_servicereference(sref)</span>
+<span class="sd">	&gt;&gt;&gt; result</span>
+<span class="sd">	{&#39;service_type&#39;: 1, &#39;oid&#39;: 133, &#39;tsid&#39;: 7, &#39;ns&#39;: 12582912, &#39;sid&#39;: 768}</span>
+<span class="sd">	&gt;&gt;&gt; sref_g = create_servicereference(**result)</span>
+<span class="sd">	&gt;&gt;&gt; sref_g</span>
+<span class="sd">	&#39;1:0:1:300:7:85:00c00000:0:0:0:&#39;</span>
+<span class="sd">	&gt;&gt;&gt; sref_g2 = create_servicereference(result)</span>
+<span class="sd">	&gt;&gt;&gt; sref_g2</span>
+<span class="sd">	&#39;1:0:1:300:7:85:00c00000:0:0:0:&#39;</span>
+<span class="sd">	&gt;&gt;&gt; sref == sref_g</span>
+<span class="sd">	True</span>
+<span class="sd">	&gt;&gt;&gt; sref2 = &#39;1:64:A:0:0:0:0:0:0:0::SKY Sport&#39;</span>
+<span class="sd">	&gt;&gt;&gt; result2 = parse_servicereference(sref2)</span>
+<span class="sd">	&gt;&gt;&gt; result2</span>
+<span class="sd">	{&#39;service_type&#39;: 10, &#39;oid&#39;: 0, &#39;tsid&#39;: 0, &#39;ns&#39;: 0, &#39;sid&#39;: 0}</span>
+<span class="sd">	&gt;&gt;&gt; sref3 = &#39;1:0:0:0:0:0:0:0:0:0:/media/hdd/movie/20170921 2055 - DASDING - DASDING Sprechstunde - .ts&#39;</span>
+<span class="sd">	&gt;&gt;&gt; result3 = parse_servicereference(sref3)</span>
+<span class="sd">	&gt;&gt;&gt; result3</span>
+<span class="sd">	{&#39;service_type&#39;: 0, &#39;oid&#39;: 0, &#39;tsid&#39;: 0, &#39;ns&#39;: 0, &#39;sid&#39;: 0}</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">parts</span> <span class="o">=</span> <span class="n">serviceref</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+	<span class="n">sref_data</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="s1">&#39;service_type&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span>
+		<span class="s1">&#39;sid&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span>
+		<span class="s1">&#39;tsid&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span>
+		<span class="s1">&#39;oid&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span>
+		<span class="s1">&#39;ns&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="mi">16</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">sref_data</span></div>
+
+
+
+<div class="viewcode-block" id="create_servicereference">
+<a class="viewcode-back" href="../../controller.html#controllers.utilities.create_servicereference">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_servicereference</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Generate a (Enigma2 style) service reference string representation.</span>
+
+<span class="sd">	:param args[0]: Service Reference Parameter as dict</span>
+<span class="sd">	:type args[0]: :class:`dict`</span>
+
+<span class="sd">	:param service_type: Service Type</span>
+<span class="sd">	:type service_type: int</span>
+
+<span class="sd">	:param sid: SID</span>
+<span class="sd">	:type sid: int</span>
+
+<span class="sd">	:param tsid: TSID</span>
+<span class="sd">	:type tsid: int</span>
+
+<span class="sd">	:param oid: OID</span>
+<span class="sd">	:type oid: int</span>
+
+<span class="sd">	:param ns: Enigma2 Namespace</span>
+<span class="sd">	:type ns: int</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+		<span class="n">kwargs</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">service_type</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;service_type&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="n">sid</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sid&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="n">tsid</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tsid&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="n">oid</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;oid&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="n">ns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ns&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+	<span class="k">return</span> <span class="s1">&#39;</span><span class="si">{:x}</span><span class="s1">:0:</span><span class="si">{:x}</span><span class="s1">:</span><span class="si">{:x}</span><span class="s1">:</span><span class="si">{:x}</span><span class="s1">:</span><span class="si">{:x}</span><span class="s1">:</span><span class="si">{:08x}</span><span class="s1">:0:0:0:&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+		<span class="mi">1</span><span class="p">,</span>
+		<span class="n">service_type</span><span class="p">,</span>
+		<span class="n">sid</span><span class="p">,</span>
+		<span class="n">tsid</span><span class="p">,</span>
+		<span class="n">oid</span><span class="p">,</span>
+		<span class="n">ns</span><span class="p">)</span></div>
+
+
+<span class="c1"># Fallback genre</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getGenreStringLong</span><span class="p">(</span><span class="n">hn</span><span class="p">,</span> <span class="n">ln</span><span class="p">):</span>
+	<span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+<span class="c1"># Fallback moviePlayState</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_moviePlayState</span><span class="p">(</span><span class="n">cutsFileName</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+	<span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getUrlArg</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
+		<span class="n">k</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+			<span class="k">return</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+			<span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">default</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getUrlArg2</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
+		<span class="n">k</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+			<span class="k">return</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+			<span class="k">return</span> <span class="n">args</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">return</span> <span class="n">default</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">removeBad</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x86</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x87</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xc2\x86</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xc2\x87</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">val</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">removeBad2</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x86</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x87</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xc2\x8a</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xc2\x86</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xc2\x87</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\xc2\x8a</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">val</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getEventInfoProvider</span><span class="p">(</span><span class="n">moviedb</span><span class="p">):</span>
+	<span class="n">extEventInfoProviders</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="s1">&#39;kinopoisk&#39;</span><span class="p">:</span> <span class="p">{</span>
+			<span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;kinopoisk&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;KinoPoisk&#39;</span><span class="p">,</span>  <span class="c1"># КиноПоиск</span>
+			<span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.kinopoisk.ru/index.php?kp_query=&#39;</span>
+		<span class="p">},</span>
+		<span class="s1">&#39;csfd&#39;</span><span class="p">:</span> <span class="p">{</span>
+			<span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;CSfd&#39;</span><span class="p">,</span>  <span class="c1"># Česko-Slovenská filmová databáze</span>
+			<span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.csfd.cz/hledat/?q=&#39;</span>
+		<span class="p">},</span>
+		<span class="s1">&#39;tvguideuk&#39;</span><span class="p">:</span> <span class="p">{</span>
+			<span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;TV Guide UK&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.tvguide.co.uk/search.asp?title=&#39;</span>
+		<span class="p">},</span>
+		<span class="s1">&#39;imdb&#39;</span><span class="p">:</span> <span class="p">{</span>
+			<span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;IMDb&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.imdb.com/find?s=tt&amp;q=&#39;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="n">providerData</span> <span class="o">=</span> <span class="kc">None</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">providerId</span> <span class="o">=</span> <span class="n">moviedb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+		<span class="n">providerData</span> <span class="o">=</span> <span class="n">extEventInfoProviders</span><span class="p">[</span><span class="n">providerId</span><span class="p">]</span>
+		<span class="n">providerData</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">providerId</span>
+		<span class="k">return</span> <span class="n">providerData</span>
+	<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+		<span class="k">pass</span>
+	<span class="k">return</span> <span class="n">providerData</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">error</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">context</span><span class="p">:</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] [</span><span class="si">%s</span><span class="s2">] Error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] Error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">text</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">debug</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">DEBUG_ENABLED</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">context</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] [</span><span class="si">%s</span><span class="s2">] </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">text</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+	<span class="kn">import</span><span class="w"> </span><span class="nn">doctest</span>
+
+	<span class="p">(</span><span class="n">FAILED</span><span class="p">,</span> <span class="n">SUCCEEDED</span><span class="p">)</span> <span class="o">=</span> <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[doctest] SUCCEEDED/FAILED: </span><span class="si">{:d}</span><span class="s2">/</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">SUCCEEDED</span><span class="p">,</span> <span class="n">FAILED</span><span class="p">))</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, E2OpenPlugins.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

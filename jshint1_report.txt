@@ -1,0 +1,52 @@
+sourcefiles/js/at.js: line 65, col 14, 'x' is already defined.
+sourcefiles/js/at.js: line 67, col 13, 'sx' is already defined.
+sourcefiles/js/at.js: line 181, col 13, '_datea' is already defined.
+sourcefiles/js/at.js: line 182, col 13, '_da' is already defined.
+sourcefiles/js/at.js: line 302, col 12, ['Save'] is better written in dot notation.
+sourcefiles/js/at.js: line 303, col 12, ['Cancel'] is better written in dot notation.
+sourcefiles/js/at.js: line 398, col 23, ['tags'] is better written in dot notation.
+sourcefiles/js/at.js: line 435, col 27, ['services'] is better written in dot notation.
+sourcefiles/js/at.js: line 584, col 9, '_b' is already defined.
+sourcefiles/js/at.js: line 1097, col 21, '_h' is already defined.
+sourcefiles/js/at.js: line 1098, col 21, '_m' is already defined.
+
+sourcefiles/js/bqe.js: line 181, col 37, ['satellites'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 183, col 43, ['service'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 184, col 43, ['name'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 210, col 37, ['services'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 212, col 43, ['servicereference'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 213, col 43, ['servicename'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 238, col 53, ['services'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 239, col 56, ['services'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 249, col 35, ['servicereference'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 250, col 35, ['servicename'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 251, col 35, ['provider'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 278, col 37, ['services'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 280, col 54, ['servicereference'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 280, col 81, ['startpos'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 281, col 43, ['servicereference'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 282, col 43, ['servicename'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 306, col 53, ['services'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 307, col 56, ['services'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 328, col 37, ['services'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 330, col 43, ['servicereference'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 331, col 41, ['ismarker'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 332, col 41, ['servicename'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 333, col 49, ['pos'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 334, col 35, ['ismarker'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 341, col 54, ['ismarker'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 654, col 35, ['servicename'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 657, col 45, ['servicename'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 658, col 49, ['servicereference'] is better written in dot notation.
+sourcefiles/js/bqe.js: line 659, col 41, ['provider'] is better written in dot notation.
+
+sourcefiles/js/epgr.js: line 27, col 5, 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+sourcefiles/js/epgr.js: line 28, col 5, 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+
+sourcefiles/js/openwebif.js: line 824, col 23, ['muted'] is better written in dot notation.
+sourcefiles/js/openwebif.js: line 842, col 23, ['isRecording'] is better written in dot notation.
+sourcefiles/js/openwebif.js: line 1079, col 18, 'id' is already defined.
+sourcefiles/js/openwebif.js: line 1175, col 24, Missing semicolon.
+sourcefiles/js/openwebif.js: line 2274, col 5, 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+
+47 errors

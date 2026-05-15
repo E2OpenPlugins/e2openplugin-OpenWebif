@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controller &mdash; e2openplugin-OpenWebif 1.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=bb516dca"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Common" href="common.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            e2openplugin-OpenWebif
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-controllers.utilities">Basic Controllers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.NS"><code class="docutils literal notranslate"><span class="pre">NS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.NS_DVB_C"><code class="docutils literal notranslate"><span class="pre">NS_DVB_C</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.NS_DVB_T"><code class="docutils literal notranslate"><span class="pre">NS_DVB_T</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.NS_LOOKUP"><code class="docutils literal notranslate"><span class="pre">NS_LOOKUP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.create_servicereference"><code class="docutils literal notranslate"><span class="pre">create_servicereference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.get_config_attribute"><code class="docutils literal notranslate"><span class="pre">get_config_attribute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.lenient_decode"><code class="docutils literal notranslate"><span class="pre">lenient_decode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.lenient_force_utf_8"><code class="docutils literal notranslate"><span class="pre">lenient_force_utf_8()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.parse_servicereference"><code class="docutils literal notranslate"><span class="pre">parse_servicereference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.utilities.sanitise_filename_slashes"><code class="docutils literal notranslate"><span class="pre">sanitise_filename_slashes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-controllers.mobile">Web Controllers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#controllers.mobile.MobileController"><code class="docutils literal notranslate"><span class="pre">MobileController</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#controllers.mobile.MobileController.NoDataRender"><code class="docutils literal notranslate"><span class="pre">MobileController.NoDataRender()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">e2openplugin-OpenWebif</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Controller</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/controller.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="controller">
+<span id="controller-label"></span><h1>Controller<a class="headerlink" href="#controller" title="Link to this heading"></a></h1>
+<section id="module-controllers.utilities">
+<span id="basic-controllers"></span><h2>Basic Controllers<a class="headerlink" href="#module-controllers.utilities" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="controllers.utilities.NS">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">NS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'DVB-C':</span> <span class="pre">4294901760,</span> <span class="pre">'DVB-T':</span> <span class="pre">4008574976}</span></em><a class="headerlink" href="#controllers.utilities.NS" title="Link to this definition"></a></dt>
+<dd><p>Label:Namespace map</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="controllers.utilities.NS_DVB_C">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">NS_DVB_C</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4294901760</span></em><a class="headerlink" href="#controllers.utilities.NS_DVB_C" title="Link to this definition"></a></dt>
+<dd><p>Namespace - DVB-C services</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="controllers.utilities.NS_DVB_T">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">NS_DVB_T</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4008574976</span></em><a class="headerlink" href="#controllers.utilities.NS_DVB_T" title="Link to this definition"></a></dt>
+<dd><p>Namespace - DVB-T services</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="controllers.utilities.NS_LOOKUP">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">NS_LOOKUP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{4008574976:</span> <span class="pre">'DVB-T',</span> <span class="pre">4294901760:</span> <span class="pre">'DVB-C'}</span></em><a class="headerlink" href="#controllers.utilities.NS_LOOKUP" title="Link to this definition"></a></dt>
+<dd><p>Namespace:Label lookup map</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="controllers.utilities.create_servicereference">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">create_servicereference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/utilities.html#create_servicereference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.utilities.create_servicereference" title="Link to this definition"></a></dt>
+<dd><p>Generate a (Enigma2 style) service reference string representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong><strong>[</strong><strong>0</strong><strong>]</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – Service Reference Parameter as dict</p></li>
+<li><p><strong>service_type</strong> (<em>int</em>) – Service Type</p></li>
+<li><p><strong>sid</strong> (<em>int</em>) – SID</p></li>
+<li><p><strong>tsid</strong> (<em>int</em>) – TSID</p></li>
+<li><p><strong>oid</strong> (<em>int</em>) – OID</p></li>
+<li><p><strong>ns</strong> (<em>int</em>) – Enigma2 Namespace</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="controllers.utilities.get_config_attribute">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">get_config_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/utilities.html#get_config_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.utilities.get_config_attribute" title="Link to this definition"></a></dt>
+<dd><p>Determine attribute of <em>root_obj</em> to be accessed by <em>path</em> in a
+(somewhat) safe manner.
+This implementation will allow key and index based accessing too
+(e.g. <code class="docutils literal notranslate"><span class="pre">config.some_list[0]</span></code> or <code class="docutils literal notranslate"><span class="pre">config.some_dict['some_key']</span></code>)
+The <em>path</em> value needs to start with <em>head</em> (default=’config’).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>path: character string specifying which attribute is to be accessed
+root_obj: An object whose attributes are to be accessed.
+head: Value of the first portion of <em>path</em></p>
+</dd>
+<dt>Returns:</dt><dd><p>Attribute of <em>root_obj</em></p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If <em>path</em> is invalid.
+AttributeError: If attribute cannot be accessed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="controllers.utilities.lenient_decode">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">lenient_decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/utilities.html#lenient_decode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.utilities.lenient_decode" title="Link to this definition"></a></dt>
+<dd><p>Decode an encoded string and convert it to an unicode string.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>value: input value
+encoding: string encoding, defaults to utf-8</p>
+</dd>
+<dt>Returns:</dt><dd><p>(unicode) decoded value</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lenient_decode</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">)</span>
+<span class="go">u&#39;Hallo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lenient_decode</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Hallo&quot;</span><span class="p">)</span>
+<span class="go">u&#39;Hallo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lenient_decode</span><span class="p">(</span><span class="s2">&quot;HällöÜ&quot;</span><span class="p">)</span>
+<span class="go">u&#39;H\xe4ll\xf6\xdc&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="controllers.utilities.lenient_force_utf_8">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">lenient_force_utf_8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/utilities.html#lenient_force_utf_8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.utilities.lenient_force_utf_8" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Args:</dt><dd><p>value: input value</p>
+</dd>
+<dt>Returns:</dt><dd><p>(basestring) utf-8 encoded value</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">lenient_force_utf_8</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="n">basestring</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lenient_force_utf_8</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Hallo&quot;</span><span class="p">)</span>
+<span class="go">&#39;Hallo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lenient_force_utf_8</span><span class="p">(</span><span class="s2">&quot;HällöÜ&quot;</span><span class="p">)</span>
+<span class="go">&#39;H\xc3\xa4ll\xc3\xb6\xc3\x9c&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="controllers.utilities.parse_servicereference">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">parse_servicereference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serviceref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/utilities.html#parse_servicereference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.utilities.parse_servicereference" title="Link to this definition"></a></dt>
+<dd><p>Parse a Enigma2 style service reference string representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>serviceref</strong> (<em>string</em>) – Enigma2 style service reference</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sref</span> <span class="o">=</span> <span class="s1">&#39;1:0:1:300:7:85:00c00000:0:0:0:&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">parse_servicereference</span><span class="p">(</span><span class="n">sref</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
+<span class="go">{&#39;service_type&#39;: 1, &#39;oid&#39;: 133, &#39;tsid&#39;: 7, &#39;ns&#39;: 12582912, &#39;sid&#39;: 768}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sref_g</span> <span class="o">=</span> <span class="n">create_servicereference</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sref_g</span>
+<span class="go">&#39;1:0:1:300:7:85:00c00000:0:0:0:&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sref_g2</span> <span class="o">=</span> <span class="n">create_servicereference</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sref_g2</span>
+<span class="go">&#39;1:0:1:300:7:85:00c00000:0:0:0:&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sref</span> <span class="o">==</span> <span class="n">sref_g</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sref2</span> <span class="o">=</span> <span class="s1">&#39;1:64:A:0:0:0:0:0:0:0::SKY Sport&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result2</span> <span class="o">=</span> <span class="n">parse_servicereference</span><span class="p">(</span><span class="n">sref2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result2</span>
+<span class="go">{&#39;service_type&#39;: 10, &#39;oid&#39;: 0, &#39;tsid&#39;: 0, &#39;ns&#39;: 0, &#39;sid&#39;: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sref3</span> <span class="o">=</span> <span class="s1">&#39;1:0:0:0:0:0:0:0:0:0:/media/hdd/movie/20170921 2055 - DASDING - DASDING Sprechstunde - .ts&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result3</span> <span class="o">=</span> <span class="n">parse_servicereference</span><span class="p">(</span><span class="n">sref3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result3</span>
+<span class="go">{&#39;service_type&#39;: 0, &#39;oid&#39;: 0, &#39;tsid&#39;: 0, &#39;ns&#39;: 0, &#39;sid&#39;: 0}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="controllers.utilities.sanitise_filename_slashes">
+<span class="sig-prename descclassname"><span class="pre">controllers.utilities.</span></span><span class="sig-name descname"><span class="pre">sanitise_filename_slashes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/utilities.html#sanitise_filename_slashes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.utilities.sanitise_filename_slashes" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Args:</dt><dd><p>value: input value</p>
+</dd>
+<dt>Returns:</dt><dd><p>value w/o multiple slashes</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">in_value</span> <span class="o">=</span> <span class="s2">&quot;///tmp/x/y/z&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;^/+&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;///tmp/x/y/z&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sanitise_filename_slashes</span><span class="p">(</span><span class="n">in_value</span><span class="p">)</span> <span class="o">==</span> <span class="n">expected</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-controllers.mobile">
+<span id="web-controllers"></span><h2>Web Controllers<a class="headerlink" href="#module-controllers.mobile" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="controllers.mobile.MobileController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controllers.mobile.</span></span><span class="sig-name descname"><span class="pre">MobileController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/mobile.html#MobileController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.mobile.MobileController" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseController</span></code></p>
+<p>Mobile Web Controller</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.mobile.MobileController.NoDataRender">
+<span class="sig-name descname"><span class="pre">NoDataRender</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/mobile.html#MobileController.NoDataRender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.mobile.MobileController.NoDataRender" title="Link to this definition"></a></dt>
+<dd><p>mobile requests with no extra data</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="common.html" class="btn btn-neutral float-left" title="Common" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, E2OpenPlugins.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
