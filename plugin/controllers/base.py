@@ -22,7 +22,10 @@
 
 from __future__ import print_function
 import os
-import imp
+try:
+	import imp
+except ImportError:  # Python 3.12+
+	from Plugins.Extensions.OpenWebif import impcompat as imp
 import json
 import six
 

@@ -38,7 +38,10 @@ from OpenSSL import crypto
 from Components.Network import iNetwork
 
 import os
-import imp
+try:
+	import imp
+except ImportError:  # Python 3.12+
+	from Plugins.Extensions.OpenWebif import impcompat as imp
 import ipaddress
 import six
 
@@ -413,9 +416,13 @@ class AuthResource(resource.Resource):
 						samenet = True
 			if not (ipaddress.ip_address(six.text_type(peer)).is_private or samenet):
 				return False
-		from crypt import crypt
+		try:
+			from crypt import crypt
+			from spwd import getspnam
+		except ImportError:  # removed in Python 3.13
+			print("[OpenWebif] password login needs the crypt and spwd modules, not available in this Python")
+			return False
 		from pwd import getpwnam
-		from spwd import getspnam
 		cpass = None
 		try:
 			cpass = getpwnam(user)[1]
